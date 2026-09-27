@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s3-pillars-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s3-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: var(--bg);
+        }
+        #s3-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s3-glow {
+          position: absolute;
+          width: 1600px;
+          height: 1000px;
+          left: 160px;
+          top: 260px;
+          border-radius: 50%;
+          background: radial-gradient(ellipse, rgba(43, 52, 103, 0.9), rgba(43, 52, 103, 0) 70%);
+        }
+        #s3-grid-lines {
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(rgba(242, 237, 228, 0.05) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(242, 237, 228, 0.05) 2px, transparent 2px);
+          background-size: 120px 120px;
+        }
+        #s3-head {
+          position: absolute;
+          right: 150px;
+          top: 90px;
+          direction: rtl;
+        }
+        #s3-eyebrow {
+          font-size: 36px;
+          font-weight: 500;
+          color: var(--gold);
+          margin-bottom: 16px;
+          opacity: 0;
+        }
+        #s3-title {
+          font-size: 110px;
+          font-weight: 900;
+          line-height: 1.25;
+          opacity: 0;
+        }
+        #s3-cards {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 330px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          direction: rtl;
+        }
+        .s3-card {
+          position: relative;
+          width: 520px;
+          height: 548px;
+          border-radius: 30px;
+          background: var(--panel);
+          border: 3px solid var(--line);
+          padding: 56px 48px 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          overflow: hidden;
+          opacity: 0;
+          will-change: transform;
+        }
+        .s3-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background: var(--c);
+        }
+        .s3-icon {
+          width: 128px;
+          height: 128px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: radial-gradient(circle, var(--halo), rgba(0, 0, 0, 0) 72%);
+          margin-bottom: 26px;
+        }
+        .s3-icon svg {
+          width: 92px;
+          height: 92px;
+          overflow: visible;
+        }
+        .s3-card h3 {
+          font-size: 64px;
+          font-weight: 800;
+          line-height: 1.3;
+          color: var(--ink);
+        }
+        .s3-card p {
+          margin-top: 14px;
+          font-size: 34px;
+          font-weight: 400;
+          line-height: 1.65;
+          color: var(--muted);
+        }
+        #s3-c1 {
+          --c: var(--peach);
+          --ink: var(--peach);
+          --halo: rgba(253, 185, 155, 0.35);
+        }
+        #s3-c2 {
+          --c: var(--violet);
+          --ink: #dcaaf8;
+          --halo: rgba(207, 139, 243, 0.35);
+        }
+        #s3-c3 {
+          --c: var(--sky);
+          --ink: var(--sky);
+          --halo: rgba(156, 203, 240, 0.35);
+        }
+        #s3-tag {
+          position: absolute;
+          right: 150px;
+          bottom: 92px;
+          direction: rtl;
+          display: flex;
+          align-items: center;
+          gap: 26px;
+          font-size: 54px;
+          font-weight: 800;
+          color: var(--gold);
+          opacity: 0;
+        }
+        #s3-tag i {
+          display: block;
+          width: 90px;
+          height: 6px;
+          border-radius: 3px;
+          background: var(--gold);
+          transform-origin: right center;
+        }
+      </style>
+
+      <div id="s3-root" data-composition-id="s3-pillars" data-width="1920" data-height="1080" data-duration="15.6">
+        <div id="s3-wrap">
+          <div id="s3-grid-lines"></div>
+          <div id="s3-glow" data-layout-allow-overflow></div>
+          <div id="s3-head">
+            <div id="s3-eyebrow">کارهایی که انجام می‌دهم</div>
+            <div id="s3-title">چی می‌سازم؟</div>
+          </div>
+
+          <div id="s3-cards">
+            <div class="s3-card" id="s3-c1">
+              <div class="s3-icon">
+                <!-- flask / simulator -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="#fdb99b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M38 12 H62 M42 12 V40 L20 82 Q17 90 26 90 H74 Q83 90 80 82 L58 40 V12" />
+                  <path d="M28 70 H72" opacity="0.6" />
+                  <circle id="s3-b1" cx="44" cy="78" r="4" fill="#fdb99b" stroke="none" />
+                  <circle id="s3-b2" cx="58" cy="76" r="3" fill="#fdb99b" stroke="none" />
+                  <circle id="s3-b3" cx="51" cy="80" r="2.5" fill="#fdb99b" stroke="none" />
+                </svg>
+              </div>
+              <h3>شبیه‌ساز</h3>
+              <p>شبیه‌سازهای تعاملی آموزشی که مستقیم در مرورگر اجرا می‌شوند.</p>
+            </div>
+            <div class="s3-card" id="s3-c2">
+              <div class="s3-icon">
+                <!-- robot / agent -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="#dcaaf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M50 14 V26" />
+                  <circle id="s3-ant" cx="50" cy="10" r="5" fill="#dcaaf8" stroke="none" />
+                  <rect x="18" y="26" width="64" height="54" rx="16" />
+                  <g id="s3-eyes">
+                    <circle cx="38" cy="50" r="6" fill="#dcaaf8" stroke="none" />
+                    <circle cx="62" cy="50" r="6" fill="#dcaaf8" stroke="none" />
+                  </g>
+                  <path d="M40 66 H60" />
+                  <path d="M10 46 V60 M90 46 V60" />
+                </svg>
+              </div>
+              <h3>ایجنت</h3>
+              <p>ابزارها و ایجنت‌های هوش مصنوعی برای خودکار کردن کارهای تکراری.</p>
+            </div>
+            <div class="s3-card" id="s3-c3">
+              <div class="s3-icon">
+                <!-- browser + code / web tool -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="#9ccbf0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="10" y="16" width="80" height="68" rx="10" />
+                  <path d="M10 32 H90" />
+                  <circle cx="21" cy="24" r="2" fill="#9ccbf0" stroke="none" />
+                  <circle cx="30" cy="24" r="2" fill="#9ccbf0" stroke="none" />
+                  <path id="s3-code-l" d="M40 48 L30 58 L40 68" />
+                  <path id="s3-code-r" d="M60 48 L70 58 L60 68" />
+                  <path id="s3-code-s" d="M54 46 L46 70" />
+                </svg>
+              </div>
+              <h3>ابزار وب</h3>
+              <p>اپلیکیشن‌های وب مدرن؛ از طراحی رابط کاربری تا بک‌اند و دیتابیس.</p>
+            </div>
+          </div>
+
+          <div id="s3-tag"><i></i><span>ساخته‌شده برای استفادهٔ واقعی، نه فقط نمایش.</span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s3-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s3-grid-lines", { y: 0 }, { y: -120, duration: 15.6, ease: "none" }, 0);
+          tl.fromTo("#s3-glow", { scale: 0.9 }, { scale: 1.1, duration: 7.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+          tl.fromTo("#s3-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+          tl.set("#s3-title", { opacity: 1, y: 80 }, 0.8);
+          tl.to("#s3-title", { y: 0, duration: 0.22, ease: "power4.out" }, 0.8);
+
+          // grid-card-assemble: staggered spring arrival, right → left (RTL reading order)
+          ["#s3-c1", "#s3-c2", "#s3-c3"].forEach(function (id, i) {
+            const at = 2.2 + i * 0.4;
+            tl.fromTo(
+              id,
+              { opacity: 0, y: 110, scale: 0.86, rotation: i === 1 ? 0 : i === 0 ? 3 : -3 },
+              { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 0.75, ease: "back.out(1.5)" },
+              at,
+            );
+            tl.fromTo(id + " .s3-icon", { scale: 0.4 }, { scale: 1, duration: 0.6, ease: "back.out(2.2)" }, at + 0.2);
+            // idle float, phase-offset per card (sine-wave-loop, finite)
+            tl.fromTo(id, { y: 0 }, { y: -14, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 3.6 + i * 0.35);
+          });
+
+          // svg-icon-enrichment: bubbles rise, antenna pulses + eyes blink, code brackets breathe
+          [
+            ["#s3-b1", 0],
+            ["#s3-b2", 0.5],
+            ["#s3-b3", 1.0],
+          ].forEach(function (b) {
+            tl.fromTo(b[0], { y: 0, opacity: 1 }, { y: -34, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 6 }, 3.2 + b[1]);
+          });
+          tl.fromTo("#s3-ant", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 11 }, 3.0);
+          tl.fromTo("#s3-eyes", { scaleY: 1, transformOrigin: "50% 50%" }, { scaleY: 0.1, duration: 0.12, ease: "power1.in", yoyo: true, repeat: 1 }, 5.0);
+          tl.fromTo("#s3-eyes", { scaleY: 1 }, { scaleY: 0.1, duration: 0.12, ease: "power1.in", yoyo: true, repeat: 1, immediateRender: false }, 8.6);
+          tl.fromTo("#s3-code-l", { x: 0 }, { x: -5, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 3.4);
+          tl.fromTo("#s3-code-r", { x: 0 }, { x: 5, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 3.4);
+
+          // payoff line
+          tl.set("#s3-tag", { opacity: 1 }, 9.6);
+          tl.fromTo("#s3-tag i", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, 9.6);
+          tl.fromTo("#s3-tag span", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 9.75);
+
+          tl.to("#s3-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 15.0);
+
+          window.__timelines["s3-pillars"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

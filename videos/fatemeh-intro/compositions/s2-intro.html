@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s2-intro-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: var(--bg);
+        }
+        #s2-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        .s2-glow {
+          position: absolute;
+          border-radius: 50%;
+        }
+        #s2-glow-a {
+          width: 1100px;
+          height: 1100px;
+          left: -260px;
+          top: 120px;
+          background: radial-gradient(circle, rgba(253, 185, 155, 0.28), rgba(253, 185, 155, 0) 65%);
+        }
+        #s2-glow-b {
+          width: 1200px;
+          height: 1200px;
+          right: -300px;
+          top: -520px;
+          background: radial-gradient(circle, rgba(207, 139, 243, 0.22), rgba(207, 139, 243, 0) 65%);
+        }
+        #s2-ghost {
+          position: absolute;
+          left: 40px;
+          bottom: -120px;
+          font-size: 620px;
+          font-weight: 900;
+          line-height: 1;
+          color: #1b1f40;
+          direction: ltr;
+        }
+        /* monogram + orbit */
+        #s2-mono {
+          position: absolute;
+          left: 130px;
+          top: 230px;
+          width: 620px;
+          height: 620px;
+        }
+        #s2-orbit {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 3px dashed rgba(229, 176, 85, 0.45);
+        }
+        .s2-dot {
+          position: absolute;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+        }
+        #s2-dot-1 {
+          left: 293px;
+          top: -17px;
+          background: var(--peach);
+          box-shadow: 0 0 30px rgba(253, 185, 155, 0.8);
+        }
+        #s2-dot-2 {
+          left: 20px;
+          top: 440px;
+          background: var(--violet);
+          box-shadow: 0 0 30px rgba(207, 139, 243, 0.8);
+        }
+        #s2-dot-3 {
+          left: 560px;
+          top: 440px;
+          background: var(--sky);
+          box-shadow: 0 0 30px rgba(156, 203, 240, 0.8);
+        }
+        #s2-disc {
+          position: absolute;
+          left: 110px;
+          top: 110px;
+          width: 400px;
+          height: 400px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 50% 78%, #fdb99b 0%, #e5b055 22%, #7a4fa8 55%, #2b3467 80%);
+          border: 4px solid var(--gold);
+          box-shadow: 0 0 120px rgba(229, 176, 85, 0.35);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        #s2-disc span {
+          display: block;
+          font-size: 250px;
+          font-weight: 900;
+          color: var(--fg);
+          line-height: 1;
+          margin-top: -40px;
+          text-shadow: 0 10px 40px rgba(17, 20, 42, 0.5);
+        }
+        /* copy */
+        #s2-copy {
+          position: absolute;
+          right: 150px;
+          top: 170px;
+          width: 900px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #s2-hello {
+          font-size: 56px;
+          font-weight: 400;
+          color: var(--muted);
+          margin-bottom: 18px;
+          opacity: 0;
+        }
+        #s2-name {
+          display: flex;
+          gap: 36px;
+          font-size: 164px;
+          font-weight: 900;
+          line-height: 1.2;
+        }
+        .s2-nw {
+          display: inline-block;
+          opacity: 0;
+        }
+        #s2-rule {
+          width: 460px;
+          height: 6px;
+          border-radius: 3px;
+          background: var(--gold);
+          transform-origin: right center;
+          margin: 16px 0 30px;
+        }
+        #s2-title {
+          font-size: 60px;
+          font-weight: 700;
+          color: var(--peach);
+          white-space: nowrap;
+          opacity: 0;
+        }
+        #s2-list {
+          margin-top: 56px;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+        }
+        .s2-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          font-size: 42px;
+          font-weight: 500;
+          opacity: 0;
+        }
+        .s2-row i {
+          display: block;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--gold);
+          flex: none;
+        }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2-intro" data-width="1920" data-height="1080" data-duration="12.6">
+        <div id="s2-wrap">
+          <div class="s2-glow" id="s2-glow-a"></div>
+          <div class="s2-glow" id="s2-glow-b"></div>
+          <div id="s2-ghost" data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap>AI</div>
+
+          <div id="s2-mono">
+            <div id="s2-orbit">
+              <div class="s2-dot" id="s2-dot-1"></div>
+              <div class="s2-dot" id="s2-dot-2"></div>
+              <div class="s2-dot" id="s2-dot-3"></div>
+            </div>
+            <div id="s2-disc"><span>ف</span></div>
+          </div>
+
+          <div id="s2-copy">
+            <div id="s2-hello">سلام، من</div>
+            <div id="s2-name">
+              <span class="s2-nw">فاطمه</span>
+              <span class="s2-nw">شمس</span>
+            </div>
+            <div id="s2-rule"></div>
+            <div id="s2-title">توسعه‌دهنده و مربی هوش مصنوعی</div>
+            <div id="s2-list">
+              <div class="s2-row"><i></i><span>ابزار و ایجنت هوش مصنوعی می‌سازم</span></div>
+              <div class="s2-row"><i></i><span>هوش مصنوعی را کاربردی آموزش می‌دهم</span></div>
+              <div class="s2-row"><i></i><span>یک کامیونیتی هوش مصنوعی در تلگرام دارم</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s2-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s2-glow-a", { scale: 0.8, opacity: 0.6 }, { scale: 1.08, opacity: 1, duration: 12.6, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s2-glow-b", { scale: 1.05 }, { scale: 0.92, duration: 12.6, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s2-ghost", { x: -40 }, { x: 60, duration: 12.6, ease: "none" }, 0);
+
+          // monogram: spring-pop + orbit ring (seek-safe finite rotation)
+          tl.fromTo("#s2-disc", { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.9, ease: "back.out(1.6)" }, 0.7);
+          tl.fromTo("#s2-orbit", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.0, ease: "power3.out" }, 0.9);
+          tl.fromTo("#s2-orbit", { rotation: 0 }, { rotation: 140, duration: 11.7, ease: "none", immediateRender: false }, 0.9);
+          tl.fromTo("#s2-disc span", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.1);
+
+          // copy
+          tl.fromTo("#s2-hello", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+          const nw = gsap.utils.toArray("#s2-root .s2-nw");
+          tl.set(nw[0], { opacity: 1, y: 90 }, 1.0);
+          tl.to(nw[0], { y: 0, duration: 0.22, ease: "power4.out" }, 1.0);
+          tl.set(nw[1], { opacity: 1, y: 90 }, 1.24);
+          tl.to(nw[1], { y: 0, duration: 0.22, ease: "power4.out" }, 1.24);
+          tl.fromTo("#s2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "expo.out" }, 1.7);
+          tl.fromTo("#s2-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.0);
+
+          gsap.utils.toArray("#s2-root .s2-row").forEach(function (row, i) {
+            const at = 4.0 + i * 0.7;
+            tl.fromTo(row, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, at);
+            tl.fromTo(row.querySelector("i"), { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.5)" }, at + 0.1);
+          });
+
+          tl.to("#s2-copy", { y: -12, duration: 6, ease: "sine.inOut" }, 6.0);
+          tl.to("#s2-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 12.0);
+
+          window.__timelines["s2-intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

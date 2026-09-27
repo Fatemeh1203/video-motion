@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s7-cta-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s7-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: #0e1230;
+        }
+        #s7-wrap,
+        #s7-world {
+          position: absolute;
+          inset: 0;
+        }
+        #s7-world img {
+          position: absolute;
+          display: block;
+        }
+        #s7-sky {
+          left: -80px;
+          top: -60px;
+          width: 2080px;
+          height: 1200px;
+          object-fit: cover;
+          object-position: 50% 100%;
+        }
+        #s7-sun {
+          left: 660px;
+          top: 470px;
+          width: 600px;
+          height: 600px;
+          mix-blend-mode: screen;
+        }
+        #s7-cloud {
+          left: -140px;
+          bottom: 60px;
+          width: 2200px;
+          height: 280px;
+          opacity: 0.9;
+        }
+        #s7-mid {
+          left: -120px;
+          bottom: 10px;
+          width: 2160px;
+          height: 300px;
+          transform: scaleX(-1);
+        }
+        #s7-near {
+          left: -120px;
+          bottom: -60px;
+          width: 2160px;
+          height: 320px;
+        }
+        #s7-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(14, 18, 48, 0.82) 0%, rgba(14, 18, 48, 0.55) 55%, rgba(14, 18, 48, 0.1) 80%);
+        }
+        #s7-copy {
+          position: absolute;
+          right: 150px;
+          top: 110px;
+          width: 1080px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+        }
+        #s7-eyebrow {
+          font-size: 38px;
+          font-weight: 500;
+          color: var(--gold);
+          opacity: 0;
+        }
+        #s7-title {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0 30px;
+          font-size: 112px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        .s7-w {
+          display: inline-block;
+          opacity: 0;
+        }
+        #s7-sub {
+          font-size: 40px;
+          font-weight: 400;
+          color: var(--muted);
+          opacity: 0;
+        }
+        #s7-link {
+          margin-top: 22px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 18px 34px 18px 22px;
+          border-radius: 50px;
+          background: rgba(17, 20, 42, 0.8);
+          border: 3px solid var(--gold);
+          direction: ltr;
+          font-size: 42px;
+          font-weight: 700;
+          color: var(--fg);
+          opacity: 0;
+        }
+        .s7-plane {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 66px;
+          height: 66px;
+          border-radius: 50%;
+          background: #2aa3de;
+          flex: none;
+        }
+        #s7-qr {
+          position: absolute;
+          left: 170px;
+          top: 120px;
+          width: 440px;
+          padding: 34px 34px 22px;
+          border-radius: 32px;
+          background: #f2ede4;
+          box-shadow: 0 40px 120px rgba(5, 6, 18, 0.6);
+          text-align: center;
+          opacity: 0;
+        }
+        #s7-qr img {
+          display: block;
+          width: 372px;
+          height: 372px;
+        }
+        #s7-qr span {
+          display: block;
+          margin-top: 12px;
+          font-size: 30px;
+          font-weight: 800;
+          color: #1b2046;
+          direction: ltr;
+        }
+        #s7-lock {
+          position: absolute;
+          right: 130px;
+          bottom: 270px;
+          direction: rtl;
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding: 18px 34px;
+          border-radius: 22px;
+          background: rgba(14, 18, 48, 0.82);
+          opacity: 0;
+        }
+        #s7-lock b {
+          font-size: 58px;
+          font-weight: 900;
+        }
+        #s7-lock i {
+          display: block;
+          width: 6px;
+          height: 64px;
+          border-radius: 3px;
+          background: var(--gold);
+        }
+        #s7-lock span {
+          font-size: 38px;
+          font-weight: 500;
+          color: var(--peach);
+        }
+      </style>
+
+      <div id="s7-root" data-composition-id="s7-cta" data-width="1920" data-height="1080" data-duration="14">
+        <div id="s7-wrap">
+          <div id="s7-world">
+            <img id="s7-sky" src="assets/scene/dawn-sky.webp" alt="" />
+            <img id="s7-sun" src="assets/scene/sun.webp" alt="" />
+            <img id="s7-cloud" src="assets/scene/cloudsea.webp" alt="" />
+            <img id="s7-mid" src="assets/scene/ridge-mid.webp" alt="" />
+            <img id="s7-near" src="assets/scene/ridge-near.webp" alt="" />
+          </div>
+          <div id="s7-shade"></div>
+
+          <div id="s7-qr">
+            <img src="assets/telegram-qr.svg" alt="" />
+            <span>AI_Community</span>
+          </div>
+
+          <div id="s7-copy">
+            <div id="s7-eyebrow">دعوت</div>
+            <div id="s7-title">
+              <span class="s7-w">به</span>
+              <span class="s7-w">کامیونیتی</span>
+              <span class="s7-w">هوش</span>
+              <span class="s7-w">مصنوعی</span>
+              <span class="s7-w">بپیوند</span>
+            </div>
+            <div id="s7-sub">کد را اسکن کن یا از این لینک وارد شو:</div>
+            <div id="s7-link">
+              <span class="s7-plane"
+                ><svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.4-1.6Z" /></svg
+              ></span>
+              <span>t.me/+Orw2hE3tq3thMzNk</span>
+            </div>
+          </div>
+
+          <div id="s7-lock">
+            <b>فاطمه شمس</b>
+            <i></i>
+            <span>توسعه‌دهنده و مربی هوش مصنوعی</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s7-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          // dawn returns (bookend of scene 1)
+          tl.fromTo("#s7-sky", { scale: 1.08 }, { scale: 1.0, duration: 14, ease: "sine.out" }, 0);
+          tl.fromTo("#s7-sun", { opacity: 0, y: 160, scale: 0.6 }, { opacity: 1, y: 0, scale: 1.1, duration: 6, ease: "power2.out" }, 0.3);
+          tl.fromTo("#s7-cloud", { y: 160, x: -40 }, { y: 0, x: 40, duration: 14, ease: "power2.out" }, 0);
+          tl.fromTo("#s7-mid", { y: 240 }, { y: 0, duration: 2.6, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s7-near", { y: 320 }, { y: 0, duration: 2.8, ease: "power3.out" }, 0.15);
+
+          tl.fromTo("#s7-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+          let t = 0.9;
+          gsap.utils.toArray("#s7-root .s7-w").forEach(function (w, i) {
+            const heavy = i === 4;
+            tl.set(w, { opacity: 1, y: heavy ? 90 : 50 }, t);
+            tl.to(w, { y: 0, duration: heavy ? 0.22 : 0.16, ease: "power4.out" }, t);
+            t += heavy ? 0.24 : 0.15;
+          });
+          tl.fromTo("#s7-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.4);
+          tl.fromTo("#s7-link", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 2.9);
+          tl.fromTo("#s7-link .s7-plane", { rotation: -40, x: -30 }, { rotation: 0, x: 0, duration: 0.6, ease: "back.out(2.4)" }, 3.0);
+
+          // QR card: spring-pop + ambient glow bloom
+          tl.fromTo("#s7-qr", { opacity: 0, scale: 0.5, rotation: -6 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.6)" }, 3.2);
+          tl.fromTo(
+            "#s7-qr",
+            { boxShadow: "0 40px 120px rgba(5, 6, 18, 0.6)" },
+            { boxShadow: "0 0 140px rgba(229, 176, 85, 0.55)", duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false },
+            4.2,
+          );
+
+          tl.fromTo("#s7-lock", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 5.0);
+          tl.fromTo("#s7-lock i", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "expo.out" }, 5.2);
+
+          // quiet end: hold, then settle to the canvas color
+          tl.to("#s7-wrap", { opacity: 0, duration: 1.0, ease: "power1.inOut" }, 13.0);
+
+          window.__timelines["s7-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

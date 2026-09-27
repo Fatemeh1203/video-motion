@@ -1,0 +1,575 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s4-site-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s4-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: var(--bg);
+        }
+        #s4-wrap,
+        .s4-phase {
+          position: absolute;
+          inset: 0;
+        }
+        .s4-phase {
+          opacity: 0;
+        }
+        #s4-glow {
+          position: absolute;
+          width: 1400px;
+          height: 1400px;
+          left: -300px;
+          top: -200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(207, 139, 243, 0.2), rgba(207, 139, 243, 0) 65%);
+        }
+        #s4-glow2 {
+          position: absolute;
+          width: 1100px;
+          height: 1100px;
+          right: -300px;
+          bottom: -500px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(229, 176, 85, 0.18), rgba(229, 176, 85, 0) 65%);
+        }
+        .s4-eyebrow {
+          font-size: 36px;
+          font-weight: 500;
+          color: var(--gold);
+        }
+        .s4-h {
+          font-size: 104px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        .s4-sub {
+          font-size: 38px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: var(--muted);
+        }
+
+        /* ---------- phase A: browser mock ---------- */
+        #s4-a-copy {
+          position: absolute;
+          right: 140px;
+          top: 250px;
+          width: 560px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        #s4-a-copy > * {
+          opacity: 0;
+        }
+        #s4-stage {
+          position: absolute;
+          left: 110px;
+          top: 150px;
+          width: 1100px;
+          height: 780px;
+          perspective: 2200px;
+        }
+        #s4-browser {
+          position: absolute;
+          inset: 0;
+          border-radius: 26px;
+          overflow: hidden;
+          background: #0e1230;
+          border: 3px solid #3a4180;
+          box-shadow: 0 40px 120px rgba(5, 6, 18, 0.7);
+          opacity: 0;
+          transform-origin: 50% 50%;
+        }
+        #s4-bar {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 64px;
+          background: #1b2046;
+          display: flex;
+          align-items: center;
+          padding: 0 26px;
+          gap: 12px;
+          direction: ltr;
+        }
+        #s4-bar i {
+          display: block;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: #4a5190;
+        }
+        #s4-url {
+          margin-left: 30px;
+          flex: 1;
+          height: 38px;
+          border-radius: 19px;
+          background: #11142a;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          font-size: 22px;
+          color: var(--muted);
+          direction: rtl;
+        }
+        #s4-page {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 64px;
+          bottom: 0;
+          overflow: hidden;
+        }
+        #s4-page img {
+          position: absolute;
+          display: block;
+        }
+        #s4-p-sky {
+          left: 0;
+          top: 0;
+          width: 1100px;
+          height: 716px;
+          object-fit: cover;
+          object-position: 50% 100%;
+        }
+        #s4-p-cloud {
+          left: -60px;
+          top: 360px;
+          width: 1220px;
+          height: 170px;
+        }
+        #s4-p-mid {
+          left: -40px;
+          top: 440px;
+          width: 1180px;
+          height: 180px;
+          transform: scaleX(-1);
+        }
+        #s4-p-near {
+          left: -40px;
+          top: 500px;
+          width: 1180px;
+          height: 190px;
+        }
+        #s4-p-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(14, 18, 48, 0.55) 0%, rgba(14, 18, 48, 0.1) 45%, rgba(14, 18, 48, 0.85) 100%);
+        }
+        #s4-p-head {
+          position: absolute;
+          left: 34px;
+          right: 34px;
+          top: 22px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          direction: rtl;
+          font-size: 24px;
+          font-weight: 700;
+        }
+        #s4-p-logo {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        #s4-p-logo i {
+          display: block;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 50% 70%, #fdb99b, #e5b055 45%, #7a4fa8 100%);
+        }
+        #s4-p-menu {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 18px;
+          border-radius: 20px;
+          border: 2px solid rgba(242, 237, 228, 0.5);
+          font-size: 20px;
+          font-weight: 500;
+        }
+        #s4-p-hero {
+          position: absolute;
+          right: 56px;
+          top: 110px;
+          width: 700px;
+          direction: rtl;
+        }
+        #s4-p-hero > * {
+          opacity: 0;
+        }
+        #s4-p-eyebrow {
+          font-size: 22px;
+          font-weight: 700;
+          color: var(--gold);
+        }
+        #s4-p-title {
+          margin-top: 10px;
+          font-size: 50px;
+          font-weight: 900;
+          line-height: 1.35;
+        }
+        #s4-p-btns {
+          margin-top: 24px;
+          display: flex;
+          gap: 14px;
+        }
+        .s4-btn {
+          padding: 12px 26px;
+          border-radius: 14px;
+          font-size: 22px;
+          font-weight: 700;
+        }
+        .s4-btn.gold {
+          background: var(--gold);
+          color: #241a08;
+        }
+        .s4-btn.line {
+          border: 2px solid rgba(242, 237, 228, 0.7);
+        }
+        #s4-p-cards {
+          position: absolute;
+          left: 34px;
+          right: 34px;
+          bottom: 30px;
+          display: flex;
+          gap: 18px;
+          direction: rtl;
+        }
+        .s4-pc {
+          flex: 1;
+          height: 104px;
+          border-radius: 16px;
+          background: rgba(29, 34, 80, 0.92);
+          border: 2px solid #3a4180;
+          border-top: 6px solid var(--c);
+          padding: 16px 18px;
+          font-size: 24px;
+          font-weight: 700;
+          opacity: 0;
+        }
+        .s4-pc span {
+          display: block;
+          margin-top: 6px;
+          font-size: 17px;
+          font-weight: 400;
+          color: var(--muted);
+        }
+
+        /* ---------- phase B: full-screen menu ---------- */
+        #s4-b-list {
+          position: absolute;
+          right: 150px;
+          top: 110px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .s4-mi {
+          display: flex;
+          align-items: baseline;
+          gap: 30px;
+          font-size: 92px;
+          font-weight: 900;
+          line-height: 1.33;
+          opacity: 0;
+        }
+        .s4-mi small {
+          font-size: 30px;
+          font-weight: 500;
+          color: var(--gold);
+          width: 50px;
+        }
+        .s4-mi b {
+          font-weight: 900;
+          color: var(--fg);
+        }
+        #s4-b-panel {
+          position: absolute;
+          left: 150px;
+          top: 300px;
+          width: 700px;
+          height: 480px;
+          direction: rtl;
+        }
+        #s4-b-frame {
+          position: absolute;
+          inset: 0;
+          border-radius: 30px;
+          border: 3px solid #3a4180;
+          background: linear-gradient(160deg, rgba(29, 34, 80, 0.95), rgba(17, 20, 42, 0.95));
+          opacity: 0;
+        }
+        #s4-b-hl {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 10px;
+          height: 100%;
+          border-radius: 5px;
+          background: var(--gold);
+          opacity: 0;
+        }
+        .s4-desc {
+          position: absolute;
+          right: 60px;
+          left: 60px;
+          top: 70px;
+          opacity: 0;
+        }
+        .s4-desc em {
+          display: block;
+          font-style: normal;
+          font-size: 120px;
+          font-weight: 900;
+          line-height: 1.1;
+          color: var(--c);
+        }
+        .s4-desc p {
+          margin-top: 26px;
+          font-size: 44px;
+          font-weight: 500;
+          line-height: 1.6;
+        }
+
+        /* ---------- phase C: features ---------- */
+        #s4-c-head {
+          position: absolute;
+          right: 150px;
+          top: 100px;
+          direction: rtl;
+        }
+        #s4-c-head > * {
+          opacity: 0;
+        }
+        #s4-c-head .s4-eyebrow {
+          margin-bottom: 16px;
+        }
+        #s4-c-grid {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 400px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 36px 40px;
+          direction: rtl;
+        }
+        .s4-f {
+          min-height: 240px;
+          border-radius: 26px;
+          background: var(--panel);
+          border: 3px solid var(--line);
+          padding: 38px 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          opacity: 0;
+        }
+        .s4-f i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: var(--c);
+          flex: none;
+        }
+        .s4-f span {
+          font-size: 42px;
+          font-weight: 700;
+          line-height: 1.35;
+        }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4-site" data-width="1920" data-height="1080" data-duration="24.6">
+        <div id="s4-wrap">
+          <div id="s4-glow"></div>
+          <div id="s4-glow2"></div>
+
+          <!-- A: the home page -->
+          <div class="s4-phase" id="s4-a">
+            <div id="s4-a-copy">
+              <div class="s4-eyebrow">سایت شخصی من</div>
+              <div class="s4-h">همه‌چیز یک‌جا</div>
+              <div class="s4-sub">معرفی من، نمونه‌کارها، ایجنت‌ها، شبیه‌سازها و فایل‌های آموزشی.</div>
+            </div>
+            <div id="s4-stage">
+              <div id="s4-browser">
+                <div id="s4-bar">
+                  <i></i><i></i><i></i>
+                  <div id="s4-url">
+                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none" stroke="#c9c2d8" stroke-width="2.4"><rect x="2" y="9" width="14" height="10" rx="2" /><path d="M5 9V6a4 4 0 0 1 8 0v3" /></svg>
+                    <span>سایت فاطمه شمس</span>
+                  </div>
+                </div>
+                <div id="s4-page">
+                  <img id="s4-p-sky" src="assets/scene/dawn-sky.webp" alt="" />
+                  <img id="s4-p-cloud" src="assets/scene/cloudsea.webp" alt="" />
+                  <img id="s4-p-mid" src="assets/scene/ridge-mid.webp" alt="" />
+                  <img id="s4-p-near" src="assets/scene/ridge-near.webp" alt="" />
+                  <div id="s4-p-shade"></div>
+                  <div id="s4-p-head">
+                    <div id="s4-p-logo"><i></i><span>فاطمه شمس</span></div>
+                    <div id="s4-p-menu">
+                      <svg width="22" height="16" viewBox="0 0 22 16" stroke="#f2ede4" stroke-width="2.6" stroke-linecap="round"><path d="M2 2H20M2 8H20M2 14H20" /></svg>
+                      <span>منو</span>
+                    </div>
+                  </div>
+                  <div id="s4-p-hero">
+                    <div id="s4-p-eyebrow">پلتفرم دانلود امن + نمونه‌کار شخصی</div>
+                    <div id="s4-p-title">فایل و شبیه‌ساز، درباره من و کارهایی که ساختم</div>
+                    <div id="s4-p-btns"><span class="s4-btn gold">ورود به پنل</span><span class="s4-btn line">ثبت‌نام</span></div>
+                  </div>
+                  <div id="s4-p-cards">
+                    <div class="s4-pc" style="--c: #fdb99b">درباره من<span>بیشتر بدانید</span></div>
+                    <div class="s4-pc" style="--c: #cf8bf3">نمونه‌کارها<span>مشاهده نمونه‌کارها</span></div>
+                    <div class="s4-pc" style="--c: #9ccbf0">ایجنت‌ها<span>مشاهده ایجنت‌ها</span></div>
+                    <div class="s4-pc" style="--c: #e5b055">فایل‌ها<span>مشاهده فایل‌ها</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- B: the full-screen menu -->
+          <div class="s4-phase" id="s4-b">
+            <div id="s4-b-list">
+              <div class="s4-mi"><small>۰۱</small><b>نمونه‌کارها</b></div>
+              <div class="s4-mi"><small>۰۲</small><b>ایجنت‌ها</b></div>
+              <div class="s4-mi"><small>۰۳</small><b>شبیه‌سازها</b></div>
+              <div class="s4-mi"><small>۰۴</small><b>فایل‌ها</b></div>
+              <div class="s4-mi"><small>۰۵</small><b>انجمن</b></div>
+              <div class="s4-mi"><small>۰۶</small><b>ثبت پروژه</b></div>
+            </div>
+            <div id="s4-b-panel">
+              <div id="s4-b-frame"></div>
+              <div id="s4-b-hl"></div>
+              <div class="s4-desc" style="--c: #fdb99b"><em>۰۱</em><p>پروژه‌هایی که طراحی و توسعه داده‌ام، با امکان ثبت نظر.</p></div>
+              <div class="s4-desc" style="--c: #dcaaf8"><em>۰۲</em><p>ابزارها و ایجنت‌های هوش مصنوعی برای اتوماسیون کارهای تکراری.</p></div>
+              <div class="s4-desc" style="--c: #9ccbf0"><em>۰۳</em><p>شبیه‌سازهای تعاملی آموزشی، مستقیم در مرورگر.</p></div>
+              <div class="s4-desc" style="--c: #e5b055"><em>۰۴</em><p>فایل‌های رایگان و اختصاصی، قابل دانلود.</p></div>
+              <div class="s4-desc" style="--c: #fdb99b"><em>۰۵</em><p>انجمن پرسش و پاسخ، پیشنهادها و گفت‌وگو.</p></div>
+              <div class="s4-desc" style="--c: #dcaaf8"><em>۰۶</em><p>ایده‌ات را بنویس تا بررسی کنم و با تو تماس بگیرم.</p></div>
+            </div>
+          </div>
+
+          <!-- C: features -->
+          <div class="s4-phase" id="s4-c">
+            <div id="s4-c-head">
+              <div class="s4-eyebrow">و البته…</div>
+              <div class="s4-h">امکانات سایت</div>
+            </div>
+            <div id="s4-c-grid">
+              <div class="s4-f" style="--c: #fdb99b"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>دوزبانه: فارسی و انگلیسی</span></div>
+              <div class="s4-f" style="--c: #cf8bf3"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>تم روشن و تیره</span></div>
+              <div class="s4-f" style="--c: #9ccbf0"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>دورهٔ آزمایشی رایگان</span></div>
+              <div class="s4-f" style="--c: #e5b055"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>فایل‌های رایگان و اختصاصی</span></div>
+              <div class="s4-f" style="--c: #fdb99b"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>پنل کاربری و پیگیری سفارش</span></div>
+              <div class="s4-f" style="--c: #cf8bf3"><i><svg width="34" height="34" viewBox="0 0 26 26" fill="none" stroke="#11142a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13.5 L11 19 L21 7" /></svg></i><span>انجمن پرسش و پاسخ</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s4-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s4-glow", { x: 0, scale: 1 }, { x: 260, scale: 1.15, duration: 24.6, ease: "sine.inOut" }, 0);
+
+          // ---------------- A (0 – 8.2) : device-surface-showcase
+          tl.set("#s4-a", { opacity: 1 }, 0);
+          tl.fromTo(
+            "#s4-browser",
+            { opacity: 0, rotationY: 22, rotationX: 6, y: 90, scale: 0.9 },
+            { opacity: 1, rotationY: 8, rotationX: 2, y: 0, scale: 1, duration: 1.3, ease: "power3.out" },
+            0.3,
+          );
+          tl.to("#s4-browser", { rotationY: 3, rotationX: 0, scale: 1.04, duration: 6.4, ease: "sine.inOut" }, 1.6);
+          tl.fromTo("#s4-p-sky", { scale: 1.12 }, { scale: 1, duration: 8, ease: "sine.out" }, 0.3);
+          tl.fromTo("#s4-p-cloud", { x: -40 }, { x: 40, duration: 8, ease: "none" }, 0.3);
+          tl.fromTo("#s4-p-mid", { y: 120 }, { y: 0, duration: 1.8, ease: "power3.out" }, 0.8);
+          tl.fromTo("#s4-p-near", { y: 160 }, { y: 0, duration: 1.8, ease: "power3.out" }, 0.9);
+          gsap.utils.toArray("#s4-p-hero > *").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4 + i * 0.25);
+          });
+          gsap.utils.toArray("#s4-root .s4-pc").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 2.4 + i * 0.12);
+          });
+          gsap.utils.toArray("#s4-a-copy > *").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 1.0 + i * 0.35);
+          });
+          // menu button press → hands off to the full-screen menu
+          tl.fromTo("#s4-p-menu", { scale: 1 }, { scale: 0.9, duration: 0.12, ease: "power1.in", yoyo: true, repeat: 1 }, 7.3);
+          tl.to("#s4-a", { opacity: 0, scale: 1.04, duration: 0.5, ease: "power2.in" }, 7.7);
+
+          // ---------------- B (8 – 16.2) : kinetic menu list
+          tl.set("#s4-b", { opacity: 1 }, 8.0);
+          const items = gsap.utils.toArray("#s4-root .s4-mi");
+          items.forEach(function (el, i) {
+            const at = 8.1 + i * 0.1;
+            tl.set(el, { opacity: 1, y: 60 }, at);
+            tl.to(el, { y: 0, duration: 0.2, ease: "power4.out" }, at);
+          });
+          tl.fromTo("#s4-b-frame", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 8.6);
+          tl.fromTo("#s4-b-hl", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "expo.out" }, 8.9);
+          const descs = gsap.utils.toArray("#s4-root .s4-desc");
+          const STEP = 1.15;
+          items.forEach(function (el, i) {
+            const at = 9.1 + i * STEP;
+            // dim all others, light this one (absolute values, seek-safe)
+            items.forEach(function (other, j) {
+              tl.to(other, { opacity: j === i ? 1 : 0.28, x: j === i ? -24 : 0, duration: 0.3, ease: "power2.out" }, at);
+            });
+            tl.fromTo(descs[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, at + 0.05);
+            if (i < items.length - 1) {
+              tl.to(descs[i], { opacity: 0, y: -20, duration: 0.25, ease: "power2.in" }, at + STEP - 0.25);
+            }
+          });
+          tl.to("#s4-b", { opacity: 0, duration: 0.45, ease: "power2.in" }, 15.7);
+
+          // ---------------- C (16 – 24.6) : grid-card-assemble
+          tl.set("#s4-c", { opacity: 1 }, 16.0);
+          tl.fromTo("#s4-c-head .s4-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 16.1);
+          tl.set("#s4-c-head .s4-h", { opacity: 1, y: 80 }, 16.3);
+          tl.to("#s4-c-head .s4-h", { y: 0, duration: 0.22, ease: "power4.out" }, 16.3);
+          gsap.utils.toArray("#s4-root .s4-f").forEach(function (el, i) {
+            const at = 16.8 + i * 0.09;
+            tl.fromTo(el, { opacity: 0, y: 70, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, at);
+            tl.fromTo(el.querySelector("i"), { scale: 0 }, { scale: 1, duration: 0.6, ease: "back.out(2)" }, at + 0.15);
+          });
+          tl.fromTo("#s4-c-grid", { y: 0 }, { y: -18, duration: 6, ease: "sine.inOut" }, 18.0);
+
+          tl.to("#s4-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 24.0);
+
+          window.__timelines["s4-site"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

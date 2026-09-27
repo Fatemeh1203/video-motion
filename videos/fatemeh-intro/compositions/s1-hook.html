@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s1-hook-template">
+      <style>
+        @font-face {
+          font-family: "Vazirmatn";
+          font-weight: 400;
+          src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Vazirmatn";
+          font-weight: 500;
+          src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Vazirmatn";
+          font-weight: 800;
+          src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2");
+        }
+        @font-face {
+          font-family: "Vazirmatn";
+          font-weight: 900;
+          src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2");
+        }
+        #s1-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          direction: rtl;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: #0e1230;
+        }
+        #s1-wrap,
+        #s1-world {
+          position: absolute;
+          inset: 0;
+        }
+        #s1-world img {
+          position: absolute;
+          display: block;
+        }
+        #s1-sky {
+          left: -80px;
+          top: -60px;
+          width: 2080px;
+          height: 1200px;
+          object-fit: cover;
+          object-position: 50% 100%;
+        }
+        #s1-sun {
+          left: 560px;
+          top: 330px;
+          width: 800px;
+          height: 800px;
+          mix-blend-mode: screen;
+        }
+        #s1-ridge-far {
+          left: -120px;
+          bottom: 190px;
+          width: 2160px;
+          height: 330px;
+        }
+        #s1-cloud {
+          left: -140px;
+          bottom: 100px;
+          width: 2200px;
+          height: 300px;
+          opacity: 0.92;
+        }
+        #s1-ridge-mid {
+          left: -120px;
+          bottom: 40px;
+          width: 2160px;
+          height: 330px;
+          transform: scaleX(-1);
+        }
+        #s1-fog {
+          left: -100px;
+          bottom: -40px;
+          width: 2120px;
+          height: 420px;
+          opacity: 0.55;
+        }
+        #s1-ridge-near {
+          left: -120px;
+          bottom: -40px;
+          width: 2160px;
+          height: 340px;
+        }
+        #s1-shade {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 60% 55% at 72% 22%, rgba(12, 15, 40, 0.55), rgba(12, 15, 40, 0) 70%);
+        }
+        #s1-copy {
+          position: absolute;
+          top: 120px;
+          right: 150px;
+          width: 1300px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+        #s1-eyebrow {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          font-size: 36px;
+          font-weight: 500;
+          color: var(--gold);
+          opacity: 0;
+        }
+        #s1-eyebrow i {
+          display: block;
+          width: 70px;
+          height: 3px;
+          background: var(--gold);
+          transform-origin: right center;
+        }
+        .s1-line {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0 28px;
+          line-height: 1.25;
+        }
+        #s1-l1 {
+          font-size: 150px;
+          font-weight: 900;
+        }
+        #s1-l2 {
+          font-size: 92px;
+          font-weight: 800;
+        }
+        #s1-l2 .s1-w:last-child {
+          color: var(--peach);
+        }
+        .s1-w {
+          display: inline-block;
+          opacity: 0;
+          will-change: transform;
+        }
+        #s1-sub {
+          margin-top: 18px;
+          font-size: 40px;
+          font-weight: 400;
+          color: var(--muted);
+          max-width: 1300px;
+          line-height: 1.6;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="10.6">
+        <div id="s1-wrap">
+          <div id="s1-world">
+            <img id="s1-sky" src="assets/scene/dawn-sky.webp" alt="" />
+            <img id="s1-sun" src="assets/scene/sun.webp" alt="" />
+            <img id="s1-ridge-far" src="assets/scene/ridge-far.webp" alt="" />
+            <img id="s1-cloud" src="assets/scene/cloudsea.webp" alt="" />
+            <img id="s1-ridge-mid" src="assets/scene/ridge-mid.webp" alt="" />
+            <img id="s1-fog" src="assets/scene/fog.webp" alt="" />
+            <img id="s1-ridge-near" src="assets/scene/ridge-near.webp" alt="" />
+          </div>
+          <div id="s1-shade"></div>
+          <div id="s1-copy">
+            <div id="s1-eyebrow"><i id="s1-eyebar"></i><span>هوش مصنوعی، کاربردی</span></div>
+            <div class="s1-line" id="s1-l1">
+              <span class="s1-w">از</span>
+              <span class="s1-w">ایده</span>
+            </div>
+            <div class="s1-line" id="s1-l2">
+              <span class="s1-w">تا</span>
+              <span class="s1-w">ابزاری</span>
+              <span class="s1-w">که</span>
+              <span class="s1-w">هر</span>
+              <span class="s1-w">روز</span>
+              <span class="s1-w">کار&nbsp;می‌کند</span>
+            </div>
+            <div id="s1-sub">شبیه‌ساز، ایجنت و ابزار وب — ساخته‌شده برای استفادهٔ واقعی، نه فقط نمایش.</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const F = 1 / 30;
+
+          // parallax rise: nearer layers travel further (multi-phase-camera drift)
+          tl.fromTo("#s1-sky", { scale: 1.12, y: 50 }, { scale: 1.02, y: 0, duration: 10.6, ease: "sine.out" }, 0);
+          tl.fromTo("#s1-sun", { opacity: 0, scale: 0.55, y: 140 }, { opacity: 1, scale: 1, y: 0, duration: 4.2, ease: "power2.out" }, 0.2);
+          tl.fromTo("#s1-sun", { scale: 1 }, { scale: 1.08, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 4.4);
+          tl.fromTo("#s1-ridge-far", { y: 240 }, { y: 0, duration: 3.6, ease: "power3.out" }, 0);
+          tl.fromTo("#s1-cloud", { y: 220, x: -60 }, { y: 0, x: 0, duration: 4.0, ease: "power3.out" }, 0.1);
+          tl.to("#s1-cloud", { x: 70, duration: 6.5, ease: "none" }, 4.1);
+          tl.fromTo("#s1-ridge-mid", { y: 330 }, { y: 0, duration: 3.8, ease: "power3.out" }, 0.15);
+          tl.fromTo("#s1-fog", { y: 200, opacity: 0 }, { y: 0, opacity: 0.55, duration: 4, ease: "power2.out" }, 0.3);
+          tl.fromTo("#s1-ridge-near", { y: 420 }, { y: 0, duration: 4.0, ease: "power3.out" }, 0.2);
+          tl.to("#s1-ridge-near", { x: -30, duration: 6.6, ease: "none" }, 4.0);
+          tl.to("#s1-ridge-mid", { x: 18, duration: 6.6, ease: "none" }, 4.0);
+
+          // eyebrow
+          tl.set("#s1-eyebrow", { opacity: 1 }, 0.9);
+          tl.fromTo("#s1-eyebar", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, 0.9);
+          tl.fromTo("#s1-eyebrow span", { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 1.0);
+
+          // waterfall-entry, word level (never split Persian into letters)
+          const words = gsap.utils.toArray("#s1-root .s1-w");
+          let t = 1.4;
+          words.forEach(function (w, i) {
+            const heavy = i < 2;
+            const travel = heavy ? 80 : 46;
+            const dur = heavy ? 0.2 : 0.15;
+            tl.set(w, { opacity: 1, y: travel }, t);
+            tl.to(w, { y: 0, duration: dur, ease: "power4.out" }, t);
+            t += i === 1 ? dur + 0.35 : dur + 2 * F;
+          });
+
+          tl.fromTo("#s1-sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 4.6);
+
+          // hold, then settle the copy forward slightly before the handoff
+          tl.to("#s1-copy", { y: -14, duration: 5, ease: "sine.inOut" }, 5.4);
+          tl.to("#s1-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 10.0);
+
+          window.__timelines["s1-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
