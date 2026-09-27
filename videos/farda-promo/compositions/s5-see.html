@@ -1,0 +1,355 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s5-see-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s5-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--on-night);
+          background: radial-gradient(ellipse 70% 80% at 30% 50%, #24407a 0%, var(--night-2) 50%, var(--night) 100%);
+        }
+        #s5-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s5-grid {
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(rgba(185, 205, 242, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(185, 205, 242, 0.07) 1px, transparent 1px);
+          background-size: 60px 60px;
+        }
+        /* simulation panel (left) */
+        #s5-sim {
+          position: absolute;
+          left: 110px;
+          top: 150px;
+          width: 800px;
+          height: 780px;
+          border-radius: 36px;
+          background: rgba(10, 20, 45, 0.55);
+          border: 2px solid rgba(91, 141, 239, 0.45);
+          box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8);
+          overflow: hidden;
+        }
+        #s5-bar {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 0 26px;
+          background: rgba(91, 141, 239, 0.14);
+          direction: ltr;
+        }
+        #s5-bar i {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: rgba(185, 205, 242, 0.5);
+        }
+        #s5-bar span {
+          margin-left: auto;
+          direction: rtl;
+          font-size: 28px;
+          font-weight: 700;
+          color: var(--on-night-soft);
+        }
+        #s5-svg {
+          position: absolute;
+          left: 0;
+          top: 64px;
+          width: 800px;
+          height: 520px;
+        }
+        #s5-svg circle.s5-ring {
+          fill: none;
+          stroke-width: 3;
+        }
+        #s5-graph {
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          bottom: 30px;
+          height: 150px;
+          border-top: 2px solid rgba(185, 205, 242, 0.15);
+        }
+        #s5-graph svg {
+          width: 740px;
+          height: 150px;
+        }
+        #s5-graph path {
+          fill: none;
+          stroke: var(--sun-soft);
+          stroke-width: 5;
+          stroke-linecap: round;
+        }
+        /* copy + chat (right) */
+        #s5-copy {
+          position: absolute;
+          right: 120px;
+          top: 150px;
+          width: 800px;
+          direction: rtl;
+        }
+        #s5-h {
+          font-size: 76px;
+          font-weight: 900;
+          line-height: 1.3;
+          color: #fff;
+        }
+        .s5-hw {
+          display: inline-block;
+          opacity: 0;
+        }
+        #s5-h .s5-hl {
+          color: var(--sun-soft);
+        }
+        #s5-p {
+          margin-top: 20px;
+          font-size: 40px;
+          font-weight: 500;
+          color: var(--on-night-soft);
+          line-height: 1.6;
+          opacity: 0;
+        }
+        #s5-chat {
+          position: absolute;
+          right: 120px;
+          top: 150px;
+          width: 800px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+        #s5-chat-h {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          font-size: 40px;
+          font-weight: 800;
+          color: #fff;
+          opacity: 0;
+        }
+        #s5-bot {
+          width: 76px;
+          height: 76px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 40% 35%, #8fb5ff, var(--blue));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 40px rgba(91, 141, 239, 0.6);
+        }
+        #s5-bot svg {
+          width: 44px;
+          height: 44px;
+        }
+        .s5-bubble {
+          max-width: 700px;
+          padding: 28px 36px;
+          border-radius: 34px;
+          font-size: 38px;
+          font-weight: 500;
+          line-height: 1.6;
+          opacity: 0;
+        }
+        #s5-q {
+          align-self: flex-start;
+          background: #fff;
+          color: var(--ink-strong);
+          border-top-right-radius: 8px;
+          min-height: 118px;
+        }
+        #s5-a-wrap {
+          position: relative;
+          align-self: flex-end;
+          display: flex;
+          justify-content: flex-end;
+        }
+        #s5-typing {
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: flex;
+          gap: 12px;
+          padding: 26px 34px;
+          border-radius: 34px;
+          background: rgba(91, 141, 239, 0.25);
+          opacity: 0;
+        }
+        #s5-typing i {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: #dfe9ff;
+        }
+        #s5-a {
+          align-self: flex-end;
+          background: var(--blue);
+          color: #fff;
+          border-top-left-radius: 8px;
+        }
+        .s5-aw {
+          opacity: 0;
+        }
+        #s5-tag {
+          align-self: flex-start;
+          padding: 14px 30px;
+          border-radius: 999px;
+          border: 2px solid var(--sun-soft);
+          color: var(--sun-soft);
+          font-size: 32px;
+          font-weight: 700;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s5-root" data-composition-id="s5-see" data-width="1920" data-height="1080" data-duration="18.6">
+        <div id="s5-wrap">
+          <div id="s5-grid"></div>
+
+          <div id="s5-sim">
+            <div id="s5-bar"><i></i><i></i><i></i><span>شبیه‌ساز تداخل امواج</span></div>
+            <svg id="s5-svg" viewBox="0 0 800 520"></svg>
+            <div id="s5-graph">
+              <svg viewBox="0 0 740 150"><path id="s5-wave" d="M0 75 L740 75" /></svg>
+            </div>
+          </div>
+
+          <div id="s5-copy">
+            <div id="s5-h">
+              <span class="s5-hw">علم</span> <span class="s5-hw">را</span> <span class="s5-hw s5-hl">ببینید،</span><br />
+              <span class="s5-hw">نه</span> <span class="s5-hw">فقط</span> <span class="s5-hw">بخوانید</span>
+            </div>
+            <div id="s5-p">پدیده‌های علمی جلوی چشمتان زنده می‌شوند؛<br />تغییرشان بدهید و نتیجه را همان لحظه ببینید.</div>
+          </div>
+
+          <div id="s5-chat">
+            <div id="s5-chat-h">
+              <div id="s5-bot">
+                <svg viewBox="0 0 44 44"><rect x="8" y="12" width="28" height="22" rx="7" fill="#fff" /><circle cx="17" cy="23" r="3" fill="#3d6fd6" /><circle cx="27" cy="23" r="3" fill="#3d6fd6" /><rect x="20" y="4" width="4" height="8" rx="2" fill="#fff" /></svg>
+              </div>
+              <span>یادگیری با کمک هوش مصنوعی</span>
+            </div>
+            <div class="s5-bubble" id="s5-q"><span id="s5-q-text"></span></div>
+            <div id="s5-a-wrap">
+            <div id="s5-typing"><i></i><i></i><i></i></div>
+            <div class="s5-bubble" id="s5-a">
+              <span class="s5-aw">وقتی</span> <span class="s5-aw">دو</span> <span class="s5-aw">موج</span> <span class="s5-aw">به</span> <span class="s5-aw">هم</span> <span class="s5-aw">می‌رسند،</span>
+              <span class="s5-aw">دامنه‌هایشان</span> <span class="s5-aw">با</span> <span class="s5-aw">هم</span> <span class="s5-aw">جمع</span> <span class="s5-aw">می‌شود.</span>
+              <span class="s5-aw">جاهایی</span> <span class="s5-aw">تقویت</span> <span class="s5-aw">و</span> <span class="s5-aw">جاهایی</span> <span class="s5-aw">خنثی</span> <span class="s5-aw">می‌شوند!</span>
+            </div>
+            </div>
+            <div id="s5-tag">پرسیدن، اینجا عادی است</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 18.6;
+          const NS = "http://www.w3.org/2000/svg";
+
+          tl.fromTo("#s5-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s5-grid", { backgroundPosition: "0px 0px" }, { backgroundPosition: "60px 120px", duration: D, ease: "none" }, 0);
+          tl.fromTo("#s5-sim", { opacity: 0, x: -80, rotationY: 12 }, { opacity: 1, x: 0, rotationY: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+
+          // wave interference: two point sources emit rings (seek-safe finite repeats)
+          const svg = document.querySelector("#s5-svg");
+          const sources = [
+            { x: 300, y: 260, c: "#8fb5ff" },
+            { x: 500, y: 260, c: "#ffd58a" },
+          ];
+          const RINGS = 8;
+          const PERIOD = 4;
+          sources.forEach(function (s) {
+            const dot = document.createElementNS(NS, "circle");
+            dot.setAttribute("cx", s.x);
+            dot.setAttribute("cy", s.y);
+            dot.setAttribute("r", 10);
+            dot.setAttribute("fill", s.c);
+            svg.appendChild(dot);
+            tl.fromTo(dot, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.5, ease: "back.out(3)" }, 0.8);
+            for (let i = 0; i < RINGS; i++) {
+              const ring = document.createElementNS(NS, "circle");
+              ring.setAttribute("class", "s5-ring");
+              ring.setAttribute("cx", s.x);
+              ring.setAttribute("cy", s.y);
+              ring.setAttribute("r", 0);
+              ring.setAttribute("stroke", s.c);
+              ring.setAttribute("opacity", 0);
+              svg.appendChild(ring);
+              tl.fromTo(ring, { attr: { r: 0 }, opacity: 0.95 }, { attr: { r: 520 }, opacity: 0, duration: PERIOD, ease: "none", repeat: 3, immediateRender: false }, 1.0 + i * (PERIOD / RINGS));
+            }
+          });
+
+          // superposition graph: sum of two sines drifting in phase
+          const wave = document.querySelector("#s5-wave");
+          const ph = { p: 0 };
+          function drawWave() {
+            let d = "";
+            for (let x = 0; x <= 740; x += 10) {
+              const y = 75 + 32 * Math.sin(x / 38 + ph.p) + 26 * Math.sin(x / 31 - ph.p * 1.3);
+              d += (x === 0 ? "M" : " L") + x + " " + y.toFixed(1);
+            }
+            wave.setAttribute("d", d);
+          }
+          tl.fromTo(ph, { p: 0 }, { p: 18, duration: D, ease: "none", onUpdate: drawWave }, 0);
+          tl.fromTo("#s5-wave", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 1.2);
+
+          // phase A: headline
+          gsap.utils.toArray("#s5-root .s5-hw").forEach(function (w, i) {
+            tl.fromTo(w, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 1.0 + i * 0.16);
+          });
+          tl.fromTo("#s5-p", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.4);
+          tl.to("#s5-copy", { opacity: 0, x: 60, duration: 0.5, ease: "power2.in" }, 7.6);
+
+          // phase B: ask the AI tutor
+          tl.fromTo("#s5-chat-h", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.3);
+          tl.fromTo("#s5-bot", { scale: 0 }, { scale: 1, duration: 0.6, ease: "back.out(2.5)" }, 8.3);
+          tl.fromTo("#s5-q", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 9.3);
+          const qText = "چرا بعضی جاها موج‌ها همدیگر را خنثی می‌کنند؟";
+          const qEl = document.querySelector("#s5-q-text");
+          const typer = { n: 0 };
+          tl.fromTo(typer, { n: 0 }, {
+            n: qText.length, duration: 1.6, ease: "none", immediateRender: false,
+            onUpdate: function () { qEl.textContent = qText.slice(0, Math.round(typer.n)); },
+          }, 9.6);
+          tl.fromTo("#s5-typing", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.4);
+          gsap.utils.toArray("#s5-typing i").forEach(function (d, i) {
+            tl.fromTo(d, { y: 0 }, { y: -12, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 11.4 + i * 0.12);
+          });
+          tl.to("#s5-typing", { opacity: 0, duration: 0.2 }, 12.2);
+          tl.fromTo("#s5-a", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 12.2);
+          gsap.utils.toArray("#s5-root .s5-aw").forEach(function (w, i) {
+            tl.fromTo(w, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, 12.4 + i * 0.1);
+          });
+          tl.fromTo("#s5-tag", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 14.6);
+
+          tl.to("#s5-sim", { y: -12, duration: 6, ease: "sine.inOut" }, 8);
+          tl.to("#s5-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 18.0);
+
+          window.__timelines["s5-see"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

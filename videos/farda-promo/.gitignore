@@ -1,0 +1,4 @@
+.hyperframes/
+snapshots/
+renders/*
+!renders/farda-promo.mp4

@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s8-cta-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s8-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--ink);
+          background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 26%, var(--sky-3) 52%, var(--sky-4) 100%);
+        }
+        #s8-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s8-sun {
+          position: absolute;
+          left: 1060px;
+          top: 40px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 224, 160, 0.9) 0%, rgba(255, 213, 138, 0.45) 30%, rgba(255, 213, 138, 0) 66%);
+        }
+        .s8-cloud {
+          position: absolute;
+          border-radius: 200px;
+          background: radial-gradient(60% 90% at 45% 60%, #fff 0%, #eef5ff 60%, rgba(238, 245, 255, 0) 74%);
+          box-shadow: 0 50px 70px -40px rgba(90, 130, 200, 0.45);
+        }
+        #s8-c1 { left: -160px; top: 60px; width: 620px; height: 220px; }
+        #s8-c2 { right: -200px; top: 700px; width: 700px; height: 240px; }
+        #s8-c3 { left: 120px; bottom: -70px; width: 560px; height: 200px; }
+
+        /* logo block (right, RTL lead) */
+        #s8-emblem {
+          position: absolute;
+          right: 200px;
+          top: 210px;
+          width: 560px;
+          height: 560px;
+          border-radius: 50%;
+          background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #f0f6ff 100%);
+          box-shadow: 0 60px 90px -40px rgba(80, 120, 195, 0.6), inset 0 -14px 30px rgba(150, 185, 240, 0.3), inset 0 14px 30px rgba(255, 255, 255, 0.95);
+        }
+        #s8-mark {
+          position: absolute;
+          right: 260px;
+          top: 285px;
+          width: 440px;
+          height: 308px;
+        }
+        #s8-mark img {
+          width: 440px;
+          height: 308px;
+        }
+        #s8-slogan-under {
+          position: absolute;
+          right: 200px;
+          top: 800px;
+          width: 560px;
+          text-align: center;
+          direction: rtl;
+          font-size: 44px;
+          font-weight: 700;
+          color: var(--blue);
+          opacity: 0;
+        }
+        /* copy (left) */
+        #s8-copy {
+          position: absolute;
+          left: 170px;
+          top: 230px;
+          width: 900px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #s8-k {
+          font-size: 46px;
+          font-weight: 700;
+          color: var(--ink-soft);
+          opacity: 0;
+        }
+        #s8-h {
+          margin-top: 6px;
+          font-size: 112px;
+          font-weight: 900;
+          line-height: 1.25;
+          color: var(--ink-strong);
+        }
+        .s8-hw {
+          display: inline-block;
+          opacity: 0;
+        }
+        #s8-h .s8-hl {
+          color: var(--blue);
+        }
+        #s8-url {
+          margin-top: 50px;
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 26px 46px;
+          border-radius: 999px;
+          background: var(--blue);
+          box-shadow: 0 40px 60px -30px rgba(61, 111, 214, 0.9);
+          color: #fff;
+          font-size: 54px;
+          font-weight: 800;
+          direction: ltr;
+          opacity: 0;
+        }
+        #s8-url svg {
+          width: 54px;
+          height: 54px;
+        }
+        #s8-url svg * {
+          fill: none;
+          stroke: #fff;
+          stroke-width: 4;
+        }
+        #s8-mgr {
+          margin-top: 44px;
+          font-size: 38px;
+          font-weight: 500;
+          color: var(--ink-soft);
+          opacity: 0;
+        }
+        #s8-mgr b {
+          font-weight: 800;
+          color: var(--ink-strong);
+        }
+      </style>
+
+      <div id="s8-root" data-composition-id="s8-cta" data-width="1920" data-height="1080" data-duration="14">
+        <div id="s8-wrap">
+          <div id="s8-sun"></div>
+          <div class="s8-cloud" id="s8-c1"></div>
+          <div class="s8-cloud" id="s8-c2"></div>
+          <div class="s8-cloud" id="s8-c3"></div>
+
+          <div id="s8-emblem"></div>
+          <div id="s8-mark"><img src="assets/img/farda-mark-navy.png" alt="" /></div>
+          <div id="s8-slogan-under">از امروز به فردا بیایید</div>
+
+          <div id="s8-copy">
+            <div id="s8-k">آموزشگاه علمی فردا</div>
+            <div id="s8-h">
+              <span class="s8-hw">فردای</span> <span class="s8-hw">بهتر،</span><br />
+              <span class="s8-hw">از</span> <span class="s8-hw s8-hl">همین</span> <span class="s8-hw s8-hl">امروز</span>
+            </div>
+            <div id="s8-url">
+              <svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="22" /><ellipse cx="27" cy="27" rx="10" ry="22" /><path d="M5 27 H49 M9 15 H45 M9 39 H45" /></svg>
+              <span>aifardainstitute.ir</span>
+            </div>
+            <div id="s8-mgr">مدیر آموزشگاه: <b>فاطمه شمس</b></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 14;
+
+          tl.fromTo("#s8-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s8-sun", { y: 120, scale: 0.85 }, { y: -30, scale: 1.05, duration: D, ease: "sine.out" }, 0);
+          tl.fromTo("#s8-c1", { x: -40 }, { x: 120, duration: D, ease: "none" }, 0);
+          tl.fromTo("#s8-c2", { x: 40 }, { x: -130, duration: D, ease: "none" }, 0);
+          tl.fromTo("#s8-c3", { x: 0 }, { x: 90, duration: D, ease: "none" }, 0);
+
+          // logo
+          tl.fromTo("#s8-emblem", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "back.out(1.6)" }, 0.5);
+          tl.fromTo("#s8-mark", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "power2.inOut" }, 1.0);
+          tl.fromTo("#s8-slogan-under", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.2);
+
+          // copy
+          tl.fromTo("#s8-k", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.3);
+          gsap.utils.toArray("#s8-root .s8-hw").forEach(function (w, i) {
+            tl.fromTo(w, { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 1.7 + i * 0.2);
+          });
+          tl.fromTo("#s8-url", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(2)" }, 5.2);
+          tl.to("#s8-url", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 6.4);
+          tl.fromTo("#s8-mgr", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 6.0);
+
+          tl.to("#s8-emblem, #s8-mark", { y: -14, duration: 4, ease: "sine.inOut" }, 3.5);
+          tl.to("#s8-emblem, #s8-mark", { y: 0, duration: 4, ease: "sine.inOut" }, 7.5);
+
+          // final soft fade to sky
+          tl.to("#s8-wrap", { opacity: 0, duration: 0.8, ease: "power1.in" }, 13.2);
+
+          window.__timelines["s8-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

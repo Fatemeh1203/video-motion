@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s4-offers-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s4-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--ink);
+          background: linear-gradient(180deg, var(--sky-2) 0%, var(--sky-3) 45%, var(--sky-4) 100%);
+        }
+        #s4-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        .s4-cloud {
+          position: absolute;
+          border-radius: 200px;
+          background: radial-gradient(60% 90% at 45% 60%, #fff 0%, #eef5ff 60%, rgba(238, 245, 255, 0) 74%);
+        }
+        #s4-c1 { left: -120px; top: 20px; width: 520px; height: 180px; }
+        #s4-c2 { right: -100px; top: 860px; width: 600px; height: 220px; }
+        #s4-head {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 90px;
+          text-align: center;
+          direction: rtl;
+        }
+        #s4-kicker {
+          font-size: 40px;
+          font-weight: 700;
+          color: var(--blue);
+          opacity: 0;
+        }
+        #s4-title {
+          margin-top: 6px;
+          font-size: 84px;
+          font-weight: 900;
+          color: var(--ink-strong);
+          opacity: 0;
+        }
+        #s4-grid {
+          position: absolute;
+          left: 110px;
+          right: 110px;
+          top: 330px;
+          display: flex;
+          direction: rtl;
+          justify-content: space-between;
+        }
+        .s4-card {
+          position: relative;
+          width: 395px;
+          height: 600px;
+          padding: 50px 38px 40px;
+          border-radius: 40px;
+          background: rgba(255, 255, 255, 0.9);
+          box-shadow: 0 50px 80px -44px rgba(61, 111, 214, 0.6), inset 0 1px 0 #fff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          opacity: 0;
+        }
+        .s4-ring {
+          position: absolute;
+          inset: -6px;
+          border-radius: 46px;
+          border: 5px solid var(--blue);
+          opacity: 0;
+        }
+        .s4-icon {
+          width: 170px;
+          height: 170px;
+          border-radius: 50%;
+          background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #e3eeff 100%);
+          box-shadow: 0 24px 40px -22px rgba(61, 111, 214, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 38px;
+        }
+        .s4-icon svg {
+          width: 100px;
+          height: 100px;
+          overflow: visible;
+        }
+        .s4-icon svg * {
+          fill: none;
+          stroke: var(--blue);
+          stroke-width: 5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .s4-t {
+          font-size: 48px;
+          font-weight: 900;
+          color: var(--ink-strong);
+          line-height: 1.3;
+          margin-bottom: 16px;
+          min-height: 125px;
+          display: flex;
+          align-items: center;
+        }
+        .s4-d {
+          font-size: 34px;
+          font-weight: 500;
+          color: var(--ink-soft);
+          line-height: 1.6;
+        }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4-offers" data-width="1920" data-height="1080" data-duration="20.6">
+        <div id="s4-wrap">
+          <div class="s4-cloud" id="s4-c1"></div>
+          <div class="s4-cloud" id="s4-c2"></div>
+
+          <div id="s4-head">
+            <div id="s4-kicker">آموزشگاه علمی فردا</div>
+            <div id="s4-title">اینجا چه یاد می‌گیرید؟</div>
+          </div>
+
+          <div id="s4-grid">
+            <div class="s4-card">
+              <div class="s4-ring"></div>
+              <div class="s4-icon">
+                <svg viewBox="0 0 100 100">
+                  <path class="s4-draw" d="M14 26 L50 14 L86 26 L50 38 Z" />
+                  <path class="s4-draw" d="M28 32 V56 C28 66 72 66 72 56 V32" />
+                  <path class="s4-draw" d="M86 26 V52" />
+                  <path class="s4-draw" d="M20 86 H80" />
+                </svg>
+              </div>
+              <div class="s4-t">کلاس‌های علمی</div>
+              <div class="s4-d">درس‌های علمی و تقویتی با مدرسین متخصص</div>
+            </div>
+            <div class="s4-card">
+              <div class="s4-ring"></div>
+              <div class="s4-icon">
+                <svg viewBox="0 0 100 100">
+                  <rect class="s4-draw" x="26" y="26" width="48" height="48" rx="10" />
+                  <path class="s4-draw" d="M40 12 V26 M60 12 V26 M40 74 V88 M60 74 V88 M12 40 H26 M12 60 H26 M74 40 H88 M74 60 H88" />
+                  <path class="s4-draw" d="M40 58 L46 42 L52 58 M42 53 H50 M60 42 V58" />
+                </svg>
+              </div>
+              <div class="s4-t">هوش مصنوعی کاربردی</div>
+              <div class="s4-d">از مفاهیم پایه تا ساختن ابزار و ایجنت</div>
+            </div>
+            <div class="s4-card">
+              <div class="s4-ring"></div>
+              <div class="s4-icon">
+                <svg viewBox="0 0 100 100">
+                  <path class="s4-draw" d="M8 50 C18 22 28 22 38 50 C48 78 58 78 68 50 C78 22 88 22 94 40" />
+                  <circle class="s4-draw" cx="38" cy="50" r="5" />
+                  <circle class="s4-draw" cx="68" cy="50" r="5" />
+                  <path class="s4-draw" d="M10 86 H90" />
+                </svg>
+              </div>
+              <div class="s4-t">شبیه‌سازهای هوشمند</div>
+              <div class="s4-d">مفاهیم علمی را ببینید، نه فقط بخوانید</div>
+            </div>
+            <div class="s4-card">
+              <div class="s4-ring"></div>
+              <div class="s4-icon">
+                <svg viewBox="0 0 100 100">
+                  <rect class="s4-draw" x="14" y="20" width="72" height="66" rx="10" />
+                  <path class="s4-draw" d="M14 38 H86 M34 12 V28 M66 12 V28" />
+                  <path class="s4-draw" d="M34 62 L45 72 L66 52" />
+                </svg>
+              </div>
+              <div class="s4-t">برنامهٔ شخصی</div>
+              <div class="s4-d">برنامهٔ هفتگی منظم و پیگیری برای هر فراگیر</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 20.6;
+
+          tl.fromTo("#s4-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s4-c1", { x: 0 }, { x: 160, duration: D, ease: "none" }, 0);
+          tl.fromTo("#s4-c2", { x: 0 }, { x: -160, duration: D, ease: "none" }, 0);
+
+          tl.fromTo("#s4-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+          tl.fromTo("#s4-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power4.out" }, 0.8);
+
+          const cards = gsap.utils.toArray("#s4-root .s4-card");
+          cards.forEach(function (c, i) {
+            const at = 2.4 + i * 0.4;
+            tl.fromTo(c, { opacity: 0, y: 140, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, at);
+            c.querySelectorAll(".s4-draw").forEach(function (p) {
+              const len = p.getTotalLength ? p.getTotalLength() : 300;
+              tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, at + 0.35);
+            });
+          });
+
+          // spotlight each card in RTL order
+          cards.forEach(function (c, i) {
+            const at = 5.6 + i * 3.4;
+            const ring = c.querySelector(".s4-ring");
+            tl.to(c, { y: -26, scale: 1.05, duration: 0.5, ease: "power3.out" }, at);
+            tl.fromTo(ring, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" }, at);
+            tl.fromTo(c.querySelector(".s4-icon"), { rotation: 0 }, { rotation: 360, duration: 0.9, ease: "power3.inOut" }, at + 0.1);
+            tl.to(c, { y: 0, scale: 1, duration: 0.6, ease: "power2.inOut" }, at + 2.9);
+            tl.to(ring, { opacity: 0, duration: 0.5, ease: "power1.in" }, at + 2.9);
+          });
+
+          tl.to("#s4-grid", { y: -10, duration: 3, ease: "sine.inOut" }, 17.2);
+          tl.to("#s4-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 20.0);
+
+          window.__timelines["s4-offers"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

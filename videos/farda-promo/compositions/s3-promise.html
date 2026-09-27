@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s3-promise-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s3-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--on-night);
+          background: radial-gradient(ellipse 90% 80% at 50% 110%, #2c4a86 0%, var(--night-2) 45%, var(--night) 100%);
+        }
+        #s3-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        .s3-star {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #dfe9ff;
+        }
+        #s3-intro {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 120px;
+          text-align: center;
+          direction: rtl;
+          font-size: 58px;
+          font-weight: 500;
+          color: var(--on-night-soft);
+          opacity: 0;
+        }
+        #s3-intro b {
+          color: #fff;
+          font-weight: 800;
+        }
+        #s3-cols {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 300px;
+          height: 520px;
+          display: flex;
+          direction: rtl;
+          justify-content: space-between;
+        }
+        .s3-col {
+          width: 500px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          opacity: 0;
+        }
+        .s3-num {
+          width: 96px;
+          height: 96px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 50px;
+          font-weight: 800;
+          color: var(--night);
+          background: var(--sun-soft);
+          margin-bottom: 30px;
+          box-shadow: 0 0 60px rgba(255, 213, 138, 0.45);
+        }
+        .s3-verb {
+          font-size: 132px;
+          font-weight: 900;
+          line-height: 1.25;
+          color: #fff;
+          white-space: nowrap;
+        }
+        .s3-rule {
+          width: 140px;
+          height: 6px;
+          border-radius: 3px;
+          background: var(--dot);
+          margin: 18px 0 26px;
+        }
+        .s3-sub {
+          font-size: 44px;
+          font-weight: 500;
+          color: var(--on-night-soft);
+          line-height: 1.5;
+        }
+        #s3-outro {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 880px;
+          display: flex;
+          justify-content: center;
+          gap: 22px;
+          direction: rtl;
+          font-size: 60px;
+          font-weight: 800;
+          color: var(--sun-soft);
+        }
+        .s3-ow {
+          display: inline-block;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s3-root" data-composition-id="s3-promise" data-width="1920" data-height="1080" data-duration="15.6">
+        <div id="s3-wrap">
+          <div class="s3-star" style="left: 180px; top: 90px"></div>
+          <div class="s3-star" style="left: 420px; top: 220px; opacity: 0.6"></div>
+          <div class="s3-star" style="left: 760px; top: 60px; opacity: 0.8"></div>
+          <div class="s3-star" style="left: 1130px; top: 250px; opacity: 0.5"></div>
+          <div class="s3-star" style="left: 1450px; top: 80px"></div>
+          <div class="s3-star" style="left: 1720px; top: 200px; opacity: 0.7"></div>
+          <div class="s3-star" style="left: 90px; top: 520px; opacity: 0.5"></div>
+          <div class="s3-star" style="left: 1820px; top: 600px; opacity: 0.6"></div>
+          <div class="s3-star" style="left: 300px; top: 980px; opacity: 0.4"></div>
+          <div class="s3-star" style="left: 1600px; top: 990px; opacity: 0.5"></div>
+
+          <div id="s3-intro">در <b>فردا</b>، یادگیری فقط حفظ کردن نیست</div>
+
+          <div id="s3-cols">
+            <div class="s3-col">
+              <div class="s3-num">۱</div>
+              <div class="s3-verb">بفهم</div>
+              <div class="s3-rule"></div>
+              <div class="s3-sub">مفاهیم را عمیق یاد بگیر،<br />نه طوطی‌وار</div>
+            </div>
+            <div class="s3-col">
+              <div class="s3-num">۲</div>
+              <div class="s3-verb">ببین</div>
+              <div class="s3-rule"></div>
+              <div class="s3-sub">علم را با شبیه‌سازها<br />زنده تجربه کن</div>
+            </div>
+            <div class="s3-col">
+              <div class="s3-num">۳</div>
+              <div class="s3-verb">بساز</div>
+              <div class="s3-rule"></div>
+              <div class="s3-sub">با هوش مصنوعی<br />پروژهٔ واقعی بساز</div>
+            </div>
+          </div>
+
+          <div id="s3-outro">
+            <span class="s3-ow">از</span><span class="s3-ow">امروز،</span><span class="s3-ow">برای</span><span class="s3-ow">فردا</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 15.6;
+
+          gsap.set("#s3-wrap", { opacity: 0, y: 20 });
+          tl.fromTo("#s3-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          gsap.utils.toArray("#s3-root .s3-star").forEach(function (s, i) {
+            tl.fromTo(s, { scale: 0.4 }, { scale: 1.3, duration: 1.4 + (i % 3) * 0.4, ease: "sine.inOut", repeat: 7 - (i % 3) * 2, yoyo: true }, (i % 4) * 0.3);
+          });
+          tl.fromTo("#s3-wrap", { y: 20 }, { y: -20, duration: D, ease: "none", immediateRender: false }, 0);
+
+          tl.fromTo("#s3-intro", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.6);
+
+          // three verbs slam in, right to left (RTL reading order)
+          gsap.utils.toArray("#s3-root .s3-col").forEach(function (c, i) {
+            const at = 2.3 + i * 3.0;
+            tl.set(c, { opacity: 1 }, at);
+            tl.fromTo(c.querySelector(".s3-verb"), { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, at);
+            tl.fromTo(c.querySelector(".s3-num"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, at + 0.15);
+            tl.fromTo(c.querySelector(".s3-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, at + 0.3);
+            tl.fromTo(c.querySelector(".s3-sub"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, at + 0.45);
+            // the active column breathes, earlier ones settle
+            tl.fromTo(c, { y: 0 }, { y: -10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, at + 0.6);
+          });
+
+          gsap.utils.toArray("#s3-root .s3-ow").forEach(function (w, i) {
+            tl.fromTo(w, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 11.6 + i * 0.18);
+          });
+          tl.to("#s3-cols", { scale: 0.97, duration: 3.4, ease: "sine.inOut" }, 11.6);
+
+          tl.to("#s3-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 15.0);
+
+          window.__timelines["s3-promise"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
