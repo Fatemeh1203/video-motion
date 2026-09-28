@@ -119,12 +119,12 @@
         }
       </style>
 
-      <div id="s6-root" data-composition-id="s6-simulators" data-width="1920" data-height="1080" data-duration="12.6">
+      <div id="s6-root" data-composition-id="s6-simulators" data-width="1920" data-height="1080" data-duration="11.6">
         <div id="s6-wrap">
           <div id="s6-glow"></div>
           <div id="s6-stage">
             <div id="s6-win">
-              <video id="s6-video" class="clip" src="assets/clips/simulators.mp4" data-start="0" data-duration="12.6" data-playback-rate="0.47" data-track-index="0" muted playsinline></video>
+              <video id="s6-video" class="clip" src="assets/clips/simulators.mp4" data-start="0" data-duration="11.6" data-playback-rate="0.47" data-track-index="0" muted playsinline></video>
             </div>
           </div>
 
@@ -155,7 +155,7 @@
             { opacity: 1, rotationY: 6, y: 0, scale: 1, duration: 1.2, ease: "power3.out" },
             0.2,
           );
-          tl.to("#s6-win", { rotationY: 2, scale: 1.03, duration: 11, ease: "sine.inOut" }, 1.4);
+          tl.to("#s6-win", { rotationY: 2, scale: 1.03, duration: 10, ease: "sine.inOut" }, 1.4);
 
           // badge pops locked, then the lock opens (chime)
           tl.fromTo("#s6-badge", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.2)" }, 0.8);
@@ -184,7 +184,7 @@
             3.5,
           );
 
-          tl.to("#s6-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 12.0);
+          tl.to("#s6-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 11.0);
 
           window.__timelines["s6-simulators"] = tl;
         })();

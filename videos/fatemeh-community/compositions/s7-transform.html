@@ -182,7 +182,7 @@
         }
       </style>
 
-      <div id="s7-root" data-composition-id="s7-transform" data-width="1920" data-height="1080" data-duration="15.6">
+      <div id="s7-root" data-composition-id="s7-transform" data-width="1920" data-height="1080" data-duration="14.6">
         <div id="s7-wrap">
           <div id="s7-glow"></div>
 
@@ -229,7 +229,7 @@
           const tl = gsap.timeline({ paused: true });
 
           tl.fromTo("#s7-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
-          tl.fromTo("#s7-glow", { scale: 0.8, x: 0 }, { scale: 1.15, x: 200, duration: 15.6, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s7-glow", { scale: 0.8, x: 0 }, { scale: 1.15, x: 200, duration: 14.6, ease: "sine.inOut" }, 0);
 
           // A (0 – 8.6): comparison-split, before → after
           tl.fromTo("#s7-head", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
@@ -256,11 +256,11 @@
           tl.to("#s7-bt2", { x: 0, duration: 0.28, ease: "power4.out" }, 9.8);
           tl.set("#s7-bt3", { opacity: 1, y: 160, rotation: -8 }, 10.4);
           tl.to("#s7-bt3", { y: 0, rotation: 0, duration: 0.32, ease: "back.out(2)" }, 10.4);
-          tl.fromTo("#s7-beats", { scale: 1 }, { scale: 1.04, duration: 4.5, ease: "sine.inOut" }, 10.8);
+          tl.fromTo("#s7-beats", { scale: 1 }, { scale: 1.04, duration: 3.2, ease: "sine.inOut" }, 10.8);
           tl.fromTo("#s7-line", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 11.4);
           tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 11.9);
 
-          tl.to("#s7-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 15.0);
+          tl.to("#s7-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 14.0);
 
           window.__timelines["s7-transform"] = tl;
         })();

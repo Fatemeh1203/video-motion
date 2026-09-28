@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s6b-qa-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #qa-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #qa-wrap {
+          position: absolute;
+          inset: 0;
+          background: var(--bg);
+        }
+        #qa-glow {
+          position: absolute;
+          width: 1500px;
+          height: 1500px;
+          left: -400px;
+          top: -200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(174, 156, 255, 0.2), rgba(174, 156, 255, 0) 62%);
+        }
+        #qa-copy {
+          position: absolute;
+          right: 140px;
+          top: 170px;
+          width: 760px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+        #qa-copy > * {
+          opacity: 0;
+        }
+        #qa-eyebrow {
+          font-size: 32px;
+          font-weight: 600;
+          color: var(--brand-2);
+        }
+        #qa-title {
+          font-size: 96px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        #qa-sub {
+          font-size: 38px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: var(--muted);
+        }
+        #qa-badge {
+          margin-top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 18px 30px 18px 22px;
+          border-radius: 26px;
+          border: 3px solid var(--mint);
+          background: rgba(137, 255, 240, 0.08);
+          box-shadow: 0 0 60px rgba(137, 255, 240, 0.2);
+        }
+        #qa-clock {
+          position: relative;
+          width: 96px;
+          height: 96px;
+          flex: none;
+        }
+        #qa-clock svg {
+          position: absolute;
+          inset: 0;
+          overflow: visible;
+        }
+        #qa-badge b {
+          display: block;
+          font-size: 50px;
+          font-weight: 900;
+          color: var(--mint);
+          line-height: 1.2;
+        }
+        #qa-badge span {
+          font-size: 28px;
+          font-weight: 500;
+          color: #d7def0;
+        }
+        #qa-chat {
+          position: absolute;
+          left: 150px;
+          top: 230px;
+          width: 800px;
+          height: 620px;
+          border-radius: 34px;
+          background: rgba(14, 19, 34, 0.95);
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+          overflow: hidden;
+          direction: rtl;
+          opacity: 0;
+        }
+        #qa-head {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 24px 32px;
+          background: #121a30;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+          font-size: 32px;
+          font-weight: 800;
+        }
+        #qa-head i {
+          display: block;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--brand-2);
+          box-shadow: 0 0 14px var(--brand-2);
+        }
+        #qa-head small {
+          margin-right: auto;
+          font-size: 22px;
+          font-weight: 600;
+          color: var(--mint);
+        }
+        .qa-msg {
+          position: absolute;
+          max-width: 600px;
+          padding: 22px 28px;
+          border-radius: 26px;
+          font-size: 32px;
+          font-weight: 500;
+          line-height: 1.6;
+          opacity: 0;
+        }
+        .qa-msg small {
+          display: block;
+          font-size: 22px;
+          font-weight: 800;
+          margin-bottom: 6px;
+        }
+        #qa-m1 {
+          right: 32px;
+          top: 150px;
+          background: #1d2542;
+          border-top-right-radius: 8px;
+        }
+        #qa-m1 small {
+          color: var(--p4);
+        }
+        #qa-typing {
+          position: absolute;
+          left: 32px;
+          top: 420px;
+          display: flex;
+          gap: 10px;
+          padding: 22px 28px;
+          border-radius: 26px;
+          background: rgba(137, 255, 240, 0.12);
+          opacity: 0;
+        }
+        #qa-typing i {
+          display: block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--mint);
+        }
+        #qa-m2 {
+          left: 32px;
+          top: 400px;
+          background: linear-gradient(145deg, rgba(137, 255, 240, 0.18), rgba(174, 156, 255, 0.16));
+          border: 2px solid rgba(137, 255, 240, 0.45);
+          border-top-left-radius: 8px;
+        }
+        #qa-m2 small {
+          color: var(--mint);
+        }
+      </style>
+
+      <div id="qa-root" data-composition-id="s6b-qa" data-width="1920" data-height="1080" data-duration="12.1">
+        <div id="qa-wrap">
+          <div id="qa-glow"></div>
+
+          <div id="qa-chat">
+            <div id="qa-head"><i></i><span>پرسش و پاسخ</span><small>آنلاین</small></div>
+            <div class="qa-msg" id="qa-m1">
+              <small>یکی از اعضا</small>
+              از یک فایل اکسل پر از عدد، چطور با هوش مصنوعی گزارش بگیرم؟
+            </div>
+            <div id="qa-typing"><i></i><i></i><i></i></div>
+            <div class="qa-msg" id="qa-m2">
+              <small>فاطمه شمس</small>
+              فایل را آپلود کن و دقیق بگو چه جدولی و چه نموداری می‌خواهی. قدم‌به‌قدم با هم جلو می‌رویم.
+            </div>
+          </div>
+
+          <div id="qa-copy">
+            <div id="qa-eyebrow">تاپیک پرسش و پاسخ</div>
+            <div id="qa-title">هیچ سؤالی بی‌جواب نمی‌ماند</div>
+            <div id="qa-sub">هر جا گیر کردی، بپرس. خودم در کامیونیتی هستم و جوابت را می‌دهم.</div>
+            <div id="qa-badge">
+              <div id="qa-clock">
+                <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
+                  <circle cx="48" cy="48" r="42" stroke="rgba(137,255,240,0.25)" stroke-width="6" />
+                  <circle id="qa-arc" cx="48" cy="48" r="42" stroke="#89fff0" stroke-width="6" stroke-linecap="round" stroke-dasharray="264 264" stroke-dashoffset="264" transform="rotate(-90 48 48)" />
+                  <path id="qa-hand" d="M48 48 L48 18" stroke="#89fff0" stroke-width="6" stroke-linecap="round" />
+                  <circle cx="48" cy="48" r="6" fill="#89fff0" />
+                </svg>
+              </div>
+              <div><b>۲۴ ساعته</b><span>کنارت هستم</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#qa-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#qa-glow", { scale: 0.9 }, { scale: 1.1, duration: 12.1, ease: "sine.inOut" }, 0);
+
+          ["#qa-eyebrow", "#qa-title", "#qa-sub"].forEach(function (s, i) {
+            tl.fromTo(s, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.4 + i * 0.35);
+          });
+
+          // a real question → typing → the answer
+          tl.fromTo("#qa-chat", { opacity: 0, y: 90, rotation: -1.5 }, { opacity: 1, y: 0, rotation: 0, duration: 0.8, ease: "back.out(1.3)" }, 0.6);
+          tl.fromTo("#qa-m1", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, 1.6);
+          tl.set("#qa-typing", { opacity: 1 }, 3.0);
+          gsap.utils.toArray("#qa-typing i").forEach(function (d, i) {
+            tl.fromTo(d, { y: 0 }, { y: -10, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 3.0 + i * 0.12);
+          });
+          tl.set("#qa-typing", { opacity: 0 }, 4.4);
+          tl.fromTo("#qa-m2", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, 4.4);
+
+          // 24-hour badge: the ring completes a full day
+          tl.fromTo("#qa-badge", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 5.6);
+          tl.fromTo("#qa-arc", { strokeDashoffset: 264 }, { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" }, 6.0);
+          tl.fromTo("#qa-hand", { rotation: 0, transformOrigin: "48px 48px" }, { rotation: 720, duration: 2.0, ease: "power2.inOut" }, 6.0);
+          tl.fromTo("#qa-badge", { boxShadow: "0 0 60px rgba(137,255,240,0.2)" }, { boxShadow: "0 0 110px rgba(137,255,240,0.55)", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 8.0);
+
+          tl.to("#qa-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 11.5);
+
+          window.__timelines["s6b-qa"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

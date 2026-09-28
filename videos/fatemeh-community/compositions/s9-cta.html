@@ -184,10 +184,10 @@
         }
       </style>
 
-      <div id="s9-root" data-composition-id="s9-cta" data-width="1920" data-height="1080" data-duration="16">
+      <div id="s9-root" data-composition-id="s9-cta" data-width="1920" data-height="1080" data-duration="12">
         <div id="s9-wrap">
           <div id="s9-cam">
-            <video id="s9-video" class="clip" src="assets/clips/home-ring-clean.mp4" data-start="0" data-duration="16" data-playback-rate="0.62" data-track-index="0" muted playsinline></video>
+            <video id="s9-video" class="clip" src="assets/clips/home-ring-clean.mp4" data-start="0" data-duration="12" data-playback-rate="0.84" data-track-index="0" muted playsinline></video>
           </div>
           <div id="s9-shade"></div>
 
@@ -228,7 +228,7 @@
           const tl = gsap.timeline({ paused: true });
 
           tl.fromTo("#s9-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
-          tl.fromTo("#s9-cam", { scale: 1.0, filter: "blur(0px)" }, { scale: 1.1, filter: "blur(2px)", duration: 16, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s9-cam", { scale: 1.0, filter: "blur(0px)" }, { scale: 1.1, filter: "blur(2px)", duration: 12, ease: "sine.inOut" }, 0);
 
           tl.fromTo("#s9-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.6);
           let t = 0.9;
@@ -246,13 +246,13 @@
           tl.fromTo(
             "#s9-qr",
             { boxShadow: "0 0 0 3px rgba(137, 255, 240, 0.6), 0 40px 120px rgba(0, 0, 0, 0.6)" },
-            { boxShadow: "0 0 0 3px rgba(137, 255, 240, 1), 0 0 140px rgba(137, 255, 240, 0.5)", duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false },
+            { boxShadow: "0 0 0 3px rgba(137, 255, 240, 1), 0 0 140px rgba(137, 255, 240, 0.5)", duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false },
             4.0,
           );
           tl.fromTo("#s9-lock", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 4.8);
           tl.fromTo("#s9-lock i", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "expo.out" }, 5.0);
 
-          tl.to("#s9-wrap", { opacity: 0, duration: 1.2, ease: "power1.inOut" }, 14.8);
+          tl.to("#s9-wrap", { opacity: 0, duration: 1.0, ease: "power1.inOut" }, 11.0);
 
           window.__timelines["s9-cta"] = tl;
         })();

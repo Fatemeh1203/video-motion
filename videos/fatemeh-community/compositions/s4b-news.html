@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s4b-news-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #nw-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #nw-wrap {
+          position: absolute;
+          inset: 0;
+          background: var(--bg);
+        }
+        #nw-glow {
+          position: absolute;
+          width: 1400px;
+          height: 1400px;
+          left: -350px;
+          top: -300px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(119, 202, 255, 0.18), rgba(119, 202, 255, 0) 62%);
+        }
+        #nw-copy {
+          position: absolute;
+          right: 140px;
+          top: 200px;
+          width: 780px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+        #nw-copy > * {
+          opacity: 0;
+        }
+        #nw-eyebrow {
+          font-size: 32px;
+          font-weight: 600;
+          color: var(--p3);
+        }
+        #nw-title {
+          font-size: 100px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        #nw-title em {
+          font-style: normal;
+          color: var(--p3);
+        }
+        #nw-sub {
+          font-size: 38px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: var(--muted);
+        }
+        #nw-days {
+          margin-top: 10px;
+          display: flex;
+          gap: 12px;
+        }
+        .nw-d {
+          padding: 10px 18px;
+          border-radius: 14px;
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          background: rgba(18, 24, 42, 0.9);
+          font-size: 26px;
+          font-weight: 700;
+          color: #7d86a3;
+        }
+        .nw-d.on {
+          color: #eff4ff;
+        }
+        #nw-feed {
+          position: absolute;
+          left: 150px;
+          top: 150px;
+          width: 760px;
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+          direction: rtl;
+        }
+        .nw-card {
+          display: flex;
+          gap: 24px;
+          align-items: center;
+          padding: 26px 30px;
+          border-radius: 24px;
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          background: linear-gradient(145deg, rgba(23, 29, 48, 0.96), rgba(9, 14, 26, 0.96));
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+          opacity: 0;
+        }
+        .nw-thumb {
+          flex: none;
+          width: 120px;
+          height: 120px;
+          border-radius: 18px;
+          background: radial-gradient(circle at 35% 35%, var(--c), rgba(0, 0, 0, 0) 75%), #121a30;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .nw-body {
+          flex: 1;
+        }
+        .nw-tag {
+          display: inline-block;
+          padding: 4px 14px;
+          border-radius: 20px;
+          font-size: 22px;
+          font-weight: 800;
+          color: #071016;
+          background: var(--c);
+        }
+        .nw-line {
+          height: 16px;
+          border-radius: 8px;
+          background: rgba(239, 244, 255, 0.22);
+          margin-top: 16px;
+        }
+        .nw-line.s {
+          width: 62%;
+          background: rgba(239, 244, 255, 0.12);
+        }
+      </style>
+
+      <div id="nw-root" data-composition-id="s4b-news" data-width="1920" data-height="1080" data-duration="10.1">
+        <div id="nw-wrap">
+          <div id="nw-glow"></div>
+
+          <div id="nw-feed">
+            <div class="nw-card" style="--c: #77caff"><div class="nw-thumb"></div><div class="nw-body"><span class="nw-tag">مدل تازه</span><div class="nw-line"></div><div class="nw-line s"></div></div></div>
+            <div class="nw-card" style="--c: #b39aff"><div class="nw-thumb"></div><div class="nw-body"><span class="nw-tag">ابزار جدید</span><div class="nw-line"></div><div class="nw-line s"></div></div></div>
+            <div class="nw-card" style="--c: #91ffea"><div class="nw-thumb"></div><div class="nw-body"><span class="nw-tag">به‌روزرسانی</span><div class="nw-line"></div><div class="nw-line s"></div></div></div>
+            <div class="nw-card" style="--c: #ffbf86"><div class="nw-thumb"></div><div class="nw-body"><span class="nw-tag">کاربرد تازه</span><div class="nw-line"></div><div class="nw-line s"></div></div></div>
+          </div>
+
+          <div id="nw-copy">
+            <div id="nw-eyebrow">یک قدم جلوتر از خبرها</div>
+            <div id="nw-title">روزهای فرد، <em>اخبار هوش مصنوعی</em></div>
+            <div id="nw-sub">مهم‌ترین خبرهای دنیای هوش مصنوعی را کوتاه و خلاصه در کامیونیتی می‌خوانی.</div>
+            <div id="nw-days">
+              <span class="nw-d" id="nw-d0">شنبه</span>
+              <span class="nw-d">یکشنبه</span>
+              <span class="nw-d" id="nw-d2">دوشنبه</span>
+              <span class="nw-d">سه‌شنبه</span>
+              <span class="nw-d" id="nw-d4">چهارشنبه</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#nw-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#nw-glow", { scale: 0.9 }, { scale: 1.1, duration: 10.1, ease: "sine.inOut" }, 0);
+
+          gsap.utils.toArray("#nw-copy > *").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.4 + i * 0.35);
+          });
+          // odd days light up
+          ["#nw-d0", "#nw-d2", "#nw-d4"].forEach(function (d, i) {
+            tl.to(d, { color: "#071016", backgroundColor: "#77caff", borderColor: "#77caff", boxShadow: "0 0 26px rgba(119,202,255,0.7)", duration: 0.3, ease: "power2.out" }, 2.4 + i * 0.35);
+          });
+
+          // news feed slides in, one card at a time, and keeps scrolling
+          gsap.utils.toArray("#nw-root .nw-card").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.0 + i * 0.45);
+          });
+          tl.fromTo("#nw-feed", { y: 0 }, { y: -40, duration: 7.5, ease: "sine.inOut" }, 2.5);
+
+          tl.to("#nw-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.5);
+
+          window.__timelines["s4b-news"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

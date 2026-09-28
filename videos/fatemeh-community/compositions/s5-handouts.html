@@ -164,7 +164,7 @@
         }
       </style>
 
-      <div id="s5-root" data-composition-id="s5-handouts" data-width="1920" data-height="1080" data-duration="10.6">
+      <div id="s5-root" data-composition-id="s5-handouts" data-width="1920" data-height="1080" data-duration="9.6">
         <div id="s5-wrap">
           <div id="s5-glow"></div>
 
@@ -204,7 +204,7 @@
           const tl = gsap.timeline({ paused: true });
 
           tl.fromTo("#s5-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
-          tl.fromTo("#s5-glow", { scale: 0.9 }, { scale: 1.1, duration: 10.6, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s5-glow", { scale: 0.9 }, { scale: 1.1, duration: 9.6, ease: "sine.inOut" }, 0);
 
           gsap.utils.toArray("#s5-copy > *").forEach(function (el, i) {
             const at = i === 3 ? 5.2 : 0.4 + i * 0.35;
@@ -223,7 +223,7 @@
           tl.fromTo("#s5-root .s5-dl", { y: 0 }, { y: 6, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 4.6);
           tl.fromTo("#s5-stack", { y: 0 }, { y: -18, duration: 5.4, ease: "sine.inOut" }, 4.2);
 
-          tl.to("#s5-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 10.0);
+          tl.to("#s5-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.0);
 
           window.__timelines["s5-handouts"] = tl;
         })();
