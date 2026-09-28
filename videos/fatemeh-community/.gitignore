@@ -2,3 +2,4 @@
 snapshots/
 renders/*
 !renders/fatemeh-community.mp4
+node_modules/
