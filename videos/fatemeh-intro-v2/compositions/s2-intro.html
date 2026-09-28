@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s2-intro-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: var(--bg);
+        }
+        #s2-wrap,
+        #s2-cam {
+          position: absolute;
+          inset: 0;
+        }
+        #s2-video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1920px;
+          height: 1080px;
+          object-fit: cover;
+        }
+        #s2-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(270deg, rgba(8, 11, 21, 0.92) 0%, rgba(8, 11, 21, 0.75) 38%, rgba(8, 11, 21, 0) 62%);
+        }
+        #s2-copy {
+          position: absolute;
+          right: 150px;
+          top: 190px;
+          width: 900px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #s2-hello {
+          font-size: 54px;
+          font-weight: 400;
+          color: var(--muted);
+          margin-bottom: 14px;
+          opacity: 0;
+        }
+        #s2-name {
+          display: flex;
+          gap: 34px;
+          font-size: 164px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        .s2-nw {
+          display: inline-block;
+          opacity: 0;
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 75%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s2-rule {
+          width: 460px;
+          height: 5px;
+          border-radius: 3px;
+          background: linear-gradient(270deg, var(--mint), rgba(137, 255, 240, 0));
+          transform-origin: right center;
+          margin: 18px 0 30px;
+        }
+        #s2-title {
+          font-size: 60px;
+          font-weight: 700;
+          white-space: nowrap;
+          opacity: 0;
+        }
+        #s2-list {
+          margin-top: 54px;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+        .s2-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          font-size: 42px;
+          font-weight: 500;
+          color: #dfe6f7;
+          opacity: 0;
+        }
+        .s2-row i {
+          display: block;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--c);
+          box-shadow: 0 0 18px var(--c);
+          flex: none;
+        }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2-intro" data-width="1920" data-height="1080" data-duration="12.6">
+        <div id="s2-wrap">
+          <div id="s2-cam">
+            <video id="s2-video" class="clip" src="assets/clips/about-clean.mp4" data-start="0" data-duration="12.6" data-playback-rate="0.47" data-track-index="0" muted playsinline></video>
+          </div>
+          <div id="s2-shade"></div>
+          <div id="s2-copy">
+            <div id="s2-hello">سلام، من</div>
+            <div id="s2-name">
+              <span class="s2-nw">فاطمه</span>
+              <span class="s2-nw">شمس</span>
+            </div>
+            <div id="s2-rule"></div>
+            <div id="s2-title">توسعه‌دهنده و مربی هوش مصنوعی</div>
+            <div id="s2-list">
+              <div class="s2-row" style="--c: #91ffea"><i></i><span>شبیه‌ساز آموزشی و ایجنت هوش مصنوعی می‌سازم</span></div>
+              <div class="s2-row" style="--c: #b39aff"><i></i><span>هوش مصنوعی را کاربردی آموزش می‌دهم</span></div>
+              <div class="s2-row" style="--c: #ddf998"><i></i><span>یک کامیونیتی هوش مصنوعی در تلگرام دارم</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s2-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          // crystal world pushed to the start side of the frame, slow drift
+          tl.fromTo("#s2-cam", { x: -330, scale: 1.14 }, { x: -380, scale: 1.04, duration: 12.6, ease: "sine.inOut" }, 0);
+
+          tl.fromTo("#s2-hello", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+          const nw = gsap.utils.toArray("#s2-root .s2-nw");
+          tl.set(nw[0], { opacity: 1, y: 90 }, 1.0);
+          tl.to(nw[0], { y: 0, duration: 0.22, ease: "power4.out" }, 1.0);
+          tl.set(nw[1], { opacity: 1, y: 90 }, 1.24);
+          tl.to(nw[1], { y: 0, duration: 0.22, ease: "power4.out" }, 1.24);
+          tl.fromTo("#s2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "expo.out" }, 1.7);
+          tl.fromTo("#s2-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.0);
+          gsap.utils.toArray("#s2-root .s2-row").forEach(function (row, i) {
+            const at = 4.0 + i * 0.7;
+            tl.fromTo(row, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, at);
+            tl.fromTo(row.querySelector("i"), { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.5)" }, at + 0.1);
+          });
+          tl.to("#s2-copy", { y: -12, duration: 6, ease: "sine.inOut" }, 6.0);
+          tl.to("#s2-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 12.0);
+
+          window.__timelines["s2-intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

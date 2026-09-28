@@ -1,0 +1,4 @@
+.hyperframes/
+snapshots/
+renders/*
+!renders/fatemeh-intro-v2.mp4

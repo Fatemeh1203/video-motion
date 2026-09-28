@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s4-worlds-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s4-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+          background: var(--bg);
+        }
+        #s4-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        .s4-world {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        .s4-cam {
+          position: absolute;
+          inset: 0;
+        }
+        .s4-cam video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1920px;
+          height: 1080px;
+          object-fit: cover;
+        }
+        .s4-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(0deg, rgba(8, 11, 21, 0.9) 0%, rgba(8, 11, 21, 0.45) 30%, rgba(8, 11, 21, 0) 55%);
+        }
+        .s4-card {
+          position: absolute;
+          right: 130px;
+          bottom: 110px;
+          width: 980px;
+          direction: rtl;
+          display: flex;
+          align-items: flex-start;
+          gap: 34px;
+        }
+        .s4-num {
+          flex: none;
+          width: 150px;
+          height: 150px;
+          border-radius: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 76px;
+          font-weight: 900;
+          color: #071016;
+          background: var(--c);
+          box-shadow: 0 0 60px var(--c);
+        }
+        .s4-text small {
+          display: block;
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: 5px;
+          color: var(--c);
+          direction: ltr;
+          text-align: right;
+        }
+        .s4-text b {
+          display: block;
+          font-size: 96px;
+          font-weight: 900;
+          line-height: 1.2;
+        }
+        .s4-text p {
+          margin-top: 8px;
+          font-size: 40px;
+          font-weight: 400;
+          line-height: 1.55;
+          color: #d7def0;
+        }
+        #s4-hint {
+          position: absolute;
+          left: 130px;
+          top: 90px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 14px 28px;
+          border-radius: 40px;
+          border: 2px solid var(--glass-line);
+          background: rgba(8, 11, 21, 0.72);
+          direction: rtl;
+          font-size: 30px;
+          font-weight: 500;
+          color: var(--fg);
+          opacity: 0;
+        }
+        #s4-hint svg {
+          display: block;
+        }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4-worlds" data-width="1920" data-height="1080" data-duration="30.6">
+        <div id="s4-wrap">
+          <div class="s4-world" id="s4-w1" style="--c: #b39aff">
+            <div class="s4-cam"><video id="s4-v1" class="clip" src="assets/clips/portfolio-clean.mp4" data-start="0" data-duration="6.6" data-playback-rate="0.75" data-track-index="0" muted playsinline></video></div>
+            <div class="s4-shade"></div>
+            <div class="s4-card">
+              <div class="s4-num">۲</div>
+              <div class="s4-text">
+                <small>THE ARCHIVE</small><b>نمونه‌کارها</b>
+                <p>دیواری از قاب‌های شناور؛ هر قاب زیر دستت جلو می‌آید و روشن می‌شود.</p>
+              </div>
+            </div>
+          </div>
+          <div class="s4-world" id="s4-w2" style="--c: #77caff">
+            <div class="s4-cam"><video id="s4-v2" data-hf-media-start-basis="local" class="clip" src="assets/clips/agents-clean.mp4" data-start="6" data-duration="6.6" data-playback-rate="0.75" data-track-index="1" muted playsinline></video></div>
+            <div class="s4-shade"></div>
+            <div class="s4-card">
+              <div class="s4-num">۳</div>
+              <div class="s4-text">
+                <small>AGENT DISTRICT</small><b>ایجنت‌ها</b>
+                <p>شبکه‌ای از گره‌ها و سیگنال‌ها؛ نشانگر تو هم یک گره در این شبکه می‌شود.</p>
+              </div>
+            </div>
+          </div>
+          <div class="s4-world" id="s4-w3" style="--c: #ffbf86">
+            <div class="s4-cam"><video id="s4-v3" data-hf-media-start-basis="local" class="clip" src="assets/clips/simulators.mp4" data-start="12" data-duration="6.6" data-playback-rate="0.9" data-track-index="0" muted playsinline></video></div>
+            <div class="s4-shade"></div>
+            <div class="s4-card">
+              <div class="s4-num">۴</div>
+              <div class="s4-text">
+                <small>SIMULATION LAB</small><b>شبیه‌سازها</b>
+                <p>۲۰ شبیه‌ساز آموزشی تعاملی که مستقیم در مرورگر اجرا می‌شوند.</p>
+              </div>
+            </div>
+          </div>
+          <div class="s4-world" id="s4-w4" style="--c: #ff94ba">
+            <div class="s4-cam"><video id="s4-v4" data-hf-media-start-basis="local" class="clip" src="assets/clips/resources-clean.mp4" data-start="18" data-duration="6.6" data-playback-rate="0.75" data-track-index="1" muted playsinline></video></div>
+            <div class="s4-shade"></div>
+            <div class="s4-card">
+              <div class="s4-num">۵</div>
+              <div class="s4-text">
+                <small>SUPPLY DEPOT</small><b>فایل‌ها</b>
+                <p>جعبه‌های هولوگرافیک؛ فایل‌های رایگان و اختصاصی برای دانلود.</p>
+              </div>
+            </div>
+          </div>
+          <div class="s4-world" id="s4-w5" style="--c: #ddf998">
+            <div class="s4-cam"><video id="s4-v5" data-hf-media-start-basis="local" class="clip" src="assets/clips/community-clean.mp4" data-start="24" data-duration="6.6" data-playback-rate="0.9" data-track-index="0" muted playsinline></video></div>
+            <div class="s4-shade"></div>
+            <div class="s4-card">
+              <div class="s4-num">۶</div>
+              <div class="s4-text">
+                <small>COLLECTIVE SPACE</small><b>انجمن</b>
+                <p>هزاران ذره که دور نشانگرت جمع می‌شوند؛ جای پرسش و گفت‌وگو.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="s4-hint">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#89fff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3 L10.5 20 L13 13 L20 10.5 Z" /></svg>
+            <span>هر جهان با حرکت ماوس یا انگشتت زنده می‌شود</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const SLOT = 6;
+
+          tl.fromTo("#s4-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+
+          for (let i = 1; i <= 5; i++) {
+            const w = "#s4-w" + i;
+            const t0 = (i - 1) * SLOT;
+            // zoom-through handoff: incoming world settles from a push, outgoing overshoots and blurs away
+            tl.fromTo(w, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, t0);
+            tl.fromTo(w + " .s4-cam", { scale: 1.18, filter: "blur(10px)" }, { scale: 1.02, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, t0);
+            tl.to(w + " .s4-cam", { scale: 1.0, duration: 5.0, ease: "none" }, t0 + 1.0);
+            tl.fromTo(w + " .s4-num", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, t0 + 0.5);
+            tl.fromTo(w + " .s4-text small", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, t0 + 0.65);
+            tl.fromTo(w + " .s4-text b", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, t0 + 0.75);
+            tl.fromTo(w + " .s4-text p", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, t0 + 1.1);
+            if (i < 5) {
+              tl.to(w + " .s4-card", { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, t0 + SLOT - 0.4);
+              tl.to(w, { opacity: 0, duration: 0.6, ease: "power1.in" }, t0 + SLOT);
+              tl.to(w + " .s4-cam", { scale: 1.25, filter: "blur(12px)", duration: 0.6, ease: "power2.in", immediateRender: false }, t0 + SLOT);
+            }
+          }
+
+          tl.fromTo("#s4-hint", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+          tl.fromTo("#s4-hint svg", { x: 0, y: 0 }, { x: -6, y: -6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 1.9);
+          tl.to("#s4-hint", { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, 11.4);
+
+          tl.to("#s4-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 30.0);
+
+          window.__timelines["s4-worlds"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
