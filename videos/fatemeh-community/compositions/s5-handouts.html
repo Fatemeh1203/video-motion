@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s5-handouts-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s5-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s5-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s5-glow {
+          position: absolute;
+          width: 1400px;
+          height: 1400px;
+          left: -250px;
+          top: -200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 191, 134, 0.16), rgba(255, 191, 134, 0) 62%);
+        }
+        #s5-copy {
+          position: absolute;
+          right: 140px;
+          top: 230px;
+          width: 700px;
+          direction: rtl;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+        #s5-copy > * {
+          opacity: 0;
+        }
+        #s5-eyebrow {
+          font-size: 32px;
+          font-weight: 600;
+          color: var(--p4);
+        }
+        #s5-title {
+          font-size: 104px;
+          font-weight: 900;
+          line-height: 1.25;
+        }
+        #s5-sub {
+          font-size: 40px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: var(--muted);
+        }
+        #s5-extra {
+          margin-top: 14px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 14px 26px;
+          border-radius: 18px;
+          border: 2px solid rgba(255, 191, 134, 0.45);
+          background: rgba(255, 191, 134, 0.08);
+          font-size: 34px;
+          font-weight: 700;
+        }
+        #s5-extra i {
+          display: block;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--p4);
+          box-shadow: 0 0 14px var(--p4);
+        }
+        #s5-stack {
+          position: absolute;
+          left: 400px;
+          top: 250px;
+          width: 420px;
+          height: 560px;
+        }
+        .s5-doc {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 420px;
+          height: 560px;
+          border-radius: 26px;
+          background: #eef2fb;
+          color: #0d1220;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+          padding: 36px 34px;
+          direction: rtl;
+          transform-origin: 50% 110%;
+          opacity: 0;
+        }
+        .s5-doc::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 14px;
+          border-radius: 26px 26px 0 0;
+          background: var(--c);
+        }
+        .s5-doc small {
+          display: block;
+          font-size: 22px;
+          font-weight: 700;
+          color: #4a5575;
+        }
+        .s5-doc b {
+          display: block;
+          margin-top: 8px;
+          font-size: 40px;
+          font-weight: 900;
+          line-height: 1.35;
+        }
+        .s5-doc hr {
+          border: none;
+          height: 10px;
+          border-radius: 5px;
+          background: #d3dbeb;
+          margin-top: 22px;
+        }
+        .s5-doc hr.s {
+          width: 70%;
+        }
+        .s5-pdf {
+          position: absolute;
+          left: 30px;
+          bottom: 30px;
+          padding: 6px 16px;
+          border-radius: 10px;
+          background: #0d1220;
+          color: #eef2fb;
+          font-size: 22px;
+          font-weight: 800;
+          direction: ltr;
+        }
+        .s5-dl {
+          position: absolute;
+          right: 30px;
+          bottom: 26px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: var(--c);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+
+      <div id="s5-root" data-composition-id="s5-handouts" data-width="1920" data-height="1080" data-duration="10.6">
+        <div id="s5-wrap">
+          <div id="s5-glow"></div>
+
+          <div id="s5-stack" data-layout-allow-overlap>
+            <div class="s5-doc" data-layout-allow-overlap style="--c: #77caff">
+              <small data-layout-allow-overlap>کامیونیتی هوش مصنوعی</small><b data-layout-allow-overlap>جزوهٔ درس ۶</b><hr /><hr /><hr class="s" /><hr /><hr class="s" />
+              <span class="s5-pdf" data-layout-allow-overlap>PDF</span>
+            </div>
+            <div class="s5-doc" data-layout-allow-overlap style="--c: #b39aff">
+              <small data-layout-allow-overlap>کامیونیتی هوش مصنوعی</small><b data-layout-allow-overlap>جزوهٔ درس ۷</b><hr /><hr /><hr class="s" /><hr /><hr class="s" />
+              <span class="s5-pdf" data-layout-allow-overlap>PDF</span>
+            </div>
+            <div class="s5-doc" data-layout-allow-overlap style="--c: #ff94ba">
+              <small data-layout-allow-overlap>کامیونیتی هوش مصنوعی</small><b data-layout-allow-overlap>جزوهٔ درس ۸</b><hr /><hr /><hr class="s" /><hr /><hr class="s" />
+              <span class="s5-pdf" data-layout-allow-overlap>PDF</span>
+            </div>
+            <div class="s5-doc" data-layout-allow-overlap style="--c: #89fff0">
+              <small data-layout-allow-overlap>جزوهٔ درس ۹</small><b data-layout-allow-overlap>تحلیل داده با آپلود فایل</b><hr /><hr /><hr class="s" /><hr /><hr class="s" />
+              <span class="s5-pdf" data-layout-allow-overlap>PDF</span>
+              <span class="s5-dl"
+                ><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#071016" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14" /></svg
+              ></span>
+            </div>
+          </div>
+
+          <div id="s5-copy">
+            <div id="s5-eyebrow">یادگرفته‌ها از دست نمی‌روند</div>
+            <div id="s5-title">هر درس، یک جزوه</div>
+            <div id="s5-sub">جزوهٔ هر درس در کامیونیتی می‌ماند؛ هر وقت خواستی برگرد و مرورش کن.</div>
+            <div id="s5-extra"><i></i><span>به‌علاوهٔ بانک پرامپت ویژهٔ معلم</span></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s5-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s5-glow", { scale: 0.9 }, { scale: 1.1, duration: 10.6, ease: "sine.inOut" }, 0);
+
+          gsap.utils.toArray("#s5-copy > *").forEach(function (el, i) {
+            const at = i === 3 ? 5.2 : 0.4 + i * 0.35;
+            tl.fromTo(el, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, at);
+          });
+
+          // handouts deal in, then fan out like a hand of cards
+          const ROT = [-16, -6, 5, 14];
+          const DX = [-140, -45, 45, 140];
+          gsap.utils.toArray("#s5-root .s5-doc").forEach(function (el, i) {
+            const at = 1.4 + i * 0.4;
+            tl.fromTo(el, { opacity: 0, y: 240, rotation: 0 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.5)" }, at);
+            tl.to(el, { rotation: ROT[i], x: DX[i], duration: 0.8, ease: "power3.out" }, 3.2);
+          });
+          tl.fromTo("#s5-root .s5-dl", { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(3)" }, 4.1);
+          tl.fromTo("#s5-root .s5-dl", { y: 0 }, { y: 6, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 4.6);
+          tl.fromTo("#s5-stack", { y: 0 }, { y: -18, duration: 5.4, ease: "sine.inOut" }, 4.2);
+
+          tl.to("#s5-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 10.0);
+
+          window.__timelines["s5-handouts"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

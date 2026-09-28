@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s1-hook-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s1-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s1-wrap,
+        #s1-cam {
+          position: absolute;
+          inset: 0;
+        }
+        #s1-video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1920px;
+          height: 1080px;
+          object-fit: cover;
+        }
+        #s1-dim {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(8, 11, 21, 0.82), rgba(8, 11, 21, 0.55) 70%, rgba(8, 11, 21, 0.75) 100%);
+        }
+        #s1-chips {
+          position: absolute;
+          inset: 0;
+        }
+        .s1-chip {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 24px;
+          border-radius: 40px;
+          border: 2px solid rgba(255, 255, 255, 0.16);
+          background: rgba(18, 24, 42, 0.86);
+          direction: ltr;
+          font-size: 32px;
+          font-weight: 700;
+          white-space: nowrap;
+          opacity: 0;
+        }
+        .s1-chip i {
+          display: block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--c);
+          box-shadow: 0 0 14px var(--c);
+        }
+        .s1-line {
+          position: absolute;
+          left: 200px;
+          right: 200px;
+          text-align: center;
+          direction: rtl;
+          opacity: 0;
+        }
+        #s1-l1 {
+          top: 440px;
+          font-size: 76px;
+          font-weight: 800;
+        }
+        #s1-l2 {
+          top: 400px;
+          font-size: 132px;
+          font-weight: 900;
+          line-height: 1.3;
+        }
+        #s1-l2 span,
+        #s1-l3 span {
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s1-l3 {
+          top: 420px;
+          font-size: 108px;
+          font-weight: 900;
+          line-height: 1.3;
+        }
+        #s1-l4 {
+          top: 460px;
+          font-size: 64px;
+          font-weight: 700;
+        }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="10.6">
+        <div id="s1-wrap">
+          <div id="s1-cam">
+            <video id="s1-video" class="clip" src="assets/clips/agents-clean.mp4" data-start="0" data-duration="10.6" data-playback-rate="0.47" data-track-index="0" muted playsinline></video>
+          </div>
+          <div id="s1-dim"></div>
+          <div id="s1-chips"></div>
+          <div class="s1-line" id="s1-l1">هر روز یک ابزار تازهٔ هوش مصنوعی.</div>
+          <div class="s1-line" id="s1-l2"><span>کدام را یاد بگیری؟</span></div>
+          <div class="s1-line" id="s1-l3"><span>از کجا شروع کنی؟</span></div>
+          <div class="s1-line" id="s1-l4">لازم نیست تنها شروع کنی.</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const TOOLS = [
+            ["ChatGPT", "#91ffea", 150, 150],
+            ["Claude", "#ffbf86", 1480, 130],
+            ["Gemini", "#77caff", 820, 90],
+            ["Midjourney", "#b39aff", 260, 820],
+            ["Perplexity", "#91ffea", 1380, 850],
+            ["NotebookLM", "#ddf998", 90, 480],
+            ["Copilot", "#77caff", 1560, 470],
+            ["Cursor", "#ff94ba", 560, 250],
+            ["n8n", "#ff94ba", 1120, 290],
+            ["Suno", "#ffbf86", 700, 900],
+            ["Runway", "#b39aff", 1080, 760],
+            ["DeepSeek", "#77caff", 420, 640],
+            ["Canva AI", "#ddf998", 1300, 620],
+            ["Gamma", "#91ffea", 960, 960],
+          ];
+          const box = document.querySelector("#s1-chips");
+          TOOLS.forEach(function (t, i) {
+            const el = document.createElement("div");
+            el.className = "s1-chip";
+            el.style.setProperty("--c", t[1]);
+            el.style.left = t[2] + "px";
+            el.style.top = t[3] + "px";
+            el.innerHTML = "<i></i><span>" + t[0] + "</span>";
+            box.appendChild(el);
+          });
+          const chips = gsap.utils.toArray("#s1-root .s1-chip");
+
+          tl.fromTo("#s1-wrap", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0);
+          tl.fromTo("#s1-cam", { scale: 1.15 }, { scale: 1.0, duration: 10.6, ease: "sine.out" }, 0);
+
+          // line 1
+          tl.fromTo("#s1-l1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+          // overwhelm-surround: tool names crowd in from depth, one after another
+          chips.forEach(function (el, i) {
+            const at = 1.0 + i * 0.16;
+            const dx = (i % 2 ? 1 : -1) * (40 + (i * 37) % 90);
+            tl.fromTo(el, { opacity: 0, scale: 0.3, x: dx, y: 30 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, ease: "back.out(1.8)" }, at);
+            // slow drift toward the centre (closing in)
+            const cx = 960 - (parseFloat(el.style.left) + 120);
+            const cy = 540 - (parseFloat(el.style.top) + 30);
+            tl.to(el, { x: cx * 0.12, y: cy * 0.12, duration: 5.5, ease: "sine.in" }, at + 0.5);
+          });
+          tl.to("#s1-l1", { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" }, 4.1);
+
+          tl.fromTo("#s1-l2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 4.5);
+          tl.to("#s1-l2", { opacity: 0, scale: 0.92, duration: 0.35, ease: "power2.in" }, 6.0);
+          tl.fromTo("#s1-l3", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 6.3);
+          tl.to("#s1-l3", { opacity: 0, scale: 0.92, duration: 0.35, ease: "power2.in" }, 7.9);
+
+          // the noise clears
+          chips.forEach(function (el, i) {
+            tl.to(el, { opacity: 0, scale: 0.6, filter: "blur(8px)", duration: 0.5, ease: "power2.in" }, 7.9 + (i % 5) * 0.05);
+          });
+          tl.fromTo("#s1-l4", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.5);
+          tl.to("#s1-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 10.0);
+
+          window.__timelines["s1-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

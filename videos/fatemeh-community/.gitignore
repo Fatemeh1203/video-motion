@@ -1,0 +1,4 @@
+.hyperframes/
+snapshots/
+renders/*
+!renders/fatemeh-community.mp4

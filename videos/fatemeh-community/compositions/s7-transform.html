@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s7-transform-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s7-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s7-wrap,
+        .s7-phase {
+          position: absolute;
+          inset: 0;
+        }
+        #s7-b {
+          opacity: 0;
+        }
+        #s7-glow {
+          position: absolute;
+          width: 1400px;
+          height: 1400px;
+          left: -300px;
+          top: -250px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(137, 255, 240, 0.16), rgba(137, 255, 240, 0) 62%);
+        }
+        #s7-head {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 90px;
+          text-align: center;
+          direction: rtl;
+          font-size: 64px;
+          font-weight: 800;
+          opacity: 0;
+        }
+        .s7-card {
+          position: absolute;
+          top: 280px;
+          width: 700px;
+          height: 560px;
+          border-radius: 34px;
+          padding: 46px 50px;
+          direction: rtl;
+          opacity: 0;
+        }
+        #s7-before {
+          right: 150px;
+          background: rgba(18, 24, 42, 0.85);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          color: #a3acc4;
+        }
+        #s7-after {
+          left: 150px;
+          background: linear-gradient(145deg, rgba(137, 255, 240, 0.14), rgba(174, 156, 255, 0.12));
+          border: 3px solid rgba(137, 255, 240, 0.7);
+          box-shadow: 0 0 90px rgba(137, 255, 240, 0.22);
+        }
+        .s7-card small {
+          display: inline-block;
+          padding: 6px 20px;
+          border-radius: 30px;
+          font-size: 28px;
+          font-weight: 800;
+        }
+        #s7-before small {
+          background: rgba(255, 255, 255, 0.08);
+        }
+        #s7-after small {
+          background: var(--mint);
+          color: #071016;
+        }
+        .s7-card ul {
+          list-style: none;
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+        }
+        .s7-card li {
+          display: flex;
+          align-items: flex-start;
+          gap: 18px;
+          font-size: 38px;
+          font-weight: 600;
+          line-height: 1.45;
+          opacity: 0;
+        }
+        .s7-card li i {
+          flex: none;
+          margin-top: 12px;
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+        }
+        #s7-before li i {
+          border: 3px solid #5c6582;
+        }
+        #s7-after li i {
+          background: var(--mint);
+          box-shadow: 0 0 14px var(--mint);
+        }
+        #s7-path {
+          position: absolute;
+          left: 850px;
+          top: 520px;
+          width: 220px;
+          height: 80px;
+        }
+        #s7-path svg {
+          display: block;
+          overflow: visible;
+        }
+        /* B: payoff */
+        #s7-beats {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 250px;
+          display: flex;
+          justify-content: center;
+          gap: 70px;
+          direction: rtl;
+          white-space: nowrap;
+        }
+        .s7-beat {
+          display: inline-block;
+          font-size: 150px;
+          font-weight: 900;
+          line-height: 1.3;
+          opacity: 0;
+        }
+        #s7-bt1 {
+          color: var(--p1);
+        }
+        #s7-bt2 {
+          color: var(--brand-2);
+        }
+        #s7-bt3 {
+          color: var(--p6);
+        }
+        #s7-line {
+          position: absolute;
+          left: 150px;
+          right: 150px;
+          top: 580px;
+          text-align: center;
+          direction: rtl;
+          font-size: 64px;
+          font-weight: 800;
+          opacity: 0;
+        }
+        #s7-line em {
+          font-style: normal;
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s7-rule {
+          position: absolute;
+          left: 810px;
+          top: 720px;
+          width: 300px;
+          height: 5px;
+          border-radius: 3px;
+          background: var(--mint);
+        }
+      </style>
+
+      <div id="s7-root" data-composition-id="s7-transform" data-width="1920" data-height="1080" data-duration="15.6">
+        <div id="s7-wrap">
+          <div id="s7-glow"></div>
+
+          <div class="s7-phase" id="s7-a">
+            <div id="s7-head">مسیری که در کامیونیتی طی می‌کنی</div>
+            <div class="s7-card" id="s7-before">
+              <small>روز اول</small>
+              <ul>
+                <li><i></i><span>ده‌ها ابزار و هزار سؤال بی‌جواب</span></li>
+                <li><i></i><span>نمی‌دانی از کجا شروع کنی</span></li>
+                <li><i></i><span>هر آموزش را نیمه‌کاره رها می‌کنی</span></li>
+              </ul>
+            </div>
+            <div id="s7-path">
+              <svg width="220" height="80" viewBox="0 0 220 80" fill="none">
+                <path id="s7-arrow" d="M210 40 C160 0 70 80 20 40" stroke="#89fff0" stroke-width="6" stroke-linecap="round" stroke-dasharray="230" stroke-dashoffset="230" />
+                <path id="s7-head-arrow" d="M38 24 L18 40 L40 54" stroke="#89fff0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
+              </svg>
+            </div>
+            <div class="s7-card" id="s7-after">
+              <small>چند هفته بعد</small>
+              <ul>
+                <li><i></i><span>برای هر کار، ابزار درستش را می‌شناسی</span></li>
+                <li><i></i><span>پرامپت دقیق می‌نویسی و نتیجهٔ دقیق می‌گیری</span></li>
+                <li><i></i><span>کارهای تکراری‌ات را به هوش مصنوعی می‌سپاری</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="s7-phase" id="s7-b">
+            <div id="s7-beats">
+              <span class="s7-beat" id="s7-bt1">بپرس.</span>
+              <span class="s7-beat" id="s7-bt2">یاد بگیر.</span>
+              <span class="s7-beat" id="s7-bt3">بساز.</span>
+            </div>
+            <div id="s7-line">اینجا برای کسانی است که <em>می‌خواهند متحول شوند.</em></div>
+            <div id="s7-rule"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#s7-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+          tl.fromTo("#s7-glow", { scale: 0.8, x: 0 }, { scale: 1.15, x: 200, duration: 15.6, ease: "sine.inOut" }, 0);
+
+          // A (0 – 8.6): comparison-split, before → after
+          tl.fromTo("#s7-head", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+          tl.fromTo("#s7-before", { opacity: 0, x: 120, rotationY: -14 }, { opacity: 1, x: 0, rotationY: 0, duration: 0.8, ease: "power3.out" }, 0.6);
+          gsap.utils.toArray("#s7-before li").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.2 + i * 0.45);
+          });
+          tl.to("#s7-arrow", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 3.0);
+          tl.to("#s7-head-arrow", { opacity: 1, duration: 0.2, ease: "power1.out" }, 3.8);
+          tl.to("#s7-before", { opacity: 0.55, scale: 0.96, duration: 0.6, ease: "power2.out" }, 3.6);
+          tl.fromTo("#s7-after", { opacity: 0, x: -120, scale: 0.9 }, { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, 3.9);
+          gsap.utils.toArray("#s7-after li").forEach(function (el, i) {
+            const at = 4.6 + i * 0.6;
+            tl.fromTo(el, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, at);
+            tl.fromTo(el.querySelector("i"), { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, at + 0.1);
+          });
+          tl.to("#s7-a", { opacity: 0, scale: 0.97, duration: 0.5, ease: "power2.in" }, 8.6);
+
+          // B (9.1 – 15.6): kinetic-beat-slam payoff
+          tl.set("#s7-b", { opacity: 1 }, 9.1);
+          tl.set("#s7-bt1", { opacity: 1, scale: 2.2 }, 9.2);
+          tl.to("#s7-bt1", { scale: 1, duration: 0.3, ease: "power4.out" }, 9.2);
+          tl.set("#s7-bt2", { opacity: 1, x: -260 }, 9.8);
+          tl.to("#s7-bt2", { x: 0, duration: 0.28, ease: "power4.out" }, 9.8);
+          tl.set("#s7-bt3", { opacity: 1, y: 160, rotation: -8 }, 10.4);
+          tl.to("#s7-bt3", { y: 0, rotation: 0, duration: 0.32, ease: "back.out(2)" }, 10.4);
+          tl.fromTo("#s7-beats", { scale: 1 }, { scale: 1.04, duration: 4.5, ease: "sine.inOut" }, 10.8);
+          tl.fromTo("#s7-line", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 11.4);
+          tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 11.9);
+
+          tl.to("#s7-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 15.0);
+
+          window.__timelines["s7-transform"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
