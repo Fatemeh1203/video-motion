@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s1-hook-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+        #s1-root { position: absolute; inset: 0; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: var(--ink); }
+        #s1-wrap { position: absolute; inset: 0; }
+        #s1-ghost { position: absolute; left: -40px; bottom: -60px; font-size: 300px; font-weight: 900; line-height: 1; color: rgba(61, 111, 214, 0.1); direction: rtl; white-space: nowrap; }
+        #s1-head { position: absolute; right: 130px; top: 250px; width: 820px; direction: rtl; }
+        #s1-eyebrow { font-size: 32px; font-weight: 700; color: var(--blue-d); opacity: 0; }
+        #s1-t1 { margin-top: 18px; font-size: 92px; font-weight: 900; line-height: 1.3; }
+        #s1-t1 span, #s1-t3 span { display: inline-block; opacity: 0; margin-left: 20px; }
+        #s1-t2 { margin-top: 26px; font-size: 44px; font-weight: 500; color: var(--ink2); opacity: 0; }
+        #s1-t3 { position: absolute; right: 130px; top: 420px; width: 1100px; direction: rtl; font-size: 120px; font-weight: 900; line-height: 1.25; color: var(--ink); }
+        #s1-t3 b { color: var(--blue-d); font-weight: 900; }
+        #s1-pile { position: absolute; left: 90px; top: 110px; width: 900px; height: 800px; }
+        .s1-card {
+          position: absolute; width: 360px; padding: 26px 30px; border-radius: 24px; background: var(--card);
+          border: 2px solid var(--card-line); box-shadow: var(--shadow); direction: rtl; opacity: 0;
+        }
+        .s1-card small { display: block; font-size: 22px; font-weight: 700; color: var(--ink3); }
+        .s1-card strong { display: block; margin-top: 8px; font-size: 34px; font-weight: 800; color: var(--ink); }
+        .s1-card i { display: inline-block; margin-top: 12px; padding: 4px 14px; border-radius: 20px; font-style: normal; font-size: 22px; font-weight: 700; }
+        .s1-q { background: #ffe3e8; color: var(--red); }
+        .s1-n { background: var(--sky3); color: var(--blue-d); }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="10">
+        <div id="s1-wrap">
+          <div id="s1-ghost" data-layout-ignore data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap>حساب‌وکتاب</div>
+
+          <div id="s1-pile">
+            <div class="s1-card" id="s1-c1" data-layout-ignore><small>فیش واریزی</small><strong>۸۰۰٬۰۰۰ تومان</strong><i class="s1-q">کدام دوره؟</i></div>
+            <div class="s1-card" id="s1-c2" data-layout-ignore><small>فاکتور هزینه</small><strong>اجارهٔ مرداد</strong><i class="s1-q">عکسش کو؟</i></div>
+            <div class="s1-card" id="s1-c3" data-layout-ignore><small>کلاس امروز</small><strong>برگزار شد یا لغو؟</strong><i class="s1-n">دوشنبه ۱۶:۰۰</i></div>
+            <div class="s1-card" id="s1-c4" data-layout-ignore><small>پیام همکار</small><strong>«کارت‌به‌کارت زدم»</strong><i class="s1-q">ثبت شد؟</i></div>
+            <div class="s1-card" id="s1-c5" data-layout-ignore><small>آخر ماه</small><strong>حقوق مدرس‌ها</strong><i class="s1-q">سهم هر کس چقدر؟</i></div>
+            <div class="s1-card" id="s1-c6" data-layout-ignore><small>فایل اکسل</small><strong>جمع درآمد ماه</strong><i class="s1-n">نسخهٔ چندم؟</i></div>
+          </div>
+
+          <div id="s1-head">
+            <div id="s1-eyebrow">یک روز معمولی در آموزشگاه</div>
+            <div id="s1-t1"><span>واریزی،</span><span>هزینه،</span><span>کلاس،</span><span>فیش…</span></div>
+            <div id="s1-t2">و آخر ماه: حساب حقوق مدرس‌ها.</div>
+          </div>
+
+          <div id="s1-t3"><span>اگر</span><span>همه‌اش</span><span><b>خودکار</b></span><span>بود؟</span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // scattered paperwork: fixed positions + tilts (deterministic)
+          const cards = [
+            ["#s1-c1", 40, 20, -8], ["#s1-c2", 470, 60, 6], ["#s1-c3", 120, 290, 4],
+            ["#s1-c4", 520, 330, -5], ["#s1-c5", 30, 560, -3], ["#s1-c6", 460, 590, 7],
+          ];
+          cards.forEach(function (c, i) {
+            tl.set(c[0], { left: c[1], top: c[2] }, 0);
+            tl.fromTo(c[0], { opacity: 0, scale: 0.6, rotation: c[3] * 3, y: -60 },
+              { opacity: 1, scale: 1, rotation: c[3], y: 0, duration: 0.5, ease: "back.out(1.8)" }, 1.0 + i * 0.4);
+            // restless drift
+            tl.to(c[0], { y: (i % 2 ? 1 : -1) * 18, rotation: c[3] + (i % 2 ? 3 : -3), duration: 3.2, ease: "sine.inOut" }, 1.6 + i * 0.4);
+          });
+          tl.fromTo("#s1-ghost", { x: 0 }, { x: 160, duration: 10, ease: "none" }, 0);
+
+          tl.fromTo("#s1-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+          gsap.utils.toArray("#s1-t1 span").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 0.8 + i * 0.4);
+          });
+          tl.fromTo("#s1-t2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 4.4);
+
+          // the pile gets swept aside; the question takes the frame
+          tl.to("#s1-head", { opacity: 0, x: 80, duration: 0.5, ease: "power2.in" }, 6.5);
+          cards.forEach(function (c, i) {
+            tl.to(c[0], { x: -700, rotation: c[3] - 25, opacity: 0, duration: 0.7, ease: "power3.in" }, 6.4 + i * 0.05);
+          });
+          gsap.utils.toArray("#s1-t3 span").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 7.0 + i * 0.22);
+          });
+          tl.fromTo("#s1-t3 b", { color: "#1f335a" }, { color: "#2a54ad", duration: 0.6, ease: "power1.out" }, 7.8);
+
+          tl.to("#s1-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.4);
+          window.__timelines["s1-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
