@@ -19,7 +19,8 @@ explanations when she has to do something herself.
 | Promo / explainer / community or site video, text-heavy, Persian copy (default) | HyperFrames | `/hyperframes` → it routes to `/general-video`, `/product-launch-video`, `/motion-graphics`, … |
 | User says «با Remotion» / wants React code | Remotion | `/remotion-best-practices` (+ `/remotion-motion-graphics` craft rules) |
 | Cartoon / character story / hand-painted, no on-screen text | Clawd | `/clawd-animation` |
-| Captions on her own talking-head footage | HyperFrames | `/embedded-captions` |
+| Edit her own recorded footage (cut pauses/fillers, captions, graphics, MP4 or Premiere XML) | HyperFrames + ffmpeg | `/video-edit` |
+| Captions only on her own talking-head footage | HyperFrames | `/embedded-captions` |
 | Graphics over her own interview/podcast footage | HyperFrames | `/talking-head-recut` |
 
 Always follow the chosen engine's own workflow (brief → plan → build → check → render).
@@ -69,6 +70,9 @@ Then `scripts/mix_narration.py` builds one timed track from `voice/lines.tsv`, a
 `<audio id="narration">`, and carve the music under it with `/hyperframes-audio`
 (`scripts/carve.mjs --bed bgm --voice narration`). You cannot hear audio: never claim the
 pronunciation is correct; ask her to listen and name any line to fix.
+
+Local transcription (Persian): `scripts/transcribe.py` (Whisper large-v3-turbo from the
+sherpa-onnx GitHub release; `npx hyperframes transcribe` fails here because huggingface.co is blocked).
 
 ## 5. Music and sound
 
