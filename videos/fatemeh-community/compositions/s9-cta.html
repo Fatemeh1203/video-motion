@@ -184,10 +184,10 @@
         }
       </style>
 
-      <div id="s9-root" data-composition-id="s9-cta" data-width="1920" data-height="1080" data-duration="12">
+      <div id="s9-root" data-composition-id="s9-cta" data-width="1920" data-height="1080" data-duration="11.33">
         <div id="s9-wrap">
           <div id="s9-cam">
-            <video id="s9-video" class="clip" src="assets/clips/home-ring-clean.mp4" data-start="0" data-duration="12" data-playback-rate="0.84" data-track-index="0" muted playsinline></video>
+            <video id="s9-video" class="clip" src="assets/clips/home-ring-clean.mp4" data-start="0" data-duration="11.33" data-playback-rate="0.84" data-track-index="0" muted playsinline></video>
           </div>
           <div id="s9-shade"></div>
 
@@ -253,6 +253,14 @@
           tl.fromTo("#s9-lock i", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "expo.out" }, 5.0);
 
           tl.to("#s9-wrap", { opacity: 0, duration: 1.0, ease: "power1.inOut" }, 11.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.35, 0.0], [3.15, 0.2], [10.98, -0.67]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s9-cta"] = tl;
         })();

@@ -164,7 +164,7 @@
         }
       </style>
 
-      <div id="s8-root" data-composition-id="s8-site" data-width="1920" data-height="1080" data-duration="8.6">
+      <div id="s8-root" data-composition-id="s8-site" data-width="1920" data-height="1080" data-duration="7.59">
         <div id="s8-wrap">
           <div class="s8-glow" id="s8-glow-a"></div>
           <div class="s8-glow" id="s8-glow-b"></div>
@@ -175,7 +175,7 @@
                 <i></i><i></i><i></i>
                 <div id="s8-url">THE INTELLIGENCE SPACE</div>
               </div>
-              <video id="s8-video" class="clip" src="assets/clips/home-ring.mp4" data-start="0" data-duration="8.6" data-playback-rate="1.1" data-track-index="0" muted playsinline></video>
+              <video id="s8-video" class="clip" src="assets/clips/home-ring.mp4" data-start="0" data-duration="7.59" data-playback-rate="1.1" data-track-index="0" muted playsinline></video>
             </div>
           </div>
 
@@ -226,6 +226,14 @@
           });
 
           tl.to("#s8-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 8.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.85, 0.0], [7.98, -1.01]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s8-site"] = tl;
         })();

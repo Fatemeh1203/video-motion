@@ -182,7 +182,7 @@
         }
       </style>
 
-      <div id="s7-root" data-composition-id="s7-transform" data-width="1920" data-height="1080" data-duration="14.6">
+      <div id="s7-root" data-composition-id="s7-transform" data-width="1920" data-height="1080" data-duration="17.93">
         <div id="s7-wrap">
           <div id="s7-glow"></div>
 
@@ -261,6 +261,14 @@
           tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 11.9);
 
           tl.to("#s7-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 14.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.45, 0.0], [3.65, 0.63], [8.95, 1.74], [11.15, 2.92], [13.98, 3.33]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s7-transform"] = tl;
         })();

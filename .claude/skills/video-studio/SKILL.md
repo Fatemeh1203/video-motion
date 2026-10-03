@@ -56,6 +56,9 @@ Read `references/pitfalls.md` before the first render. The critical ones:
 Pronunciation and tone matter a lot to this user. Read `references/persian-voice.md`. Order of preference:
 
 1. **Her own recording** (best). Script it with `SCRIPT.md`, clean + level it, place each line on its scene.
+   Worked example: `videos/fatemeh-community/scripts/recording/` (Whisper-small ONNX from the
+   sherpa-onnx GitHub release to find each line, RNNoise `arnndn` + EQ/compressor to remove room
+   noise, long pauses trimmed, then the scenes are retimed to her voice instead of speeding her up).
 2. **Azure Speech (fa-IR-DilaraNeural, female) via REST + SSML** when she provides a key/region
    and the host `<region>.tts.speech.microsoft.com` is allowed: `scripts/tts_azure.py`.
    SSML gives per-word pronunciation, rate, pitch and pauses.

@@ -122,10 +122,10 @@
         }
       </style>
 
-      <div id="s2-root" data-composition-id="s2-intro" data-width="1920" data-height="1080" data-duration="9.6">
+      <div id="s2-root" data-composition-id="s2-intro" data-width="1920" data-height="1080" data-duration="10">
         <div id="s2-wrap">
           <div id="s2-cam">
-            <video id="s2-video" class="clip" src="assets/clips/about-clean.mp4" data-start="0" data-duration="9.6" data-playback-rate="0.62" data-track-index="0" muted playsinline></video>
+            <video id="s2-video" class="clip" src="assets/clips/about-clean.mp4" data-start="0" data-duration="10" data-playback-rate="0.59" data-track-index="0" muted playsinline></video>
           </div>
           <div id="s2-shade"></div>
           <div id="s2-copy">
@@ -169,6 +169,14 @@
           tl.fromTo("#s2-answer", { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.8)" }, 5.4);
           tl.to("#s2-copy", { y: -12, duration: 3.5, ease: "sine.inOut" }, 5.6);
           tl.to("#s2-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.45, 0.0], [5.25, 1.47], [8.98, 0.4]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s2-intro"] = tl;
         })();

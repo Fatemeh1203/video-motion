@@ -148,10 +148,10 @@
         }
       </style>
 
-      <div id="s3-root" data-composition-id="s3-reveal" data-width="1920" data-height="1080" data-duration="12.6">
+      <div id="s3-root" data-composition-id="s3-reveal" data-width="1920" data-height="1080" data-duration="12.96">
         <div id="s3-wrap">
           <div id="s3-cam">
-            <video id="s3-video" class="clip" src="assets/clips/community-clean.mp4" data-start="0" data-duration="12.6" data-playback-rate="0.47" data-track-index="0" muted playsinline></video>
+            <video id="s3-video" class="clip" src="assets/clips/community-clean.mp4" data-start="0" data-duration="12.96" data-playback-rate="0.455" data-track-index="0" muted playsinline></video>
           </div>
           <div id="s3-dim"></div>
 
@@ -204,6 +204,14 @@
           tl.fromTo("#s3-panel", { y: 0 }, { y: -14, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 4.8);
 
           tl.to("#s3-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 12.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.45, 0.0], [6.45, 1.06], [11.98, 0.36]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s3-reveal"] = tl;
         })();

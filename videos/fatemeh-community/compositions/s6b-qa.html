@@ -191,7 +191,7 @@
         }
       </style>
 
-      <div id="qa-root" data-composition-id="s6b-qa" data-width="1920" data-height="1080" data-duration="12.1">
+      <div id="qa-root" data-composition-id="s6b-qa" data-width="1920" data-height="1080" data-duration="10.22">
         <div id="qa-wrap">
           <div id="qa-glow"></div>
 
@@ -255,6 +255,14 @@
           tl.fromTo("#qa-badge", { boxShadow: "0 0 60px rgba(137,255,240,0.2)" }, { boxShadow: "0 0 110px rgba(137,255,240,0.55)", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 8.0);
 
           tl.to("#qa-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 11.5);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.35, 0.0], [5.55, 0.73], [11.48, -1.88]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s6b-qa"] = tl;
         })();

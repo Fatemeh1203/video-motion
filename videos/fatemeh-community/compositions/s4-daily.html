@@ -208,7 +208,7 @@
         }
       </style>
 
-      <div id="s4-root" data-composition-id="s4-daily" data-width="1920" data-height="1080" data-duration="14.6">
+      <div id="s4-root" data-composition-id="s4-daily" data-width="1920" data-height="1080" data-duration="15.45">
         <div id="s4-wrap">
           <div id="s4-glow"></div>
           <div id="s4-glow2"></div>
@@ -318,6 +318,14 @@
           tl.fromTo("#s4-num", { scale: 0.7 }, { scale: 1, duration: 2.4, ease: "power2.out" }, 8.5);
 
           tl.to("#s4-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 14.0);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.45, 0.0], [7.05, 2.0], [13.98, 0.85]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s4-daily"] = tl;
         })();

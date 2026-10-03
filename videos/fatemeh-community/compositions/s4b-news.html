@@ -138,7 +138,7 @@
         }
       </style>
 
-      <div id="nw-root" data-composition-id="s4b-news" data-width="1920" data-height="1080" data-duration="10.1">
+      <div id="nw-root" data-composition-id="s4b-news" data-width="1920" data-height="1080" data-duration="7.66">
         <div id="nw-wrap">
           <div id="nw-glow"></div>
 
@@ -186,6 +186,14 @@
           tl.fromTo("#nw-feed", { y: 0 }, { y: -40, duration: 7.5, ease: "sine.inOut" }, 2.5);
 
           tl.to("#nw-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.5);
+
+          // narration retime (Fatemeh's recorded voice): [from_second, shift] segments
+          const __warp = [[0.35, 0.0], [9.48, -2.44]];
+          tl.getChildren(false, true, true).map((c) => [c, c.startTime()]).forEach(([c, st]) => {
+            let s = 0;
+            for (const [from, sh] of __warp) if (st >= from) s = sh;
+            if (s) c.startTime(st + s);
+          });
 
           window.__timelines["s4b-news"] = tl;
         })();
