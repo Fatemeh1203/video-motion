@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+    
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 300;
+        src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 400;
+        src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 500;
+        src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 700;
+        src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 800;
+        src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 900;
+        src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 300;
+        src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 400;
+        src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 500;
+        src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 700;
+        src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 800;
+        src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 900;
+        src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+
+
+      :root {
+        --bg: #080b15;
+        --fg: #eff4ff;
+        --muted: #b3bdd8;
+        --mint: #89fff0;
+        --brand-1: #a8ffef;
+        --brand-2: #ae9cff;
+        --p1: #91ffea;
+        --p2: #b39aff;
+        --p3: #77caff;
+        --p4: #ffbf86;
+        --p5: #ff94ba;
+        --p6: #ddf998;
+        --glass-line: rgba(255, 255, 255, 0.14);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Vazirmatn", sans-serif;
+        color: var(--fg);
+      }
+      .scene { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+      .cam { position: absolute; inset: 0; }
+      .bgvid { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+      .rtl { direction: rtl; }
+      .g {
+        background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .w { display: inline-block; }
+      #glow {
+        position: absolute;
+        left: 460px; top: 40px;
+        width: 1000px; height: 1000px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(174, 156, 255, 0.22), rgba(137, 255, 240, 0.08) 45%, rgba(8, 11, 21, 0) 70%);
+        opacity: 0;
+      }
+      #flash { position: absolute; inset: 0; background: #eff4ff; opacity: 0; pointer-events: none; }
+      #grain {
+        position: absolute; inset: 0; pointer-events: none;
+        background-image: url("assets/grain.png"); background-size: 256px 256px;
+        opacity: 0.05; mix-blend-mode: overlay;
+      }
+      #vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(8, 11, 21, 0) 55%, rgba(3, 5, 11, 0.6) 100%);
+      }
+
+      /* ---------- S1 hook ---------- */
+      #s1-dim { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(8, 11, 21, 0.85), rgba(8, 11, 21, 0.6) 70%, rgba(8, 11, 21, 0.8)); }
+      .chip {
+        position: absolute;
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 24px;
+        border-radius: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.16);
+        background: rgba(18, 24, 42, 0.88);
+        direction: ltr;
+        font-size: 32px; font-weight: 700; white-space: nowrap;
+        opacity: 0;
+      }
+      .chip i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 14px var(--c); }
+      #s1-a, #s1-b { position: absolute; left: 200px; right: 200px; text-align: center; }
+      #s1-a { top: 455px; font-size: 84px; font-weight: 800; }
+      #s1-b { top: 400px; font-size: 150px; font-weight: 900; line-height: 1.3; }
+
+      /* ---------- S2 not alone ---------- */
+      #s2-dim { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 60% at 50% 50%, rgba(8, 11, 21, 0.8), rgba(8, 11, 21, 0.45) 75%, rgba(8, 11, 21, 0.7)); }
+      #s2-copy { position: absolute; left: 160px; right: 160px; top: 330px; text-align: center; }
+      #s2-a { font-size: 150px; font-weight: 900; line-height: 1.25; }
+      #s2-b { margin-top: 10px; font-size: 104px; font-weight: 900; line-height: 1.3; display: flex; justify-content: center; gap: 0 30px; flex-wrap: wrap; }
+
+      /* ---------- S3 belonging ---------- */
+      #s3-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 70% 40%, #121a33, #080b15 70%); }
+      .dot { position: absolute; border-radius: 50%; background: var(--c); box-shadow: 0 0 24px var(--c); opacity: 0; }
+      #s3-copy { position: absolute; right: 150px; top: 230px; width: 1250px; text-align: right; }
+      #s3-eye { font-size: 38px; font-weight: 500; color: var(--mint); opacity: 0; }
+      #s3-a, #s3-b { display: flex; flex-wrap: wrap; gap: 0 28px; font-size: 118px; font-weight: 900; line-height: 1.3; }
+      #s3-a { margin-top: 18px; }
+      #s3-chat {
+        position: absolute; left: 130px; top: 580px; width: 720px;
+        padding: 30px 30px 34px;
+        border-radius: 32px;
+        border: 2px solid var(--glass-line);
+        background: linear-gradient(145deg, rgba(23, 29, 48, 0.95), rgba(9, 14, 26, 0.95));
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+      }
+      #s3-chat-head { display: flex; align-items: center; gap: 16px; font-size: 28px; font-weight: 700; }
+      #s3-chat-head i { display: block; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #ae9cff, #89fff0); }
+      #s3-chat-head small { display: block; font-size: 22px; font-weight: 400; color: var(--muted); }
+      #s3-body { position: relative; height: 180px; margin-top: 22px; }
+      #s3-typing { position: absolute; right: 0; top: 0; display: flex; gap: 10px; padding: 20px 26px; width: 130px; border-radius: 26px 26px 26px 8px; background: #1f2a4a; }
+      #s3-typing b { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--muted); }
+      #s3-msg {
+        position: absolute; left: 0; right: 0; top: 0; padding: 22px 30px;
+        border-radius: 26px 26px 8px 26px;
+        background: linear-gradient(135deg, #2b3c6b, #1f2a4a);
+        font-size: 40px; font-weight: 800; line-height: 1.45; white-space: nowrap;
+        opacity: 0;
+      }
+      #s3-msg em { font-style: normal; color: var(--mint); }
+
+      /* ---------- S4 features ---------- */
+      #s4-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 30% 50%, #10172e, #080b15 70%); }
+      #s4-eye { position: absolute; right: 150px; top: 150px; display: flex; align-items: center; gap: 14px; font-size: 36px; font-weight: 500; color: var(--mint); }
+      #s4-eye i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 16px var(--mint); }
+      .feat { position: absolute; inset: 0; opacity: 0; }
+      .f-copy { position: absolute; right: 150px; top: 300px; width: 860px; text-align: right; }
+      .f-title { font-size: 100px; font-weight: 900; line-height: 1.25; }
+      .f-sub { margin-top: 22px; font-size: 44px; font-weight: 500; color: var(--muted); }
+      .f-vis { position: absolute; left: 150px; top: 210px; width: 760px; height: 660px; }
+      .doc {
+        position: absolute; left: 230px; top: 90px; width: 330px; height: 440px;
+        border-radius: 22px; background: #eef2fb; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        border-top: 14px solid var(--c);
+      }
+      .doc b { position: absolute; right: 30px; top: 36px; font-size: 34px; font-weight: 900; color: #10172e; direction: rtl; }
+      .doc s { position: absolute; right: 30px; height: 12px; border-radius: 6px; background: #c9d1e6; }
+      .doc u { position: absolute; left: 26px; bottom: 26px; padding: 6px 14px; border-radius: 10px; background: #10172e; color: #fff; font-size: 22px; font-weight: 800; text-decoration: none; direction: ltr; }
+      .day {
+        position: absolute; width: 300px; height: 96px; border-radius: 22px;
+        display: flex; align-items: center; justify-content: center; gap: 16px;
+        font-size: 40px; font-weight: 800;
+        border: 2px solid var(--glass-line); background: rgba(18, 24, 42, 0.9); color: rgba(239, 244, 255, 0.4);
+      }
+      .day.on { color: var(--fg); border-color: var(--p3); box-shadow: 0 0 40px rgba(119, 202, 255, 0.35); background: rgba(29, 44, 82, 0.95); }
+      .day.on i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--p3); box-shadow: 0 0 12px var(--p3); }
+      #sim-win {
+        position: absolute; left: 0; top: 80px; width: 760px; height: 470px;
+        border-radius: 24px; overflow: hidden; border: 2px solid var(--glass-line);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+      }
+      #sim-video { position: absolute; left: 0; top: 0; width: 760px; height: 470px; object-fit: cover; }
+      .badge {
+        display: inline-flex; align-items: center; gap: 14px; margin-top: 30px;
+        padding: 14px 28px; border-radius: 40px;
+        background: rgba(255, 191, 134, 0.14); border: 2px solid var(--p4);
+        font-size: 38px; font-weight: 800; color: var(--p4);
+      }
+      #f4 .f-copy { width: 1040px; }
+      #ring-wrap { position: absolute; left: 150px; top: 60px; width: 460px; height: 460px; }
+      #ring-wrap svg { position: absolute; inset: 0; }
+      #ring-num { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #ring-num b { font-size: 150px; font-weight: 900; line-height: 1; }
+      #ring-num span { font-size: 36px; font-weight: 700; color: var(--mint); margin-top: 6px; }
+
+      /* ---------- S5 CTA ---------- */
+      #s5-shade { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 72% 40%, rgba(8, 11, 21, 0.9), rgba(8, 11, 21, 0.55) 70%, rgba(8, 11, 21, 0.35)); }
+      #s5-copy { position: absolute; right: 150px; top: 150px; width: 1060px; text-align: right; }
+      #s5-eye { display: inline-flex; align-items: center; gap: 14px; font-size: 40px; font-weight: 500; color: var(--mint); opacity: 0; }
+      #s5-eye i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 16px var(--mint); }
+      #s5-title { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 0 28px; font-size: 104px; font-weight: 900; line-height: 1.25; }
+      #s5-sub { margin-top: 10px; font-size: 42px; font-weight: 400; color: var(--muted); opacity: 0; }
+      #s5-link {
+        margin-top: 30px; display: inline-flex; align-items: center; gap: 20px;
+        padding: 18px 34px 18px 22px; border-radius: 50px;
+        background: rgba(8, 11, 21, 0.85); border: 3px solid var(--mint);
+        box-shadow: 0 0 40px rgba(137, 255, 240, 0.25);
+        direction: ltr; font-size: 42px; font-weight: 700; opacity: 0;
+      }
+      .plane { display: flex; align-items: center; justify-content: center; width: 66px; height: 66px; border-radius: 50%; background: #2aa3de; flex: none; }
+      #s5-qr {
+        position: absolute; left: 170px; top: 170px; width: 440px;
+        padding: 34px 34px 22px; border-radius: 32px; background: #eff4ff;
+        box-shadow: 0 0 0 3px rgba(137, 255, 240, 0.6), 0 40px 120px rgba(0, 0, 0, 0.6);
+        text-align: center; opacity: 0;
+      }
+      #s5-qr img { display: block; width: 372px; height: 372px; }
+      #s5-qr span { display: block; margin-top: 12px; font-size: 30px; font-weight: 800; color: #0d1220; direction: ltr; }
+      #s5-sign {
+        position: absolute; right: 150px; bottom: 120px;
+        display: flex; align-items: center; gap: 24px;
+        padding: 18px 34px; border-radius: 22px;
+        border: 2px solid var(--glass-line); background: rgba(8, 11, 21, 0.85);
+        opacity: 0;
+      }
+      #s5-sign span { font-size: 34px; font-weight: 500; color: var(--muted); }
+      #s5-sign i { display: block; width: 5px; height: 56px; border-radius: 3px; background: var(--mint); }
+      #s5-sign b { font-size: 52px; font-weight: 900; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-duration="32">
+      <div id="glow"></div>
+
+      <!-- S1 hook: too many tools -->
+      <div id="s1" class="scene">
+        <div class="cam" id="s1-cam">
+          <video id="s1-video" class="bgvid clip" src="assets/clips/agents-clean.mp4" data-start="0" data-duration="4.3" data-playback-rate="1" data-track-index="20" muted playsinline></video>
+        </div>
+        <div id="s1-dim"></div>
+        <div id="s1-chips"></div>
+        <div id="s1-a" class="rtl">هر روز، یک ابزار تازهٔ هوش مصنوعی…</div>
+        <div id="s1-b" class="rtl"><span class="g">از کجا شروع کنی؟</span></div>
+      </div>
+
+      <!-- S2 you don't have to go alone -->
+      <div id="s2" class="scene">
+        <div class="cam" id="s2-cam">
+          <video id="s2-video" class="bgvid clip" src="assets/clips/community-clean.mp4" data-start="4" data-duration="4.3" data-playback-rate="0.9" data-track-index="21" muted playsinline></video>
+        </div>
+        <div id="s2-dim"></div>
+        <div id="s2-copy" class="rtl">
+          <div id="s2-a">لازم نیست</div>
+          <div id="s2-b" class="split">این راه را تنها بروی.</div>
+        </div>
+      </div>
+
+      <!-- S3 belonging (her own words) -->
+      <div id="s3" class="scene">
+        <div id="s3-bg"></div>
+        <div id="s3-dots"></div>
+        <div id="s3-copy" class="rtl">
+          <div id="s3-eye">اینجا تجربه‌هاتو به اشتراک می‌ذاری با کسایی که باهات اشتراکاتی دارن.</div>
+          <div id="s3-a" class="split">اینجا تنها نیستی،</div>
+          <div id="s3-b" class="split g-words">چون بچه‌ها باهاتن.</div>
+        </div>
+        <div id="s3-chat" class="rtl">
+          <div id="s3-chat-head"><i></i><div>کامیونیتی هوش مصنوعی<small>اگه خسته شدی…</small></div></div>
+          <div id="s3-body">
+            <div id="s3-typing"><b></b><b></b><b></b></div>
+            <div id="s3-msg"><em>خسته نباشی!</em> بدو بیا که منم هستم.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S4 what you get (drop) -->
+      <div id="s4" class="scene">
+        <div id="s4-bg"></div>
+        <div id="s4-eye" class="rtl"><i></i><span>در کامیونیتی</span></div>
+
+        <div class="feat" id="f1">
+          <div class="f-vis">
+            <div class="doc" data-layout-allow-overlap style="--c: #b39aff"><b>جزوهٔ درس</b><s style="top: 120px; width: 220px"></s><s style="top: 160px; width: 260px"></s><s style="top: 200px; width: 180px"></s><s style="top: 240px; width: 240px"></s><u>PDF</u></div>
+            <div class="doc" data-layout-allow-overlap style="--c: #77caff"><b>جزوهٔ درس</b><s style="top: 120px; width: 220px"></s><s style="top: 160px; width: 260px"></s><s style="top: 200px; width: 180px"></s><s style="top: 240px; width: 240px"></s><u>PDF</u></div>
+            <div class="doc" data-layout-allow-overlap style="--c: #91ffea"><b>جزوهٔ درس</b><s style="top: 120px; width: 220px"></s><s style="top: 160px; width: 260px"></s><s style="top: 200px; width: 180px"></s><s style="top: 240px; width: 240px"></s><u>PDF</u></div>
+          </div>
+          <div class="f-copy rtl">
+            <div class="f-title">هر روز، <span class="g">یک درس تازه</span></div>
+            <div class="f-sub">با جزوهٔ مخصوص هر درس</div>
+          </div>
+        </div>
+
+        <div class="feat" id="f2">
+          <div class="f-vis rtl" id="days">
+            <div class="day on" style="left: 230px; top: 40px"><i></i>شنبه</div>
+            <div class="day" style="left: 230px; top: 160px">یکشنبه</div>
+            <div class="day on" style="left: 230px; top: 280px"><i></i>دوشنبه</div>
+            <div class="day" style="left: 230px; top: 400px">سه‌شنبه</div>
+            <div class="day on" style="left: 230px; top: 520px"><i></i>چهارشنبه</div>
+          </div>
+          <div class="f-copy rtl">
+            <div class="f-title">روزهای فرد، <span class="g">خبرهای هوش مصنوعی</span></div>
+            <div class="f-sub">مهم‌ترین خبرها، کوتاه و خلاصه، با هم</div>
+          </div>
+        </div>
+
+        <div class="feat" id="f3">
+          <div class="f-vis">
+            <div id="sim-win">
+              <video id="sim-video" class="clip" src="assets/clips/simulators.mp4" data-start="19.7" data-duration="2.6" data-playback-rate="1" data-track-index="22" muted playsinline></video>
+            </div>
+          </div>
+          <div class="f-copy rtl">
+            <div class="f-title"><span class="g">شبیه‌سازهای</span> ریاضی، فیزیک و برنامه‌نویسی</div>
+            <div class="badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffbf86" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>رایگان، فقط برای اعضا</div>
+          </div>
+        </div>
+
+        <div class="feat" id="f4">
+          <div class="f-vis">
+            <div id="ring-wrap">
+              <svg viewBox="0 0 460 460"><circle cx="230" cy="230" r="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="22" /><circle id="ring-arc" cx="230" cy="230" r="200" fill="none" stroke="#89fff0" stroke-width="22" stroke-linecap="round" stroke-dasharray="1257" stroke-dashoffset="1257" transform="rotate(-90 230 230)" /></svg>
+              <div id="ring-num"><b>۲۴/۷</b><span>کنارت هستم</span></div>
+            </div>
+          </div>
+          <div class="f-copy rtl">
+            <div class="f-title"><span class="g">شبانه‌روز</span> کنارت هستم</div>
+            <div class="f-sub">هر جا گیر کنی، بپرس؛ بی‌جواب نمی‌مانی</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S5 invite -->
+      <div id="s5" class="scene">
+        <div class="cam" id="s5-cam">
+          <video id="s5-video" class="bgvid clip" src="assets/clips/home-ring-clean.mp4" data-start="24" data-duration="8" data-playback-rate="1" data-track-index="23" muted playsinline></video>
+        </div>
+        <div id="s5-shade"></div>
+        <div id="s5-qr"><img src="assets/telegram-qr.svg" alt="" /><span>AI_Community</span></div>
+        <div id="s5-copy" class="rtl">
+          <div id="s5-eye"><i></i><span>اگر آماده‌ای، دروازه باز است</span></div>
+          <div id="s5-title"><span class="w">کامیونیتی</span><span class="w g">هوش</span><span class="w g">مصنوعی</span></div>
+          <div id="s5-sub">همین امروز بیا و اولین قدمت را بردار.</div>
+          <div id="s5-link">
+            <span class="plane"><svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.4-1.6Z" /></svg></span>
+            <span>t.me/+Orw2hE3tq3thMzNk</span>
+          </div>
+        </div>
+        <div id="s5-sign" class="rtl"><span>به همراهی</span><i></i><b>دکتر فاطمه شمس</b></div>
+      </div>
+
+      <div id="flash"></div>
+      <div id="vignette" class="clip" data-start="0" data-duration="32" data-track-index="5"></div>
+      <div id="grain" class="clip" data-start="0" data-duration="32" data-track-index="6"></div>
+
+      <audio id="music" src="assets/audio/music.mp3" data-start="0" data-duration="32" data-track-index="10" data-volume="1"></audio>
+      <audio id="sfx-pop" src="assets/sfx/notification.mp3" data-start="12.0" data-duration="1.2" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-w1" src="assets/sfx/whoosh-short.mp3" data-start="17.85" data-duration="0.5" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-w2" src="assets/sfx/whoosh-short.mp3" data-start="19.85" data-duration="0.5" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-w3" src="assets/sfx/whoosh-short.mp3" data-start="21.85" data-duration="0.5" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="sfx-spark" src="assets/sfx/sparkle.mp3" data-start="25.6" data-duration="1.8" data-track-index="15" data-volume="0.28"></audio>
+    </div>
+
+    <script>
+      (function () {
+        const B = 0.5; // one beat at 120 BPM
+        const tl = gsap.timeline({ paused: true });
+
+        // word spans for word-by-word motion (Persian words stay whole)
+        document.querySelectorAll(".split").forEach(function (el) {
+          const grad = el.classList.contains("g-words");
+          el.innerHTML = el.textContent.trim().split(/\s+/).map(function (w) {
+            return '<span class="w' + (grad ? " g" : "") + '">' + w + "</span>";
+          }).join(" ");
+        });
+        function words(sel, t, step, from) {
+          gsap.utils.toArray(sel + " .w").forEach(function (w, i) {
+            tl.fromTo(w, Object.assign({ opacity: 0, y: 60 }, from || {}), { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "power4.out" }, t + i * step);
+          });
+        }
+        function flash(t, a) {
+          tl.fromTo("#flash", { opacity: a || 0.5 }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, t);
+        }
+
+        // ---------- S1 (0-4) ----------
+        const TOOLS = [
+          ["ChatGPT", "#91ffea", 150, 150], ["Claude", "#ffbf86", 1480, 130], ["Gemini", "#77caff", 820, 90],
+          ["Midjourney", "#b39aff", 260, 820], ["Perplexity", "#91ffea", 1380, 850], ["NotebookLM", "#ddf998", 70, 340],
+          ["Copilot", "#77caff", 1600, 660], ["Cursor", "#ff94ba", 560, 250], ["n8n", "#ff94ba", 1180, 290],
+          ["Suno", "#ffbf86", 700, 900], ["Runway", "#b39aff", 1080, 760], ["DeepSeek", "#77caff", 420, 640],
+          ["Canva AI", "#ddf998", 1300, 640], ["Gamma", "#91ffea", 960, 960],
+        ];
+        const box = document.querySelector("#s1-chips");
+        TOOLS.forEach(function (t) {
+          const el = document.createElement("div");
+          el.className = "chip";
+          el.style.setProperty("--c", t[1]);
+          el.style.left = t[2] + "px";
+          el.style.top = t[3] + "px";
+          el.innerHTML = "<i></i><span>" + t[0] + "</span>";
+          box.appendChild(el);
+        });
+        const chips = gsap.utils.toArray("#s1 .chip");
+        tl.fromTo("#s1", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
+        tl.fromTo("#s1-cam", { scale: 1.15 }, { scale: 1.0, duration: 4.3, ease: "sine.out" }, 0);
+        tl.fromTo("#s1-a", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+        chips.forEach(function (el, i) {
+          const at = 0.25 + i * (B / 4);
+          tl.fromTo(el, { opacity: 0, scale: 0.3, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, at);
+          const cx = 960 - (parseFloat(el.style.left) + 120);
+          const cy = 540 - (parseFloat(el.style.top) + 30);
+          tl.to(el, { x: cx * 0.18, y: cy * 0.18, duration: 3.3 - i * 0.12, ease: "sine.in" }, at + 0.35);
+          tl.to(el, { opacity: 0, scale: 0.5, filter: "blur(10px)", x: cx * 0.6, y: cy * 0.6, duration: 0.35, ease: "power3.in" }, 3.6 + (i % 4) * 0.03);
+        });
+        tl.to("#s1-a", { opacity: 0, y: -30, duration: 0.25, ease: "power2.in" }, 1.75);
+        tl.fromTo("#s1-b", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 2.0);
+        tl.to("#s1-b", { scale: 1.06, duration: 1.3, ease: "sine.in" }, 2.4);
+        tl.to("#s1-b", { opacity: 0, scale: 1.6, filter: "blur(12px)", duration: 0.3, ease: "power3.in" }, 3.75);
+        tl.to("#s1", { opacity: 0, duration: 0.3 }, 4.0);
+
+        // ---------- S2 (4-8) ----------
+        flash(4.0, 0.55);
+        tl.fromTo("#glow", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 4.0);
+        tl.fromTo("#s2", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 4.0);
+        tl.fromTo("#s2-cam", { scale: 1.2 }, { scale: 1.02, duration: 4.3, ease: "power2.out" }, 4.0);
+        tl.fromTo("#s2-a", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 4.0);
+        words("#s2-b", 4.5, B, { scale: 0.9 });
+        tl.to("#s2-copy", { scale: 1.05, duration: 2.0, ease: "sine.inOut" }, 6.0);
+        tl.to("#s2-copy", { opacity: 0, y: -40, duration: 0.3, ease: "power2.in" }, 7.75);
+        tl.to("#s2", { opacity: 0, duration: 0.3 }, 8.0);
+
+        // ---------- S3 (8-16) ----------
+        tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.0);
+        const DOTS = [[1480, 880, 34, "#91ffea"], [1760, 800, 22, "#b39aff"], [1240, 860, 26, "#ffbf86"], [1820, 880, 18, "#77caff"],
+          [1000, 140, 20, "#ff94ba"], [1380, 120, 28, "#ddf998"], [1720, 160, 16, "#91ffea"], [900, 920, 22, "#b39aff"]];
+        const dbox = document.querySelector("#s3-dots");
+        DOTS.forEach(function (d) {
+          const el = document.createElement("div");
+          el.className = "dot";
+          el.style.cssText = "left:" + d[0] + "px;top:" + d[1] + "px;width:" + d[2] + "px;height:" + d[2] + "px;--c:" + d[3];
+          dbox.appendChild(el);
+        });
+        tl.fromTo("#s3-eye", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.0);
+        words("#s3-a", 8.5, B / 2);
+        words("#s3-b", 10.0, B / 2);
+        gsap.utils.toArray("#s3 .dot").forEach(function (el, i) {
+          tl.fromTo(el, { opacity: 0, scale: 0 }, { opacity: 0.9, scale: 1, duration: 0.4, ease: "back.out(3)" }, 10.0 + i * (B / 4));
+          tl.to(el, { y: (i % 2 ? -1 : 1) * 30, duration: 4, ease: "sine.inOut" }, 10.4 + i * 0.05);
+        });
+        tl.fromTo("#s3-chat", { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 11.0);
+        gsap.utils.toArray("#s3-typing b").forEach(function (el, i) {
+          tl.fromTo(el, { y: 0 }, { y: -8, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.3 + i * 0.12);
+          tl.fromTo(el, { y: 0 }, { y: -8, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 11.62 + i * 0.12);
+        });
+        tl.to("#s3-typing", { opacity: 0, scale: 0.8, duration: 0.15 }, 11.9);
+        tl.fromTo("#s3-msg", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 12.0);
+        tl.to("#s3-msg", { boxShadow: "0 0 50px rgba(137,255,240,0.35)", duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.5);
+        // snare roll: tension, then suck into the drop
+        tl.to(["#s3-copy", "#s3-chat"], { scale: 0.96, duration: 1.7, ease: "sine.in" }, 14.0);
+        tl.to(["#s3-copy", "#s3-chat", "#s3-dots"], { opacity: 0, scale: 1.25, filter: "blur(10px)", duration: 0.3, ease: "power3.in" }, 15.72);
+        tl.to("#s3", { opacity: 0, duration: 0.3 }, 16.0);
+
+        // ---------- S4 (16-24, the drop) ----------
+        flash(16.0, 0.7);
+        tl.fromTo("#s4", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 16.0);
+        tl.fromTo("#s4-eye", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.1);
+        ["#f1", "#f2", "#f3", "#f4"].forEach(function (f, i) {
+          const t0 = 16.0 + i * 2.0;
+          tl.fromTo(f, { opacity: 0 }, { opacity: 1, duration: 0.12 }, t0);
+          tl.fromTo(f + " .f-title", { opacity: 0, x: 120, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: "power4.out" }, t0);
+          tl.fromTo(f + " .f-sub, " + f + " .badge", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, t0 + B);
+          tl.fromTo(f + " .f-vis", { opacity: 0, x: -120, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.45, ease: "power4.out" }, t0 + 0.05);
+          if (i < 3) {
+            tl.to(f, { opacity: 0, x: -60, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, t0 + 1.8);
+          }
+        });
+        gsap.utils.toArray("#f1 .doc").forEach(function (d, i) {
+          tl.fromTo(d, { rotation: 0, x: 0, y: 40 }, { rotation: (i - 1) * 10, x: (i - 1) * 150, y: Math.abs(i - 1) * 24, duration: 0.5, ease: "back.out(1.6)" }, 16.15 + i * (B / 4));
+        });
+        gsap.utils.toArray("#days .day").forEach(function (d, i) {
+          tl.fromTo(d, { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 18.05 + i * (B / 4));
+        });
+        gsap.utils.toArray("#days .day.on").forEach(function (d, i) {
+          tl.fromTo(d, { scale: 1 }, { scale: 1.08, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 18.75 + i * B);
+        });
+        tl.fromTo("#sim-video", { scale: 1.15 }, { scale: 1.0, duration: 2.0, ease: "power2.out" }, 20.0);
+        tl.fromTo("#f3 .badge", { scale: 1 }, { scale: 1.07, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 21.0);
+        tl.fromTo("#ring-arc", { strokeDashoffset: 1257 }, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 22.1);
+        tl.fromTo("#ring-num b", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 22.2);
+        tl.to("#s4", { opacity: 0, scale: 1.04, duration: 0.3, ease: "power2.in" }, 23.75);
+
+        // beat pulse on the background glow, kick on every beat 4..30
+        for (let t = 4.0; t < 30.0; t += B) {
+          const strong = t >= 16 && t < 24;
+          tl.fromTo("#glow", { scale: strong ? 1.12 : 1.06 }, { scale: 1.0, duration: 0.42, ease: "power2.out", immediateRender: false }, t);
+        }
+
+        // ---------- S5 (24-32) ----------
+        flash(24.0, 0.45);
+        tl.fromTo("#s5", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 24.0);
+        tl.fromTo("#s5-cam", { scale: 1.12 }, { scale: 1.0, duration: 8, ease: "sine.out" }, 24.0);
+        tl.fromTo("#s5-eye", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 24.1);
+        gsap.utils.toArray("#s5-title .w").forEach(function (w, i) {
+          tl.fromTo(w, { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 24.5 + i * B);
+        });
+        tl.fromTo("#s5-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 26.0);
+        tl.fromTo("#s5-qr", { opacity: 0, scale: 0.5, rotation: -6 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.6)" }, 25.6);
+        tl.fromTo("#s5-link", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 26.5);
+        tl.fromTo("#s5-link .plane", { rotation: -40, x: -30 }, { rotation: 0, x: 0, duration: 0.6, ease: "back.out(2.4)" }, 26.6);
+        tl.fromTo("#s5-sign", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 27.5);
+        tl.fromTo("#s5-sign i", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "expo.out" }, 27.7);
+        tl.fromTo(
+          "#s5-qr",
+          { boxShadow: "0 0 0 3px rgba(137, 255, 240, 0.6), 0 40px 120px rgba(0, 0, 0, 0.6)" },
+          { boxShadow: "0 0 0 3px rgba(137, 255, 240, 1), 0 0 140px rgba(137, 255, 240, 0.5)", duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false },
+          27.0,
+        );
+        tl.to("#glow", { opacity: 0, duration: 1.0 }, 30.5);
+        tl.to("#s5", { opacity: 0, duration: 1.0, ease: "power1.inOut" }, 31.0);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>
