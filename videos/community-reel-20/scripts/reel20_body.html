@@ -1,0 +1,98 @@
+  <body>
+    <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="20">
+      <!-- aurora background (technique from the registry's aurora-drift block, inlined with brand colours; GSAP is local) -->
+      <div id="aurora">
+        <div class="blob" id="b1"></div>
+        <div class="blob" id="b2"></div>
+        <div class="blob" id="b3"></div>
+        <div class="blob" id="b4"></div>
+      </div>
+      <video id="cta-video" class="clip" src="assets/clips/home-ring-clean.mp4" data-start="14" data-duration="6" data-playback-rate="1" data-track-index="20" muted playsinline></video>
+      <div id="pulse"></div>
+
+      <div id="stage">
+        <!-- S1 hook (0-3) -->
+        <div id="s1" class="scene">
+          <div id="flyers"></div>
+          <div id="h12" class="center rtl">
+            <div id="h1">هر روز،</div>
+            <div id="h2" class="g">یک ابزار تازه</div>
+          </div>
+          <div id="h3" class="center rtl"><div>از کجا</div><div class="g">شروع کنی؟</div></div>
+        </div>
+
+        <!-- S2 not alone (3-5) -->
+        <div id="s2" class="scene">
+          <div id="s2-copy" class="center rtl">
+            <div id="s2-a">تنها نیستی.</div>
+            <div id="s2-b"><span class="w g">با</span> <span class="w g">هم</span> <span class="w g">یاد</span> <span class="w g">می‌گیریم</span></div>
+          </div>
+          <div id="brand" class="glass rtl"><i></i><span>کامیونیتی هوش مصنوعی</span><b class="sheen" data-layout-allow-overflow></b></div>
+        </div>
+
+        <!-- S3 every AI tool, daily lessons (5-10) -->
+        <div id="s3" class="scene">
+          <div id="s3-copy" class="center rtl">
+            <div id="s3-a">آموزش کاربردیِ</div>
+            <div id="s3-b" class="g">همهٔ ابزارهای</div>
+            <div id="s3-c" class="g">هوش مصنوعی دنیا</div>
+          </div>
+          <div id="slot" class="glass"><div id="slot-names"></div><b class="sheen" data-layout-allow-overflow></b></div>
+          <div id="s3-sub" class="center rtl">هر روز، <b>یک درسنامهٔ کاربردی</b></div>
+          <div id="s3-tags" class="rtl"><span class="chip glass">قدم‌به‌قدم</span><span class="chip glass">با جزوه</span><span class="chip glass">از صفر</span></div>
+        </div>
+
+        <!-- S4 bento grid (10-14) -->
+        <div id="s4" class="scene">
+          <div id="s4-head" class="center rtl"><div id="s4-eye">در کامیونیتی</div><div id="s4-title" class="g">همه‌چیز، یک‌جا</div></div>
+          <div class="tile glass rtl" id="t1" style="--c: #ae9cff; left: 560px; top: 520px">
+            <svg viewBox="0 0 48 48"><path d="M8 10h12a6 6 0 0 1 6 6v24a5 5 0 0 0-5-5H8z M40 10H28a6 6 0 0 0-6 6v24a5 5 0 0 1 5-5h13z" /></svg>
+            <h3>درسنامهٔ روزانه</h3><p>با جزوهٔ هر درس</p><b class="sheen" data-layout-allow-overflow></b>
+          </div>
+          <div class="tile glass rtl" id="t2" style="--c: #77caff; left: 70px; top: 520px">
+            <svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="30" rx="4" /><path d="M14 18h20 M14 25h20 M14 32h12" /></svg>
+            <h3>خبرهای روزهای فرد</h3><p>یکشنبه، سه‌شنبه، پنجشنبه</p><b class="sheen" data-layout-allow-overflow></b>
+          </div>
+          <div class="tile glass rtl" id="t3" style="--c: #ffbf86; left: 560px; top: 980px">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="4" /><ellipse cx="24" cy="24" rx="18" ry="7" /><ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(60 24 24)" /><ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(-60 24 24)" /></svg>
+            <h3>شبیه‌سازهای رایگان</h3><p>فقط برای اعضا</p><b class="sheen" data-layout-allow-overflow></b>
+          </div>
+          <div class="tile glass rtl" id="t4" style="--c: #89fff0; left: 70px; top: 980px">
+            <svg viewBox="0 0 48 48"><path d="M8 10h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z" /><path d="M16 22h.01 M24 22h.01 M32 22h.01" stroke-width="5" /></svg>
+            <h3>سؤالت بی‌جواب نمی‌مونه</h3><p>هر جا گیر کنی، کنارت هستم</p><b class="sheen" data-layout-allow-overflow></b>
+          </div>
+        </div>
+
+        <!-- S5 invite (14-20) -->
+        <div id="s5" class="scene">
+          <div id="s5-copy" class="center rtl">
+            <div id="s5-eye"><i></i>اگر آماده‌ای، دروازه باز است</div>
+            <div id="s5-t1">کامیونیتی</div>
+            <div id="s5-t2" class="g">هوش مصنوعی</div>
+          </div>
+          <div id="link" class="glass">
+            <span class="plane"><svg width="48" height="48" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.4-1.6Z" /></svg></span>
+            <span>t.me/+B70Edyob54Q0NWVk</span><b class="sheen" data-layout-allow-overflow></b>
+          </div>
+          <div id="s5-tags" class="rtl"><span class="tag">ظرفیت محدود</span><span class="tag">فقط ویژهٔ اعضا</span></div>
+          <div id="sign" class="glass rtl"><span>به همراهی</span><i></i><b>دکتر فاطمه شمس</b></div>
+          <div id="comment" class="center rtl">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#89fff0" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 3.5V16H4z" /></svg>
+            <div>برای اطلاع از شرایط، کلمهٔ <em>«هوش مصنوعی»</em> را کامنت کن تا شرایط برایت ارسال شود.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grain" class="clip" data-start="0" data-duration="20" data-track-index="6"></div>
+      <div id="vignette" class="clip" data-start="0" data-duration="20" data-track-index="5"></div>
+
+      <audio id="music" src="assets/audio/music.mp3" data-start="0" data-duration="20" data-track-index="10" data-volume="1"></audio>
+      <audio id="sfx-w1" src="assets/sfx/whoosh-short.mp3" data-start="1.42" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-w2" src="assets/sfx/whoosh-short.mp3" data-start="2.92" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sfx-w3" src="assets/sfx/whoosh-short.mp3" data-start="4.92" data-duration="0.5" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.mp3" data-start="10.0" data-duration="0.6" data-track-index="14" data-volume="0.14"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.mp3" data-start="10.25" data-duration="0.6" data-track-index="15" data-volume="0.14"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.mp3" data-start="10.5" data-duration="0.6" data-track-index="16" data-volume="0.14"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.mp3" data-start="10.75" data-duration="0.6" data-track-index="17" data-volume="0.14"></audio>
+      <audio id="sfx-spark" src="assets/sfx/sparkle.mp3" data-start="14.6" data-duration="1.8" data-track-index="18" data-volume="0.26"></audio>
+    </div>

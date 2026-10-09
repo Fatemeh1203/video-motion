@@ -1,0 +1,97 @@
+      :root {
+        --bg: #06081a;
+        --fg: #f2f5ff;
+        --muted: #b9c2de;
+        --mint: #89fff0;
+        --violet: #ae9cff;
+        --blue: #77caff;
+        --peach: #ffbf86;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: "Vazirmatn", sans-serif; color: var(--fg); }
+      .rtl { direction: rtl; }
+      .center { position: absolute; left: 60px; right: 60px; text-align: center; }
+      .g { background: linear-gradient(100deg, #ae9cff 10%, #89fff0 60%, #77caff 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .w { display: inline-block; }
+      .scene { position: absolute; inset: 0; opacity: 0; }
+      #s1 { opacity: 1; }
+      #stage { position: absolute; inset: 0; }
+
+      /* aurora */
+      #aurora { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, #0d1233, #06081a 70%); overflow: hidden; }
+      .blob { position: absolute; border-radius: 50%; filter: blur(110px); mix-blend-mode: screen; opacity: 0.55; }
+      #b1 { width: 900px; height: 900px; left: -260px; top: -180px; background: radial-gradient(circle, #ae9cff, rgba(174, 156, 255, 0) 70%); }
+      #b2 { width: 860px; height: 860px; right: -300px; top: 520px; background: radial-gradient(circle, #89fff0, rgba(137, 255, 240, 0) 70%); opacity: 0.42; }
+      #b3 { width: 820px; height: 820px; left: -120px; bottom: -260px; background: radial-gradient(circle, #77caff, rgba(119, 202, 255, 0) 70%); opacity: 0.45; }
+      #b4 { width: 600px; height: 600px; right: -120px; top: -160px; background: radial-gradient(circle, #ff94ba, rgba(255, 148, 186, 0) 70%); opacity: 0.22; }
+      #cta-video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; opacity: 0; filter: blur(3px) saturate(1.1); }
+      #pulse { position: absolute; left: 90px; top: 510px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(174, 156, 255, 0.35), rgba(137, 255, 240, 0.08) 45%, rgba(6, 8, 26, 0) 70%); opacity: 0; }
+      #grain { position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.07; mix-blend-mode: overlay; }
+      #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(6, 8, 26, 0) 55%, rgba(2, 3, 10, 0.6) 100%); }
+
+      /* liquid glass */
+      .glass {
+        position: absolute; overflow: hidden;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+        border: 1.5px solid rgba(255, 255, 255, 0.24);
+        backdrop-filter: blur(24px) saturate(150%);
+        -webkit-backdrop-filter: blur(24px) saturate(150%);
+        box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 30px 80px rgba(0, 0, 0, 0.35);
+      }
+      .sheen { position: absolute; top: -20%; bottom: -20%; left: 0; width: 45%; background: linear-gradient(105deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0) 100%); transform: translateX(-160%); pointer-events: none; }
+
+      /* S1 */
+      .flyer { position: absolute; display: flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 40px; direction: ltr; font-size: 36px; font-weight: 700; white-space: nowrap; color: rgba(242, 245, 255, 0.85); }
+      .flyer i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 14px var(--c); }
+      #h12 { top: 640px; }
+      #h1 { font-size: 150px; font-weight: 900; line-height: 1.2; text-shadow: 0 10px 50px rgba(6, 8, 26, 0.8); }
+      #h2 { font-size: 150px; font-weight: 900; line-height: 1.3; }
+      #h3 { top: 640px; font-size: 176px; font-weight: 900; line-height: 1.22; opacity: 0; }
+
+      /* S2 */
+      #s2-copy { top: 600px; }
+      #s2-a { font-size: 178px; font-weight: 900; line-height: 1.25; }
+      #s2-b { margin-top: 8px; font-size: 104px; font-weight: 900; line-height: 1.3; }
+      #brand { left: 0; right: 0; width: fit-content; margin: 0 auto; top: 1150px; display: flex; align-items: center; gap: 22px; padding: 26px 48px; border-radius: 60px; font-size: 54px; font-weight: 800; }
+      #brand i { display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 22px var(--mint); }
+
+      /* S3 */
+      #s3-copy { top: 260px; }
+      #s3-a { font-size: 104px; font-weight: 800; line-height: 1.3; }
+      #s3-b, #s3-c { font-size: 122px; font-weight: 900; line-height: 1.25; white-space: nowrap; }
+      #slot { left: 110px; width: 860px; top: 880px; height: 220px; border-radius: 48px; }
+      #slot-names { position: absolute; inset: 0; }
+      .slot-name { position: absolute; left: 0; right: 0; top: 0; line-height: 220px; text-align: center; direction: ltr; font-size: 118px; font-weight: 900; opacity: 0; }
+      #s3-sub { top: 1150px; font-size: 64px; font-weight: 600; color: var(--muted); opacity: 0; }
+      #s3-sub b { color: var(--fg); font-weight: 900; }
+      #s3-tags { position: absolute; left: 0; right: 0; top: 1270px; display: flex; justify-content: center; gap: 18px; }
+      .chip { position: relative; display: inline-block; padding: 14px 32px; border-radius: 36px; font-size: 40px; font-weight: 800; color: var(--mint); opacity: 0; }
+
+      /* S4 bento */
+      #s4-head { top: 250px; }
+      #s4-eye { font-size: 42px; font-weight: 600; color: var(--mint); }
+      #s4-title { font-size: 132px; font-weight: 900; line-height: 1.3; }
+      .tile { width: 450px; height: 420px; border-radius: 44px; padding: 40px 34px; text-align: right; opacity: 0; }
+      .tile::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 0%, var(--c), rgba(0, 0, 0, 0) 60%); opacity: 0.22; }
+      .tile svg { position: relative; width: 104px; height: 104px; fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 10px var(--c)); }
+      .tile h3 { position: relative; margin-top: 28px; font-size: 48px; font-weight: 900; line-height: 1.3; text-wrap: balance; }
+      .tile p { position: relative; margin-top: 14px; font-size: 32px; font-weight: 600; line-height: 1.45; color: var(--muted); }
+
+      /* S5 CTA */
+      #s5-copy { top: 260px; }
+      #s5-eye { display: inline-flex; align-items: center; gap: 14px; font-size: 42px; font-weight: 600; color: var(--mint); }
+      #s5-eye i { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 16px var(--mint); }
+      #s5-t1 { margin-top: 10px; font-size: 140px; font-weight: 900; line-height: 1.2; }
+      #s5-t2 { font-size: 140px; font-weight: 900; line-height: 1.25; }
+      #link { left: 0; right: 0; width: fit-content; margin: 0 auto; top: 760px; display: flex; align-items: center; gap: 24px; padding: 24px 48px 24px 26px; border-radius: 80px; direction: ltr; font-size: 58px; font-weight: 800; border-color: rgba(137, 255, 240, 0.85); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.35), 0 0 70px rgba(137, 255, 240, 0.35); opacity: 0; }
+      .plane { position: relative; display: flex; align-items: center; justify-content: center; width: 94px; height: 94px; border-radius: 50%; background: #2aa3de; flex: none; }
+      #s5-tags { position: absolute; left: 0; right: 0; top: 935px; display: flex; justify-content: center; gap: 18px; }
+      .tag { display: inline-block; padding: 12px 30px; border-radius: 34px; border: 2px solid rgba(137, 255, 240, 0.75); background: rgba(6, 8, 26, 0.6); color: var(--mint); font-size: 38px; font-weight: 800; box-shadow: 0 0 24px rgba(137, 255, 240, 0.22); opacity: 0; }
+      #sign { left: 0; right: 0; width: fit-content; margin: 0 auto; top: 1070px; display: flex; align-items: center; gap: 24px; padding: 20px 40px; border-radius: 28px; opacity: 0; }
+      #sign span { font-size: 36px; font-weight: 500; color: var(--muted); }
+      #sign i { display: block; width: 5px; height: 58px; border-radius: 3px; background: var(--mint); }
+      #sign b { font-size: 56px; font-weight: 900; }
+      #comment { top: 1235px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 42px; font-weight: 700; line-height: 1.5; opacity: 0; }
+      #comment div { text-wrap: balance; text-shadow: 0 4px 24px rgba(6, 8, 26, 0.9); }
+      #comment em { font-style: normal; font-weight: 900; color: var(--mint); }
