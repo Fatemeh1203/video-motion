@@ -36,7 +36,7 @@ in by that workflow; name them only when a step needs them.
 - Language: Persian, RTL. Length: **≤ 2 minutes** («۲ دقیقه باشد نه بیشتر»). Aspect: 16:9
   unless she names Instagram/Reels (then 9:16).
 - Title on screen: «فاطمه شمس» + «توسعه‌دهنده و مربی هوش مصنوعی».
-- Every promo ends on the invite: QR (`assets/telegram-qr.svg`) + `t.me/+Orw2hE3tq3thMzNk`.
+- Every promo ends on the invite: QR (`assets/telegram-group-qr.svg`) + `t.me/+B70Edyob54Q0NWVk` (Telegram group).
 - Only ask what is genuinely missing (usually: topic/angle, and whether a voice is wanted).
 
 Brand, palette, fonts and community facts: **read `references/brand.md` before designing.**

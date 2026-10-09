@@ -12,10 +12,15 @@
 
 Confirmed by her; use freely:
 
-- Invite link: `https://t.me/+Orw2hE3tq3thMzNk` (QR: `assets/telegram-qr.svg`).
+- **Telegram group invite (use this for new videos, from 2026-10-09):** `https://t.me/+B70Edyob54Q0NWVk`
+  (QR: `assets/telegram-group-qr.svg`, decoded and verified).
+- Older channel invite: `https://t.me/+Orw2hE3tq3thMzNk` (QR: `assets/telegram-qr.svg`).
+- Core promise to stress: practical training on **all the world's AI tools**, as a **daily lesson
+  (درسنامهٔ روزانه)** with a handout for each lesson.
 - «جای کسانی است که می‌خواهند متحول شوند».
 - **Daily lessons**: practical training on all AI tools, every day, step by step.
-- **AI news on odd days** (شنبه، دوشنبه، چهارشنبه).
+- **AI news on odd days (روزهای فرد)** = یکشنبه، سه‌شنبه، پنجشنبه. (Iranian week: زوج = شنبه،
+  دوشنبه، چهارشنبه; فرد = یکشنبه، سه‌شنبه، پنجشنبه. She caught this mistake once; never swap them.)
 - **A handout (جزوه) for every lesson**, kept in the community to review any time.
 - **Free educational simulators, only for community members** (the site has 20: math,
   physics, programming labs).
