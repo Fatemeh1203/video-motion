@@ -63,6 +63,9 @@
       #ctags { position: absolute; left: 0; right: 0; top: 920px; display: flex; justify-content: center; gap: 22px; }
       #ctags span { display: inline-block; padding: 12px 34px; border-radius: 40px; border: 3px solid var(--fg); font-size: 46px; font-weight: 700; }
       #csign { position: absolute; left: 90px; right: 90px; top: 1060px; text-align: center; font-size: 46px; font-weight: 700; color: var(--soft); }
-      #arrow { position: absolute; left: 790px; top: 1150px; width: 140px; height: 280px; }
+      #clink { position: absolute; left: 0; right: 0; top: 1150px; width: fit-content; margin: 0 auto; display: flex; align-items: center; gap: 20px; padding: 16px 40px 16px 18px; border-radius: 60px; border: 3px solid var(--fg); background: rgba(10, 14, 26, 0.9); direction: ltr; font-size: 50px; font-weight: 700; color: var(--fg); }
+      #clink i { display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 50%; background: #2aa3de; }
+      #clink svg { width: 42px; height: 42px; fill: #fff; }
+      #arrow { position: absolute; left: 810px; top: 1270px; width: 100px; height: 180px; }
       #arrow svg { transform: rotate(-24deg); }
-      #arrow svg { width: 140px; height: 280px; fill: none; stroke: var(--amber); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 18px rgba(255, 181, 71, 0.6)); }
+      #arrow svg { width: 100px; height: 180px; fill: none; stroke: var(--amber); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 18px rgba(255, 181, 71, 0.6)); }

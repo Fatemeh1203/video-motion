@@ -159,9 +159,10 @@
           tl.fromTo(s, { opacity: 0, y: 30, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 16.25 + i * 0.25);
         });
         tl.fromTo("#csign", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.25, ease: SPRING }, 16.75);
+        tl.fromTo("#clink", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.28, ease: "back.out(2)" }, 17.0);
         tl.fromTo("#arrow", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.25, ease: SPRING }, 16.0);
         for (let t = 16.5; t < 19.4; t += B) {
-          tl.fromTo("#arrow", { y: 0 }, { y: 46, duration: 0.25, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, t);
+          tl.fromTo("#arrow", { y: 0 }, { y: 30, duration: 0.25, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, t);
         }
         tl.to("#s6", { opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 0.12, ease: "power2.in" }, 19.4);
 

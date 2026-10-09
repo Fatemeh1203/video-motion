@@ -144,9 +144,12 @@
       #ctags { position: absolute; left: 0; right: 0; top: 920px; display: flex; justify-content: center; gap: 22px; }
       #ctags span { display: inline-block; padding: 12px 34px; border-radius: 40px; border: 3px solid var(--fg); font-size: 46px; font-weight: 700; }
       #csign { position: absolute; left: 90px; right: 90px; top: 1060px; text-align: center; font-size: 46px; font-weight: 700; color: var(--soft); }
-      #arrow { position: absolute; left: 790px; top: 1150px; width: 140px; height: 280px; }
+      #clink { position: absolute; left: 0; right: 0; top: 1150px; width: fit-content; margin: 0 auto; display: flex; align-items: center; gap: 20px; padding: 16px 40px 16px 18px; border-radius: 60px; border: 3px solid var(--fg); background: rgba(10, 14, 26, 0.9); direction: ltr; font-size: 50px; font-weight: 700; color: var(--fg); }
+      #clink i { display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 50%; background: #2aa3de; }
+      #clink svg { width: 42px; height: 42px; fill: #fff; }
+      #arrow { position: absolute; left: 810px; top: 1270px; width: 100px; height: 180px; }
       #arrow svg { transform: rotate(-24deg); }
-      #arrow svg { width: 140px; height: 280px; fill: none; stroke: var(--amber); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 18px rgba(255, 181, 71, 0.6)); }
+      #arrow svg { width: 100px; height: 180px; fill: none; stroke: var(--amber); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 18px rgba(255, 181, 71, 0.6)); }
     </style>
   </head>
   <body>
@@ -221,6 +224,7 @@
         <div id="c3" class="rtl">تا شرایط برایت ارسال شود</div>
         <div id="ctags" class="rtl"><span>ظرفیت محدود</span><span>فقط ویژه‌ی اعضا</span></div>
         <div id="csign" class="rtl">با همراهی فاطمه شمس</div>
+        <div id="clink"><i><svg viewBox="0 0 24 24"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.4-1.6Z" /></svg></i><span>t.me/+B70Edyob54Q0NWVk</span></div>
         <div id="arrow"><svg viewBox="0 0 100 200"><path d="M50 10v160 M14 132l36 40 36-40" /></svg></div>
       </div>
 
@@ -408,9 +412,10 @@
           tl.fromTo(s, { opacity: 0, y: 30, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 16.25 + i * 0.25);
         });
         tl.fromTo("#csign", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.25, ease: SPRING }, 16.75);
+        tl.fromTo("#clink", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.28, ease: "back.out(2)" }, 17.0);
         tl.fromTo("#arrow", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.25, ease: SPRING }, 16.0);
         for (let t = 16.5; t < 19.4; t += B) {
-          tl.fromTo("#arrow", { y: 0 }, { y: 46, duration: 0.25, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, t);
+          tl.fromTo("#arrow", { y: 0 }, { y: 30, duration: 0.25, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, t);
         }
         tl.to("#s6", { opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 0.12, ease: "power2.in" }, 19.4);
 
