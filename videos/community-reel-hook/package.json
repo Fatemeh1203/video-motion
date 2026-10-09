@@ -1,0 +1,9 @@
+{
+  "name": "community-reel-hook",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "npx hyperframes check",
+    "render": "npx hyperframes render"
+  }
+}

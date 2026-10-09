@@ -1,0 +1,68 @@
+      :root { --bg: #0a0e1a; --fg: #f5f7ff; --amber: #ffb547; --soft: #dce2f5; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: "Vazirmatn", sans-serif; color: var(--fg); }
+      .rtl { direction: rtl; }
+      em { font-style: normal; color: var(--amber); }
+      .scene { position: absolute; inset: 0; opacity: 0; }
+      #s1 { opacity: 1; }
+      #bg { position: absolute; inset: 0; background: radial-gradient(ellipse 90% 60% at 50% 45%, #111833, #0a0e1a 70%); }
+      .plx { position: absolute; left: 0; top: 0; width: 1080px; height: 3840px; }
+      .pt { position: absolute; border-radius: 50%; background: #f5f7ff; }
+      #grain { position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.09; mix-blend-mode: overlay; }
+      #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(10, 14, 26, 0) 55%, rgba(3, 5, 10, 0.55) 100%); }
+
+      /* chips: bright pills, 44px text */
+      .chip { position: absolute; display: flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 44px; background: #f5f7ff; color: #0a0e1a; font-size: 44px; font-weight: 700; direction: ltr; white-space: nowrap; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); }
+      .chip i { display: block; width: 18px; height: 18px; border-radius: 50%; background: var(--c); }
+      #burst { position: absolute; left: 340px; top: 760px; width: 400px; height: 400px; border-radius: 50%; border: 10px solid var(--fg); opacity: 0; }
+      .plate { position: absolute; left: 0; right: 0; top: 700px; width: fit-content; margin: 0 auto; padding: 34px 60px 42px; border-radius: 44px; background: rgba(10, 14, 26, 0.94); box-shadow: 0 0 0 2px rgba(245, 247, 255, 0.12), 0 40px 120px rgba(0, 0, 0, 0.7); text-align: center; font-size: 140px; font-weight: 900; line-height: 1.22; white-space: nowrap; }
+      #t-knot { opacity: 0; }
+
+      /* answer */
+      #ans { position: absolute; left: 90px; right: 90px; top: 640px; text-align: center; font-size: 150px; font-weight: 900; line-height: 1.25; }
+      #cname { position: absolute; left: 90px; right: 90px; top: 1210px; text-align: center; font-size: 76px; font-weight: 900; background: linear-gradient(100deg, #d9cfff, #b9a8ff 55%, #c9bdff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+      /* tools */
+      #tool-name { position: absolute; left: 90px; right: 90px; top: 290px; height: 220px; }
+      .tname { position: absolute; left: 0; right: 0; top: 0; text-align: center; direction: ltr; font-size: 160px; font-weight: 900; line-height: 220px; color: var(--fg); opacity: 0; }
+      #card-wrap { position: absolute; left: 130px; width: 820px; top: 600px; height: 660px; perspective: 1600px; }
+      #card { position: absolute; inset: 0; padding: 70px 70px; border-radius: 48px; background: #23263f; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.12), 0 40px 120px rgba(0, 0, 0, 0.55); transform-origin: 50% 100%; display: flex; flex-direction: column; justify-content: center; gap: 46px; }
+      .tick { display: flex; align-items: center; gap: 30px; font-size: 64px; font-weight: 700; }
+      .tick i { flex: none; display: flex; align-items: center; justify-content: center; width: 86px; height: 86px; border-radius: 50%; background: var(--fg); }
+      .tick svg { width: 54px; height: 54px; fill: none; stroke: #0a0e1a; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+      #dots { position: absolute; left: 0; right: 0; top: 1330px; display: flex; justify-content: center; gap: 22px; }
+      #dots b { display: block; width: 26px; height: 26px; border-radius: 13px; background: rgba(245, 247, 255, 0.28); }
+
+      /* features */
+      .feat { position: absolute; inset: 0; opacity: 0; }
+      .ico { position: absolute; left: 340px; top: 300px; width: 400px; height: 400px; fill: none; stroke: var(--fg); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+      .ico .acc { stroke: var(--fg); }
+      .flabel { position: absolute; left: 90px; right: 90px; top: 790px; text-align: center; font-size: 140px; font-weight: 900; line-height: 1.25; }
+      .flabel.small { font-size: 130px; }
+      #fidx { position: absolute; left: 0; right: 0; top: 1300px; display: flex; justify-content: center; gap: 18px; }
+      #fidx b { display: block; width: 110px; height: 14px; border-radius: 7px; background: rgba(245, 247, 255, 0.25); }
+
+      /* not alone */
+      #alone { position: absolute; left: 90px; right: 90px; top: 280px; text-align: center; font-size: 140px; font-weight: 900; line-height: 1.22; }
+      #tg { position: absolute; left: 100px; right: 100px; top: 760px; display: flex; align-items: flex-end; gap: 22px; }
+      #tg-av { flex: none; width: 120px; height: 120px; border-radius: 50%; background: #2b5278; display: flex; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; }
+      #tg-bubble { padding: 30px 40px 36px; border-radius: 40px 40px 40px 10px; background: #182533; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); }
+      #tg-name { font-size: 44px; font-weight: 700; color: var(--soft); }
+      #tg-msg { margin-top: 10px; font-size: 56px; font-weight: 700; line-height: 1.4; white-space: nowrap; }
+      #tg-msg img { width: 60px; height: 60px; vertical-align: -10px; }
+      #tg-input { position: absolute; left: 100px; right: 100px; top: 1250px; height: 120px; border-radius: 60px; background: #17212b; display: flex; align-items: center; justify-content: flex-end; padding: 0 18px; }
+      #tg-input span { position: absolute; right: 50px; top: 56px; width: 260px; height: 8px; border-radius: 4px; background: rgba(245, 247, 255, 0.18); }
+      #tg-input i { display: flex; align-items: center; justify-content: center; width: 88px; height: 88px; border-radius: 50%; background: #2aa3de; }
+      #tg-input svg { width: 48px; height: 48px; fill: #fff; }
+
+      /* CTA */
+      #c1 { position: absolute; left: 90px; right: 90px; top: 270px; text-align: center; font-size: 150px; font-weight: 900; line-height: 1.25; }
+      #kw { position: absolute; left: 0; right: 0; top: 500px; width: fit-content; margin: 0 auto; padding: 14px 46px 30px; border-radius: 40px; border: 6px solid var(--amber); box-shadow: 0 0 40px rgba(255, 181, 71, 0.45), inset 0 0 30px rgba(255, 181, 71, 0.18); font-size: 124px; font-weight: 900; line-height: 1.25; color: var(--amber); }
+      #c3 { position: absolute; left: 90px; right: 90px; top: 790px; text-align: center; font-size: 56px; font-weight: 700; color: var(--soft); }
+      #ctags { position: absolute; left: 0; right: 0; top: 920px; display: flex; justify-content: center; gap: 22px; }
+      #ctags span { display: inline-block; padding: 12px 34px; border-radius: 40px; border: 3px solid var(--fg); font-size: 46px; font-weight: 700; }
+      #csign { position: absolute; left: 90px; right: 90px; top: 1060px; text-align: center; font-size: 46px; font-weight: 700; color: var(--soft); }
+      #arrow { position: absolute; left: 790px; top: 1150px; width: 140px; height: 280px; }
+      #arrow svg { transform: rotate(-24deg); }
+      #arrow svg { width: 140px; height: 280px; fill: none; stroke: var(--amber); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 18px rgba(255, 181, 71, 0.6)); }
