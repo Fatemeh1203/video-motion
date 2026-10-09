@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 300;
+        src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 400;
+        src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 500;
+        src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 700;
+        src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 800;
+        src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 900;
+        src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2");
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 300;
+        src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 400;
+        src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 500;
+        src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 700;
+        src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 800;
+        src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        font-weight: 900;
+        src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #080b15; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: #eff4ff; background: #080b15; }
+      .rtl { direction: rtl; }
+      #bg { position: absolute; left: -560px; top: -90px; width: 2200px; height: 1238px; object-fit: cover; filter: saturate(1.15) brightness(1.05); }
+      #shade { position: absolute; inset: 0; background: linear-gradient(270deg, rgba(8, 11, 21, 0.97) 0%, rgba(8, 11, 21, 0.93) 38%, rgba(8, 11, 21, 0.55) 58%, rgba(8, 11, 21, 0.1) 78%, rgba(8, 11, 21, 0.25) 100%); }
+      #shade2 { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 78% 50%, rgba(174, 156, 255, 0.16), rgba(8, 11, 21, 0) 70%); }
+      .chip { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 26px; border-radius: 40px; direction: ltr; font-size: 32px; font-weight: 700; white-space: nowrap; color: #eff4ff;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)); border: 1.5px solid rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45); }
+      .chip i { display: block; width: 14px; height: 14px; border-radius: 50%; }
+      #copy { position: absolute; right: 110px; top: 100px; width: 1000px; text-align: right; }
+      #eye { display: inline-flex; align-items: center; gap: 14px; padding: 10px 26px; border-radius: 34px; border: 1.5px solid rgba(137, 255, 240, 0.5); background: rgba(137, 255, 240, 0.08); font-size: 34px; font-weight: 700; color: #89fff0; }
+      #eye i { display: block; width: 14px; height: 14px; border-radius: 50%; background: #89fff0; box-shadow: 0 0 14px #89fff0; }
+      #t1 { margin-top: 20px; font-size: 156px; font-weight: 900; line-height: 1.1; text-shadow: 0 10px 50px rgba(0, 0, 0, 0.6); }
+      #t2 { font-size: 156px; font-weight: 900; line-height: 1.2; white-space: nowrap; background: linear-gradient(100deg, #b39aff 5%, #a8ffef 70%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 8px 40px rgba(137, 255, 240, 0.25)); }
+      #slogan { margin-top: 10px; max-width: 900px; margin-right: 0; margin-left: auto; font-size: 50px; font-weight: 600; line-height: 1.5; color: #dce2f5; text-wrap: balance; }
+      #slogan b { color: #fff; font-weight: 900; }
+      #name { position: absolute; right: 110px; top: 805px; display: flex; align-items: center; gap: 30px; padding: 24px 44px 26px 50px; border-radius: 32px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)); border: 1.5px solid rgba(255, 255, 255, 0.24);
+        backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 30px 80px rgba(0, 0, 0, 0.5); }
+      #name i { display: block; width: 8px; height: 118px; border-radius: 4px; background: linear-gradient(#a8ffef, #b39aff); box-shadow: 0 0 20px rgba(137, 255, 240, 0.6); }
+      #name b { display: block; font-size: 92px; font-weight: 900; line-height: 1.1; }
+      #name span { display: block; margin-top: 4px; font-size: 34px; font-weight: 600; color: #b3bdd8; }
+      #grain { position: absolute; inset: 0; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.07; mix-blend-mode: overlay; }
+      #vig { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(8, 11, 21, 0) 60%, rgba(2, 3, 10, 0.55) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-duration="1">
+      <img id="bg" src="assets/img/cover-bg.jpg" alt="" />
+      <div id="shade"></div>
+      <div id="shade2"></div>
+      <div class="chip" data-layout-allow-overlap style="left:150px;top:170px;transform:rotate(-6deg)"><i style="background:#91ffea;box-shadow:0 0 12px #91ffea"></i>ChatGPT</div>
+      <div class="chip" data-layout-allow-overlap style="left:470px;top:120px;transform:rotate(5deg)"><i style="background:#ffbf86;box-shadow:0 0 12px #ffbf86"></i>Claude</div>
+      <div class="chip" data-layout-allow-overlap style="left:760px;top:190px;transform:rotate(-4deg)"><i style="background:#77caff;box-shadow:0 0 12px #77caff"></i>Gemini</div>
+      <div class="chip" data-layout-allow-overlap style="left:110px;top:800px;transform:rotate(5deg)"><i style="background:#b39aff;box-shadow:0 0 12px #b39aff"></i>Midjourney</div>
+      <div class="chip" data-layout-allow-overlap style="left:470px;top:870px;transform:rotate(-5deg)"><i style="background:#ff94ba;box-shadow:0 0 12px #ff94ba"></i>n8n</div>
+      <div class="chip" data-layout-allow-overlap style="left:760px;top:810px;transform:rotate(6deg)"><i style="background:#ddf998;box-shadow:0 0 12px #ddf998"></i>Cursor</div>
+      <div id="copy" class="rtl">
+        <div id="eye"><i></i>هر روز، یک درسنامهٔ تازه</div>
+        <div id="t1">کامیونیتی</div>
+        <div id="t2">هوش مصنوعی</div>
+        <div id="slogan">آموزش <b>کاربردیِ</b> همهٔ ابزارهای هوش مصنوعی دنیا</div>
+      </div>
+      <div id="name" class="rtl"><i></i><div><b>فاطمه شمس</b><span>توسعه‌دهنده و مربی هوش مصنوعی</span></div></div>
+      <div id="vig" class="clip" data-start="0" data-duration="1" data-track-index="4"></div>
+      <div id="grain" class="clip" data-start="0" data-duration="1" data-track-index="5"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true }).to({}, { duration: 1 });
+    </script>
+  </body>
+</html>
