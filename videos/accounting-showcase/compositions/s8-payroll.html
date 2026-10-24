@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s8-payroll-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #pr-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #pr-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #pr-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #pr-head span {
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #pr-btn {
+          position: absolute;
+          left: 1280px;
+          top: 250px;
+          width: 500px;
+          height: 120px;
+          border-radius: 30px;
+          background: linear-gradient(100deg, #2563eb, #0f9d7a);
+          box-shadow: 0 18px 40px rgba(37, 99, 235, 0.3);
+          color: #ffffff;
+          direction: rtl;
+          text-align: center;
+          font-size: 44px;
+          font-weight: 900;
+          line-height: 120px;
+          opacity: 0;
+        }
+        #pr-formula {
+          position: absolute;
+          left: 140px;
+          top: 250px;
+          width: 1080px;
+          height: 120px;
+          border-radius: 26px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 14px 34px rgba(29, 42, 68, 0.08);
+          direction: rtl;
+          text-align: center;
+          font-size: 38px;
+          font-weight: 800;
+          line-height: 116px;
+          opacity: 0;
+        }
+        #pr-formula em {
+          font-style: normal;
+          color: #0f9d7a;
+        }
+        #pr-formula i {
+          font-style: normal;
+          color: #dc4a3d;
+        }
+        .pr-out {
+          position: absolute;
+          top: 430px;
+          width: 500px;
+          height: 330px;
+          border-radius: 28px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 16px 40px rgba(29, 42, 68, 0.1);
+          direction: rtl;
+          padding: 32px 34px;
+          opacity: 0;
+        }
+        .pr-out b {
+          display: block;
+          font-size: 38px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        .pr-out small {
+          display: block;
+          margin-top: 12px;
+          font-size: 27px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+        .pr-out i {
+          display: block;
+          width: 76px;
+          height: 76px;
+          border-radius: 22px;
+          background: var(--c);
+          margin-bottom: 20px;
+          opacity: 0.9;
+        }
+        #pr-o1 { left: 1280px; }
+        #pr-o2 { left: 710px; }
+        #pr-o3 { left: 140px; }
+        #pr-foot {
+          position: absolute;
+          top: 830px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 32px;
+          font-weight: 700;
+          color: var(--mint);
+          line-height: 1.8;
+          opacity: 0;
+        }
+      </style>
+
+      <div id="pr-root" data-composition-id="s8-payroll" data-width="1920" data-height="1080" data-duration="5.6">
+        <div id="pr-wrap">
+          <div id="pr-head">بستن ماه: <span>حقوق با یک دکمه</span></div>
+          <div id="pr-btn">بستن ماه</div>
+          <div id="pr-formula">خالص = <em>سهم واریزی‌های ماه</em> + حقوق ثابت − <i>مالیات و بیمه</i></div>
+
+          <div class="pr-out" id="pr-o1" style="--c: #2563eb"><i></i><b>حقوق مدرسین</b><small>فقط از پولی که واقعاً وصول شده؛ حضوری، آنلاین یا قرارداد ترکیبی</small></div>
+          <div class="pr-out" id="pr-o2" style="--c: #d97706"><i></i><b>گزارش ماهانه</b><small>درآمد، هزینه، سهم آموزشگاه و سود عملیاتی ماه</small></div>
+          <div class="pr-out" id="pr-o3" style="--c: #0f9d7a"><i></i><b>ایمیل + اکسل</b><small>گزارش با پیوست اکسل به ایمیل مدیر، با وضعیت واریز هر مدرس</small></div>
+
+          <div id="pr-foot">اجرای دوباره بی‌خطر است؛ ردیف تکراری ساخته نمی‌شود</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#pr-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#pr-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#pr-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.4);
+          tl.to("#pr-btn", { scale: 0.92, duration: 0.12, yoyo: true, repeat: 1 }, 1.0);
+          tl.fromTo("#pr-formula", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.2);
+          tl.fromTo(["#pr-o1", "#pr-o2", "#pr-o3"], { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)", stagger: 0.35 }, 1.8);
+          tl.fromTo("#pr-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 3.2);
+          tl.to("#pr-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.2);
+          window.__timelines["s8-payroll"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

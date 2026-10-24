@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s10-trust-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #tr-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #tr-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #tr-head {
+          position: absolute;
+          top: 100px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 84px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #tr-head span {
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #tr-grid {
+          position: absolute;
+          left: 150px;
+          top: 300px;
+          width: 1620px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          direction: rtl;
+        }
+        .tr-c {
+          height: 230px;
+          border-radius: 28px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 14px 34px rgba(29, 42, 68, 0.09);
+          padding: 34px 34px;
+          border-top: 8px solid var(--c);
+          opacity: 0;
+        }
+        .tr-c b {
+          display: block;
+          font-size: 40px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        .tr-c small {
+          display: block;
+          margin-top: 10px;
+          font-size: 28px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.5;
+        }
+      </style>
+
+      <div id="tr-root" data-composition-id="s10-trust" data-width="1920" data-height="1080" data-duration="4.6">
+        <div id="tr-wrap">
+          <div id="tr-head">ساخته‌شده برای <span>اعتماد</span></div>
+          <div id="tr-grid">
+            <div class="tr-c" style="--c: #0f9d7a"><b>تقویم شمسی</b><small>۴۰٬۰۰۰ روز تست، صفر خطا</small></div>
+            <div class="tr-c" style="--c: #2563eb"><b>بایگانی کامل</b><small>دادهٔ خام هر ورودی در «لاگ ورودی»</small></div>
+            <div class="tr-c" style="--c: #6b4fe0"><b>قطعی گوگل؟</b><small>تلاش دوبارهٔ خودکار در همهٔ ورک‌فلوها</small></div>
+            <div class="tr-c" style="--c: #d97706"><b>بدون تکرار</b><small>اجرای دوباره، ردیف تکراری نمی‌سازد</small></div>
+            <div class="tr-c" style="--c: #dc4a3d"><b>درصد قفل‌شده</b><small>تغییر درصد، سوابق قبلی را عوض نمی‌کند</small></div>
+            <div class="tr-c" style="--c: #0f9d7a"><b>سرور اختصاصی</b><small>n8n روی سرور خود آموزشگاه، بدون سهمیهٔ اجرای ابری</small></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#tr-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#tr-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#tr-root .tr-c", { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)", stagger: 0.2 }, 0.5);
+          tl.to("#tr-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 4.2);
+          window.__timelines["s10-trust"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

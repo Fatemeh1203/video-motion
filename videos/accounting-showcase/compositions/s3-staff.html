@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s3-staff-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #st-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #st-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #st-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #st-head span {
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #st-phone {
+          position: absolute;
+          left: 1400px;
+          top: 205px;
+          width: 380px;
+          height: 790px;
+          border-radius: 56px;
+          background: #1d2a44;
+          box-shadow: 0 30px 70px rgba(29, 42, 68, 0.25);
+          padding: 16px;
+          opacity: 0;
+        }
+        #st-screen {
+          position: relative;
+          width: 348px;
+          height: 758px;
+          border-radius: 42px;
+          overflow: hidden;
+          background: #dbe8ff;
+        }
+        #st-img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 348px;
+          height: 1249px;
+        }
+        #st-notch {
+          position: absolute;
+          left: 124px;
+          top: 10px;
+          width: 100px;
+          height: 28px;
+          border-radius: 14px;
+          background: #1d2a44;
+        }
+        .st-row {
+          position: absolute;
+          left: 150px;
+          width: 1150px;
+          height: 196px;
+          border-radius: 26px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 14px 34px rgba(29, 42, 68, 0.08);
+          direction: rtl;
+          padding: 30px 36px;
+          display: flex;
+          gap: 30px;
+          align-items: flex-start;
+          opacity: 0;
+        }
+        .st-row i {
+          flex: none;
+          width: 84px;
+          height: 84px;
+          border-radius: 24px;
+          background: var(--c);
+          color: #ffffff;
+          font-style: normal;
+          font-size: 48px;
+          font-weight: 900;
+          line-height: 84px;
+          text-align: center;
+        }
+        .st-row b {
+          display: block;
+          font-size: 44px;
+          font-weight: 900;
+          color: var(--fg);
+        }
+        .st-row small {
+          display: block;
+          margin-top: 8px;
+          font-size: 29px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.5;
+        }
+        #st-r1 { top: 240px; }
+        #st-r2 { top: 466px; }
+        #st-r3 { top: 692px; }
+        #st-foot {
+          position: absolute;
+          top: 935px;
+          left: 150px;
+          width: 1150px;
+          text-align: center;
+          direction: rtl;
+          font-size: 30px;
+          font-weight: 700;
+          color: var(--mint);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="st-root" data-composition-id="s3-staff" data-width="1920" data-height="1080" data-duration="5.4">
+        <div id="st-wrap">
+          <div id="st-head">بخش ۱ · <span>سه فرم برای همکاران</span></div>
+          <div class="st-row" id="st-r1" style="--c: #0f9d7a"><i>۱</i><div><b>ثبت واریزی</b><small>شهریهٔ فراگیر، پرداخت مدرسه یا مجموعهٔ همکار · عکس فیش · سهم مدرس خودکار</small></div></div>
+          <div class="st-row" id="st-r2" style="--c: #d97706"><i>۲</i><div><b>ثبت هزینه</b><small>اجاره، قبوض، تبلیغات، سایت، سرور… · فاکتور مستقیم به گوگل‌درایو</small></div></div>
+          <div class="st-row" id="st-r3" style="--c: #6b4fe0"><i>۳</i><div><b>کلاس‌ها و برنامهٔ هفتگی</b><small>کلاس برگزارشده، لغو یا جبرانی · برنامهٔ ثابت هر فراگیر</small></div></div>
+          <div id="st-foot">با رمز همکاران باز می‌شوند · هیچ ثبتی بدون تأیید مدیر در دفتر نمی‌نشیند</div>
+          <div id="st-phone">
+            <div id="st-screen">
+              <img id="st-img" src="assets/img/staff-page-phone.jpg" alt="" />
+              <div id="st-notch"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#st-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#st-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#st-phone", { opacity: 0, y: 120, rotation: 4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+          // each row lands while the phone scrolls to the same form
+          tl.fromTo("#st-r1", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.8);
+          tl.fromTo("#st-img", { y: 0 }, { y: -230, duration: 0.6, ease: "power2.inOut" }, 0.9);
+          tl.fromTo("#st-r2", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.7);
+          tl.to("#st-img", { y: -491, duration: 0.6, ease: "power2.inOut" }, 1.8);
+          tl.fromTo("#st-r3", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+          tl.fromTo("#st-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 3.3);
+          tl.to("#st-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.0);
+          window.__timelines["s3-staff"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

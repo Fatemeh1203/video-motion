@@ -245,9 +245,9 @@
         #s3-st3 { left: 110px; }
       </style>
 
-      <div id="s3-root" data-composition-id="s3-flow" data-width="1920" data-height="1080" data-duration="9.1667">
+      <div id="s3-root" data-composition-id="s3-flow" data-width="1920" data-height="1080" data-duration="7.3333">
         <div id="s3-wrap">
-          <div id="s3-head">یک واریزی، <span>از گوشی همکار تا دفتر حساب</span></div>
+          <div id="s3-head">فرم ۱ · <span>ثبت واریزی</span></div>
 
           <div class="s3-card" id="s3-form" style="--c: #2563eb">
             <div class="s3-ttl">ثبت واریزی</div>
@@ -323,9 +323,9 @@
           tl.fromTo("#s3-new div", { boxShadow: "0 0 0px rgba(15,157,122,0)" }, { boxShadow: "0 0 26px rgba(15,157,122,0.45)", duration: 0.5, yoyo: true, repeat: 1 }, 7.1);
 
           tl.to("#s3-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 10.4);
-          // play the scene 1.2x faster (40s cut)
+          // play the scene 1.5x faster
           const root = gsap.timeline({ paused: true });
-          root.add(tl.timeScale(1.2), 0);
+          root.add(tl.timeScale(1.5), 0);
           window.__timelines["s3-flow"] = root;
         })();
       </script>

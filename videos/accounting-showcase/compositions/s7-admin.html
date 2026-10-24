@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s7-admin-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #ad-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #ad-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #ad-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #ad-head span {
+          background: linear-gradient(100deg, #6b4fe0, #2563eb 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #ad-browser {
+          position: absolute;
+          left: 120px;
+          top: 250px;
+          width: 860px;
+          height: 582px;
+          border-radius: 22px;
+          overflow: hidden;
+          background: #ffffff;
+          border: 2px solid var(--glass-line);
+          box-shadow: 0 30px 70px rgba(29, 42, 68, 0.18);
+          opacity: 0;
+        }
+        #ad-bar {
+          height: 44px;
+          background: #eef1f6;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 18px;
+        }
+        #ad-bar b {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--c);
+        }
+        #ad-view {
+          width: 860px;
+          height: 538px;
+          overflow: hidden;
+        }
+        #ad-img {
+          display: block;
+          width: 860px;
+          height: 538px;
+          transform-origin: 50% 46%;
+        }
+        #ad-grid {
+          position: absolute;
+          left: 1030px;
+          top: 250px;
+          width: 770px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+          direction: rtl;
+        }
+        .ad-tool {
+          height: 128px;
+          border-radius: 22px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 10px 24px rgba(29, 42, 68, 0.08);
+          padding: 18px 22px;
+          opacity: 0;
+        }
+        .ad-tool b {
+          display: block;
+          font-size: 31px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        .ad-tool small {
+          display: block;
+          margin-top: 4px;
+          font-size: 23px;
+          font-weight: 500;
+          color: var(--muted);
+        }
+        #ad-foot {
+          position: absolute;
+          top: 900px;
+          left: 120px;
+          right: 120px;
+          text-align: center;
+          direction: rtl;
+          font-size: 31px;
+          font-weight: 700;
+          color: var(--mint);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="ad-root" data-composition-id="s7-admin" data-width="1920" data-height="1080" data-duration="5.4">
+        <div id="ad-wrap">
+          <div id="ad-head">بخش ۲ · <span>پنل خصوصی مدیر</span></div>
+
+          <div id="ad-browser">
+            <div id="ad-bar"><b style="--c: #dc4a3d"></b><b style="--c: #d97706"></b><b style="--c: #0f9d7a"></b></div>
+            <div id="ad-view"><img id="ad-img" src="assets/img/admin-panel-lock.jpg" alt="" /></div>
+          </div>
+
+          <div id="ad-grid">
+            <div class="ad-tool" style="--c: #2563eb"><b>بستن ماه و حقوق</b><small>با یک دکمه، فقط به دست مدیر</small></div>
+            <div class="ad-tool" style="--c: #0f9d7a"><b>واریز حقوق</b><small>وضعیت پرداخت هر مدرس</small></div>
+            <div class="ad-tool" style="--c: #d97706"><b>آوردهٔ سرمایه‌گذار</b><small>با نرخ زندهٔ طلا و دلار</small></div>
+            <div class="ad-tool" style="--c: #6b4fe0"><b>درصدهای ویژه</b><small>درصد مدرس فقط با مدیر</small></div>
+            <div class="ad-tool" style="--c: #dc4a3d"><b>آپلود اکسل</b><small>ورود دسته‌ای سوابق قدیمی</small></div>
+            <div class="ad-tool" style="--c: #2563eb"><b>تنظیم تلگرام</b><small>تأییدها به گوشی مدیر</small></div>
+            <div class="ad-tool" style="--c: #0f9d7a"><b>وبهوک ورودی</b><small>اتصال درگاه و سامانه‌های دیگر</small></div>
+            <div class="ad-tool" style="--c: #d97706"><b>دفتر و پنل n8n</b><small>گوگل‌شیت و ورک‌فلوها</small></div>
+          </div>
+
+          <div id="ad-foot">لینک‌های مدیر با AES-256 رمزگذاری شده‌اند؛ بدون رمز مدیر، حتی در گیت‌هاب خوانده نمی‌شوند</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#ad-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#ad-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#ad-browser", { opacity: 0, x: -80, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+          tl.fromTo("#ad-img", { scale: 1 }, { scale: 1.35, duration: 3.6, ease: "sine.inOut" }, 0.8);
+          tl.fromTo("#ad-root .ad-tool", { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)", stagger: 0.22 }, 0.7);
+          tl.fromTo("#ad-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 2.9);
+          tl.to("#ad-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.0);
+          window.__timelines["s7-admin"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -139,14 +139,14 @@
           right: 0;
           text-align: center;
           direction: rtl;
-          font-size: 36px;
+          font-size: 32px;
           font-weight: 500;
           color: var(--muted);
           opacity: 0;
         }
       </style>
 
-      <div id="s4-root" data-composition-id="s4-share" data-width="1920" data-height="1080" data-duration="6.4">
+      <div id="s4-root" data-composition-id="s4-share" data-width="1920" data-height="1080" data-duration="5">
         <div id="s4-wrap">
           <div id="s4-head">سهم مدرس؟ <span>ماشین‌حساب لازم نیست</span></div>
           <div id="s4-total"><small>واریزی تأییدشده</small><b id="s4-tv">۰</b><em>تومان</em></div>
@@ -158,7 +158,7 @@
           <div class="s4-pct" id="s4-p2" style="top: 520px">۳۰٪</div>
           <div class="s4-res" id="s4-r1" style="--c: #0f9d7a"><small>سهم مدرس</small><b id="s4-v1">۰</b></div>
           <div class="s4-res" id="s4-r2" style="--c: #6b4fe0"><small>سهم آموزشگاه</small><b id="s4-v2">۰</b></div>
-          <div id="s4-note">درصد حضوری و آنلاین جدا · درصد اختصاصی برای هر کلاس · حقوق آخر ماه</div>
+          <div id="s4-note">اولویت درصد: عدد فرم ← درصد کلاس ← درصد مدرس ← پیش‌فرض · در لحظهٔ ثبت قفل می‌شود</div>
         </div>
       </div>
 
@@ -195,9 +195,9 @@
 
           tl.fromTo("#s4-note", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.9);
           tl.to("#s4-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 7.4);
-          // play the scene 1.25x faster (40s cut)
+          // play the scene 1.6x faster
           const root = gsap.timeline({ paused: true });
-          root.add(tl.timeScale(1.25), 0);
+          root.add(tl.timeScale(1.6), 0);
           window.__timelines["s4-share"] = root;
         })();
       </script>

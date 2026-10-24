@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s9-capital-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #cp-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #cp-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #cp-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #cp-head span {
+          background: linear-gradient(100deg, #d97706, #dc4a3d 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #cp-main {
+          position: absolute;
+          left: 960px;
+          top: 230px;
+          width: 840px;
+          height: 650px;
+          border-radius: 30px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
+          direction: rtl;
+          padding: 36px 40px;
+          opacity: 0;
+        }
+        #cp-main > b {
+          display: block;
+          font-size: 46px;
+          font-weight: 900;
+          color: #c2410c;
+        }
+        #cp-main > small {
+          display: block;
+          margin-top: 10px;
+          font-size: 28px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+        .cp-val {
+          margin-top: 22px;
+          border-radius: 20px;
+          padding: 18px 24px;
+          background: rgba(29, 42, 68, 0.04);
+          border-right: 8px solid var(--c);
+          opacity: 0;
+        }
+        .cp-val b {
+          font-size: 32px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        .cp-val span {
+          font-size: 26px;
+          font-weight: 500;
+          color: var(--fg);
+          margin-right: 12px;
+        }
+        #cp-rep {
+          position: absolute;
+          left: 120px;
+          top: 230px;
+          width: 780px;
+          height: 650px;
+          border-radius: 30px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
+          direction: rtl;
+          padding: 36px 40px;
+          opacity: 0;
+        }
+        #cp-rep > b {
+          display: block;
+          font-size: 46px;
+          font-weight: 900;
+          color: #2563eb;
+          margin-bottom: 18px;
+        }
+        .cp-step {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          height: 96px;
+          opacity: 0;
+        }
+        .cp-step i {
+          flex: none;
+          width: 62px;
+          height: 62px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 5px solid var(--c);
+          box-shadow: 0 0 18px var(--c);
+        }
+        .cp-step b {
+          font-size: 36px;
+          font-weight: 900;
+        }
+        .cp-step small {
+          font-size: 25px;
+          font-weight: 500;
+          color: var(--muted);
+          margin-right: 12px;
+        }
+        #cp-rep-note {
+          margin-top: 18px;
+          font-size: 26px;
+          font-weight: 700;
+          color: var(--mint);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="cp-root" data-composition-id="s9-capital" data-width="1920" data-height="1080" data-duration="5.6">
+        <div id="cp-wrap">
+          <div id="cp-head">سرمایه‌گذار و <span>گزارش‌های دوره‌ای</span></div>
+
+          <div id="cp-main">
+            <b>آورده، درآمد نیست</b>
+            <small>جدا ثبت می‌شود تا سود واقعی آموزشگاه دیده شود؛ در سود عملیاتی نمی‌آید، در جریان نقد می‌آید.</small>
+            <div class="cp-val" style="--c: #d97706"><b>ارزش طلایی</b><span>گرم طلای روز آورده × نرخ امروز</span></div>
+            <div class="cp-val" style="--c: #0f9d7a"><b>ارزش دلاری</b><span>دلار روز آورده × نرخ امروز</span></div>
+            <div class="cp-val" style="--c: #6b4fe0"><b>ارزش تورمی</b><span>مبلغ × تورم سال‌های بعد</span></div>
+          </div>
+
+          <div id="cp-rep">
+            <b>گزارش‌ها خودشان می‌رسند</b>
+            <div class="cp-step" style="--c: #0f9d7a"><i></i><b>ماهانه</b><small>بعد از بستن ماه</small></div>
+            <div class="cp-step" style="--c: #2563eb"><i></i><b>فصلی</b><small>بعد از بستن ماه آخر فصل</small></div>
+            <div class="cp-step" style="--c: #6b4fe0"><i></i><b>شش‌ماهه</b><small>نیم‌سال اول و دوم</small></div>
+            <div class="cp-step" style="--c: #d97706"><i></i><b>سالانه</b><small>با ارزش روز سرمایه</small></div>
+            <div id="cp-rep-note">همه با ایمیل · همه با تقویم شمسی</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#cp-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#cp-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#cp-main", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+          tl.fromTo("#cp-root .cp-val", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out", stagger: 0.3 }, 0.9);
+          tl.fromTo("#cp-rep", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.9);
+          tl.fromTo("#cp-root .cp-step", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.8)", stagger: 0.25 }, 2.3);
+          tl.fromTo("#cp-rep-note", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.4);
+          tl.to("#cp-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.2);
+          window.__timelines["s9-capital"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

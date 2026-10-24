@@ -62,7 +62,7 @@
         }
       </style>
 
-      <div id="s6-root" data-composition-id="s6-outro" data-width="1920" data-height="1080" data-duration="4.6">
+      <div id="s6-root" data-composition-id="s6-outro" data-width="1920" data-height="1080" data-duration="3.8">
         <div id="s6-wrap">
           <div id="s6-glow"></div>
                     <div id="s6-rule"></div>
@@ -75,11 +75,11 @@
         (function () {
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#s6-wrap", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
-          tl.fromTo("#s6-glow", { scale: 0.8 }, { scale: 1.15, duration: 4.6, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s6-glow", { scale: 0.8 }, { scale: 1.15, duration: 3.8, ease: "sine.inOut" }, 0);
           tl.fromTo("#s6-name", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
           tl.fromTo("#s6-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.9);
           tl.fromTo("#s6-role", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.1);
-          tl.to("#s6-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 3.95);
+          tl.to("#s6-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 3.3);
           window.__timelines["s6-outro"] = tl;
         })();
       </script>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s6-classes-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #cl-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #cl-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #cl-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #cl-head span {
+          background: linear-gradient(100deg, #6b4fe0, #2563eb 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #cl-table {
+          position: absolute;
+          left: 130px;
+          top: 230px;
+          width: 1060px;
+          height: 650px;
+          border-radius: 30px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
+          direction: rtl;
+          padding: 30px;
+          opacity: 0;
+        }
+        #cl-grid {
+          display: grid;
+          grid-template-columns: 120px repeat(5, 1fr);
+          grid-template-rows: 56px repeat(3, 160px);
+          gap: 10px;
+        }
+        .cl-h {
+          border-radius: 12px;
+          background: rgba(107, 79, 224, 0.12);
+          color: #4c35b5;
+          font-size: 26px;
+          font-weight: 800;
+          text-align: center;
+          line-height: 56px;
+        }
+        .cl-t {
+          font-size: 26px;
+          font-weight: 700;
+          color: var(--muted);
+          text-align: center;
+          padding-top: 60px;
+        }
+        .cl-c {
+          border-radius: 14px;
+          background: rgba(29, 42, 68, 0.04);
+          position: relative;
+        }
+        .cl-slot {
+          position: absolute;
+          inset: 6px;
+          border-radius: 12px;
+          background: var(--c);
+          color: #ffffff;
+          padding: 12px 14px;
+          font-size: 24px;
+          font-weight: 800;
+          line-height: 1.45;
+          opacity: 0;
+        }
+        .cl-slot small {
+          display: block;
+          font-size: 21px;
+          font-weight: 500;
+        }
+        .cl-tag {
+          position: absolute;
+          left: 8px;
+          bottom: 8px;
+          padding: 0 12px;
+          border-radius: 10px;
+          background: #fde68a;
+          color: #78350f;
+          font-size: 20px;
+          font-weight: 800;
+          line-height: 32px;
+        }
+        #cl-del-line {
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          top: 50%;
+          height: 4px;
+          background: #1d2a44;
+          transform-origin: right center;
+        }
+        .cl-pt {
+          position: absolute;
+          left: 1240px;
+          width: 560px;
+          border-radius: 24px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 12px 30px rgba(29, 42, 68, 0.08);
+          direction: rtl;
+          padding: 24px 30px;
+          opacity: 0;
+        }
+        .cl-pt b {
+          display: block;
+          font-size: 34px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        .cl-pt small {
+          display: block;
+          margin-top: 6px;
+          font-size: 26px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.5;
+        }
+        #cl-p1 { top: 230px; }
+        #cl-p2 { top: 450px; }
+        #cl-p3 { top: 670px; }
+      </style>
+
+      <div id="cl-root" data-composition-id="s6-classes" data-width="1920" data-height="1080" data-duration="6">
+        <div id="cl-wrap">
+          <div id="cl-head">فرم ۳ · <span>کلاس‌ها و برنامهٔ هفتگی</span></div>
+
+          <div id="cl-table">
+            <div id="cl-grid">
+              <div></div>
+              <div class="cl-h">شنبه</div><div class="cl-h">یکشنبه</div><div class="cl-h">دوشنبه</div><div class="cl-h">سه‌شنبه</div><div class="cl-h">چهارشنبه</div>
+              <div class="cl-t">۱۶:۰۰</div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #2563eb">C001 · G-1<small>۳ فراگیر</small></div></div>
+              <div class="cl-c"></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #2563eb">C001 · G-1<small>۳ فراگیر</small></div></div>
+              <div class="cl-c"></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #0f9d7a">C004 · G-1<small>۲ فراگیر</small></div></div>
+              <div class="cl-t">۱۷:۳۰</div>
+              <div class="cl-c"></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #6b4fe0">C002 · G-2<small>۴ فراگیر</small></div></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #d97706">C003<small>جلسهٔ جبرانی</small><div class="cl-tag">جبرانی</div></div></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #6b4fe0">C002 · G-2<small>۴ فراگیر</small></div></div>
+              <div class="cl-c"></div>
+              <div class="cl-t">۱۹:۰۰</div>
+              <div class="cl-c"><div class="cl-slot" id="cl-del" style="--c: #94a3b8">C005 · G-1<small>حذف شد</small><div id="cl-del-line"></div></div></div>
+              <div class="cl-c"></div>
+              <div class="cl-c"></div>
+              <div class="cl-c"><div class="cl-slot" style="--c: #0f9d7a">C004 · G-2<small>۱ فراگیر</small></div></div>
+              <div class="cl-c"></div>
+            </div>
+          </div>
+
+          <div class="cl-pt" id="cl-p1" style="--c: #2563eb"><b>گروه‌بندی خودکار</b><small>هم‌کلاسی‌های یک ساعت و مکان، یک شمارهٔ گروه می‌گیرند</small></div>
+          <div class="cl-pt" id="cl-p2" style="--c: #d97706"><b>جلسهٔ جبرانی و تکراری</b><small>جبرانی با تگ طلایی؛ یک فراگیر دو بار ثبت نمی‌شود</small></div>
+          <div class="cl-pt" id="cl-p3" style="--c: #0f9d7a"><b>فهرست زنده + حذف نرم</b><small>دیدن و حذف از روی گوشی؛ ردیف می‌ماند و قابل بازگشت است</small></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#cl-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#cl-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#cl-table", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+          tl.fromTo("#cl-root .cl-slot", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.12 }, 0.7);
+          tl.fromTo("#cl-p1", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.0);
+          tl.fromTo("#cl-p2", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+          tl.fromTo("#cl-p3", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.0);
+          tl.fromTo("#cl-del-line", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, 3.3);
+          tl.fromTo("#cl-del", { opacity: 1 }, { opacity: 0.55, duration: 0.3, immediateRender: false }, 3.6);
+          tl.to("#cl-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.6);
+          window.__timelines["s6-classes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

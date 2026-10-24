@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s5-expense-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #ex-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #ex-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #ex-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 76px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #ex-head span {
+          background: linear-gradient(100deg, #d97706, #dc4a3d 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        .ex-card {
+          position: absolute;
+          top: 230px;
+          height: 640px;
+          border-radius: 30px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
+          direction: rtl;
+          padding: 34px 36px;
+          opacity: 0;
+        }
+        #ex-form { left: 1240px; width: 540px; }
+        #ex-drive { left: 760px; width: 420px; text-align: center; }
+        #ex-sheet { left: 140px; width: 560px; }
+        .ex-ttl {
+          font-size: 40px;
+          font-weight: 800;
+          margin-bottom: 22px;
+          color: var(--c);
+        }
+        .ex-lab {
+          font-size: 24px;
+          font-weight: 500;
+          color: var(--muted);
+          margin: 14px 0 8px;
+        }
+        #ex-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .ex-chip {
+          padding: 8px 22px;
+          border-radius: 30px;
+          border: 2px solid rgba(29, 42, 68, 0.14);
+          font-size: 27px;
+          font-weight: 700;
+          color: var(--muted);
+          opacity: 0;
+        }
+        #ex-pick {
+          position: relative;
+        }
+        #ex-pick-on {
+          position: absolute;
+          inset: -2px;
+          border-radius: 30px;
+          background: #d97706;
+          color: #ffffff;
+          padding: 8px 22px;
+          opacity: 0;
+        }
+        .ex-field {
+          height: 58px;
+          border-radius: 14px;
+          background: rgba(29, 42, 68, 0.05);
+          border: 2px solid rgba(29, 42, 68, 0.12);
+          padding: 0 18px;
+          font-size: 29px;
+          font-weight: 700;
+          line-height: 54px;
+          opacity: 0;
+        }
+        #ex-file {
+          position: absolute;
+          left: 1290px;
+          top: 760px;
+          width: 230px;
+          height: 74px;
+          border-radius: 16px;
+          background: #ffffff;
+          border: 2px solid rgba(220, 74, 61, 0.5);
+          box-shadow: 0 10px 24px rgba(29, 42, 68, 0.14);
+          direction: ltr;
+          font-size: 26px;
+          font-weight: 800;
+          color: #dc4a3d;
+          text-align: center;
+          line-height: 70px;
+          opacity: 0;
+        }
+        #ex-folder {
+          margin: 50px auto 24px;
+          width: 220px;
+          height: 160px;
+          border-radius: 18px;
+          background: linear-gradient(160deg, #ffd27a, #f4a62a);
+          position: relative;
+        }
+        #ex-folder::before {
+          content: "";
+          position: absolute;
+          left: 18px;
+          top: -22px;
+          width: 90px;
+          height: 30px;
+          border-radius: 10px 10px 0 0;
+          background: #f4a62a;
+        }
+        #ex-drive b {
+          display: block;
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 1.5;
+        }
+        #ex-drive small {
+          display: block;
+          margin-top: 14px;
+          font-size: 25px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+        .ex-row {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+        .ex-row div {
+          flex: 1;
+          height: 56px;
+          border-radius: 10px;
+          background: rgba(29, 42, 68, 0.05);
+          font-size: 23px;
+          font-weight: 700;
+          text-align: center;
+          line-height: 56px;
+          white-space: nowrap;
+        }
+        .ex-row.h div {
+          background: rgba(217, 119, 6, 0.14);
+          color: #9a4f04;
+          font-weight: 800;
+        }
+        #ex-new { opacity: 0; }
+        #ex-new div { background: rgba(217, 119, 6, 0.12); }
+        #ex-link {
+          color: #2563eb !important;
+          text-decoration: underline;
+        }
+        #ex-note {
+          margin-top: 26px;
+          font-size: 25px;
+          font-weight: 500;
+          color: var(--muted);
+          line-height: 1.6;
+          opacity: 0;
+        }
+        .ex-arrow {
+          position: absolute;
+          top: 547px;
+          width: 50px;
+          height: 6px;
+          border-radius: 3px;
+          background: #d97706;
+          transform-origin: right center;
+        }
+        .ex-arrow::after {
+          content: "";
+          position: absolute;
+          left: -6px;
+          top: -9px;
+          border-style: solid;
+          border-width: 12px 16px 12px 0;
+          border-color: transparent #d97706 transparent transparent;
+        }
+        #ex-foot {
+          position: absolute;
+          top: 920px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 32px;
+          font-weight: 700;
+          color: var(--mint);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="ex-root" data-composition-id="s5-expense" data-width="1920" data-height="1080" data-duration="5.2">
+        <div id="ex-wrap">
+          <div id="ex-head">فرم ۲ · <span>ثبت هزینه</span></div>
+
+          <div class="ex-card" id="ex-form" style="--c: #d97706">
+            <div class="ex-ttl">ثبت هزینه</div>
+            <div class="ex-lab">دسته هزینه</div>
+            <div id="ex-chips">
+              <div class="ex-chip" id="ex-pick"><span id="ex-pick-t">اجاره</span><div id="ex-pick-on">اجاره</div></div>
+              <div class="ex-chip">قبوض</div>
+              <div class="ex-chip">تبلیغات</div>
+              <div class="ex-chip">سایت</div>
+              <div class="ex-chip">سرور</div>
+              <div class="ex-chip">سایر</div>
+            </div>
+            <div class="ex-lab">مبلغ</div>
+            <div class="ex-field">۱۲٬۰۰۰٬۰۰۰ تومان</div>
+            <div class="ex-lab">شرح</div>
+            <div class="ex-field">اجارهٔ مرداد</div>
+          </div>
+          <div id="ex-file">فاکتور.pdf</div>
+
+          <div class="ex-card" id="ex-drive" style="--c: #d97706">
+            <div id="ex-folder"></div>
+            <b>گوگل‌درایو</b>
+            <small>پوشهٔ «فاکتورها و رسیدهای<br />آموزشگاه فردا»</small>
+          </div>
+
+          <div class="ex-card" id="ex-sheet" style="--c: #d97706">
+            <div class="ex-ttl">شیت «هزینه‌ها»</div>
+            <div class="ex-row h"><div>دسته</div><div>مبلغ</div><div>شرح</div><div>فاکتور</div></div>
+            <div class="ex-row"><div></div><div></div><div></div><div></div></div>
+            <div class="ex-row"><div></div><div></div><div></div><div></div></div>
+            <div class="ex-row" id="ex-new"><div>اجاره</div><div>۱۲٬۰۰۰٬۰۰۰</div><div>اجارهٔ مرداد</div><div id="ex-link">لینک</div></div>
+            <div id="ex-note">حقوق مدرس اینجا ثبت نمی‌شود؛<br />خودش از روی واریزی‌ها حساب می‌شود.</div>
+          </div>
+
+          <div class="ex-arrow" id="ex-a1" style="left: 1188px"></div>
+          <div class="ex-arrow" id="ex-a2" style="left: 706px"></div>
+
+          <div id="ex-foot">اگر آپلود فاکتور شکست بخورد، رکورد مالی باز هم ثبت می‌شود</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#ex-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#ex-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          tl.fromTo("#ex-form", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+          tl.fromTo("#ex-root .ex-chip", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)", stagger: 0.06 }, 0.6);
+          tl.to("#ex-pick-on", { opacity: 1, duration: 0.2 }, 1.1);
+          tl.to("#ex-pick-t", { opacity: 0, duration: 0.2 }, 1.1);
+          tl.fromTo("#ex-root .ex-field", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.25 }, 1.2);
+          // invoice file flies to Drive
+          tl.fromTo("#ex-file", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 1.7);
+          tl.fromTo("#ex-a1", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, 2.0);
+          tl.fromTo("#ex-drive", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.1);
+          tl.to("#ex-file", { x: -470, y: -270, scale: 0.6, duration: 0.6, ease: "power2.in" }, 2.3);
+          tl.to("#ex-file", { opacity: 0, duration: 0.15 }, 2.85);
+          tl.fromTo("#ex-folder", { scale: 1 }, { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1 }, 2.9);
+          tl.fromTo("#ex-a2", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, 3.0);
+          tl.fromTo("#ex-sheet", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.1);
+          tl.fromTo("#ex-new", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 3.5);
+          tl.fromTo("#ex-note", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.8);
+          tl.fromTo("#ex-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 3.9);
+          tl.to("#ex-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 4.8);
+          window.__timelines["s5-expense"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
