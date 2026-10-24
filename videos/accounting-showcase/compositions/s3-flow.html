@@ -36,7 +36,7 @@
           opacity: 0;
         }
         #s3-head span {
-          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -49,6 +49,7 @@
           border-radius: 30px;
           border: 2px solid var(--glass-line);
           background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
           direction: rtl;
           padding: 34px 36px;
           opacity: 0;
@@ -76,8 +77,8 @@
         .s3-field div {
           height: 58px;
           border-radius: 14px;
-          background: rgba(255, 255, 255, 0.06);
-          border: 2px solid rgba(255, 255, 255, 0.1);
+          background: rgba(29, 42, 68, 0.05);
+          border: 2px solid rgba(29, 42, 68, 0.12);
           padding: 0 18px;
           font-size: 30px;
           font-weight: 700;
@@ -87,8 +88,8 @@
           margin-top: 10px;
           height: 62px;
           border-radius: 16px;
-          background: linear-gradient(100deg, #77caff, #91ffea);
-          color: #080b15;
+          background: linear-gradient(100deg, #2563eb, #0f9d7a);
+          color: #ffffff;
           text-align: center;
           font-size: 32px;
           font-weight: 800;
@@ -101,13 +102,13 @@
           gap: 16px;
           padding-bottom: 20px;
           margin-bottom: 26px;
-          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 2px solid rgba(29, 42, 68, 0.12);
         }
         #s3-tg-ava {
           width: 64px;
           height: 64px;
           border-radius: 50%;
-          background: linear-gradient(140deg, #77caff, #b39aff);
+          background: linear-gradient(140deg, #2563eb, #6b4fe0);
         }
         #s3-tg-name {
           font-size: 34px;
@@ -121,7 +122,7 @@
         }
         #s3-bubble {
           border-radius: 22px 22px 22px 6px;
-          background: #1b2440;
+          background: #eaf1ff;
           padding: 24px 26px;
           font-size: 29px;
           font-weight: 500;
@@ -147,18 +148,18 @@
           font-size: 32px;
           font-weight: 800;
           line-height: 70px;
-          border: 2px solid rgba(255, 255, 255, 0.14);
-          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(29, 42, 68, 0.14);
+          background: rgba(29, 42, 68, 0.05);
           position: relative;
         }
-        #s3-ok { color: #91ffea; }
-        #s3-no { color: #ff94ba; }
+        #s3-ok { color: #0f9d7a; }
+        #s3-no { color: #dc4a3d; }
         #s3-ok-done {
           position: absolute;
           inset: -2px;
           border-radius: 16px;
-          background: #91ffea;
-          color: #080b15;
+          background: #0f9d7a;
+          color: #ffffff;
           opacity: 0;
         }
         #s3-tap {
@@ -166,7 +167,7 @@
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          border: 4px solid #eff4ff;
+          border: 4px solid #1d2a44;
           left: 50%;
           top: 50%;
           margin: -30px 0 0 -30px;
@@ -182,7 +183,7 @@
           flex: 1;
           height: 56px;
           border-radius: 10px;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(29, 42, 68, 0.05);
           font-size: 24px;
           font-weight: 700;
           text-align: center;
@@ -190,16 +191,16 @@
           white-space: nowrap;
         }
         .s3-row.h div {
-          background: rgba(179, 154, 255, 0.18);
-          color: #d9d0ff;
+          background: rgba(107, 79, 224, 0.12);
+          color: #4c35b5;
           font-weight: 800;
         }
         .s3-row.sk div {
           color: transparent;
         }
         #s3-new div {
-          background: rgba(145, 255, 234, 0.2);
-          color: #eff4ff;
+          background: rgba(15, 157, 122, 0.14);
+          color: #1d2a44;
         }
         #s3-new {
           opacity: 0;
@@ -210,7 +211,7 @@
           width: 64px;
           height: 6px;
           border-radius: 3px;
-          background: linear-gradient(270deg, rgba(168, 255, 239, 0.2), #a8ffef);
+          background: linear-gradient(270deg, rgba(15, 157, 122, 0.2), #0f9d7a);
           transform-origin: right center;
         }
         .s3-arrow::after {
@@ -220,7 +221,7 @@
           top: -9px;
           border-style: solid;
           border-width: 12px 16px 12px 0;
-          border-color: transparent #a8ffef transparent transparent;
+          border-color: transparent #0f9d7a transparent transparent;
         }
         #s3-a1 { left: 1228px; }
         #s3-a2 { left: 628px; }
@@ -244,11 +245,11 @@
         #s3-st3 { left: 110px; }
       </style>
 
-      <div id="s3-root" data-composition-id="s3-flow" data-width="1920" data-height="1080" data-duration="11">
+      <div id="s3-root" data-composition-id="s3-flow" data-width="1920" data-height="1080" data-duration="9.625">
         <div id="s3-wrap">
           <div id="s3-head">یک واریزی، <span>از فرم تا دفتر</span></div>
 
-          <div class="s3-card" id="s3-form" style="--c: #77caff">
+          <div class="s3-card" id="s3-form" style="--c: #2563eb">
             <div class="s3-ttl">ثبت واریزی</div>
             <div class="s3-field"><label>دوره</label><div>C001 · حضوری</div></div>
             <div class="s3-field"><label>مبلغ</label><div>۸۰۰٬۰۰۰ تومان</div></div>
@@ -256,7 +257,7 @@
             <div id="s3-submit">ثبت</div>
           </div>
 
-          <div class="s3-card" id="s3-tg" style="--c: #b39aff">
+          <div class="s3-card" id="s3-tg" style="--c: #6b4fe0">
             <div id="s3-tg-head">
               <div id="s3-tg-ava"></div>
               <div id="s3-tg-name">ربات حسابداری<small>تلگرام مدیر</small></div>
@@ -273,7 +274,7 @@
             </div>
           </div>
 
-          <div class="s3-card" id="s3-sheet" style="--c: #91ffea">
+          <div class="s3-card" id="s3-sheet" style="--c: #0f9d7a">
             <div class="s3-ttl">شیت «درآمد»</div>
             <div class="s3-row h"><div>تاریخ</div><div>دوره</div><div>مبلغ</div><div>وضعیت</div></div>
             <div class="s3-row sk"><div></div><div></div><div></div><div></div></div>
@@ -293,7 +294,7 @@
 
       <script>
         (function () {
-          const tl = gsap.timeline({ paused: true });
+          const tl = gsap.timeline();
           tl.fromTo("#s3-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
           tl.fromTo("#s3-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
 
@@ -319,10 +320,13 @@
           tl.fromTo("#s3-sheet", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 5.9);
           tl.fromTo("#s3-st3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 6.1);
           tl.fromTo("#s3-new", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 6.7);
-          tl.fromTo("#s3-new div", { boxShadow: "0 0 0px rgba(145,255,234,0)" }, { boxShadow: "0 0 26px rgba(145,255,234,0.55)", duration: 0.5, yoyo: true, repeat: 1 }, 7.1);
+          tl.fromTo("#s3-new div", { boxShadow: "0 0 0px rgba(15,157,122,0)" }, { boxShadow: "0 0 26px rgba(15,157,122,0.45)", duration: 0.5, yoyo: true, repeat: 1 }, 7.1);
 
           tl.to("#s3-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 10.4);
-          window.__timelines["s3-flow"] = tl;
+          // play the scene 1.143x faster (40s cut)
+          const root = gsap.timeline({ paused: true });
+          root.add(tl.timeScale(1.14286), 0);
+          window.__timelines["s3-flow"] = root;
         })();
       </script>
     </template>

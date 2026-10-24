@@ -31,7 +31,7 @@
           width: 1000px;
           height: 800px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(137, 255, 240, 0.16), rgba(137, 255, 240, 0) 70%);
+          background: radial-gradient(circle, rgba(15, 157, 122, 0.12), rgba(15, 157, 122, 0) 70%);
         }
         .s6-line {
           position: absolute;
@@ -41,80 +41,33 @@
           direction: rtl;
           opacity: 0;
         }
-        #s6-l1 {
-          top: 210px;
-          font-size: 92px;
-          font-weight: 900;
-          line-height: 1.35;
-        }
-        #s6-l1 span {
-          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-        #s6-tools {
-          position: absolute;
-          top: 410px;
-          left: 0;
-          right: 0;
-          display: flex;
-          justify-content: center;
-          gap: 22px;
-          direction: ltr;
-        }
-        .s6-tool {
-          padding: 12px 30px;
-          border-radius: 40px;
-          border: 2px solid rgba(255, 255, 255, 0.16);
-          background: rgba(18, 24, 42, 0.86);
-          font-size: 34px;
-          font-weight: 700;
-          opacity: 0;
-        }
-        .s6-tool i {
-          display: inline-block;
-          width: 14px;
-          height: 14px;
-          margin-right: 12px;
-          border-radius: 50%;
-          background: var(--c);
-          box-shadow: 0 0 14px var(--c);
-        }
         #s6-rule {
           position: absolute;
-          top: 600px;
+          top: 545px;
           left: 760px;
           width: 400px;
           height: 3px;
-          background: linear-gradient(90deg, rgba(174, 156, 255, 0), #ae9cff, #a8ffef, rgba(168, 255, 239, 0));
+          background: linear-gradient(90deg, rgba(37, 99, 235, 0), #2563eb, #0f9d7a, rgba(15, 157, 122, 0));
         }
         #s6-name {
-          top: 650px;
-          font-size: 104px;
+          top: 360px;
+          font-size: 120px;
           font-weight: 900;
         }
         #s6-role {
-          top: 800px;
-          font-size: 44px;
+          top: 590px;
+          font-size: 64px;
           font-weight: 500;
           color: var(--mint);
         }
       </style>
 
-      <div id="s6-root" data-composition-id="s6-outro" data-width="1920" data-height="1080" data-duration="7.5">
+      <div id="s6-root" data-composition-id="s6-outro" data-width="1920" data-height="1080" data-duration="5.5">
         <div id="s6-wrap">
           <div id="s6-glow"></div>
-          <div class="s6-line" id="s6-l1">هر ورودی فقط یک بار. <span>بقیه‌اش خودکار.</span></div>
-          <div id="s6-tools">
-            <div class="s6-tool" style="--c: #ff94ba"><i></i>n8n</div>
-            <div class="s6-tool" style="--c: #91ffea"><i></i>Google Sheets</div>
-            <div class="s6-tool" style="--c: #77caff"><i></i>Telegram</div>
-            <div class="s6-tool" style="--c: #ffbf86"><i></i>Gmail</div>
-          </div>
-          <div id="s6-rule"></div>
+                    <div id="s6-rule"></div>
           <div class="s6-line" id="s6-name">فاطمه شمس</div>
-          <div class="s6-line" id="s6-role">توسعه‌دهنده و مربی هوش مصنوعی</div>
+          <div class="s6-line" id="s6-role">آموزشگاه فردا</div>
         </div>
       </div>
 
@@ -122,13 +75,11 @@
         (function () {
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#s6-wrap", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
-          tl.fromTo("#s6-glow", { scale: 0.8 }, { scale: 1.15, duration: 7, ease: "sine.inOut" }, 0);
-          tl.fromTo("#s6-l1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
-          tl.fromTo("#s6-root .s6-tool", { opacity: 0, y: 30, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)", stagger: 0.15 }, 1.2);
-          tl.fromTo("#s6-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 2.3);
-          tl.fromTo("#s6-name", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.5);
-          tl.fromTo("#s6-role", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.9);
-          tl.to("#s6-wrap", { opacity: 0, duration: 0.8, ease: "power1.in" }, 6.7);
+          tl.fromTo("#s6-glow", { scale: 0.8 }, { scale: 1.15, duration: 5.5, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s6-name", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+          tl.fromTo("#s6-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.9);
+          tl.fromTo("#s6-role", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.1);
+          tl.to("#s6-wrap", { opacity: 0, duration: 0.8, ease: "power1.in" }, 4.7);
           window.__timelines["s6-outro"] = tl;
         })();
       </script>

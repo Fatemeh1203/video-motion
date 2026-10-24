@@ -36,7 +36,7 @@
           opacity: 0;
         }
         #s5-head span {
-          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -48,7 +48,7 @@
           width: 1260px;
           height: 6px;
           border-radius: 3px;
-          background: linear-gradient(270deg, #91ffea, #b39aff);
+          background: linear-gradient(270deg, #0f9d7a, #6b4fe0);
           transform-origin: right center;
         }
         .s5-node {
@@ -66,7 +66,7 @@
           width: 104px;
           height: 104px;
           border-radius: 50%;
-          background: #121a30;
+          background: #ffffff;
           border: 5px solid var(--c);
           box-shadow: 0 0 28px var(--c);
         }
@@ -91,6 +91,7 @@
           border-radius: 26px;
           border: 2px solid var(--glass-line);
           background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
           direction: rtl;
           padding: 28px 34px;
           opacity: 0;
@@ -117,6 +118,7 @@
           border-radius: 26px;
           border: 2px solid var(--glass-line);
           background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
           direction: rtl;
           padding: 28px 34px;
           opacity: 0;
@@ -135,8 +137,8 @@
         .s5-pill {
           padding: 4px 24px;
           border-radius: 30px;
-          background: rgba(221, 249, 152, 0.14);
-          border: 2px solid rgba(221, 249, 152, 0.4);
+          background: rgba(101, 163, 13, 0.1);
+          border: 2px solid rgba(101, 163, 13, 0.45);
           font-size: 28px;
           font-weight: 700;
           opacity: 0;
@@ -155,14 +157,14 @@
         }
       </style>
 
-      <div id="s5-root" data-composition-id="s5-reports" data-width="1920" data-height="1080" data-duration="8.5">
+      <div id="s5-root" data-composition-id="s5-reports" data-width="1920" data-height="1080" data-duration="7.4375">
         <div id="s5-wrap">
           <div id="s5-head">گزارش‌ها <span>خودشان می‌رسند</span></div>
           <div id="s5-track"></div>
-          <div class="s5-node" style="left: 1590px; --c: #91ffea"><i></i><b>ماهانه</b><small>بستن ماه و حقوق</small></div>
-          <div class="s5-node" style="left: 1170px; --c: #77caff"><i></i><b>فصلی</b><small>سه‌ماهه</small></div>
-          <div class="s5-node" style="left: 750px; --c: #b39aff"><i></i><b>شش‌ماهه</b><small>نیم‌سال</small></div>
-          <div class="s5-node" style="left: 330px; --c: #ffbf86"><i></i><b>سالانه</b><small>جمع‌بندی سال</small></div>
+          <div class="s5-node" style="left: 1590px; --c: #0f9d7a"><i></i><b>ماهانه</b><small>بستن ماه و حقوق</small></div>
+          <div class="s5-node" style="left: 1170px; --c: #2563eb"><i></i><b>فصلی</b><small>سه‌ماهه</small></div>
+          <div class="s5-node" style="left: 750px; --c: #6b4fe0"><i></i><b>شش‌ماهه</b><small>نیم‌سال</small></div>
+          <div class="s5-node" style="left: 330px; --c: #d97706"><i></i><b>سالانه</b><small>جمع‌بندی سال</small></div>
           <div id="s5-mail"><b>ایمیل گزارش</b><span>همراه با پیوست اکسل، بدون هیچ کار دستی</span></div>
           <div id="s5-cap">
             <b>ارزش واقعی آوردهٔ سرمایه‌گذار</b>
@@ -174,7 +176,7 @@
 
       <script>
         (function () {
-          const tl = gsap.timeline({ paused: true });
+          const tl = gsap.timeline();
           tl.fromTo("#s5-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
           tl.fromTo("#s5-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
           tl.fromTo("#s5-track", { scaleX: 0 }, { scaleX: 1, duration: 2.0, ease: "power1.inOut" }, 0.7);
@@ -188,7 +190,10 @@
           tl.fromTo("#s5-root .s5-pill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.2 }, 4.5);
           tl.fromTo("#s5-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.4);
           tl.to("#s5-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 7.9);
-          window.__timelines["s5-reports"] = tl;
+          // play the scene 1.143x faster (40s cut)
+          const root = gsap.timeline({ paused: true });
+          root.add(tl.timeScale(1.14286), 0);
+          window.__timelines["s5-reports"] = root;
         })();
       </script>
     </template>

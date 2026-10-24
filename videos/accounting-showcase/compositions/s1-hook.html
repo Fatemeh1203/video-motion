@@ -31,14 +31,15 @@
           width: 800px;
           height: 600px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(174, 156, 255, 0.22), rgba(174, 156, 255, 0) 70%);
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0) 70%);
         }
         .s1-chip {
           position: absolute;
           padding: 14px 28px;
           border-radius: 18px;
-          border: 2px solid rgba(255, 255, 255, 0.14);
-          background: rgba(18, 24, 42, 0.9);
+          border: 2px solid rgba(29, 42, 68, 0.14);
+          background: #ffffff;
+          box-shadow: 0 8px 22px rgba(29, 42, 68, 0.08);
           direction: rtl;
           font-size: 34px;
           font-weight: 700;
@@ -76,7 +77,7 @@
           line-height: 1.35;
         }
         #s1-l2 span {
-          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -89,7 +90,7 @@
         }
       </style>
 
-      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="7">
+      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="6.125">
         <div id="s1-wrap">
           <div id="s1-glow"></div>
           <div id="s1-chips"></div>
@@ -101,18 +102,18 @@
 
       <script>
         (function () {
-          const tl = gsap.timeline({ paused: true });
+          const tl = gsap.timeline();
           const ITEMS = [
-            ["رسید واریزی", "#91ffea", 150, 140],
-            ["فاکتور هزینه", "#ff94ba", 1430, 130],
-            ["حقوق مدرس", "#ffbf86", 790, 90],
-            ["درصد هر کلاس", "#b39aff", 230, 800],
-            ["فایل اکسل", "#ddf998", 1380, 800],
-            ["تقویم شمسی", "#77caff", 70, 300],
-            ["گزارش سرمایه‌گذار", "#91ffea", 1430, 290],
-            ["ماشین‌حساب", "#ff94ba", 560, 220],
-            ["برنامهٔ هفتگی", "#b39aff", 1090, 200],
-            ["دفتر کل", "#ffbf86", 760, 920],
+            ["رسید واریزی", "#0f9d7a", 150, 140],
+            ["فاکتور هزینه", "#dc4a3d", 1430, 130],
+            ["حقوق مدرس", "#d97706", 790, 90],
+            ["درصد هر کلاس", "#6b4fe0", 230, 800],
+            ["فایل اکسل", "#65a30d", 1380, 800],
+            ["تقویم شمسی", "#2563eb", 70, 300],
+            ["گزارش سرمایه‌گذار", "#0f9d7a", 1430, 290],
+            ["ماشین‌حساب", "#dc4a3d", 560, 220],
+            ["برنامهٔ هفتگی", "#6b4fe0", 1090, 200],
+            ["دفتر کل", "#d97706", 760, 920],
           ];
           const box = document.querySelector("#s1-chips");
           ITEMS.forEach(function (t) {
@@ -149,7 +150,10 @@
           });
           tl.to("#s1-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 6.4);
 
-          window.__timelines["s1-hook"] = tl;
+          // play the scene 1.143x faster (40s cut)
+          const root = gsap.timeline({ paused: true });
+          root.add(tl.timeScale(1.14286), 0);
+          window.__timelines["s1-hook"] = root;
         })();
       </script>
     </template>

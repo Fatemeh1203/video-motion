@@ -53,7 +53,7 @@
           opacity: 0;
         }
         #s2-title .g {
-          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -85,6 +85,7 @@
           border-radius: 28px;
           border: 2px solid var(--glass-line);
           background: var(--glass);
+          box-shadow: 0 18px 44px rgba(29, 42, 68, 0.1);
           direction: rtl;
           text-align: center;
           padding-top: 34px;
@@ -104,21 +105,21 @@
         }
       </style>
 
-      <div id="s2-root" data-composition-id="s2-title" data-width="1920" data-height="1080" data-duration="7">
+      <div id="s2-root" data-composition-id="s2-title" data-width="1920" data-height="1080" data-duration="6.125">
         <div id="s2-wrap">
           <div id="s2-eyebrow">پروژهٔ واقعی · آموزشگاه علمی فردا</div>
           <div id="s2-title"><span>حسابداری</span> <span class="g">خودکار</span> <span>آموزشگاه</span></div>
           <div id="s2-sub">ساخته‌شده با n8n، روی سرور خود آموزشگاه</div>
           <div id="s2-stats">
-            <div class="s2-card" style="--c: #91ffea">
+            <div class="s2-card" style="--c: #0f9d7a">
               <div class="s2-num" data-to="9">۰</div>
               <div class="s2-lab">ورک‌فلوی n8n</div>
             </div>
-            <div class="s2-card" style="--c: #b39aff">
+            <div class="s2-card" style="--c: #6b4fe0">
               <div class="s2-num" data-to="17">۰</div>
               <div class="s2-lab">شیت راست‌چین در گوگل‌شیت</div>
             </div>
-            <div class="s2-card" style="--c: #ffbf86">
+            <div class="s2-card" style="--c: #d97706">
               <div class="s2-num" data-to="0" data-from="40000">۴۰٬۰۰۰</div>
               <div class="s2-lab">خطا در تست ۴۰٬۰۰۰ روز تقویم شمسی</div>
             </div>
@@ -128,7 +129,7 @@
 
       <script>
         (function () {
-          const tl = gsap.timeline({ paused: true });
+          const tl = gsap.timeline();
           const FA = "۰۱۲۳۴۵۶۷۸۹";
           function fa(n) {
             return String(Math.round(n))
@@ -152,7 +153,10 @@
           });
 
           tl.to("#s2-wrap", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 6.4);
-          window.__timelines["s2-title"] = tl;
+          // play the scene 1.143x faster (40s cut)
+          const root = gsap.timeline({ paused: true });
+          root.add(tl.timeScale(1.14286), 0);
+          window.__timelines["s2-title"] = root;
         })();
       </script>
     </template>
