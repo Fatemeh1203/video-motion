@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s4-share-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s4-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s4-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s4-head {
+          position: absolute;
+          top: 110px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 84px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #s4-head span {
+          background: linear-gradient(100deg, #ffbf86, #ff94ba 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s4-total {
+          position: absolute;
+          top: 270px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          opacity: 0;
+        }
+        #s4-total small {
+          display: block;
+          font-size: 34px;
+          font-weight: 500;
+          color: var(--muted);
+          margin-bottom: 24px;
+        }
+        #s4-total b {
+          display: inline-block;
+          font-size: 110px;
+          font-weight: 900;
+          line-height: 1.15;
+        }
+        #s4-total em {
+          font-style: normal;
+          font-size: 44px;
+          font-weight: 700;
+          color: var(--muted);
+          margin-right: 14px;
+        }
+        #s4-bar {
+          position: absolute;
+          top: 520px;
+          left: 260px;
+          width: 1400px;
+          height: 120px;
+          border-radius: 26px;
+          background: rgba(255, 255, 255, 0.06);
+          border: 2px solid var(--glass-line);
+          overflow: hidden;
+          opacity: 0;
+        }
+        .s4-seg {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+        }
+        #s4-teach {
+          right: 0;
+          width: 70%;
+          background: linear-gradient(270deg, #91ffea, #77caff);
+          transform-origin: right center;
+        }
+        #s4-school {
+          left: 0;
+          width: 30%;
+          background: linear-gradient(270deg, #b39aff, #ae9cff);
+          transform-origin: right center;
+        }
+        .s4-pct {
+          position: absolute;
+          top: 0;
+          height: 120px;
+          line-height: 120px;
+          font-size: 54px;
+          font-weight: 900;
+          color: #080b15;
+          text-align: center;
+          opacity: 0;
+        }
+        #s4-p1 { right: 260px; width: 980px; }
+        #s4-p2 { left: 260px; width: 420px; }
+        .s4-res {
+          position: absolute;
+          top: 680px;
+          direction: rtl;
+          text-align: center;
+          opacity: 0;
+        }
+        .s4-res small {
+          display: block;
+          font-size: 34px;
+          font-weight: 500;
+          color: var(--muted);
+        }
+        .s4-res b {
+          font-size: 76px;
+          font-weight: 900;
+          color: var(--c);
+        }
+        #s4-r1 { right: 260px; width: 980px; }
+        #s4-r2 { left: 260px; width: 420px; }
+        #s4-note {
+          position: absolute;
+          top: 900px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 36px;
+          font-weight: 500;
+          color: var(--muted);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4-share" data-width="1920" data-height="1080" data-duration="8">
+        <div id="s4-wrap">
+          <div id="s4-head">سهم مدرس، <span>خودش حساب می‌شود</span></div>
+          <div id="s4-total"><small>واریزی تأییدشده</small><b id="s4-tv">۰</b><em>تومان</em></div>
+          <div id="s4-bar">
+            <div class="s4-seg" id="s4-teach"></div>
+            <div class="s4-seg" id="s4-school"></div>
+          </div>
+          <div class="s4-pct" id="s4-p1" style="top: 520px">۷۰٪</div>
+          <div class="s4-pct" id="s4-p2" style="top: 520px">۳۰٪</div>
+          <div class="s4-res" id="s4-r1" style="--c: #91ffea"><small>سهم مدرس</small><b id="s4-v1">۰</b></div>
+          <div class="s4-res" id="s4-r2" style="--c: #b39aff"><small>سهم آموزشگاه</small><b id="s4-v2">۰</b></div>
+          <div id="s4-note">درصد حضوری و آنلاین جدا · درصد اختصاصی برای هر کلاس · حقوق آخر ماه</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const FA = "۰۱۲۳۴۵۶۷۸۹";
+          function fa(n) {
+            return String(Math.round(n / 1000) * 1000)
+              .replace(/\B(?=(\d{3})+(?!\d))/g, "٬")
+              .replace(/\d/g, function (d) { return FA[+d]; });
+          }
+          function count(sel, to, at, dur) {
+            const el = document.querySelector(sel);
+            const o = { v: 0 };
+            tl.fromTo(o, { v: 0 }, { v: to, duration: dur, ease: "power2.out", onUpdate: function () { el.textContent = fa(o.v); } }, at);
+          }
+
+          tl.fromTo("#s4-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#s4-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s4-total", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.6);
+          count("#s4-tv", 800000, 0.7, 1.0);
+
+          tl.fromTo("#s4-bar", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.8);
+          tl.fromTo("#s4-teach", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 2.0);
+          tl.fromTo("#s4-school", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 2.8);
+          tl.fromTo("#s4-p1", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.6);
+          tl.fromTo("#s4-p2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.2);
+
+          tl.fromTo("#s4-r1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.3);
+          count("#s4-v1", 560000, 3.4, 0.9);
+          tl.fromTo("#s4-r2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.7);
+          count("#s4-v2", 240000, 3.8, 0.9);
+
+          tl.fromTo("#s4-note", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.9);
+          tl.to("#s4-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 7.4);
+          window.__timelines["s4-share"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

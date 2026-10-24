@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s3-flow-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s3-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s3-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s3-head {
+          position: absolute;
+          top: 90px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 78px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #s3-head span {
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        .s3-card {
+          position: absolute;
+          top: 250px;
+          width: 500px;
+          height: 600px;
+          border-radius: 30px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          direction: rtl;
+          padding: 34px 36px;
+          opacity: 0;
+        }
+        #s3-form { left: 1310px; }
+        #s3-tg { left: 710px; }
+        #s3-sheet { left: 110px; }
+        .s3-ttl {
+          font-size: 40px;
+          font-weight: 800;
+          margin-bottom: 26px;
+          color: var(--c);
+        }
+        .s3-field {
+          margin-bottom: 18px;
+          opacity: 0;
+        }
+        .s3-field label {
+          display: block;
+          font-size: 24px;
+          font-weight: 500;
+          color: var(--muted);
+          margin-bottom: 6px;
+        }
+        .s3-field div {
+          height: 58px;
+          border-radius: 14px;
+          background: rgba(255, 255, 255, 0.06);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          padding: 0 18px;
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 54px;
+        }
+        #s3-submit {
+          margin-top: 10px;
+          height: 62px;
+          border-radius: 16px;
+          background: linear-gradient(100deg, #77caff, #91ffea);
+          color: #080b15;
+          text-align: center;
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 62px;
+          opacity: 0;
+        }
+        #s3-tg-head {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding-bottom: 20px;
+          margin-bottom: 26px;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        #s3-tg-ava {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: linear-gradient(140deg, #77caff, #b39aff);
+        }
+        #s3-tg-name {
+          font-size: 34px;
+          font-weight: 800;
+        }
+        #s3-tg-name small {
+          display: block;
+          font-size: 22px;
+          font-weight: 400;
+          color: var(--muted);
+        }
+        #s3-bubble {
+          border-radius: 22px 22px 22px 6px;
+          background: #1b2440;
+          padding: 24px 26px;
+          font-size: 29px;
+          font-weight: 500;
+          line-height: 1.75;
+          opacity: 0;
+        }
+        #s3-bubble b {
+          font-size: 32px;
+          font-weight: 800;
+          color: var(--p4);
+        }
+        #s3-btns {
+          display: flex;
+          gap: 16px;
+          margin-top: 20px;
+          opacity: 0;
+        }
+        .s3-btn {
+          flex: 1;
+          height: 70px;
+          border-radius: 16px;
+          text-align: center;
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 70px;
+          border: 2px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.05);
+          position: relative;
+        }
+        #s3-ok { color: #91ffea; }
+        #s3-no { color: #ff94ba; }
+        #s3-ok-done {
+          position: absolute;
+          inset: -2px;
+          border-radius: 16px;
+          background: #91ffea;
+          color: #080b15;
+          opacity: 0;
+        }
+        #s3-tap {
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          border: 4px solid #eff4ff;
+          left: 50%;
+          top: 50%;
+          margin: -30px 0 0 -30px;
+          opacity: 0;
+        }
+        .s3-row {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+        .s3-row div {
+          flex: 1;
+          height: 56px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.05);
+          font-size: 24px;
+          font-weight: 700;
+          text-align: center;
+          line-height: 56px;
+          white-space: nowrap;
+        }
+        .s3-row.h div {
+          background: rgba(179, 154, 255, 0.18);
+          color: #d9d0ff;
+          font-weight: 800;
+        }
+        .s3-row.sk div {
+          color: transparent;
+        }
+        #s3-new div {
+          background: rgba(145, 255, 234, 0.2);
+          color: #eff4ff;
+        }
+        #s3-new {
+          opacity: 0;
+        }
+        .s3-arrow {
+          position: absolute;
+          top: 547px;
+          width: 64px;
+          height: 6px;
+          border-radius: 3px;
+          background: linear-gradient(270deg, rgba(168, 255, 239, 0.2), #a8ffef);
+          transform-origin: right center;
+        }
+        .s3-arrow::after {
+          content: "";
+          position: absolute;
+          left: -6px;
+          top: -9px;
+          border-style: solid;
+          border-width: 12px 16px 12px 0;
+          border-color: transparent #a8ffef transparent transparent;
+        }
+        #s3-a1 { left: 1228px; }
+        #s3-a2 { left: 628px; }
+        .s3-step {
+          position: absolute;
+          top: 885px;
+          width: 500px;
+          text-align: center;
+          direction: rtl;
+          font-size: 34px;
+          font-weight: 700;
+          color: var(--fg);
+          opacity: 0;
+        }
+        .s3-step i {
+          font-style: normal;
+          color: var(--mint);
+        }
+        #s3-st1 { left: 1310px; }
+        #s3-st2 { left: 710px; }
+        #s3-st3 { left: 110px; }
+      </style>
+
+      <div id="s3-root" data-composition-id="s3-flow" data-width="1920" data-height="1080" data-duration="11">
+        <div id="s3-wrap">
+          <div id="s3-head">یک واریزی، <span>از فرم تا دفتر</span></div>
+
+          <div class="s3-card" id="s3-form" style="--c: #77caff">
+            <div class="s3-ttl">ثبت واریزی</div>
+            <div class="s3-field"><label>دوره</label><div>C001 · حضوری</div></div>
+            <div class="s3-field"><label>مبلغ</label><div>۸۰۰٬۰۰۰ تومان</div></div>
+            <div class="s3-field"><label>تصویر رسید</label><div>پیوست شد</div></div>
+            <div id="s3-submit">ثبت</div>
+          </div>
+
+          <div class="s3-card" id="s3-tg" style="--c: #b39aff">
+            <div id="s3-tg-head">
+              <div id="s3-tg-ava"></div>
+              <div id="s3-tg-name">ربات حسابداری<small>تلگرام مدیر</small></div>
+            </div>
+            <div id="s3-bubble">
+              <b>واریزی تازه</b><br />
+              مبلغ: ۸۰۰٬۰۰۰ تومان<br />
+              دوره: C001 · مدرس: M001<br />
+              سهم مدرس: ۷۰٪
+            </div>
+            <div id="s3-btns">
+              <div class="s3-btn" id="s3-ok"><span id="s3-ok-t">تأیید</span><div id="s3-ok-done">تأیید شد</div><div id="s3-tap"></div></div>
+              <div class="s3-btn" id="s3-no">رد</div>
+            </div>
+          </div>
+
+          <div class="s3-card" id="s3-sheet" style="--c: #91ffea">
+            <div class="s3-ttl">شیت «درآمد»</div>
+            <div class="s3-row h"><div>تاریخ</div><div>دوره</div><div>مبلغ</div><div>وضعیت</div></div>
+            <div class="s3-row sk"><div></div><div></div><div></div><div></div></div>
+            <div class="s3-row sk"><div></div><div></div><div></div><div></div></div>
+            <div class="s3-row sk"><div></div><div></div><div></div><div></div></div>
+            <div class="s3-row" id="s3-new"><div>۱۴۰۵/۰۷/۲۹</div><div>C001</div><div>۸۰۰٬۰۰۰</div><div>تأییدشده</div></div>
+          </div>
+
+          <div class="s3-arrow" id="s3-a1"></div>
+          <div class="s3-arrow" id="s3-a2"></div>
+
+          <div class="s3-step" id="s3-st1"><i>۱.</i> همکار فرم را پر می‌کند</div>
+          <div class="s3-step" id="s3-st2"><i>۲.</i> مدیر در تلگرام تأیید می‌کند</div>
+          <div class="s3-step" id="s3-st3"><i>۳.</i> خودکار در دفتر ثبت می‌شود</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s3-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#s3-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+
+          // 1. form
+          tl.fromTo("#s3-form", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.5);
+          tl.fromTo("#s3-st1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.7);
+          tl.fromTo("#s3-form .s3-field", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out", stagger: 0.4 }, 1.0);
+          tl.fromTo("#s3-submit", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.4);
+          tl.to("#s3-submit", { scale: 0.94, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.inOut" }, 2.8);
+
+          // 2. telegram
+          tl.fromTo("#s3-a1", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 3.0);
+          tl.fromTo("#s3-tg", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.2);
+          tl.fromTo("#s3-st2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 3.4);
+          tl.fromTo("#s3-bubble", { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 3.6);
+          tl.fromTo("#s3-btns", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.1);
+          tl.fromTo("#s3-tap", { opacity: 0.9, scale: 0.3 }, { opacity: 0, scale: 2.2, duration: 0.6, ease: "power2.out" }, 5.2);
+          tl.to("#s3-ok-done", { opacity: 1, duration: 0.25 }, 5.3);
+          tl.to("#s3-ok-t", { opacity: 0, duration: 0.2 }, 5.3);
+
+          // 3. sheet
+          tl.fromTo("#s3-a2", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 5.7);
+          tl.fromTo("#s3-sheet", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 5.9);
+          tl.fromTo("#s3-st3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 6.1);
+          tl.fromTo("#s3-new", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 6.7);
+          tl.fromTo("#s3-new div", { boxShadow: "0 0 0px rgba(145,255,234,0)" }, { boxShadow: "0 0 26px rgba(145,255,234,0.55)", duration: 0.5, yoyo: true, repeat: 1 }, 7.1);
+
+          tl.to("#s3-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 10.4);
+          window.__timelines["s3-flow"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

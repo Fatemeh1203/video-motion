@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s2-title-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s2-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s2-eyebrow {
+          position: absolute;
+          top: 190px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 38px;
+          font-weight: 500;
+          color: var(--mint);
+          letter-spacing: 0;
+          opacity: 0;
+        }
+        #s2-title {
+          position: absolute;
+          top: 260px;
+          left: 100px;
+          right: 100px;
+          text-align: center;
+          direction: rtl;
+          font-size: 120px;
+          font-weight: 900;
+          line-height: 1.35;
+        }
+        #s2-title span {
+          display: inline-block;
+          opacity: 0;
+        }
+        #s2-title .g {
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s2-sub {
+          position: absolute;
+          top: 450px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 42px;
+          font-weight: 500;
+          color: var(--muted);
+          opacity: 0;
+        }
+        #s2-stats {
+          position: absolute;
+          top: 600px;
+          left: 210px;
+          width: 1500px;
+          display: flex;
+          flex-direction: row-reverse;
+          gap: 40px;
+        }
+        .s2-card {
+          flex: 1;
+          height: 290px;
+          border-radius: 28px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          direction: rtl;
+          text-align: center;
+          padding-top: 34px;
+          opacity: 0;
+        }
+        .s2-num {
+          font-size: 104px;
+          font-weight: 900;
+          line-height: 1.1;
+          color: var(--c);
+        }
+        .s2-lab {
+          margin-top: 18px;
+          font-size: 34px;
+          font-weight: 500;
+          color: var(--fg);
+        }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2-title" data-width="1920" data-height="1080" data-duration="7">
+        <div id="s2-wrap">
+          <div id="s2-eyebrow">پروژهٔ واقعی · آموزشگاه علمی فردا</div>
+          <div id="s2-title"><span>حسابداری</span> <span class="g">خودکار</span> <span>آموزشگاه</span></div>
+          <div id="s2-sub">ساخته‌شده با n8n، روی سرور خود آموزشگاه</div>
+          <div id="s2-stats">
+            <div class="s2-card" style="--c: #91ffea">
+              <div class="s2-num" data-to="9">۰</div>
+              <div class="s2-lab">ورک‌فلوی n8n</div>
+            </div>
+            <div class="s2-card" style="--c: #b39aff">
+              <div class="s2-num" data-to="17">۰</div>
+              <div class="s2-lab">شیت راست‌چین در گوگل‌شیت</div>
+            </div>
+            <div class="s2-card" style="--c: #ffbf86">
+              <div class="s2-num" data-to="0" data-from="40000">۴۰٬۰۰۰</div>
+              <div class="s2-lab">خطا در تست ۴۰٬۰۰۰ روز تقویم شمسی</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const FA = "۰۱۲۳۴۵۶۷۸۹";
+          function fa(n) {
+            return String(Math.round(n))
+              .replace(/\B(?=(\d{3})+(?!\d))/g, "٬")
+              .replace(/\d/g, function (d) { return FA[+d]; });
+          }
+
+          tl.fromTo("#s2-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#s2-eyebrow", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+          tl.fromTo("#s2-title span", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.18 }, 0.4);
+          tl.fromTo("#s2-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.2);
+
+          gsap.utils.toArray("#s2-root .s2-card").forEach(function (card, i) {
+            const at = 1.8 + i * 0.35;
+            tl.fromTo(card, { opacity: 0, y: 60, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, at);
+            const num = card.querySelector(".s2-num");
+            const to = +num.dataset.to;
+            const from = num.dataset.from ? +num.dataset.from : 0;
+            const o = { v: from };
+            tl.fromTo(o, { v: from }, { v: to, duration: 1.3, ease: "power2.out", onUpdate: function () { num.textContent = fa(o.v); } }, at + 0.2);
+          });
+
+          tl.to("#s2-wrap", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 6.4);
+          window.__timelines["s2-title"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

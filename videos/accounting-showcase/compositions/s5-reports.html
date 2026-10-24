@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s5-reports-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s5-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s5-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s5-head {
+          position: absolute;
+          top: 100px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 84px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #s5-head span {
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s5-track {
+          position: absolute;
+          top: 349px;
+          left: 330px;
+          width: 1260px;
+          height: 6px;
+          border-radius: 3px;
+          background: linear-gradient(270deg, #91ffea, #b39aff);
+          transform-origin: right center;
+        }
+        .s5-node {
+          position: absolute;
+          top: 300px;
+          width: 300px;
+          margin-left: -150px;
+          text-align: center;
+          direction: rtl;
+          opacity: 0;
+        }
+        .s5-node i {
+          display: block;
+          margin: 0 auto;
+          width: 104px;
+          height: 104px;
+          border-radius: 50%;
+          background: #121a30;
+          border: 5px solid var(--c);
+          box-shadow: 0 0 28px var(--c);
+        }
+        .s5-node b {
+          display: block;
+          margin-top: 18px;
+          font-size: 44px;
+          font-weight: 800;
+        }
+        .s5-node small {
+          display: block;
+          font-size: 26px;
+          font-weight: 500;
+          color: var(--muted);
+        }
+        #s5-mail {
+          position: absolute;
+          top: 600px;
+          left: 1010px;
+          width: 700px;
+          height: 170px;
+          border-radius: 26px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          direction: rtl;
+          padding: 28px 34px;
+          opacity: 0;
+        }
+        #s5-mail b {
+          display: block;
+          font-size: 36px;
+          font-weight: 800;
+          color: var(--p4);
+        }
+        #s5-mail span {
+          display: block;
+          margin-top: 8px;
+          font-size: 30px;
+          font-weight: 500;
+          color: var(--fg);
+        }
+        #s5-cap {
+          position: absolute;
+          top: 600px;
+          left: 210px;
+          width: 740px;
+          height: 170px;
+          border-radius: 26px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          direction: rtl;
+          padding: 28px 34px;
+          opacity: 0;
+        }
+        #s5-cap b {
+          display: block;
+          font-size: 36px;
+          font-weight: 800;
+          color: var(--p6);
+        }
+        #s5-pills {
+          display: flex;
+          gap: 14px;
+          margin-top: 14px;
+        }
+        .s5-pill {
+          padding: 4px 24px;
+          border-radius: 30px;
+          background: rgba(221, 249, 152, 0.14);
+          border: 2px solid rgba(221, 249, 152, 0.4);
+          font-size: 28px;
+          font-weight: 700;
+          opacity: 0;
+        }
+        #s5-foot {
+          position: absolute;
+          top: 860px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 38px;
+          font-weight: 500;
+          color: var(--muted);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s5-root" data-composition-id="s5-reports" data-width="1920" data-height="1080" data-duration="8.5">
+        <div id="s5-wrap">
+          <div id="s5-head">گزارش‌ها <span>خودشان می‌رسند</span></div>
+          <div id="s5-track"></div>
+          <div class="s5-node" style="left: 1590px; --c: #91ffea"><i></i><b>ماهانه</b><small>بستن ماه و حقوق</small></div>
+          <div class="s5-node" style="left: 1170px; --c: #77caff"><i></i><b>فصلی</b><small>سه‌ماهه</small></div>
+          <div class="s5-node" style="left: 750px; --c: #b39aff"><i></i><b>شش‌ماهه</b><small>نیم‌سال</small></div>
+          <div class="s5-node" style="left: 330px; --c: #ffbf86"><i></i><b>سالانه</b><small>جمع‌بندی سال</small></div>
+          <div id="s5-mail"><b>ایمیل گزارش</b><span>همراه با پیوست اکسل، بدون هیچ کار دستی</span></div>
+          <div id="s5-cap">
+            <b>ارزش واقعی آوردهٔ سرمایه‌گذار</b>
+            <div id="s5-pills"><div class="s5-pill">طلا</div><div class="s5-pill">دلار</div><div class="s5-pill">تورم رسمی</div></div>
+          </div>
+          <div id="s5-foot">همه بر پایهٔ تقویم شمسی و منطقهٔ زمانی تهران</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s5-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#s5-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s5-track", { scaleX: 0 }, { scaleX: 1, duration: 2.0, ease: "power1.inOut" }, 0.7);
+          gsap.utils.toArray("#s5-root .s5-node").forEach(function (n, i) {
+            const at = 0.7 + i * 0.6;
+            tl.fromTo(n, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, at);
+            tl.fromTo(n.querySelector("i"), { scale: 0.4 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, at);
+          });
+          tl.fromTo("#s5-mail", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 3.2);
+          tl.fromTo("#s5-cap", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 4.0);
+          tl.fromTo("#s5-root .s5-pill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.2 }, 4.5);
+          tl.fromTo("#s5-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.4);
+          tl.to("#s5-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 7.9);
+          window.__timelines["s5-reports"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

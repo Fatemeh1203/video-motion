@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s1-hook-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s1-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s1-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s1-glow {
+          position: absolute;
+          left: 560px;
+          top: 240px;
+          width: 800px;
+          height: 600px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(174, 156, 255, 0.22), rgba(174, 156, 255, 0) 70%);
+        }
+        .s1-chip {
+          position: absolute;
+          padding: 14px 28px;
+          border-radius: 18px;
+          border: 2px solid rgba(255, 255, 255, 0.14);
+          background: rgba(18, 24, 42, 0.9);
+          direction: rtl;
+          font-size: 34px;
+          font-weight: 700;
+          white-space: nowrap;
+          color: var(--muted);
+          opacity: 0;
+        }
+        .s1-chip b {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          margin-left: 14px;
+          border-radius: 50%;
+          background: var(--c);
+          box-shadow: 0 0 12px var(--c);
+          vertical-align: middle;
+        }
+        .s1-line {
+          position: absolute;
+          left: 160px;
+          right: 160px;
+          text-align: center;
+          direction: rtl;
+          opacity: 0;
+        }
+        #s1-l1 {
+          top: 470px;
+          font-size: 80px;
+          font-weight: 800;
+        }
+        #s1-l2 {
+          top: 400px;
+          font-size: 124px;
+          font-weight: 900;
+          line-height: 1.35;
+        }
+        #s1-l2 span {
+          background: linear-gradient(100deg, #ae9cff, #a8ffef 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s1-l3 {
+          top: 610px;
+          font-size: 56px;
+          font-weight: 700;
+          color: var(--p5);
+        }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1-hook" data-width="1920" data-height="1080" data-duration="7">
+        <div id="s1-wrap">
+          <div id="s1-glow"></div>
+          <div id="s1-chips"></div>
+          <div class="s1-line" id="s1-l1">هر ماه، آخر ماه…</div>
+          <div class="s1-line" id="s1-l2"><span>حسابداری دستی آموزشگاه</span></div>
+          <div class="s1-line" id="s1-l3">وقت‌گیر، خسته‌کننده و پر از خطا</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const ITEMS = [
+            ["رسید واریزی", "#91ffea", 150, 140],
+            ["فاکتور هزینه", "#ff94ba", 1430, 130],
+            ["حقوق مدرس", "#ffbf86", 790, 90],
+            ["درصد هر کلاس", "#b39aff", 230, 800],
+            ["فایل اکسل", "#ddf998", 1380, 800],
+            ["تقویم شمسی", "#77caff", 70, 300],
+            ["گزارش سرمایه‌گذار", "#91ffea", 1430, 290],
+            ["ماشین‌حساب", "#ff94ba", 560, 220],
+            ["برنامهٔ هفتگی", "#b39aff", 1090, 200],
+            ["دفتر کل", "#ffbf86", 760, 920],
+          ];
+          const box = document.querySelector("#s1-chips");
+          ITEMS.forEach(function (t) {
+            const el = document.createElement("div");
+            el.className = "s1-chip";
+            el.style.setProperty("--c", t[1]);
+            el.style.left = t[2] + "px";
+            el.style.top = t[3] + "px";
+            el.innerHTML = "<b></b>" + t[0];
+            box.appendChild(el);
+          });
+          const chips = gsap.utils.toArray("#s1-root .s1-chip");
+
+          tl.fromTo("#s1-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0);
+          tl.fromTo("#s1-glow", { scale: 0.7, opacity: 0.4 }, { scale: 1.2, opacity: 1, duration: 6.5, ease: "sine.inOut" }, 0);
+          tl.fromTo("#s1-l1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+
+          // paperwork piles up around the line
+          chips.forEach(function (el, i) {
+            const at = 0.6 + i * 0.17;
+            const dx = (i % 2 ? 1 : -1) * (50 + ((i * 41) % 80));
+            tl.fromTo(el, { opacity: 0, scale: 0.4, x: dx, y: 30, rotation: (i % 2 ? 6 : -6) }, { opacity: 1, scale: 1, x: 0, y: 0, rotation: (i % 3) - 1, duration: 0.45, ease: "back.out(1.8)" }, at);
+            const cx = 960 - (parseFloat(el.style.left) + 120);
+            const cy = 540 - (parseFloat(el.style.top) + 30);
+            tl.to(el, { x: cx * 0.07, y: cy * 0.07, duration: 3.6, ease: "sine.in" }, at + 0.45);
+          });
+          tl.to("#s1-l1", { opacity: 0, y: -30, duration: 0.35, ease: "power2.in" }, 2.7);
+
+          tl.fromTo("#s1-l2", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" }, 3.0);
+          tl.fromTo("#s1-l3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.9);
+
+          chips.forEach(function (el, i) {
+            tl.to(el, { opacity: 0, scale: 0.6, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, 5.6 + (i % 5) * 0.05);
+          });
+          tl.to("#s1-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 6.4);
+
+          window.__timelines["s1-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
