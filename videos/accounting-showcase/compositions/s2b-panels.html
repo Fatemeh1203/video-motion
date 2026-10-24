@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s2b-panels-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s2b-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s2b-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s2b-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 80px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #s2b-head span {
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        /* admin panel in a desktop browser window */
+        #s2b-browser {
+          position: absolute;
+          left: 150px;
+          top: 235px;
+          width: 1100px;
+          height: 732px;
+          border-radius: 22px;
+          overflow: hidden;
+          background: #ffffff;
+          border: 2px solid var(--glass-line);
+          box-shadow: 0 30px 70px rgba(29, 42, 68, 0.18);
+          opacity: 0;
+        }
+        #s2b-bar {
+          height: 44px;
+          background: #eef1f6;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 18px;
+        }
+        #s2b-bar b {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--c);
+        }
+        #s2b-url {
+          margin-left: 18px;
+          width: 520px;
+          height: 26px;
+          border-radius: 13px;
+          background: #ffffff;
+          font-size: 17px;
+          font-weight: 500;
+          line-height: 26px;
+          padding: 0 14px;
+          color: #3d4760;
+          direction: ltr;
+        }
+        #s2b-view {
+          width: 1100px;
+          height: 688px;
+          overflow: hidden;
+        }
+        #s2b-panel-img {
+          display: block;
+          width: 1100px;
+          height: 688px;
+          object-fit: cover;
+          object-position: top center;
+          transform-origin: 50% 46%;
+        }
+        #s2b-ring {
+          position: absolute;
+          left: 700px;
+          top: 575px;
+          width: 120px;
+          height: 120px;
+          margin: -60px 0 0 -60px;
+          border-radius: 50%;
+          border: 4px solid rgba(37, 99, 235, 0.9);
+          opacity: 0;
+        }
+        /* staff page on a phone */
+        #s2b-phone {
+          position: absolute;
+          left: 1380px;
+          top: 205px;
+          width: 380px;
+          height: 790px;
+          border-radius: 56px;
+          background: #1d2a44;
+          box-shadow: 0 30px 70px rgba(29, 42, 68, 0.25);
+          padding: 16px;
+          opacity: 0;
+        }
+        #s2b-screen {
+          position: relative;
+          width: 348px;
+          height: 758px;
+          border-radius: 42px;
+          overflow: hidden;
+          background: #dbe8ff;
+        }
+        #s2b-staff-img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 348px;
+          height: 1249px;
+        }
+        #s2b-notch {
+          position: absolute;
+          left: 124px;
+          top: 10px;
+          width: 100px;
+          height: 28px;
+          border-radius: 14px;
+          background: #1d2a44;
+        }
+        .s2b-cap {
+          position: absolute;
+          top: 990px;
+          direction: rtl;
+          text-align: center;
+          font-size: 32px;
+          font-weight: 700;
+          opacity: 0;
+        }
+        .s2b-cap i {
+          font-style: normal;
+          color: var(--c);
+        }
+        #s2b-cap1 {
+          left: 1300px;
+          width: 540px;
+        }
+        #s2b-cap2 {
+          left: 150px;
+          width: 1100px;
+        }
+      </style>
+
+      <div id="s2b-root" data-composition-id="s2b-panels" data-width="1920" data-height="1080" data-duration="6.8">
+        <div id="s2b-wrap">
+          <div id="s2b-head">دو در ورود: <span>همکاران و مدیر</span></div>
+
+          <div id="s2b-browser">
+            <div id="s2b-bar">
+              <b style="--c: #dc4a3d"></b><b style="--c: #d97706"></b><b style="--c: #0f9d7a"></b>
+              <div id="s2b-url">fatemeh1203.github.io/Farda-Institute/panel/</div>
+            </div>
+            <div id="s2b-view"><img id="s2b-panel-img" src="assets/img/admin-panel-lock.jpg" alt="" /></div>
+          </div>
+          <div id="s2b-ring"></div>
+
+          <div id="s2b-phone">
+            <div id="s2b-screen">
+              <img id="s2b-staff-img" src="assets/img/staff-page-phone.jpg" alt="" />
+              <div id="s2b-notch"></div>
+            </div>
+          </div>
+
+          <div class="s2b-cap" id="s2b-cap1" style="--c: #2563eb"><i>صفحهٔ همکاران</i> · ثبت روزانه از گوشی</div>
+          <div class="s2b-cap" id="s2b-cap2" style="--c: #6b4fe0"><i>پنل مدیر</i> · همهٔ لینک‌های مدیریتی، قفل با رمز</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s2b-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#s2b-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+          tl.fromTo("#s2b-phone", { opacity: 0, y: 120, rotation: 4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.7, ease: "power3.out" }, 0.45);
+          tl.fromTo("#s2b-cap1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.9);
+          // scroll the staff page: header -> daily forms -> classes
+          tl.fromTo("#s2b-staff-img", { y: 0 }, { y: -440, duration: 2.6, ease: "power2.inOut" }, 1.3);
+          tl.fromTo("#s2b-browser", { opacity: 0, x: -80, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 2.4);
+          tl.fromTo("#s2b-cap2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 2.9);
+          tl.fromTo("#s2b-ring", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.8, duration: 0.9, ease: "power2.out", immediateRender: false }, 3.4);
+          // ease the camera toward the lock card
+          tl.fromTo("#s2b-panel-img", { scale: 1 }, { scale: 1.3, duration: 3.4, ease: "sine.inOut" }, 2.6);
+          tl.fromTo("#s2b-ring", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.8, duration: 0.9, ease: "power2.out", immediateRender: false }, 4.3);
+          tl.to("#s2b-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 6.0);
+          window.__timelines["s2b-panels"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

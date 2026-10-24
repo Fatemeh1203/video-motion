@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s2-workflows-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Vazirmatn", sans-serif;
+          color: var(--fg);
+        }
+        #s2-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s2-head {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 80px;
+          font-weight: 900;
+          opacity: 0;
+        }
+        #s2-head span {
+          background: linear-gradient(100deg, #2563eb, #0f9d7a 80%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        #s2-grid {
+          position: absolute;
+          top: 230px;
+          left: 150px;
+          width: 1620px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          direction: rtl;
+        }
+        .s2-tile {
+          height: 190px;
+          border-radius: 26px;
+          border: 2px solid var(--glass-line);
+          background: var(--glass);
+          box-shadow: 0 14px 34px rgba(29, 42, 68, 0.09);
+          padding: 30px 30px 0 30px;
+          display: flex;
+          gap: 24px;
+          align-items: flex-start;
+          opacity: 0;
+        }
+        .s2-tile i {
+          flex: none;
+          width: 72px;
+          height: 72px;
+          border-radius: 20px;
+          background: var(--c);
+          color: #ffffff;
+          font-style: normal;
+          font-size: 40px;
+          font-weight: 900;
+          line-height: 72px;
+          text-align: center;
+        }
+        .s2-tile b {
+          display: block;
+          font-size: 38px;
+          font-weight: 800;
+          line-height: 1.4;
+        }
+        .s2-tile small {
+          display: block;
+          margin-top: 6px;
+          font-size: 28px;
+          font-weight: 500;
+          color: var(--muted);
+        }
+        #s2-foot {
+          position: absolute;
+          top: 935px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          direction: rtl;
+          font-size: 36px;
+          font-weight: 700;
+          color: var(--mint);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2-workflows" data-width="1920" data-height="1080" data-duration="9.5">
+        <div id="s2-wrap">
+          <div id="s2-head">۹ ورک‌فلو، <span>۹ کار حسابدار</span></div>
+          <div id="s2-grid">
+            <div class="s2-tile" style="--c: #0f9d7a"><i>۱</i><div><b>ثبت واریزی و هزینه</b><small>با تأیید مدیر در تلگرام</small></div></div>
+            <div class="s2-tile" style="--c: #2563eb"><i>۲</i><div><b>سهم مدرس و حقوق</b><small>بستن ماه، بدون ماشین‌حساب</small></div></div>
+            <div class="s2-tile" style="--c: #6b4fe0"><i>۳</i><div><b>گزارش‌های دوره‌ای</b><small>ماهانه تا سالانه، با ایمیل</small></div></div>
+            <div class="s2-tile" style="--c: #d97706"><i>۴</i><div><b>آوردهٔ سرمایه‌گذار</b><small>با ارزش روز طلا و دلار</small></div></div>
+            <div class="s2-tile" style="--c: #dc4a3d"><i>۵</i><div><b>برنامهٔ کلاس‌ها</b><small>کلاس برگزارشده و برنامهٔ هفتگی</small></div></div>
+            <div class="s2-tile" style="--c: #0f9d7a"><i>۶</i><div><b>فهرست زندهٔ کلاس‌ها</b><small>دیدن و حذف از روی گوشی</small></div></div>
+            <div class="s2-tile" style="--c: #2563eb"><i>۷</i><div><b>ورود دسته‌ای از اکسل</b><small>آپلود یا پیوست ایمیل</small></div></div>
+            <div class="s2-tile" style="--c: #6b4fe0"><i>۸</i><div><b>اتصال تلگرام مدیر</b><small>یک بار، در یک دقیقه</small></div></div>
+            <div class="s2-tile" style="--c: #d97706"><i>۹</i><div><b>ساخت دفتر حسابداری</b><small>۱۷ شیت راست‌چین فارسی</small></div></div>
+          </div>
+          <div id="s2-foot">همه با تقویم شمسی · ۴۰٬۰۰۰ روز تست، صفر خطا · روی سرور خود آموزشگاه</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s2-wrap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+          tl.fromTo("#s2-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+          gsap.utils.toArray("#s2-root .s2-tile").forEach(function (t, i) {
+            const at = 0.7 + i * 0.42;
+            tl.fromTo(t, { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, at);
+            tl.fromTo(t.querySelector("i"), { rotation: -20, scale: 0.5 }, { rotation: 0, scale: 1, duration: 0.45, ease: "back.out(2.4)" }, at + 0.05);
+          });
+          tl.fromTo("#s2-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.8);
+          tl.to("#s2-wrap", { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" }, 8.75);
+          window.__timelines["s2-workflows"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

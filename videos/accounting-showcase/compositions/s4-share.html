@@ -146,9 +146,9 @@
         }
       </style>
 
-      <div id="s4-root" data-composition-id="s4-share" data-width="1920" data-height="1080" data-duration="7">
+      <div id="s4-root" data-composition-id="s4-share" data-width="1920" data-height="1080" data-duration="6.4">
         <div id="s4-wrap">
-          <div id="s4-head">سهم مدرس، <span>خودش حساب می‌شود</span></div>
+          <div id="s4-head">سهم مدرس؟ <span>ماشین‌حساب لازم نیست</span></div>
           <div id="s4-total"><small>واریزی تأییدشده</small><b id="s4-tv">۰</b><em>تومان</em></div>
           <div id="s4-bar">
             <div class="s4-seg" id="s4-teach"></div>
@@ -195,9 +195,9 @@
 
           tl.fromTo("#s4-note", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.9);
           tl.to("#s4-wrap", { opacity: 0, duration: 0.5, ease: "power1.in" }, 7.4);
-          // play the scene 1.143x faster (40s cut)
+          // play the scene 1.25x faster (40s cut)
           const root = gsap.timeline({ paused: true });
-          root.add(tl.timeScale(1.14286), 0);
+          root.add(tl.timeScale(1.25), 0);
           window.__timelines["s4-share"] = root;
         })();
       </script>
