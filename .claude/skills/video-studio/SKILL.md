@@ -22,6 +22,7 @@ explanations when she has to do something herself.
 | Edit her own recorded footage (cut pauses/fillers, captions, graphics, MP4 or Premiere XML) | HyperFrames + ffmpeg | `/video-edit` |
 | Captions only on her own talking-head footage | HyperFrames | `/embedded-captions` |
 | Graphics over her own interview/podcast footage | HyperFrames | `/talking-head-recut` |
+| Instagram copy around a video: hook + script (`/ig-reel`), caption, carousel, story, weekly plan, comment/DM replies | — (text) | `/ig-*` skills; her tone file is `instagram/voice.md` → copy to `~/.claude/instagram/voice.md` |
 
 Always follow the chosen engine's own workflow (brief → plan → build → check → render).
 New projects go under `videos/<kebab-name>/` in the video-motion repo. For HyperFrames,
