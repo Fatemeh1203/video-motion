@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s9-classes-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+        #s9-root { position: absolute; inset: 0; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: var(--ink); }
+        #s9-wrap { position: absolute; inset: 0; }
+        #s9-head { position: absolute; right: 110px; top: 60px; width: 1200px; direction: rtl; }
+        #s9-eyebrow, #s9-title { opacity: 0; }
+        #s9-eyebrow { font-size: 30px; font-weight: 700; color: var(--blue-d); }
+        #s9-title { margin-top: 6px; font-size: 80px; font-weight: 900; line-height: 1.25; }
+        #s9-win { position: absolute; left: 110px; top: 250px; width: 1700px; height: 530px; border-radius: 28px; background: var(--card); border: 2px solid var(--card-line);
+          box-shadow: var(--shadow); padding: 26px 34px; direction: rtl; opacity: 0; }
+        #s9-wt { font-size: 29px; font-weight: 900; margin-bottom: 14px; }
+        #s9-wt small { font-size: 23px; font-weight: 600; color: var(--ink3); margin-right: 12px; }
+        .s9-row { display: flex; align-items: center; height: 92px; border-bottom: 2px solid #e4ecf8; font-size: 27px; font-weight: 700; opacity: 0; }
+        .s9-row > div { flex-shrink: 0; padding: 0 10px; }
+        .s9-h { height: 58px; font-size: 23px; font-weight: 800; color: var(--ink3); background: #eef4fd; border-radius: 14px; border-bottom: 0; }
+        .c1 { width: 220px; } .c2 { width: 120px; } .c3 { width: 170px; } .c4 { width: 130px; } .c5 { width: 150px; } .c6 { width: 130px; } .c7 { flex: 1; display: flex; gap: 12px; align-items: center; }
+        .s9-g { display: inline-block; padding: 4px 14px; border-radius: 10px; background: var(--sky3); color: var(--blue-d); font-weight: 900; }
+        .s9-p { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px; background: #fff; border: 2px solid var(--card-line); font-size: 25px; font-weight: 700; }
+        .s9-p i { font-style: normal; color: var(--red); font-weight: 900; }
+        .s9-gold { display: inline-block; padding: 4px 14px; border-radius: 10px; background: var(--gold-bg); color: var(--gold); font-size: 23px; font-weight: 900; border: 2px solid rgba(168, 101, 13, 0.4); }
+        #s9-new { opacity: 0; }
+        #s9-toast { position: absolute; left: 180px; top: 650px; padding: 18px 28px; border-radius: 20px; background: #fff; border: 3px solid rgba(179, 38, 62, 0.55);
+          box-shadow: 0 30px 60px -24px rgba(31, 51, 90, 0.55); font-size: 27px; font-weight: 700; direction: rtl; opacity: 0; }
+        #s9-toast b { color: var(--red); font-weight: 900; }
+        #s9-feats { position: absolute; right: 110px; top: 820px; width: 1700px; display: flex; gap: 16px; direction: rtl; }
+        .s9-f { padding: 14px 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.88); border: 2px solid var(--card-line); font-size: 27px; font-weight: 700; color: var(--ink2); opacity: 0; }
+        .s9-f b { color: var(--ink); font-weight: 900; }
+      </style>
+
+      <div id="s9-root" data-composition-id="s9-classes" data-width="1920" data-height="1080" data-duration="9.8">
+        <div id="s9-wrap">
+          <div id="s9-head">
+            <div id="s9-eyebrow">۶ · کلاس‌ها و برنامهٔ هفتگی</div>
+            <div id="s9-title">برنامهٔ هفتگی، هوشمند</div>
+          </div>
+
+          <div id="s9-win">
+            <div id="s9-wt">📋 فهرست کلاس‌ها و گروه‌ها<small>نمای زنده از شیت برنامه_هفتگی</small></div>
+            <div class="s9-row s9-h"><div class="c1">کلاس</div><div class="c2">گروه</div><div class="c3">روز</div><div class="c4">ساعت</div><div class="c5">مکان</div><div class="c6">مدرس</div><div class="c7">فراگیران</div></div>
+            <div class="s9-row" id="s9-r1"><div class="c1">C001</div><div class="c2"><span class="s9-g">G-1</span></div><div class="c3">دوشنبه</div><div class="c4">۱۶:۰۰</div><div class="c5">کلاس ۲</div><div class="c6">M001</div><div class="c7"><span class="s9-p">سارا محمدی <i>✕</i></span><span class="s9-p" id="s9-new">مریم احمدی <i>✕</i></span></div></div>
+            <div class="s9-row" id="s9-r2"><div class="c1">C001</div><div class="c2"><span class="s9-g">G-2</span></div><div class="c3">چهارشنبه</div><div class="c4">۱۶:۰۰</div><div class="c5">کلاس ۲</div><div class="c6">M001</div><div class="c7"><span class="s9-p">سارا محمدی <i>✕</i></span></div></div>
+            <div class="s9-row" id="s9-r3"><div class="c1">C001 <span class="s9-gold">جبرانی</span></div><div class="c2"><span class="s9-g">G-3</span></div><div class="c3">پنجشنبه</div><div class="c4">۱۰:۰۰</div><div class="c5">کلاس ۱</div><div class="c6">M001</div><div class="c7"><span class="s9-p">سارا محمدی <span class="s9-gold">جبرانی</span> <i>✕</i></span></div></div>
+          </div>
+
+          <div id="s9-toast" data-layout-allow-overlap><b>✕ تکراری:</b> سارا محمدی از قبل در همین کلاس و ساعت هست؛ دوباره ثبت نشد.</div>
+
+          <div id="s9-feats">
+            <div class="s9-f" id="s9-f1"><b>گروه‌بندی خودکار</b> · یک کلاس، یک ساعت</div>
+            <div class="s9-f" id="s9-f2"><b>تشخیص تکراری</b></div>
+            <div class="s9-f" id="s9-f3"><b>جلسهٔ جبرانی</b> با برچسب طلایی</div>
+            <div class="s9-f" id="s9-f4"><b>حذف نرم</b> و قابل بازگشت</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s9-wrap", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0);
+          tl.fromTo("#s9-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+          tl.fromTo("#s9-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.4);
+          tl.fromTo("#s9-win", { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+          tl.fromTo("#s9-root .s9-h", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0.9);
+          tl.fromTo("#s9-r1", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.1);
+          tl.fromTo("#s9-r2", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.4);
+
+          // a second learner in the same slot joins group G-1
+          tl.fromTo("#s9-new", { opacity: 0, y: -60, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, 2.6);
+          tl.fromTo("#s9-r1 .s9-g", { scale: 1 }, { scale: 1.3, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 2.9);
+          tl.fromTo("#s9-f1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.0);
+
+          // duplicate refused
+          tl.fromTo("#s9-toast", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.0);
+          tl.to("#s9-toast", { x: -10, duration: 0.06, ease: "none", yoyo: true, repeat: 5 }, 5.4);
+          tl.fromTo("#s9-f2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 5.2);
+          tl.to("#s9-toast", { opacity: 0, duration: 0.3, ease: "power1.in" }, 6.4);
+
+          // make-up session with the gold tag
+          tl.fromTo("#s9-r3", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.6);
+          tl.fromTo("#s9-r3 .s9-gold", { scale: 0.4 }, { scale: 1, duration: 0.45, ease: "back.out(3)", stagger: 0.15 }, 6.8);
+          tl.fromTo("#s9-f3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.9);
+          tl.fromTo("#s9-f4", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.6);
+
+          tl.to("#s9-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 9.2);
+          window.__timelines["s9-classes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

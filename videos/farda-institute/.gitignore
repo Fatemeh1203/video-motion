@@ -1,0 +1,5 @@
+.hyperframes/
+snapshots/
+renders/*
+!renders/farda-institute.mp4
+node_modules/

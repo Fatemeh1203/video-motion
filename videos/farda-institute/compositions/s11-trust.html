@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="s11-trust-template">
+      <style>
+        @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+        #s11-root { position: absolute; inset: 0; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: var(--ink); }
+        #s11-wrap { position: absolute; inset: 0; }
+        #s11-head { position: absolute; right: 110px; top: 110px; width: 1700px; direction: rtl; }
+        #s11-eyebrow, #s11-title { opacity: 0; }
+        #s11-eyebrow { font-size: 30px; font-weight: 700; color: var(--blue-d); }
+        #s11-title { margin-top: 6px; font-size: 88px; font-weight: 900; line-height: 1.25; }
+        #s11-grid { position: absolute; right: 110px; top: 380px; width: 1700px; display: grid; grid-template-columns: 1.15fr 1fr 1fr 1.15fr; gap: 26px; direction: rtl; }
+        .s11-t { height: 470px; border-radius: 32px; background: var(--card); border: 2px solid var(--card-line); box-shadow: var(--shadow); padding: 38px 34px; opacity: 0; }
+        .s11-t:nth-child(even) { margin-top: 50px; height: 420px; }
+        .s11-ic { width: 84px; height: 84px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+        .s11-t b { display: block; margin-top: 26px; font-size: 38px; font-weight: 900; line-height: 1.3; }
+        .s11-t p { margin-top: 14px; font-size: 27px; font-weight: 600; line-height: 1.6; color: var(--ink2); }
+        .s11-big { display: block; margin-top: 18px; font-size: 54px; font-weight: 900; color: var(--blue-d); direction: ltr; text-align: right; }
+      </style>
+
+      <div id="s11-root" data-composition-id="s11-trust" data-width="1920" data-height="1080" data-duration="7.2">
+        <div id="s11-wrap">
+          <div id="s11-head">
+            <div id="s11-eyebrow">۸ · امنیت و پایداری</div>
+            <div id="s11-title">امن، شمسی، بدون گم‌شدن داده</div>
+          </div>
+          <div id="s11-grid">
+            <div class="s11-t"><div class="s11-ic" style="background:#e3ecff">🔒</div><b>پنل مدیر رمزگذاری‌شده</b><span class="s11-big">AES-256</span><p>لینک‌های مدیریتی فقط با رمز مدیر باز می‌شوند.</p></div>
+            <div class="s11-t"><div class="s11-ic" style="background:#ece8fd; font-size: 30px; font-weight: 900; color: #6f57cf;">۱۴۰۵</div><b>تقویم شمسی</b><p>تبدیل تاریخ روی ۴۰٬۰۰۰ روز پیاپی تست شده؛ صفر خطا.</p></div>
+            <div class="s11-t"><div class="s11-ic" style="background:#dcf5e8">🔁</div><b>قطعی گوگل؟</b><p>هر گام تا ۳ بار دوباره تلاش می‌کند.</p></div>
+            <div class="s11-t"><div class="s11-ic" style="background:#fff1d6">🗂️</div><b>بایگانی کامل</b><p>هر ورودی با دادهٔ خام در «لاگ_ورودی» می‌ماند؛ اجرای دوباره، ردیف تکراری نمی‌سازد.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s11-wrap", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0);
+          tl.fromTo("#s11-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+          tl.fromTo("#s11-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.4);
+          gsap.utils.toArray("#s11-root .s11-t").forEach(function (el, i) {
+            tl.fromTo(el, { opacity: 0, y: 90, rotation: i % 2 ? 2 : -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.5)" }, 0.8 + i * 0.4);
+            tl.to(el, { y: i % 2 ? -8 : 8, duration: 2.4, ease: "sine.inOut" }, 1.6 + i * 0.4);
+          });
+          tl.to("#s11-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 6.6);
+          window.__timelines["s11-trust"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
