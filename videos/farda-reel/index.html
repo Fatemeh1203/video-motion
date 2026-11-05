@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+      :root {
+        --sky1: #bcd8fb; --sky2: #d6e8fd; --sky3: #eaf3fe; --sky4: #f6faff;
+        --ink: #1f335a; --ink2: #34507f; --ink3: #4d6795;
+        --blue: #3d6fd6; --blue-d: #2a54ad; --violet: #6f57cf;
+        --green: #1c7a51; --green-bg: #dcf5e8; --red: #b3263e; --gold: #a8650d;
+        --card: linear-gradient(180deg, #ffffff, #f4f8ff);
+        --line: rgba(61, 111, 214, 0.2);
+        --shadow: 0 40px 80px -30px rgba(60, 100, 180, 0.6), inset 0 -8px 20px rgba(150, 185, 240, 0.18);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--sky2); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: var(--ink);
+        background: linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 30%, var(--sky3) 62%, var(--sky4) 100%); }
+      .layer { position: absolute; inset: 0; }
+      .cloud { position: absolute; border-radius: 120px; filter: blur(3px); }
+      #cl1 { top: 120px; right: -120px; width: 520px; height: 190px; background: radial-gradient(60% 90% at 30% 60%, #fff 0%, #eaf2ff 60%, rgba(234,242,255,0) 72%); }
+      #cl2 { top: 900px; left: -180px; width: 600px; height: 210px; background: radial-gradient(60% 90% at 60% 55%, #fff 0%, #e6f0ff 60%, rgba(230,240,255,0) 74%); }
+      #cl3 { top: 1560px; right: -60px; width: 480px; height: 170px; background: radial-gradient(60% 90% at 40% 60%, #fff 0%, #edf4ff 62%, rgba(237,244,255,0) 74%); }
+      #grain { position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.07; mix-blend-mode: multiply; }
+
+      /* caption cards: text-safe band, x 100-860, y 250-580 */
+      #caps { position: absolute; left: 100px; top: 250px; width: 760px; height: 330px; }
+      .cap { position: absolute; left: 0; right: 0; top: 0; height: 330px; display: flex; align-items: center; justify-content: center; text-align: center;
+        direction: rtl; font-size: 86px; font-weight: 900; line-height: 1.4; opacity: 0; }
+      .cap b { color: var(--blue-d); font-weight: 900; }
+      .cap .r { color: var(--red); }
+      #cap1 { opacity: 1; }
+
+      /* stage: y 610-1420, centred on x 480 */
+      .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
+      .card { position: absolute; border-radius: 30px; background: var(--card); border: 3px solid var(--line); box-shadow: var(--shadow); direction: rtl; }
+
+      /* s1 chaos */
+      #st1 { opacity: 1; }
+      .mess { width: 380px; padding: 26px 30px; }
+      .mess small { display: block; font-size: 30px; font-weight: 700; color: var(--ink3); }
+      .mess strong { display: block; margin-top: 6px; font-size: 42px; font-weight: 900; }
+      .mess i { display: inline-block; margin-top: 12px; padding: 4px 16px; border-radius: 20px; background: #ffe3e8; color: var(--red); font-style: normal; font-size: 30px; font-weight: 800; }
+      #calc { position: absolute; left: 610px; top: 1120px; width: 200px; height: 260px; border-radius: 30px; background: #1f335a; box-shadow: 0 40px 70px -30px rgba(31,51,90,.8); padding: 22px; }
+      #calc .scr { height: 62px; border-radius: 12px; background: #d7f0d9; color: #1f335a; font-size: 32px; font-weight: 900; direction: ltr; text-align: right; padding: 0 10px; line-height: 62px; overflow: hidden; white-space: nowrap; }
+      #calc .keys { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      #calc .keys span { height: 40px; border-radius: 10px; background: #34507f; }
+
+      /* s2 logo */
+      #halo { position: absolute; left: 230px; top: 700px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #f0f6ff 100%);
+        box-shadow: 0 60px 90px -30px rgba(80,120,195,.6), inset 0 -14px 30px rgba(150,185,240,.3); }
+      #logo { position: absolute; left: 255px; top: 720px; width: 450px; height: 450px; }
+      #s2name { position: absolute; left: 100px; width: 760px; top: 1250px; text-align: center; direction: rtl; font-size: 54px; font-weight: 900; }
+
+      /* phone */
+      .phone { position: absolute; left: 200px; top: 610px; width: 560px; height: 810px; border-radius: 60px; padding: 16px; background: #1f335a; box-shadow: 0 60px 110px -40px rgba(31,51,90,.85); }
+      .screen { position: relative; width: 100%; height: 100%; border-radius: 46px; overflow: hidden; direction: rtl; }
+      #scr3 { background: linear-gradient(180deg, #ffffff, #f2f7ff); padding: 40px 30px; }
+      .ftop { display: flex; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 2px solid rgba(61,111,214,.15); }
+      .ftop .ic { width: 64px; height: 64px; border-radius: 20px; background: linear-gradient(160deg, #79b0ff, #4d7fe6); display: flex; align-items: center; justify-content: center; }
+      .ftop b { font-size: 38px; font-weight: 900; }
+      .f { margin-top: 18px; }
+      .f label { display: block; font-size: 26px; font-weight: 700; color: var(--ink2); margin-bottom: 8px; }
+      .f label em { font-style: normal; color: var(--red); margin-right: 4px; }
+      .in { height: 72px; border-radius: 16px; background: #fff; border: 2px solid rgba(61,111,214,.25); padding: 0 20px; display: flex; align-items: center; font-size: 32px; font-weight: 800; }
+      .v { display: block; white-space: nowrap; }
+      #send { margin-top: 26px; height: 84px; border-radius: 22px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff; font-size: 36px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+      #sent { position: absolute; left: 40px; right: 40px; top: 300px; height: 200px; border-radius: 28px; background: #fff; border: 3px solid rgba(28,122,81,.5); box-shadow: 0 40px 80px -30px rgba(31,51,90,.6);
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; }
+      #sent b { font-size: 42px; font-weight: 900; color: var(--green); }
+      #sent span { font-size: 28px; font-weight: 700; color: var(--ink2); }
+      .finger { position: absolute; left: 0; top: 0; width: 56px; height: 56px; border-radius: 50%; background: rgba(31,51,90,.35); border: 4px solid #fff; opacity: 0; }
+      .ring { position: absolute; left: 0; top: 0; width: 84px; height: 84px; border-radius: 50%; border: 6px solid rgba(61,111,214,.9); opacity: 0; }
+
+      /* telegram */
+      #scr4 { background: linear-gradient(180deg, #dbe7f5, #cfe0f2); }
+      .tbar { height: 120px; padding: 34px 26px 0; background: #fff; display: flex; align-items: center; gap: 16px; }
+      .tbar .av { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(160deg, #5cc3f5, #2aabee); display: flex; align-items: center; justify-content: center; }
+      .tbar b { font-size: 32px; font-weight: 900; }
+      #chat { position: absolute; top: 146px; left: 22px; right: 22px; }
+      .bub { background: #fff; border-radius: 26px 8px 26px 26px; padding: 22px 24px; box-shadow: 0 10px 20px -12px rgba(31,51,90,.35); }
+      #msg h6 { font-size: 30px; font-weight: 900; color: var(--blue-d); margin-bottom: 8px; }
+      #msg p { font-size: 29px; font-weight: 700; line-height: 1.7; }
+      #msg p span { color: var(--ink3); }
+      #ibtn { margin-top: 12px; height: 72px; border-radius: 18px; background: rgba(255,255,255,.8); border: 2px solid rgba(42,171,238,.55); display: flex; align-items: center; justify-content: center; font-size: 29px; font-weight: 800; color: #1a6f9e; }
+      #ok { margin-top: 16px; width: 330px; opacity: 0; }
+      #ok b { font-size: 34px; font-weight: 900; color: var(--green); }
+      #sheet4 { position: absolute; left: 0; right: 0; bottom: 0; height: 370px; background: #fff; border-radius: 34px 34px 0 0; padding: 30px; box-shadow: 0 -20px 40px rgba(31,51,90,.25); }
+      #sheet4 h6 { font-size: 32px; font-weight: 900; }
+      #sheet4 .row2 { display: flex; gap: 14px; margin-top: 20px; }
+      #sheet4 .row2 .in { flex: 1; }
+      #acts { display: flex; gap: 14px; margin-top: 26px; }
+      #yes, #no { flex: 1; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; }
+      #yes { background: var(--green); color: #fff; }
+      #no { border: 3px solid rgba(179,38,62,.5); color: var(--red); }
+
+      /* share */
+      #split { left: 110px; top: 640px; width: 740px; padding: 40px 40px 44px; }
+      #split .lbl { font-size: 30px; font-weight: 700; color: var(--ink3); }
+      #split .tot { font-size: 84px; font-weight: 900; line-height: 1.35; }
+      #split .tot small { font-size: 38px; color: var(--ink2); margin-right: 10px; }
+      #bar { margin-top: 20px; height: 100px; border-radius: 26px; overflow: hidden; display: flex; direction: rtl; background: #e6eefb; }
+      #seg1 { width: 70%; background: linear-gradient(160deg, #6b9bf2, #2a54ad); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 900; }
+      #seg2 { width: 30%; background: linear-gradient(160deg, #a58ff0, #6f57cf); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 900; }
+      #legend { margin-top: 26px; display: flex; gap: 22px; }
+      .lg { flex: 1; padding: 20px 22px; border-radius: 22px; background: #fff; border: 2px solid var(--line); }
+      .lg small { display: block; font-size: 28px; font-weight: 700; color: var(--ink2); }
+      .lg b { display: block; font-size: 52px; font-weight: 900; }
+      #lg1 b { color: var(--blue-d); }
+      #lg2 b { color: var(--violet); }
+      #lock { position: absolute; left: 36px; top: 34px; width: 92px; height: 92px; border-radius: 26px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+      #mini { left: 110px; top: 1160px; width: 740px; height: 250px; overflow: hidden; padding: 0; }
+      #mini .mt { height: 70px; display: flex; align-items: center; gap: 14px; padding: 0 22px; border-bottom: 2px solid #e6ebf2; font-size: 28px; font-weight: 800; }
+      #mini .mt i { width: 40px; height: 40px; border-radius: 10px; background: #1e8e3e; }
+      #mini .row { display: flex; height: 92px; align-items: center; border-bottom: 2px solid #eef1f6; font-size: 29px; font-weight: 800; background: rgba(30,142,62,.08); box-shadow: inset 0 0 0 3px #1e8e3e; }
+      #mini .row div { padding: 0 16px; border-left: 2px solid #e6ebf2; white-space: nowrap; }
+      #mini .tabs { display: flex; gap: 8px; padding: 14px 18px; font-size: 25px; font-weight: 700; color: var(--ink2); white-space: nowrap; }
+      #mini .tabs span { padding: 4px 14px; border-radius: 10px; }
+      #mini .tabs .on { background: #fff; color: #146c2e; box-shadow: inset 0 -4px 0 #1e8e3e; }
+
+      /* month close + email */
+      #panel { left: 140px; top: 700px; width: 680px; padding: 40px; }
+      #panel h6 { font-size: 30px; font-weight: 700; color: var(--ink3); }
+      #panel h5 { margin-top: 6px; font-size: 52px; font-weight: 900; }
+      .sels { margin-top: 24px; display: flex; gap: 16px; }
+      .sel { flex: 1; height: 84px; border-radius: 18px; background: #fff; border: 2px solid rgba(61,111,214,.3); padding: 0 22px; display: flex; align-items: center; font-size: 36px; font-weight: 800; }
+      #go { margin-top: 26px; height: 100px; border-radius: 24px; background: linear-gradient(160deg, #a58ff0, #6f57cf); color: #fff; font-size: 38px; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 24px 40px -20px rgba(111,87,207,.9); }
+      #mail { left: 100px; top: 640px; width: 760px; padding: 0; overflow: hidden; opacity: 0; }
+      #mail .mh { padding: 26px 30px; border-bottom: 2px solid #e8edf5; display: flex; gap: 18px; align-items: center; }
+      #mail .mh .av { width: 66px; height: 66px; border-radius: 50%; background: #d93025; color: #fff; font-size: 34px; font-weight: 900; display: flex; align-items: center; justify-content: center; direction: ltr; flex-shrink: 0; }
+      #mail .mh b { display: block; font-size: 32px; font-weight: 900; line-height: 1.4; }
+      #mail .mb { padding: 26px 30px 34px; }
+      .kv { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 2px solid #eef2f8; font-size: 32px; font-weight: 700; }
+      .kv span { color: var(--ink2); }
+      .kv b { font-weight: 900; }
+      .stat { padding: 6px 18px; border-radius: 12px; background: var(--green-bg); color: var(--green); font-size: 28px; font-weight: 900; }
+      #att { margin-top: 24px; display: inline-flex; align-items: center; gap: 12px; padding: 16px 24px; border-radius: 18px; border: 3px solid rgba(30,142,62,.45); background: #f0faf3; font-size: 30px; font-weight: 800; color: #146c2e; }
+
+      /* end */
+      #endcalc { position: absolute; left: 380px; top: 640px; width: 200px; height: 260px; }
+      #endcalc .cbody { position: absolute; inset: 0; border-radius: 30px; background: #1f335a; padding: 22px; box-shadow: 0 40px 70px -30px rgba(31,51,90,.8); }
+      #endcalc .scr { height: 62px; border-radius: 12px; background: #d7f0d9; color: #1f335a; font-size: 32px; font-weight: 900; direction: ltr; text-align: right; padding: 0 10px; line-height: 62px; }
+      #endcalc .keys { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      #endcalc .keys span { height: 40px; border-radius: 10px; background: #34507f; }
+      #strike { position: absolute; left: -40px; top: 120px; width: 280px; height: 20px; z-index: 2; border-radius: 9px; background: var(--red); transform-origin: right center; rotate: -35deg; }
+      #save { position: absolute; left: 230px; top: 1010px; width: 500px; height: 130px; border-radius: 40px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff;
+        display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 54px; font-weight: 900; direction: rtl; box-shadow: 0 30px 60px -24px rgba(42,84,173,.9); }
+      #sign { position: absolute; left: 100px; width: 760px; top: 1210px; display: flex; align-items: center; justify-content: center; gap: 20px; direction: rtl; }
+      #sign img { width: 120px; height: 120px; }
+      #sign b { display: block; font-size: 40px; font-weight: 900; }
+      #sign small { display: block; font-size: 30px; font-weight: 700; color: var(--ink2); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="34">
+      <div id="bg" class="layer clip" data-start="0" data-duration="34" data-track-index="0">
+        <div class="cloud" id="cl1"></div>
+        <div class="cloud" id="cl2"></div>
+        <div class="cloud" id="cl3"></div>
+      </div>
+
+      <div id="stages" class="layer clip" data-start="0" data-duration="34" data-track-index="1">
+        <!-- 1 · chaos -->
+        <div class="stage" id="st1">
+          <div class="card mess" id="m1" data-layout-ignore><small>فیش واریزی</small><strong>۸۰۰٬۰۰۰ تومان</strong><i>کدوم دوره؟</i></div>
+          <div class="card mess" id="m2" data-layout-ignore><small>فاکتور اجاره</small><strong>توی گالری گم شد</strong><i>عکسش کو؟</i></div>
+          <div class="card mess" id="m3" data-layout-ignore><small>فایل اکسل</small><strong>جمع درآمد ماه</strong><i>نسخه‌ی چندم؟</i></div>
+          <div id="calc"><div class="scr" id="calcnum">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        </div>
+
+        <!-- 2 · logo -->
+        <div class="stage" id="st2">
+          <div id="halo"></div>
+          <img id="logo" src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا">
+          <div id="s2name">آموزشگاه علمی فردا</div>
+        </div>
+
+        <!-- 3 · colleague form -->
+        <div class="stage" id="st3">
+          <div class="phone"><div class="screen" id="scr3">
+            <div class="ftop"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8"/></svg></div><b>ثبت واریزی</b></div>
+            <div class="f"><label>پرداخت‌کننده<em>*</em></label><div class="in"><span class="v">فراگیر · سارا محمدی</span></div></div>
+            <div class="f"><label>مبلغ (تومان)<em>*</em></label><div class="in"><span class="v">۸۰۰.۰۰۰</span></div></div>
+            <div class="f"><label>دوره<em>*</em></label><div class="in"><span class="v">C001</span></div></div>
+            <div class="f"><label>عکس فیش</label><div class="in"><span class="v" style="color:#2a54ad">📎 فیش.jpg</span></div></div>
+            <div id="send">ارسال</div>
+            <div id="sent"><b>✓ ارسال شد</b><span>در انتظار تأیید مدیر</span></div>
+            <div class="ring" id="ring3"></div>
+            <div class="finger" id="fing3"></div>
+          </div></div>
+        </div>
+
+        <!-- 4 · telegram approval -->
+        <div class="stage" id="st4">
+          <div class="phone"><div class="screen" id="scr4">
+            <div class="tbar"><div class="av"><svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div><b>ربات حسابداری</b></div>
+            <div id="chat">
+              <div class="bub" id="msg">
+                <h6>💰 واریزی تازه</h6>
+                <p><span>از:</span> سارا محمدی</p>
+                <p><span>مبلغ:</span> ۸۰۰٬۰۰۰ تومان</p>
+                <p><span>مدرس پیشنهادی:</span> M001 · ۷۰٪</p>
+              </div>
+              <div id="ibtn">✍️ بررسی، درصد و ثبت</div>
+              <div class="bub" id="ok"><b>✅ ثبت شد</b></div>
+            </div>
+            <div id="sheet4">
+              <h6>تأیید مدیر</h6>
+              <div class="row2"><div class="in">M001</div><div class="in">۷۰٪</div></div>
+              <div id="acts"><div id="yes">ثبت کن</div><div id="no">رد کن</div></div>
+            </div>
+            <div class="ring" id="ring4" style="border-color: rgba(28,122,81,.9)"></div>
+            <div class="finger" id="fing4"></div>
+          </div></div>
+        </div>
+
+        <!-- 5 · teacher share + sheet -->
+        <div class="stage" id="st5">
+          <div class="card" id="split">
+            <div id="lock"><svg width="50" height="50" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path id="shackle" d="M10 14V10a6 6 0 0 1 12 0v4"/><rect x="6" y="14" width="20" height="14" rx="3" fill="#fff" stroke="none"/></svg></div>
+            <div class="lbl">شهریه‌ی سارا · C001</div>
+            <div class="tot">۸۰۰٬۰۰۰<small>تومان</small></div>
+            <div id="bar"><div id="seg1"><span id="p1">۷۰٪</span></div><div id="seg2"><span id="p2">۳۰٪</span></div></div>
+            <div id="legend">
+              <div class="lg" id="lg1"><small>سهم مدرس</small><b id="n1">۰</b></div>
+              <div class="lg" id="lg2"><small>سهم آموزشگاه</small><b id="n2">۰</b></div>
+            </div>
+          </div>
+          <div class="card" id="mini">
+            <div class="mt"><i></i>دفتر حسابداری فردا</div>
+            <div class="row"><div>سارا محمدی</div><div>۸۰۰٬۰۰۰</div><div>۷۰</div><div>۵۶۰٬۰۰۰</div></div>
+            <div class="tabs"><span class="on">درآمد</span><span>هزینه‌ها</span><span>حقوق_مدرسین</span><span>برنامه_هفتگی</span></div>
+          </div>
+        </div>
+
+        <!-- 6 · month close + email -->
+        <div class="stage" id="st6">
+          <div class="card" id="panel">
+            <h6>پنل مدیر</h6>
+            <h5>بستن حقوق ماه</h5>
+            <div class="sels"><div class="sel">۱۴۰۵</div><div class="sel">مرداد</div></div>
+            <div id="go">ببند و ایمیل کن</div>
+            <div class="finger" id="fing6"></div>
+          </div>
+          <div class="card" id="mail">
+            <div class="mh"><div class="av">F</div><div><b>گزارش حقوق مرداد ۱۴۰۵</b></div></div>
+            <div class="mb">
+              <div class="kv"><span>مدرس</span><b>M001</b></div>
+              <div class="kv"><span>سهم مدرس</span><b>۵۶۰٬۰۰۰</b></div>
+              <div class="kv"><span>سهم آموزشگاه</span><b>۲۴۰٬۰۰۰</b></div>
+              <div class="kv"><span>وضعیت</span><span class="stat">واریز شد ✓</span></div>
+              <div id="att">📎 فایل اکسل حقوق</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 · end -->
+        <div class="stage" id="st7">
+          <div id="endcalc"><div class="cbody"><div class="scr">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div id="strike"></div></div>
+          <div id="save">🔖 سیوش کن</div>
+          <div id="sign"><img src="assets/farda-logo-ink.png" alt=""><div><b>آموزشگاه علمی فردا</b><small>طراحی و ساخت: فاطمه شمس</small></div></div>
+        </div>
+      </div>
+
+      <div id="captions" class="layer clip" data-start="0" data-duration="34" data-track-index="2">
+        <div id="caps">
+          <div class="cap" id="cap1"><div>حقوق مدرس، هنوز با <b>ماشین‌حساب</b>؟</div></div>
+          <div class="cap" id="cap2"><div>فیش توی تلگرام، فاکتور توی <span class="r">گالری</span></div></div>
+          <div class="cap" id="cap3"><div>آموزشگاه <b>فردا</b> رو ببین</div></div>
+          <div class="cap" id="cap4"><div>همکار: فقط <b>یه فرم</b></div></div>
+          <div class="cap" id="cap5"><div>شهریه‌ی سارا: <b>۸۰۰٬۰۰۰</b> تومان</div></div>
+          <div class="cap" id="cap6"><div>میاد <b>تلگرام</b> مدیر</div></div>
+          <div class="cap" id="cap7"><div>تا تأیید نکنم، <b>ثبت نمی‌شه</b></div></div>
+          <div class="cap" id="cap8"><div>سهم مدرس <b>۷۰٪</b> = ۵۶۰٬۰۰۰</div></div>
+          <div class="cap" id="cap9"><div>قفل، توی <b>۱۷ شیت</b> فارسی</div></div>
+          <div class="cap" id="cap10"><div>آخر ماه: فقط <b>یه دکمه</b></div></div>
+          <div class="cap" id="cap11"><div>گزارش حقوق + اکسل، توی <b>ایمیل</b></div></div>
+          <div class="cap" id="cap12"><div><b>ماشین‌حساب</b> رو بذار کنار</div></div>
+        </div>
+      </div>
+
+      <div id="grain" class="clip" data-start="0" data-duration="34" data-track-index="3"></div>
+
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="34" data-track-index="10" data-volume="0.6"></audio>
+      <audio id="sx01" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="2" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sx02" src="assets/sfx/pop.mp3" data-start="0.3" data-duration="0.6" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sx03" src="assets/sfx/pop.mp3" data-start="0.6" data-duration="0.6" data-track-index="13" data-volume="0.16"></audio>
+      <audio id="sx04" src="assets/sfx/pop.mp3" data-start="0.9" data-duration="0.6" data-track-index="14" data-volume="0.16"></audio>
+      <audio id="sx05" src="assets/sfx/glitch-1.mp3" data-start="3.0" data-duration="0.8" data-track-index="11" data-volume="0.12"></audio>
+      <audio id="sx06" src="assets/sfx/whoosh-cinematic.mp3" data-start="5.6" data-duration="2" data-track-index="12" data-volume="0.26"></audio>
+      <audio id="sx07" src="assets/sfx/sparkle.mp3" data-start="6.2" data-duration="1.8" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sx08" src="assets/sfx/whoosh.mp3" data-start="8.0" data-duration="0.57" data-track-index="14" data-volume="0.24"></audio>
+      <audio id="sx09" src="assets/sfx/typing.mp3" data-start="9.0" data-duration="1.5" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sx10" src="assets/sfx/typing.mp3" data-start="11.0" data-duration="1.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sx11" src="assets/sfx/click-soft.mp3" data-start="13.0" data-duration="0.37" data-track-index="13" data-volume="0.28"></audio>
+      <audio id="sx12" src="assets/sfx/whoosh.mp3" data-start="13.6" data-duration="0.57" data-track-index="14" data-volume="0.24"></audio>
+      <audio id="sx13" src="assets/sfx/notification.mp3" data-start="14.3" data-duration="1.2" data-track-index="11" data-volume="0.24"></audio>
+      <audio id="sx14" src="assets/sfx/click-soft.mp3" data-start="16.0" data-duration="0.37" data-track-index="12" data-volume="0.28"></audio>
+      <audio id="sx15" src="assets/sfx/click-soft.mp3" data-start="18.0" data-duration="0.37" data-track-index="13" data-volume="0.28"></audio>
+      <audio id="sx16" src="assets/sfx/notification.mp3" data-start="18.5" data-duration="1.2" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="sx17" src="assets/sfx/whoosh.mp3" data-start="19.0" data-duration="0.57" data-track-index="11" data-volume="0.24"></audio>
+      <audio id="sx18" src="assets/sfx/impact-bass-1.mp3" data-start="20.6" data-duration="2" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sx19" src="assets/sfx/pop.mp3" data-start="22.6" data-duration="0.6" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sx20" src="assets/sfx/whoosh.mp3" data-start="25.0" data-duration="0.57" data-track-index="14" data-volume="0.24"></audio>
+      <audio id="sx21" src="assets/sfx/click-soft.mp3" data-start="26.8" data-duration="0.37" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sx22" src="assets/sfx/notification.mp3" data-start="28.0" data-duration="1.2" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sx23" src="assets/sfx/chime.mp3" data-start="29.6" data-duration="1.5" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sx24" src="assets/sfx/whoosh-cinematic.mp3" data-start="30.8" data-duration="2" data-track-index="14" data-volume="0.26"></audio>
+      <audio id="sx25" src="assets/sfx/glitch-1.mp3" data-start="31.6" data-duration="0.8" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sx26" src="assets/sfx/sparkle.mp3" data-start="32.2" data-duration="1.8" data-track-index="12" data-volume="0.2"></audio>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const FA = "۰۱۲۳۴۵۶۷۸۹";
+        const fa = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "٬").replace(/[0-9]/g, function (d) { return FA[+d]; }); };
+
+        // ambient
+        tl.fromTo("#cl1", { x: 0 }, { x: -140, duration: 34, ease: "sine.inOut" }, 0);
+        tl.fromTo("#cl2", { x: 0 }, { x: 180, duration: 34, ease: "sine.inOut" }, 0);
+        tl.fromTo("#cl3", { x: 0 }, { x: -120, duration: 34, ease: "sine.inOut" }, 0);
+
+        // captions: [id, in, out]
+        const caps = [["#cap1", 0, 3.0], ["#cap2", 3.0, 5.8], ["#cap3", 5.8, 8.2], ["#cap4", 8.2, 11.0], ["#cap5", 11.0, 13.8], ["#cap6", 13.8, 16.4],
+          ["#cap7", 16.4, 19.2], ["#cap8", 19.2, 22.4], ["#cap9", 22.4, 25.2], ["#cap10", 25.2, 28.0], ["#cap11", 28.0, 31.0], ["#cap12", 31.0, 34.2]];
+        caps.forEach(function (c, i) {
+          if (i > 0) tl.fromTo(c[0], { opacity: 0, y: 50, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, c[1]);
+          else tl.fromTo(c[0], { scale: 1 }, { scale: 1.05, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 0.1);
+          if (c[2] < 34) tl.to(c[0], { opacity: 0, y: -40, duration: 0.22, ease: "power2.in" }, c[2] - 0.2);
+        });
+
+        // stages: [id, in, out]
+        const st = [["#st1", 0, 6.0], ["#st2", 5.8, 8.4], ["#st3", 8.2, 14.0], ["#st4", 13.8, 19.4], ["#st5", 19.2, 25.4], ["#st6", 25.2, 31.2], ["#st7", 31.0, 34.2]];
+        st.forEach(function (s, i) {
+          if (i > 0) tl.fromTo(s[0], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, s[1]);
+          if (s[2] < 34) tl.to(s[0], { opacity: 0, duration: 0.25, ease: "power1.in" }, s[2] - 0.25);
+        });
+
+        // 1 · chaos (moving from frame 0)
+        const mess = [["#m1", 80, 640, -8], ["#m2", 460, 780, 7], ["#m3", 100, 1080, 5]];
+        mess.forEach(function (m, i) {
+          tl.set(m[0], { left: m[1], top: m[2] }, 0);
+          tl.fromTo(m[0], { opacity: 0, scale: 0.7, rotation: m[3] * 3 }, { opacity: 1, scale: 1, rotation: m[3], duration: 0.4, ease: "back.out(2)" }, 0.3 * (i + 1) - 0.25);
+          tl.to(m[0], { y: (i % 2 ? 1 : -1) * 22, rotation: m[3] + (i % 2 ? 4 : -4), duration: 2.4, ease: "sine.inOut" }, 0.6 + i * 0.2);
+          tl.to(m[0], { x: (i % 2 ? 1 : -1) * 14, duration: 0.07, ease: "none", yoyo: true, repeat: 5 }, 3.0 + i * 0.08);
+        });
+        tl.fromTo("#calc", { y: 0, rotation: -4 }, { y: -26, rotation: 4, duration: 2.8, ease: "sine.inOut" }, 0);
+        const cn = document.querySelector("#calcnum"); const cc = { v: 0 };
+        tl.fromTo(cc, { v: 0 }, { v: 4280000, duration: 2.6, ease: "power1.in", onUpdate: function () { cn.textContent = String(Math.round(cc.v)); } }, 0.2);
+        tl.to(cn, { color: "#b3263e", duration: 0.2 }, 3.0);
+        tl.to(["#m1", "#m2", "#m3", "#calc"], { x: -900, rotation: -20, duration: 0.5, ease: "power3.in", stagger: 0.04 }, 5.4);
+
+        // 2 · logo
+        tl.fromTo("#halo", { scale: 0.5 }, { scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 5.9);
+        tl.fromTo("#logo", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.0, ease: "power2.out" }, 6.1);
+        tl.fromTo("#s2name", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.6);
+
+        // 3 · form
+        tl.fromTo("#st3 .phone", { y: 160, rotation: -3 }, { y: 0, rotation: 0, duration: 0.6, ease: "power3.out" }, 8.2);
+        gsap.utils.toArray("#st3 .v").forEach(function (el, i) {
+          const t = 9.0 + i * 0.95;
+          tl.fromTo(el, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "none" }, t);
+          tl.fromTo(el.parentNode, { borderColor: "rgba(61,111,214,0.25)" }, { borderColor: "rgba(61,111,214,0.9)", duration: 0.2 }, t);
+          tl.to(el.parentNode, { borderColor: "rgba(61,111,214,0.25)", duration: 0.3 }, t + 0.7);
+        });
+        tl.set("#fing3", { x: 360, y: 760 }, 12.2);
+        tl.to("#fing3", { opacity: 1, duration: 0.15 }, 12.2);
+        tl.to("#fing3", { x: 236, y: 640, duration: 0.7, ease: "power2.inOut" }, 12.3);
+        tl.set("#ring3", { x: 222, y: 626, scale: 0.4 }, 13.0);
+        tl.to("#ring3", { opacity: 1, scale: 1.6, duration: 0.35, ease: "power2.out" }, 13.0);
+        tl.to("#ring3", { opacity: 0, duration: 0.2 }, 13.36);
+        tl.to("#send", { scale: 0.95, duration: 0.1 }, 13.0);
+        tl.to("#send", { scale: 1, duration: 0.2 }, 13.1);
+        tl.to("#fing3", { opacity: 0, duration: 0.15 }, 13.2);
+        tl.fromTo("#sent", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 13.2);
+
+        // 4 · telegram
+        tl.set("#sheet4", { y: 380 }, 0);
+        tl.fromTo("#st4 .phone", { x: 200 }, { x: 0, duration: 0.5, ease: "power3.out" }, 13.8);
+        tl.fromTo("#msg", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 14.3);
+        tl.fromTo("#ibtn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 14.7);
+        tl.set("#fing4", { x: 360, y: 700 }, 15.2);
+        tl.to("#fing4", { opacity: 1, duration: 0.15 }, 15.2);
+        tl.to("#fing4", { x: 236, y: 450, duration: 0.7, ease: "power2.inOut" }, 15.3);
+        tl.to("#ibtn", { scale: 0.95, background: "rgba(42,171,238,0.22)", duration: 0.1 }, 16.0);
+        tl.to("#ibtn", { scale: 1, duration: 0.2 }, 16.1);
+        tl.to("#sheet4", { y: 0, duration: 0.45, ease: "power3.out" }, 16.3);
+        tl.to("#fing4", { x: 348, y: 640, duration: 1.2, ease: "power2.inOut" }, 16.8);
+        tl.set("#ring4", { x: 334, y: 626, scale: 0.4 }, 18.0);
+        tl.to("#ring4", { opacity: 1, scale: 1.6, duration: 0.35, ease: "power2.out" }, 18.0);
+        tl.to("#ring4", { opacity: 0, duration: 0.2 }, 18.36);
+        tl.to("#yes", { scale: 0.95, duration: 0.1 }, 18.0);
+        tl.to("#yes", { scale: 1, duration: 0.2 }, 18.1);
+        tl.to("#fing4", { opacity: 0, duration: 0.15 }, 18.2);
+        tl.to("#sheet4", { y: 380, duration: 0.35, ease: "power2.in" }, 18.3);
+        tl.fromTo("#ok", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 18.5);
+
+        // 5 · share
+        tl.fromTo("#split", { y: 120 }, { y: 0, duration: 0.5, ease: "power3.out" }, 19.2);
+        tl.fromTo("#seg1", { width: "100%" }, { width: "70%", duration: 0.8, ease: "power3.inOut" }, 19.6);
+        tl.fromTo("#seg2", { width: "0%" }, { width: "30%", duration: 0.8, ease: "power3.inOut" }, 19.6);
+        tl.fromTo(["#p1", "#p2"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 20.2);
+        const n1 = document.querySelector("#n1"), n2 = document.querySelector("#n2"); const c2 = { a: 0, b: 0 };
+        tl.fromTo(c2, { a: 0, b: 0 }, { a: 560000, b: 240000, duration: 1.2, ease: "power2.out",
+          onUpdate: function () { n1.textContent = fa(Math.round(c2.a / 1000) * 1000); n2.textContent = fa(Math.round(c2.b / 1000) * 1000); } }, 20.0);
+        tl.fromTo("#lock", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.4)" }, 20.4);
+        tl.fromTo("#shackle", { y: -6 }, { y: 0, duration: 0.18, ease: "power4.in" }, 20.7);
+        tl.fromTo("#mini", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 22.5);
+        tl.fromTo("#mini .row", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 22.8);
+        tl.to("#split", { y: -30, duration: 0.45, ease: "power2.inOut" }, 22.5);
+
+        // 6 · month close + email
+        tl.fromTo("#panel", { y: 120 }, { y: 0, duration: 0.5, ease: "power3.out" }, 25.2);
+        tl.set("#fing6", { x: 420, y: 470 }, 25.9);
+        tl.to("#fing6", { opacity: 1, duration: 0.15 }, 25.9);
+        tl.to("#fing6", { x: 300, y: 330, duration: 0.7, ease: "power2.inOut" }, 26.0);
+        tl.to("#go", { scale: 0.95, duration: 0.1 }, 26.8);
+        tl.to("#go", { scale: 1, duration: 0.2 }, 26.9);
+        tl.to("#fing6", { opacity: 0, duration: 0.15 }, 27.0);
+        tl.to("#panel", { opacity: 0, scale: 0.85, y: -60, duration: 0.4, ease: "power2.in" }, 27.3);
+        tl.fromTo("#mail", { opacity: 0, y: 140, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 27.8);
+        tl.fromTo("#mail .kv", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out", stagger: 0.22 }, 28.3);
+        tl.fromTo("#att", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 29.6);
+
+        // 7 · end (loop back to the hook's calculator)
+        tl.fromTo("#endcalc", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 31.1);
+        tl.fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, 31.6);
+        tl.fromTo("#save", { opacity: 0, y: 60, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(2)" }, 32.1);
+        tl.to("#save", { scale: 1.05, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 32.8);
+        tl.fromTo("#sign", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 32.5);
+
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>
