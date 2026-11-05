@@ -13,7 +13,7 @@ import wave
 import numpy as np
 
 SR = 44100
-BPM = 96
+BPM = float(sys.argv[3]) if len(sys.argv) > 3 else 96
 BEAT = 60 / BPM
 BAR = BEAT * 4
 OUT = sys.argv[1] if len(sys.argv) > 1 else "bgm.wav"
