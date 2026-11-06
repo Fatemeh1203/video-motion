@@ -26,7 +26,7 @@ Hook: «Farda Academy's new accountant» + sticker «Doesn't even take a salary�
 | 0:32 | Want one like this? · Just send us a DM |
 | 0:35 | Farda Science Academy: logo, aifardainstitute.ir, Instagram and Telegram @amozeshgah_farda, «Want a similar project? DM us» |
 
-Sample data (Sara Mohammadi, C001, M001, 70%) comes from the Farda-Institute README. Sheet tab names are
+Sample data follows the Farda-Institute README (C001, M001, 70%), with English placeholder names (Emily Carter, Sophie) and Gregorian dates (Mordad 1405 → August 2026). Sheet tab names are
 English translations for the viewer; the real workbook's tabs are in Persian.
 
 ## Rebuild
