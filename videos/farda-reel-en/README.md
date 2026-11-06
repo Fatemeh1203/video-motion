@@ -23,8 +23,8 @@ Hook: «Farda Academy's new accountant» + sticker «Doesn't even take a salary�
 | 0:25 | Payroll report, in Gmail |
 | 0:28 | Pay teachers: one tick |
 | 0:30 | Quarterly reports, automatic |
-| 0:32 | Put the calculator away · Save this |
-| 0:35 | Farda Science Academy: logo, aifardainstitute.ir, Instagram and Telegram @amozeshgah_farda |
+| 0:32 | Want one like this? · Just send us a DM |
+| 0:35 | Farda Science Academy: logo, aifardainstitute.ir, Instagram and Telegram @amozeshgah_farda, «Want a similar project? DM us» |
 
 Sample data (Sara Mohammadi, C001, M001, 70%) comes from the Farda-Institute README. Sheet tab names are
 English translations for the viewer; the real workbook's tabs are in Persian.

@@ -1,4 +1,4 @@
-Save this 🔖 Farda Academy's new accountant closes teacher payroll with one button, across 17 Google Sheets 🧮❌
+Want one like this? Send us a DM 📩 Farda Academy's new accountant closes teacher payroll with 1 button 🧮❌
 
 We automated the academy's accounting at Farda. Colleagues fill in one form 📝 and every payment goes to the manager on Telegram first 📲 Nothing lands in the books until the manager taps Approve. Not a single row ✅
 
@@ -10,5 +10,6 @@ Month end? One button 👆 Payroll closes, the report lands in Gmail with an Exc
 
 ⚙️ This accounting automation runs on n8n, Google Sheets, Telegram and Gmail, in Persian with the Solar Hijri calendar.
 ✨ Designed and built by Fatemeh Shams
+We build it for your academy or business too.
 
 #accounting #automation #n8n #edtech #smallbusiness
