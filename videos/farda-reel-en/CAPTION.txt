@@ -1,0 +1,14 @@
+Save this 🔖 Farda Academy's new accountant closes teacher payroll with one button, across 17 Google Sheets 🧮❌
+
+We automated the academy's accounting at Farda. Colleagues fill in one form 📝 and every payment goes to the manager on Telegram first 📲 Nothing lands in the books until the manager taps Approve. Not a single row ✅
+
+💰 An 800,000 Toman tuition with a 70% teacher share? 560,000 goes to the teacher, calculated and locked on the spot 🔒
+
+Expenses come in with a photo of the invoice, saved to Google Drive. Investor capital stays separate from income, with its gold and USD value on the day. The weekly class schedule groups students by itself.
+
+Month end? One button 👆 Payroll closes, the report lands in Gmail with an Excel file 📩 and the quarterly and yearly reports build themselves 📊
+
+⚙️ This accounting automation runs on n8n, Google Sheets, Telegram and Gmail, in Persian with the Solar Hijri calendar.
+✨ Designed and built by Fatemeh Shams
+
+#accounting #automation #n8n #edtech #smallbusiness
