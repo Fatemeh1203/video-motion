@@ -46,11 +46,11 @@
         font-size: 80px; font-weight: 900; line-height: 1.4; opacity: 0; }
       .cap b { color: var(--blue-d); font-weight: 900; }
       .cap .r { color: var(--red); }
-      #cap1 { opacity: 1; }
+      #capH { opacity: 1; }
 
       /* stage band: x 100-860, y 600-1420 */
       .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
-      #st1 { opacity: 1; }
+      #stH { opacity: 1; }
       .card { position: absolute; border-radius: 30px; background: var(--card); border: 3px solid var(--line); box-shadow: var(--shadow); direction: rtl; }
       .main { left: 110px; top: 630px; width: 740px; padding: 36px 38px 40px; }
       .hd { display: flex; align-items: center; gap: 18px; padding-bottom: 20px; border-bottom: 2px solid rgba(61,111,214,.14); margin-bottom: 8px; }
@@ -167,10 +167,35 @@
       .qlbl { display: flex; gap: 26px; padding: 12px 20px 0; direction: rtl; }
       .qlbl span { flex: 1; text-align: center; font-size: 29px; font-weight: 800; color: var(--ink2); }
 
+      /* hook: the new accountant's ID badge */
+      #badge { left: 190px; top: 640px; width: 580px; padding: 70px 40px 40px; text-align: center; }
+      #clip { position: absolute; left: 240px; top: -34px; width: 100px; height: 56px; border-radius: 16px; background: #34507f; box-shadow: inset 0 -6px 0 rgba(0,0,0,.2); }
+      #clip i { position: absolute; left: 30px; top: 16px; width: 40px; height: 12px; border-radius: 6px; background: var(--sky2); }
+      #bhalo { width: 230px; height: 230px; margin: 0 auto; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #eef5ff 100%);
+        box-shadow: 0 30px 50px -24px rgba(80,120,195,.7), inset 0 -10px 20px rgba(150,185,240,.3); display: flex; align-items: center; justify-content: center; }
+      #bhalo img { width: 210px; height: 210px; }
+      #brole { margin-top: 22px; font-size: 54px; font-weight: 900; }
+      #bchips { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; direction: ltr; }
+      #bchips span { padding: 8px 18px; border-radius: 14px; background: var(--sky3); color: var(--blue-d); font-size: 27px; font-weight: 800; }
+      #nosal { position: absolute; left: 520px; top: 1290px; padding: 16px 30px; border-radius: 22px; background: var(--green); color: #fff; font-size: 40px; font-weight: 900;
+        direction: rtl; rotate: -6deg; box-shadow: 0 20px 40px -16px rgba(28,122,81,.9); }
+
+      /* end card: logo + name, bigger; links */
+      #ehalo { position: absolute; left: 280px; top: 600px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #f0f6ff 100%);
+        box-shadow: 0 60px 90px -30px rgba(80,120,195,.6), inset 0 -14px 30px rgba(150,185,240,.3); }
+      #elogo { position: absolute; left: 298px; top: 612px; width: 364px; height: 364px; }
+      #etag { position: absolute; left: 100px; width: 760px; top: 1020px; text-align: center; direction: rtl; font-size: 34px; font-weight: 800; color: var(--ink2); }
+      #links { position: absolute; left: 140px; top: 1090px; width: 680px; display: flex; flex-direction: column; gap: 14px; }
+      .lk { height: 86px; border-radius: 24px; background: #fff; border: 3px solid var(--line); box-shadow: 0 20px 40px -24px rgba(31,51,90,.6);
+        display: flex; align-items: center; gap: 18px; padding: 0 24px; direction: rtl; }
+      .lk .li { width: 58px; height: 58px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .lk b { direction: ltr; font-size: 36px; font-weight: 900; color: var(--ink); }
+      #ecredit { position: absolute; left: 100px; width: 760px; top: 1390px; text-align: center; direction: rtl; font-size: 28px; font-weight: 700; color: var(--ink2); }
+
       /* 16 end */
       #calc2 { left: 380px; top: 640px; }
       #strike { position: absolute; left: 340px; top: 760px; width: 280px; height: 20px; border-radius: 10px; background: var(--red); transform-origin: right center; rotate: -35deg; }
-      #save { position: absolute; left: 230px; top: 1000px; width: 500px; height: 130px; border-radius: 40px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff;
+      #save { position: absolute; left: 230px; top: 1060px; width: 500px; height: 130px; border-radius: 40px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff;
         display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 54px; font-weight: 900; direction: rtl; box-shadow: 0 30px 60px -24px rgba(42,84,173,.9); }
       #sign { position: absolute; left: 100px; width: 760px; top: 1200px; display: flex; align-items: center; justify-content: center; gap: 20px; direction: rtl; }
       #sign img { width: 120px; height: 120px; }
@@ -179,28 +204,32 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="34">
-      <div id="bg" class="layer clip" data-start="0" data-duration="34" data-track-index="0">
+    <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="38.6">
+      <div id="bg" class="layer clip" data-start="0" data-duration="38.6" data-track-index="0">
         <div class="cloud" id="cl1"></div>
         <div class="cloud" id="cl2"></div>
         <div class="cloud" id="cl3"></div>
         <div id="prog"><div id="progf"></div></div>
       </div>
 
-      <div id="stages" class="layer clip" data-start="0" data-duration="34" data-track-index="1">
+      <div id="stages" class="layer clip" data-start="0" data-duration="38.6" data-track-index="1">
+        <!-- 0 hook -->
+        <div class="stage" id="stH">
+          <div class="card" id="badge">
+            <div id="clip"><i></i></div>
+            <div id="bhalo"><img src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا"></div>
+            <div id="brole">حسابدار خودکار</div>
+            <div id="bchips"><span>n8n</span><span>Google Sheets</span><span>Telegram</span><span>Gmail</span></div>
+          </div>
+          <div id="nosal">حقوق هم نمی‌گیره 😄</div>
+        </div>
+
         <!-- 1-2 chaos -->
         <div class="stage" id="st1">
           <div class="card mess" id="m1" data-layout-ignore><small>فیش واریزی</small><strong>۸۰۰٬۰۰۰ تومان</strong><i>کدوم دوره؟</i></div>
           <div class="card mess" id="m2" data-layout-ignore><small>فاکتور اجاره</small><strong>توی گالری گم شد</strong><i>عکسش کو؟</i></div>
           <div class="card mess" id="m3" data-layout-ignore><small>فایل اکسل</small><strong>جمع درآمد ماه</strong><i>نسخه‌ی چندم؟</i></div>
           <div class="calc" id="calc1"><div class="scr" id="calcnum">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
-        </div>
-
-        <!-- 3 logo -->
-        <div class="stage" id="st3">
-          <div id="halo"></div>
-          <img id="logo" src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا">
-          <div id="lchips"><span>n8n</span><span>Google Sheets</span><span>Telegram</span><span>Gmail</span></div>
         </div>
 
         <!-- 4 income form -->
@@ -337,15 +366,27 @@
           <div class="calc" id="calc2"><div class="scr">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
           <div id="strike"></div>
           <div id="save">🔖 سیوش کن</div>
-          <div id="sign"><img src="assets/farda-logo-ink.png" alt=""><div><b>آموزشگاه علمی فردا</b><small>طراحی و ساخت: فاطمه شمس</small></div></div>
+        </div>
+
+        <!-- end card -->
+        <div class="stage" id="stE">
+          <div id="ehalo"></div>
+          <img id="elogo" src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا">
+          <div id="etag">ریاضی، فیزیک و هوش مصنوعی · بابلسر</div>
+          <div id="links">
+            <div class="lk"><div class="li" style="background:#e3ecff"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2a54ad" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><b>aifardainstitute.ir</b></div>
+            <div class="lk"><div class="li" style="background:linear-gradient(135deg,#feda75,#fa7e1e 30%,#d62976 60%,#962fbf 85%,#4f5bd5)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg></div><b>@amozeshgah_farda</b></div>
+            <div class="lk"><div class="li" style="background:linear-gradient(160deg,#5cc3f5,#2aabee)"><svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div><b>@Amozeshgah_farda</b></div>
+          </div>
+          <div id="ecredit">طراحی و ساخت: فاطمه شمس</div>
         </div>
       </div>
 
-      <div id="captions" class="layer clip" data-start="0" data-duration="34" data-track-index="2">
+      <div id="captions" class="layer clip" data-start="0" data-duration="38.6" data-track-index="2">
         <div id="caps">
+          <div class="cap" id="capH"><div>حسابدار جدید <b>آموزشگاه فردا</b></div></div>
           <div class="cap" id="cap1"><div>حقوق مدرس، هنوز با <b>ماشین‌حساب</b>؟</div></div>
           <div class="cap" id="cap2"><div>فیش، فاکتور، اکسل... <span class="r">پراکنده</span></div></div>
-          <div class="cap" id="cap3"><div>آموزشگاه <b>فردا</b>: همه‌چی خودکار</div></div>
           <div class="cap" id="cap4"><div>واریزی: فقط <b>یه فرم</b></div></div>
           <div class="cap" id="cap5"><div>تأیید مدیر، توی <b>تلگرام</b></div></div>
           <div class="cap" id="cap6"><div>سهم مدرس <b>۷۰٪</b>، خودکار</div></div>
@@ -359,89 +400,108 @@
           <div class="cap" id="cap14"><div>واریز حقوق: <b>یه تیک</b></div></div>
           <div class="cap" id="cap15"><div>گزارش <b>فصلی</b>، خودکار</div></div>
           <div class="cap" id="cap16"><div><b>ماشین‌حساب</b> رو بذار کنار</div></div>
+          <div class="cap" id="capE"><div style="font-size:92px">آموزشگاه علمی <b>فردا</b></div></div>
         </div>
       </div>
 
-      <div id="grain" class="clip" data-start="0" data-duration="34" data-track-index="3"></div>
+      <div id="grain" class="clip" data-start="0" data-duration="38.6" data-track-index="3"></div>
 
-      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="34" data-track-index="10" data-volume="0.6"></audio>
-      <audio id="sx00" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="2" data-track-index="11" data-volume="0.22"></audio>
-      <audio id="sx01" src="assets/sfx/pop.mp3" data-start="0.05" data-duration="0.6" data-track-index="12" data-volume="0.14"></audio>
-      <audio id="sx02" src="assets/sfx/pop.mp3" data-start="0.25" data-duration="0.6" data-track-index="13" data-volume="0.14"></audio>
-      <audio id="sx03" src="assets/sfx/pop.mp3" data-start="0.45" data-duration="0.6" data-track-index="14" data-volume="0.14"></audio>
-      <audio id="sx04" src="assets/sfx/glitch-1.mp3" data-start="2.2" data-duration="0.8" data-track-index="15" data-volume="0.12"></audio>
-      <audio id="sx05" src="assets/sfx/whoosh-short.mp3" data-start="2.08" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
-      <audio id="sx06" src="assets/sfx/whoosh-short.mp3" data-start="3.68" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
-      <audio id="sx07" src="assets/sfx/whoosh-short.mp3" data-start="5.28" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sx08" src="assets/sfx/whoosh-short.mp3" data-start="7.48" data-duration="0.5" data-track-index="13" data-volume="0.2"></audio>
-      <audio id="sx09" src="assets/sfx/whoosh-short.mp3" data-start="9.48" data-duration="0.5" data-track-index="14" data-volume="0.2"></audio>
-      <audio id="sx10" src="assets/sfx/whoosh-short.mp3" data-start="11.48" data-duration="0.5" data-track-index="15" data-volume="0.2"></audio>
-      <audio id="sx11" src="assets/sfx/whoosh-short.mp3" data-start="13.48" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
-      <audio id="sx12" src="assets/sfx/whoosh-short.mp3" data-start="15.68" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
-      <audio id="sx13" src="assets/sfx/whoosh-short.mp3" data-start="17.88" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sx14" src="assets/sfx/whoosh-short.mp3" data-start="19.88" data-duration="0.5" data-track-index="13" data-volume="0.2"></audio>
-      <audio id="sx15" src="assets/sfx/whoosh-short.mp3" data-start="21.88" data-duration="0.5" data-track-index="14" data-volume="0.2"></audio>
-      <audio id="sx16" src="assets/sfx/whoosh-short.mp3" data-start="24.08" data-duration="0.5" data-track-index="15" data-volume="0.2"></audio>
-      <audio id="sx17" src="assets/sfx/whoosh-short.mp3" data-start="26.68" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
-      <audio id="sx18" src="assets/sfx/whoosh-short.mp3" data-start="28.68" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
-      <audio id="sx19" src="assets/sfx/whoosh-short.mp3" data-start="30.88" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sx20" src="assets/sfx/sparkle.mp3" data-start="3.9" data-duration="1.8" data-track-index="13" data-volume="0.16"></audio>
-      <audio id="sx21" src="assets/sfx/typing.mp3" data-start="5.75" data-duration="1.2" data-track-index="14" data-volume="0.14"></audio>
-      <audio id="sx22" src="assets/sfx/click-soft.mp3" data-start="7.0" data-duration="0.37" data-track-index="15" data-volume="0.28"></audio>
-      <audio id="sx23" src="assets/sfx/notification.mp3" data-start="7.7" data-duration="1.2" data-track-index="16" data-volume="0.2"></audio>
-      <audio id="sx24" src="assets/sfx/click-soft.mp3" data-start="8.6" data-duration="0.37" data-track-index="11" data-volume="0.28"></audio>
-      <audio id="sx25" src="assets/sfx/chime.mp3" data-start="8.85" data-duration="1.5" data-track-index="12" data-volume="0.16"></audio>
-      <audio id="sx26" src="assets/sfx/impact-bass-1.mp3" data-start="10.5" data-duration="2" data-track-index="13" data-volume="0.14"></audio>
-      <audio id="sx27" src="assets/sfx/typing.mp3" data-start="11.9" data-duration="1.0" data-track-index="14" data-volume="0.14"></audio>
-      <audio id="sx28" src="assets/sfx/pop.mp3" data-start="12.95" data-duration="0.6" data-track-index="15" data-volume="0.18"></audio>
-      <audio id="sx29" src="assets/sfx/pop.mp3" data-start="13.9" data-duration="0.6" data-track-index="16" data-volume="0.16"></audio>
-      <audio id="sx30" src="assets/sfx/pop.mp3" data-start="14.04" data-duration="0.6" data-track-index="11" data-volume="0.16"></audio>
-      <audio id="sx31" src="assets/sfx/pop.mp3" data-start="14.18" data-duration="0.6" data-track-index="12" data-volume="0.16"></audio>
-      <audio id="sx32" src="assets/sfx/pop.mp3" data-start="16.8" data-duration="0.6" data-track-index="13" data-volume="0.18"></audio>
-      <audio id="sx33" src="assets/sfx/sparkle.mp3" data-start="17.2" data-duration="1.8" data-track-index="14" data-volume="0.14"></audio>
-      <audio id="sx34" src="assets/sfx/click-soft.mp3" data-start="18.35" data-duration="0.37" data-track-index="15" data-volume="0.24"></audio>
-      <audio id="sx35" src="assets/sfx/glitch-1.mp3" data-start="18.75" data-duration="0.8" data-track-index="16" data-volume="0.1"></audio>
-      <audio id="sx36" src="assets/sfx/click-soft.mp3" data-start="19.15" data-duration="0.37" data-track-index="11" data-volume="0.24"></audio>
-      <audio id="sx37" src="assets/sfx/pop.mp3" data-start="20.9" data-duration="0.6" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sx38" src="assets/sfx/click-soft.mp3" data-start="23.2" data-duration="0.37" data-track-index="13" data-volume="0.3"></audio>
-      <audio id="sx39" src="assets/sfx/notification.mp3" data-start="24.25" data-duration="1.2" data-track-index="14" data-volume="0.22"></audio>
-      <audio id="sx40" src="assets/sfx/click-soft.mp3" data-start="27.6" data-duration="0.37" data-track-index="15" data-volume="0.3"></audio>
-      <audio id="sx41" src="assets/sfx/chime.mp3" data-start="27.8" data-duration="1.5" data-track-index="16" data-volume="0.16"></audio>
-      <audio id="sx42" src="assets/sfx/riser.mp3" data-start="28.9" data-duration="2" data-track-index="11" data-volume="0.1"></audio>
-      <audio id="sx43" src="assets/sfx/impact-bass-1.mp3" data-start="31.0" data-duration="2" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sx44" src="assets/sfx/sparkle.mp3" data-start="31.8" data-duration="1.8" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="bgm" src="assets/audio/music.mp3" data-start="0" data-duration="38.6" data-track-index="10" data-volume="0.5"></audio>
+      <audio id="sx00" src="assets/sfx/impact-bass-1.mp3" data-start="2.60" data-duration="2" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sx01" src="assets/sfx/pop.mp3" data-start="2.65" data-duration="0.6" data-track-index="12" data-volume="0.14"></audio>
+      <audio id="sx02" src="assets/sfx/pop.mp3" data-start="2.85" data-duration="0.6" data-track-index="13" data-volume="0.14"></audio>
+      <audio id="sx03" src="assets/sfx/pop.mp3" data-start="3.05" data-duration="0.6" data-track-index="14" data-volume="0.14"></audio>
+      <audio id="sx04" src="assets/sfx/glitch-1.mp3" data-start="4.80" data-duration="0.8" data-track-index="15" data-volume="0.12"></audio>
+      <audio id="sx05" src="assets/sfx/whoosh-short.mp3" data-start="4.68" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sx06" src="assets/sfx/whoosh-short.mp3" data-start="6.28" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sx08" src="assets/sfx/whoosh-short.mp3" data-start="8.48" data-duration="0.5" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sx09" src="assets/sfx/whoosh-short.mp3" data-start="10.48" data-duration="0.5" data-track-index="14" data-volume="0.2"></audio>
+      <audio id="sx10" src="assets/sfx/whoosh-short.mp3" data-start="12.48" data-duration="0.5" data-track-index="15" data-volume="0.2"></audio>
+      <audio id="sx11" src="assets/sfx/whoosh-short.mp3" data-start="14.48" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sx12" src="assets/sfx/whoosh-short.mp3" data-start="16.68" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sx13" src="assets/sfx/whoosh-short.mp3" data-start="18.88" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sx14" src="assets/sfx/whoosh-short.mp3" data-start="20.88" data-duration="0.5" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sx15" src="assets/sfx/whoosh-short.mp3" data-start="22.88" data-duration="0.5" data-track-index="14" data-volume="0.2"></audio>
+      <audio id="sx16" src="assets/sfx/whoosh-short.mp3" data-start="25.08" data-duration="0.5" data-track-index="15" data-volume="0.2"></audio>
+      <audio id="sx17" src="assets/sfx/whoosh-short.mp3" data-start="27.68" data-duration="0.5" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sx18" src="assets/sfx/whoosh-short.mp3" data-start="29.68" data-duration="0.5" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sx19" src="assets/sfx/whoosh-short.mp3" data-start="31.88" data-duration="0.5" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sx21" src="assets/sfx/typing.mp3" data-start="6.75" data-duration="1.2" data-track-index="14" data-volume="0.14"></audio>
+      <audio id="sx22" src="assets/sfx/click-soft.mp3" data-start="8.00" data-duration="0.37" data-track-index="15" data-volume="0.28"></audio>
+      <audio id="sx23" src="assets/sfx/notification.mp3" data-start="8.70" data-duration="1.2" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sx24" src="assets/sfx/click-soft.mp3" data-start="9.60" data-duration="0.37" data-track-index="11" data-volume="0.28"></audio>
+      <audio id="sx25" src="assets/sfx/chime.mp3" data-start="9.85" data-duration="1.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sx26" src="assets/sfx/impact-bass-1.mp3" data-start="11.50" data-duration="2" data-track-index="13" data-volume="0.14"></audio>
+      <audio id="sx27" src="assets/sfx/typing.mp3" data-start="12.90" data-duration="1.0" data-track-index="14" data-volume="0.14"></audio>
+      <audio id="sx28" src="assets/sfx/pop.mp3" data-start="13.95" data-duration="0.6" data-track-index="15" data-volume="0.18"></audio>
+      <audio id="sx29" src="assets/sfx/pop.mp3" data-start="14.90" data-duration="0.6" data-track-index="16" data-volume="0.16"></audio>
+      <audio id="sx30" src="assets/sfx/pop.mp3" data-start="15.04" data-duration="0.6" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sx31" src="assets/sfx/pop.mp3" data-start="15.18" data-duration="0.6" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sx32" src="assets/sfx/pop.mp3" data-start="17.80" data-duration="0.6" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sx33" src="assets/sfx/sparkle.mp3" data-start="18.20" data-duration="1.8" data-track-index="14" data-volume="0.14"></audio>
+      <audio id="sx34" src="assets/sfx/click-soft.mp3" data-start="19.35" data-duration="0.37" data-track-index="15" data-volume="0.24"></audio>
+      <audio id="sx35" src="assets/sfx/glitch-1.mp3" data-start="19.75" data-duration="0.8" data-track-index="16" data-volume="0.1"></audio>
+      <audio id="sx36" src="assets/sfx/click-soft.mp3" data-start="20.15" data-duration="0.37" data-track-index="11" data-volume="0.24"></audio>
+      <audio id="sx37" src="assets/sfx/pop.mp3" data-start="21.90" data-duration="0.6" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sx38" src="assets/sfx/click-soft.mp3" data-start="24.20" data-duration="0.37" data-track-index="13" data-volume="0.3"></audio>
+      <audio id="sx39" src="assets/sfx/notification.mp3" data-start="25.25" data-duration="1.2" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="sx40" src="assets/sfx/click-soft.mp3" data-start="28.60" data-duration="0.37" data-track-index="15" data-volume="0.3"></audio>
+      <audio id="sx41" src="assets/sfx/chime.mp3" data-start="28.80" data-duration="1.5" data-track-index="16" data-volume="0.16"></audio>
+      <audio id="sx42" src="assets/sfx/riser.mp3" data-start="29.90" data-duration="2" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sx43" src="assets/sfx/impact-bass-1.mp3" data-start="32.00" data-duration="2" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sx44" src="assets/sfx/sparkle.mp3" data-start="32.80" data-duration="1.8" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sy0" src="assets/sfx/pop.mp3" data-start="1.2" data-duration="0.6" data-track-index="17" data-volume="0.2"></audio>
+      <audio id="sy1" src="assets/sfx/whoosh-short.mp3" data-start="34.88" data-duration="0.5" data-track-index="18" data-volume="0.2"></audio>
+      <audio id="sy2" src="assets/sfx/sparkle.mp3" data-start="35.2" data-duration="1.8" data-track-index="19" data-volume="0.16"></audio>
+      <audio id="sy3" src="assets/sfx/pop.mp3" data-start="35.7" data-duration="0.6" data-track-index="17" data-volume="0.16"></audio>
+      <audio id="sy4" src="assets/sfx/pop.mp3" data-start="35.88" data-duration="0.6" data-track-index="18" data-volume="0.16"></audio>
+      <audio id="sy5" src="assets/sfx/pop.mp3" data-start="36.06" data-duration="0.6" data-track-index="19" data-volume="0.16"></audio>
     </div>
 
     <script>
       (function () {
-        const tl = gsap.timeline({ paused: true });
+        const tl0 = gsap.timeline({ paused: true });
+        // old 34 s cut, remapped: chaos (old 0-3.8) after the new hook, old logo beat dropped, the rest +1.0 s
+        const W = function (t) { return t < 3.8 ? t + 2.6 : t + 1.0; };
+        const tl = {
+          fromTo: function (a, b, c, t) { return tl0.fromTo(a, b, c, W(t)); },
+          to: function (a, b, t) { return tl0.to(a, b, W(t)); },
+          set: function (a, b, t) { return tl0.set(a, b, W(t)); },
+        };
         const FA = "۰۱۲۳۴۵۶۷۸۹";
         const fa = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "٬").replace(/[0-9]/g, function (d) { return FA[+d]; }); };
-        const B = [0, 2.2, 3.8, 5.4, 7.6, 9.6, 11.6, 13.6, 15.8, 18.0, 20.0, 22.0, 24.2, 26.8, 28.8, 31.0, 34.2];
+        const END = 38.6;
+        const B = [0, 2.6, 4.8, 6.4, 8.6, 10.6, 12.6, 14.6, 16.8, 19.0, 21.0, 23.0, 25.2, 27.8, 29.8, 32.0, 35.0, 38.8];
 
-        tl.fromTo("#cl1", { x: 0 }, { x: -140, duration: 34, ease: "sine.inOut" }, 0);
-        tl.fromTo("#cl2", { x: 0 }, { x: 180, duration: 34, ease: "sine.inOut" }, 0);
-        tl.fromTo("#cl3", { x: 0 }, { x: -120, duration: 34, ease: "sine.inOut" }, 0);
-        tl.fromTo("#progf", { scaleX: 0 }, { scaleX: 1, duration: 34, ease: "none" }, 0);
+        tl0.fromTo("#cl1", { x: 0 }, { x: -140, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#cl2", { x: 0 }, { x: 180, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#cl3", { x: 0 }, { x: -120, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#progf", { scaleX: 0 }, { scaleX: 1, duration: END, ease: "none" }, 0);
 
         // captions, one per beat
-        for (let i = 0; i < 16; i++) {
-          const id = "#cap" + (i + 1);
-          if (i > 0) tl.fromTo(id, { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(2)" }, B[i]);
-          else tl.fromTo(id, { scale: 1 }, { scale: 1.05, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, 0.05);
-          if (B[i + 1] < 34) tl.to(id, { opacity: 0, y: -30, duration: 0.16, ease: "power2.in" }, B[i + 1] - 0.15);
-        }
-
-        // stages: [id, beatIn, beatOut]
-        const ST = [["#st1", 0, 2], ["#st3", 2, 3], ["#st4", 3, 4], ["#st5", 4, 5], ["#st6", 5, 6], ["#st7", 6, 7], ["#st8", 7, 8], ["#st9", 8, 9],
-          ["#st10", 9, 10], ["#st11", 10, 11], ["#st12", 11, 12], ["#st13", 12, 13], ["#st14", 13, 14], ["#st15", 14, 15], ["#st16", 15, 16]];
-        ST.forEach(function (s, i) {
-          const tin = B[s[1]], tout = B[s[2]];
-          if (i > 0) tl.fromTo(s[0], { opacity: 0, y: 70, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.26, ease: "power3.out" }, tin);
-          if (tout < 34) tl.to(s[0], { opacity: 0, y: -50, scale: 0.97, duration: 0.16, ease: "power2.in" }, tout - 0.15);
+        const CAPS = ["#capH", "#cap1", "#cap2", "#cap4", "#cap5", "#cap6", "#cap7", "#cap8", "#cap9", "#cap10", "#cap11", "#cap12", "#cap13", "#cap14", "#cap15", "#cap16", "#capE"];
+        CAPS.forEach(function (id, i) {
+          if (i > 0) tl0.fromTo(id, { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(2)" }, B[i]);
+          else tl0.fromTo(id, { scale: 1 }, { scale: 1.05, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, 0.05);
+          if (B[i + 1] < END) tl0.to(id, { opacity: 0, y: -30, duration: 0.16, ease: "power2.in" }, B[i + 1] - 0.15);
         });
 
-        function tap(sel, x, y, t) {
+        // stages: [id, beatIn, beatOut]
+        const ST = [["#stH", 0, 1], ["#st1", 1, 3], ["#st4", 3, 4], ["#st5", 4, 5], ["#st6", 5, 6], ["#st7", 6, 7], ["#st8", 7, 8], ["#st9", 8, 9],
+          ["#st10", 9, 10], ["#st11", 10, 11], ["#st12", 11, 12], ["#st13", 12, 13], ["#st14", 13, 14], ["#st15", 14, 15], ["#st16", 15, 16], ["#stE", 16, 17]];
+        ST.forEach(function (s, i) {
+          const tin = B[s[1]], tout = B[s[2]];
+          if (i > 0) tl0.fromTo(s[0], { opacity: 0, y: 70, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.26, ease: "power3.out" }, tin);
+          if (tout < END) tl0.to(s[0], { opacity: 0, y: -50, scale: 0.97, duration: 0.16, ease: "power2.in" }, tout - 0.15);
+        });
+
+        // 0 hook: the badge swings in on its clip
+        tl0.fromTo("#badge", { y: -120, rotation: -8 }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0);
+        tl0.fromTo("#badge", { rotation: 0 }, { rotation: 2.5, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.6);
+        tl0.fromTo("#bchips span", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(2)", stagger: 0.08 }, 0.5);
+        tl0.fromTo("#nosal", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 1.2);
+
+        function tap(sel, x, y, t) {  // t in the old cut's time; tl maps it
           tl.set(sel, { x: x, y: y, scale: 0.4 }, t);
           tl.to(sel, { opacity: 1, scale: 1.6, duration: 0.25, ease: "power2.out" }, t);
           tl.to(sel, { opacity: 0, duration: 0.15 }, t + 0.26);
@@ -460,11 +520,6 @@
         tl.fromTo(cc, { v: 0 }, { v: 4280000, duration: 2.0, ease: "power1.in", onUpdate: function () { cn.textContent = String(Math.round(cc.v)); } }, 0.1);
         tl.to(cn, { color: "#b3263e", duration: 0.15 }, 2.2);
         tl.to(["#m1", "#m2", "#m3", "#calc1"], { x: -900, rotation: -20, duration: 0.35, ease: "power3.in", stagger: 0.03 }, 3.4);
-
-        // 3 logo
-        tl.fromTo("#halo", { scale: 0.5 }, { scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.85);
-        tl.fromTo("#logo", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "power2.out" }, 3.95);
-        tl.fromTo("#lchips span", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.22, ease: "back.out(2)", stagger: 0.1 }, 4.4);
 
         // 4 income form
         gsap.utils.toArray("#frm .v").forEach(function (el, i) {
@@ -541,9 +596,15 @@
         tl.fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 31.4);
         tl.fromTo("#save", { opacity: 0, y: 60, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(2)" }, 31.8);
         tl.to("#save", { scale: 1.05, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 32.6);
-        tl.fromTo("#sign", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 31.6);
 
-        window.__timelines["main"] = tl;
+        // end card: bigger logo + name, then the three addresses
+        tl0.fromTo("#ehalo", { scale: 0.5 }, { scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 35.05);
+        tl0.fromTo("#elogo", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power2.out" }, 35.15);
+        tl0.fromTo("#etag", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 35.5);
+        tl0.fromTo("#links .lk", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.8)", stagger: 0.18 }, 35.7);
+        tl0.fromTo("#ecredit", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 36.4);
+
+        window.__timelines["main"] = tl0;
       })();
     </script>
   </body>
