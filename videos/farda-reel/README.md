@@ -1,7 +1,8 @@
 # ریلز «حسابدار جدید آموزشگاه فردا»
 
 ریلز ۳۸.۶ ثانیه‌ای اینستاگرام، ۱۰۸۰×۱۹۲۰، فارسی، بدون گوینده (متن روی صفحه + موسیقی + افکت).
-۱۷ بخش حدود ۲ ثانیه‌ای، موسیقی الکترونیک ۱۲۰ BPM با دراپ (`scripts/make-music.py`)، صدا روی −۱۴ LUFS.
+۱۷ بخش حدود ۲ ثانیه‌ای، صدا روی −۱۴ LUFS.
+موسیقی: قطعهٔ بی‌کلام پاپ‌الکترونیک ۱۲۰ BPM، ساخته‌شده با vidIQ (vidiq_generate_music، رویالتی‌فری)، برش ۱.۶ تا ۴۰.۲ ثانیه تا دراپ آهنگ روی شروع فرم واریزی (۰:۰۶.۴) بیفتد.
 فایل نهایی: `renders/farda-reel.mp4`. همهٔ متن‌ها داخل محدودهٔ امن (x ۱۰۰ تا ۸۶۰، y ۲۵۰ تا ۱۴۲۰).
 
 هوک (درخواست کاربر): «حسابدار جدید آموزشگاه فردا» + برچسب «حقوق هم نمی‌گیره»؛ با `ig-reel/hookscore.py` امتیاز ۵۶ (OK).
@@ -33,6 +34,5 @@
 ```bash
 python3 scripts/inject-fonts.py index.html   # فقط اگر نشانگر /*FONTS*/ برگشت
 npx hyperframes check
-python3 scripts/make-music.py assets/audio/music.wav   # سپس به mp3
 npx hyperframes render -o renders/raw.mp4 --quality delivery
 ```
