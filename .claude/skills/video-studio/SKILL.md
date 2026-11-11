@@ -61,10 +61,14 @@ Pronunciation and tone matter a lot to this user. Read `references/persian-voice
    Worked example: `videos/fatemeh-community/scripts/recording/` (Whisper-small ONNX from the
    sherpa-onnx GitHub release to find each line, RNNoise `arnndn` + EQ/compressor to remove room
    noise, long pauses trimmed, then the scenes are retimed to her voice instead of speeding her up).
-2. **Azure Speech (fa-IR-DilaraNeural, female) via REST + SSML** when she provides a key/region
+2. **Free Dilara voice via edge-tts (her choice when she has no recording; no account, no
+   subscription)**: `pip install edge-tts`, then `python3 scripts/tts_edge.py fa-IR-DilaraNeural -5% "<line>" voice/lNN.mp3 </dev/null`.
+   The script swaps in the proxy CA (edge-tts pins certifi). The voice is not hers, so write the
+   narration in the third person (never «من فاطمه شمس»). Worked example: `videos/community-week`.
+3. **Azure Speech (fa-IR-DilaraNeural, female) via REST + SSML** when she provides a key/region
    and the host `<region>.tts.speech.microsoft.com` is allowed: `scripts/tts_azure.py`.
    SSML gives per-word pronunciation, rate, pitch and pauses.
-3. **Offline fallback** `scripts/tts_offline.py` (sherpa-onnx, female voice "haaniye", low
+4. **Offline fallback** `scripts/tts_offline.py` (sherpa-onnx, female voice "haaniye", low
    quality). Tell her honestly it may sound robotic.
 
 Then `scripts/mix_narration.py` builds one timed track from `voice/lines.tsv`, add it as

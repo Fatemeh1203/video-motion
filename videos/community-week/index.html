@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); }
+
+      @font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+      @font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+
+      :root {
+        --bg: #080b15; --bg-2: #0b1122; --fg: #eff4ff; --muted: #b3bdd8;
+        --mint: #89fff0; --brand-1: #a8ffef; --brand-2: #ae9cff; --navy: #1d2542;
+        --p1: #91ffea; --p2: #b39aff; --p3: #77caff; --p4: #ffbf86; --p5: #ff94ba; --p6: #ddf998;
+        --glass: linear-gradient(145deg, rgba(23, 29, 48, 0.94), rgba(9, 14, 26, 0.94));
+        --line: rgba(255, 255, 255, 0.14);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: "Vazirmatn", sans-serif; color: var(--fg); }
+      .rtl { direction: rtl; }
+      .g { background: linear-gradient(100deg, #ae9cff, #a8ffef 78%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .w { display: inline-block; }
+
+      /* background */
+      #bg { position: absolute; inset: 0; background: radial-gradient(ellipse 95% 60% at 50% 40%, #121a35 0%, #0b1122 45%, #080b15 80%); }
+      .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.32; }
+      #orb1 { width: 640px; height: 640px; left: -180px; top: 220px; background: #ae9cff; }
+      #orb2 { width: 600px; height: 600px; left: 620px; top: 1080px; background: #3fd8c6; opacity: 0.22; }
+      #stars { position: absolute; left: 0; top: 0; width: 1080px; height: 3840px; }
+      .pt { position: absolute; border-radius: 50%; background: #dfe8ff; }
+      #grain { position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.07; mix-blend-mode: overlay; }
+      #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 50%, rgba(8, 11, 21, 0) 55%, rgba(3, 5, 11, 0.6) 100%); }
+
+      /* week strip */
+      #week { position: absolute; left: 90px; width: 900px; top: 250px; height: 124px; display: flex; justify-content: space-between; direction: rtl; }
+      .pill { position: relative; width: 116px; height: 124px; border-radius: 34px; border: 3px solid var(--line); background: rgba(16, 22, 40, 0.92); display: flex; align-items: center; justify-content: center; font-size: 54px; font-weight: 800; color: #c3cbe3; }
+      .pill .fill { position: absolute; inset: -3px; border-radius: 34px; background: linear-gradient(140deg, #ae9cff, #89fff0); opacity: 0; }
+      .pill .done { position: absolute; inset: -3px; border-radius: 34px; background: #17363a; border: 3px solid rgba(137, 255, 240, 0.55); opacity: 0; }
+      .pill b { position: relative; }
+      .pill .dot { position: absolute; left: 50%; bottom: 12px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--p4); }
+      .pill .ring { position: absolute; inset: -14px; border-radius: 44px; border: 4px solid var(--p4); opacity: 0; }
+
+      .scene { position: absolute; inset: 0; opacity: 0; }
+
+      /* hook */
+      #hook-q { position: absolute; left: 70px; right: 70px; top: 560px; text-align: center; font-size: 104px; font-weight: 900; line-height: 1.3; }
+      #hook-sub { position: absolute; left: 90px; right: 90px; top: 1040px; text-align: center; font-size: 46px; font-weight: 500; color: var(--muted); }
+
+      /* day header */
+      .eyebrow { position: absolute; left: 90px; right: 90px; top: 400px; text-align: center; font-size: 38px; font-weight: 700; color: var(--muted); }
+      .dname { position: absolute; left: 90px; right: 90px; top: 500px; text-align: center; font-size: 140px; font-weight: 900; line-height: 1.2; }
+      .cap { position: absolute; left: 90px; right: 90px; top: 1372px; text-align: center; font-size: 58px; font-weight: 800; line-height: 1.35; }
+      .card { position: absolute; left: 110px; width: 860px; border-radius: 44px; background: var(--glass); border: 2px solid var(--line); box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55); }
+      .chead { display: flex; align-items: center; gap: 22px; font-size: 46px; font-weight: 800; }
+      .chead svg { width: 64px; height: 64px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      .bar { height: 18px; border-radius: 9px; background: rgba(239, 244, 255, 0.16); }
+
+      /* d1 lesson */
+      #lesson { top: 720px; height: 580px; padding: 52px 60px; }
+      .step { display: flex; align-items: center; gap: 28px; margin-top: 44px; }
+      .num { flex: none; width: 92px; height: 92px; border-radius: 50%; border: 3px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 800; position: relative; }
+      .num .ck { position: absolute; inset: -3px; border-radius: 50%; background: var(--mint); display: flex; align-items: center; justify-content: center; opacity: 0; }
+      .num .ck svg { width: 54px; height: 54px; fill: none; stroke: #0b1122; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+      .step .txt { flex: 1; }
+      .step .lbl { font-size: 42px; font-weight: 700; }
+      .step .bar { margin-top: 14px; }
+
+      /* d2 news */
+      #news { top: 720px; height: 500px; padding: 48px 56px; }
+      .nrow { display: flex; align-items: center; gap: 28px; margin-top: 36px; }
+      .thumb { flex: none; width: 104px; height: 84px; border-radius: 20px; }
+      .nrow .txt { flex: 1; }
+      .nrow .bar + .bar { margin-top: 16px; width: 62%; }
+      #odd { position: absolute; left: 90px; right: 90px; top: 1250px; display: flex; justify-content: center; gap: 22px; direction: rtl; }
+      #odd span { padding: 10px 34px 14px; border-radius: 40px; border: 3px solid var(--p4); color: var(--p4); font-size: 44px; font-weight: 800; }
+
+      /* d3 handouts */
+      #sheets { position: absolute; left: 280px; top: 690px; width: 520px; height: 620px; }
+      .sheet { position: absolute; inset: 0; border-radius: 30px; background: #f2f5ff; box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5); padding: 48px 50px; transform-origin: 50% 100%; }
+      .sheet .sh { display: flex; align-items: center; justify-content: space-between; direction: rtl; }
+      .sheet .st { font-size: 50px; font-weight: 900; color: #141a2e; }
+      .sheet .tag { padding: 4px 18px 8px; border-radius: 14px; background: #ae9cff; color: #141a2e; font-size: 30px; font-weight: 800; direction: ltr; }
+      .sheet .bar { background: rgba(20, 26, 46, 0.14); margin-top: 28px; }
+      .sheet .bar.s { width: 70%; margin-right: auto; }
+      .sheet .fig { margin-top: 34px; height: 150px; border-radius: 20px; background: linear-gradient(135deg, rgba(174, 156, 255, 0.35), rgba(137, 255, 240, 0.45)); }
+
+      /* d4 invoice */
+      #invoice { top: 650px; height: 330px; padding: 38px 52px; overflow: hidden; }
+      .irow { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; direction: rtl; }
+      .irow .bar { width: 52%; }
+      .irow .bar.p { width: 16%; background: rgba(137, 255, 240, 0.35); }
+      #scan { position: absolute; left: 0; right: 0; top: 0; height: 8px; background: var(--mint); box-shadow: 0 0 30px 8px rgba(137, 255, 240, 0.55); opacity: 0; }
+      #result { top: 1010px; height: 330px; padding: 34px 52px; }
+      #chart { display: flex; align-items: flex-end; gap: 30px; height: 150px; margin-top: 22px; direction: rtl; }
+      #chart i { display: block; width: 120px; border-radius: 16px 16px 6px 6px; background: rgba(239, 244, 255, 0.2); transform-origin: 50% 100%; }
+      #chart i.top { background: linear-gradient(180deg, #89fff0, #ae9cff); }
+      #chart em { font-style: normal; align-self: center; margin-right: 18px; font-size: 92px; font-weight: 900; color: var(--mint); }
+      #rtext { margin-top: 18px; font-size: 38px; font-weight: 700; color: var(--fg); }
+      #d4 .cap { font-size: 52px; }
+
+      /* d5 simulators */
+      #sim { top: 700px; height: 560px; padding: 40px 48px; }
+      #tabs { display: flex; gap: 18px; direction: rtl; }
+      #tabs span { padding: 8px 30px 12px; border-radius: 30px; border: 3px solid var(--line); font-size: 38px; font-weight: 700; color: var(--muted); }
+      #tabs span.on { border-color: var(--p3); color: var(--p3); }
+      #plot { position: relative; margin-top: 34px; height: 340px; border-radius: 26px; background: rgba(4, 8, 18, 0.7); overflow: hidden; }
+      #plot .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, 0.06) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 2px, transparent 2px); background-size: 76px 68px; }
+      #wave { position: absolute; left: 0; top: 0; width: 1528px; height: 340px; }
+      #wave path { fill: none; stroke: var(--p3); stroke-width: 7; stroke-linecap: round; filter: drop-shadow(0 0 10px rgba(119, 202, 255, 0.7)); }
+      #wave path.b { stroke: var(--p2); stroke-width: 5; opacity: 0.8; filter: none; }
+      #free { position: absolute; left: 0; right: 0; top: 1290px; width: fit-content; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 10px 36px 14px; border-radius: 40px; background: rgba(221, 249, 152, 0.14); border: 3px solid var(--p6); color: var(--p6); font-size: 42px; font-weight: 800; direction: rtl; }
+      #free svg { width: 44px; height: 44px; fill: none; stroke: var(--p6); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      #d5 .cap { top: 1400px; }
+
+      /* d6 chat */
+      #chat { position: absolute; left: 90px; right: 90px; top: 700px; height: 560px; }
+      .bub { position: absolute; padding: 26px 40px 32px; border-radius: 40px; font-size: 48px; font-weight: 700; line-height: 1.45; direction: rtl; white-space: nowrap; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45); }
+      #q { right: 0; top: 0; background: #2b3a63; border-radius: 40px 40px 10px 40px; }
+      #typing { left: 120px; top: 230px; padding: 30px 36px; background: #1a2238; border-radius: 40px 40px 40px 10px; display: flex; gap: 14px; }
+      #typing i { display: block; width: 20px; height: 20px; border-radius: 50%; background: var(--muted); }
+      #a { left: 120px; top: 210px; background: #1a2238; border-radius: 40px 40px 40px 10px; border: 2px solid rgba(137, 255, 240, 0.35); }
+      #a .nm { font-size: 36px; font-weight: 800; color: var(--mint); }
+      #av { position: absolute; left: 0; top: 330px; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(140deg, #ae9cff, #89fff0); color: #0b1122; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 900; }
+      #clock { position: absolute; left: 0; right: 0; top: 1235px; width: fit-content; margin: 0 auto; display: flex; align-items: center; gap: 22px; direction: rtl; font-size: 46px; font-weight: 800; color: var(--p4); }
+      #clock .ic { position: relative; width: 84px; height: 84px; }
+      #clock svg { position: absolute; inset: 0; width: 84px; height: 84px; fill: none; stroke: var(--p4); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+      /* d7 */
+      #fri { position: absolute; left: 90px; right: 90px; top: 760px; text-align: center; font-size: 116px; font-weight: 900; line-height: 1.3; }
+
+      /* CTA */
+      #ct1 { position: absolute; left: 90px; right: 90px; top: 250px; text-align: center; font-size: 104px; font-weight: 900; line-height: 1.25; }
+      #ct2 { position: absolute; left: 90px; right: 90px; top: 540px; text-align: center; font-size: 46px; font-weight: 700; color: var(--muted); }
+      #qr { position: absolute; left: 340px; top: 660px; width: 400px; height: 400px; border-radius: 40px; background: #ffffff; padding: 30px; box-shadow: 0 0 0 10px rgba(137, 255, 240, 0.18), 0 40px 120px rgba(0, 0, 0, 0.6); }
+      #qr img { width: 340px; height: 340px; display: block; }
+      #link { position: absolute; left: 0; right: 0; top: 1100px; width: fit-content; margin: 0 auto; display: flex; align-items: center; gap: 20px; padding: 14px 40px 14px 16px; border-radius: 60px; border: 3px solid var(--mint); background: rgba(8, 11, 21, 0.9); direction: ltr; font-size: 46px; font-weight: 700; color: var(--fg); }
+      #link i { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 50%; background: #2aa3de; }
+      #link svg { width: 40px; height: 40px; fill: #fff; }
+      #nm { position: absolute; left: 90px; right: 90px; top: 1236px; text-align: center; font-size: 66px; font-weight: 900; }
+      #tt { position: absolute; left: 90px; right: 90px; top: 1330px; text-align: center; font-size: 40px; font-weight: 600; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="66">
+      <div id="bg"></div>
+      <div id="orb1" class="orb" data-layout-allow-overflow></div>
+      <div id="orb2" class="orb" data-layout-allow-overflow></div>
+      <div id="stars"></div>
+
+      <!-- hook -->
+      <div id="s0" class="scene" style="opacity: 1">
+        <div id="hook-q" class="rtl"></div>
+        <div id="hook-sub" class="rtl">کامیونیتی هوش مصنوعی، روز به روز</div>
+      </div>
+
+      <!-- شنبه: lesson -->
+      <div id="d1" class="scene">
+        <div class="eyebrow rtl">روز ۱</div>
+        <div class="dname rtl"><span class="g">شنبه</span></div>
+        <div id="lesson" class="card rtl">
+          <div class="chead"><svg viewBox="0 0 32 32" style="stroke: var(--p1)"><path d="M4 7h9a4 4 0 0 1 3 2v18a3 3 0 0 0-3-2H4z" /><path d="M28 7h-9a4 4 0 0 0-3 2v18a3 3 0 0 1 3-2h9z" /></svg><span>درسِ امروز</span></div>
+          <div class="step"><div class="num">۱<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span></div><div class="txt"><div class="lbl">قدم اول</div><div class="bar" style="width: 88%"></div></div></div>
+          <div class="step"><div class="num">۲<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span></div><div class="txt"><div class="lbl">قدم دوم</div><div class="bar" style="width: 72%"></div></div></div>
+          <div class="step"><div class="num">۳<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span></div><div class="txt"><div class="lbl">تمرین واقعی</div><div class="bar" style="width: 80%"></div></div></div>
+        </div>
+        <div class="cap rtl">هر روز، یک درس تازه</div>
+      </div>
+
+      <!-- یکشنبه: news -->
+      <div id="d2" class="scene">
+        <div class="eyebrow rtl">روز ۲</div>
+        <div class="dname rtl"><span class="g">یکشنبه</span></div>
+        <div id="news" class="card rtl">
+          <div class="chead"><svg viewBox="0 0 32 32" style="stroke: var(--p4)"><rect x="4" y="6" width="24" height="20" rx="3" /><path d="M9 12h8 M9 17h14 M9 21h10" /></svg><span>خبرهای هوش مصنوعی</span></div>
+          <div class="nrow"><div class="thumb" style="background: linear-gradient(135deg, #ffbf86, #ff94ba)"></div><div class="txt"><div class="bar"></div><div class="bar"></div></div></div>
+          <div class="nrow"><div class="thumb" style="background: linear-gradient(135deg, #77caff, #ae9cff)"></div><div class="txt"><div class="bar"></div><div class="bar"></div></div></div>
+          <div class="nrow"><div class="thumb" style="background: linear-gradient(135deg, #91ffea, #ddf998)"></div><div class="txt"><div class="bar"></div><div class="bar"></div></div></div>
+        </div>
+        <div id="odd"><span>یکشنبه</span><span>سه‌شنبه</span><span>پنجشنبه</span></div>
+        <div class="cap rtl">روزهای فرد، خبرهای مهم</div>
+      </div>
+
+      <!-- دوشنبه: handouts -->
+      <div id="d3" class="scene">
+        <div class="eyebrow rtl">روز ۳</div>
+        <div class="dname rtl"><span class="g">دوشنبه</span></div>
+        <div id="sheets" data-layout-allow-overlap data-layout-allow-occlusion>
+          <div class="sheet" id="sh3" data-layout-allow-overlap data-layout-allow-occlusion><div class="sh"><span class="st">جزوه</span><span class="tag">PDF</span></div><div class="bar"></div><div class="bar s"></div><div class="fig"></div><div class="bar"></div><div class="bar s"></div></div>
+          <div class="sheet" id="sh2" data-layout-allow-overlap data-layout-allow-occlusion><div class="sh"><span class="st">جزوه</span><span class="tag">PDF</span></div><div class="bar"></div><div class="bar s"></div><div class="fig"></div><div class="bar"></div><div class="bar s"></div></div>
+          <div class="sheet" id="sh1" data-layout-allow-overlap data-layout-allow-occlusion><div class="sh"><span class="st">جزوهٔ درس</span><span class="tag">PDF</span></div><div class="bar"></div><div class="bar s"></div><div class="fig"></div><div class="bar"></div><div class="bar s"></div></div>
+        </div>
+        <div class="cap rtl">هر درس، یک جزوه</div>
+      </div>
+
+      <!-- سه‌شنبه: invoice -> analysis (real lesson 9 sample) -->
+      <div id="d4" class="scene">
+        <div class="eyebrow rtl">روز ۴</div>
+        <div class="dname rtl"><span class="g">سه‌شنبه</span></div>
+        <div id="invoice" class="card rtl">
+          <div class="chead"><svg viewBox="0 0 32 32" style="stroke: var(--p3)"><path d="M8 4h16v24l-4-2-4 2-4-2-4 2z" /><path d="M12 11h8 M12 16h8 M12 21h5" /></svg><span>عکس فاکتور خرید</span></div>
+          <div class="irow"><div class="bar"></div><div class="bar p"></div></div>
+          <div class="irow"><div class="bar" style="width: 44%"></div><div class="bar p"></div></div>
+          <div class="irow"><div class="bar" style="width: 58%"></div><div class="bar p"></div></div>
+          <div id="scan"></div>
+        </div>
+        <div id="result" class="card rtl">
+          <div class="chead" style="font-size: 40px"><svg viewBox="0 0 32 32" style="stroke: var(--p1)"><path d="M5 27h22 M9 23v-7 M15 23V9 M21 23v-11" /></svg><span>تحلیل فروش</span></div>
+          <div id="chart"><i class="top" style="height: 150px"></i><i style="height: 84px"></i><i style="height: 62px"></i><i style="height: 40px"></i><em>۴۵٪</em></div>
+        </div>
+        <div class="cap rtl">بیشترین سهم فروش: کیف‌های چرمی</div>
+      </div>
+
+      <!-- چهارشنبه: simulators -->
+      <div id="d5" class="scene">
+        <div class="eyebrow rtl">روز ۵</div>
+        <div class="dname rtl"><span class="g">چهارشنبه</span></div>
+        <div id="sim" class="card rtl">
+          <div id="tabs"><span class="on">ریاضی</span><span>فیزیک</span><span>برنامه‌نویسی</span></div>
+          <div id="plot"><div class="grid"></div><svg id="wave" data-layout-allow-overflow viewBox="0 0 1528 340"><path class="b" id="wb" /><path id="wa" /></svg></div>
+        </div>
+        <div id="free"><svg viewBox="0 0 32 32"><rect x="7" y="14" width="18" height="13" rx="3" /><path d="M11 14v-4a5 5 0 0 1 10 0v4" /></svg><span>رایگان، فقط برای اعضا</span></div>
+        <div class="cap rtl">شبیه‌سازهای آموزشی</div>
+      </div>
+
+      <!-- پنجشنبه: Q&A -->
+      <div id="d6" class="scene">
+        <div class="eyebrow rtl">روز ۶</div>
+        <div class="dname rtl"><span class="g">پنجشنبه</span></div>
+        <div id="chat">
+          <div id="q" class="bub">این قدم رو متوجه نشدم!</div>
+          <div id="typing" class="bub"><i></i><i></i><i></i></div>
+          <div id="a" class="bub"><div class="nm">فاطمه شمس</div><div>بپرس، با هم حلش می‌کنیم.</div></div>
+          <div id="av">ف</div>
+        </div>
+        <div id="clock"><div class="ic"><svg id="sun" viewBox="0 0 32 32"><circle cx="16" cy="16" r="6" /><path d="M16 3v4 M16 25v4 M3 16h4 M25 16h4 M6.8 6.8l2.8 2.8 M22.4 22.4l2.8 2.8 M6.8 25.2l2.8-2.8 M22.4 9.6l2.8-2.8" /></svg><svg id="moon" viewBox="0 0 32 32" style="opacity: 0"><path d="M24 20.5A10 10 0 0 1 11.5 8 10 10 0 1 0 24 20.5z" /></svg></div><span>شبانه‌روز کنارته</span></div>
+        <div class="cap rtl">پرسش و پاسخ</div>
+      </div>
+
+      <!-- جمعه -->
+      <div id="d7" class="scene">
+        <div class="eyebrow rtl">روز ۷</div>
+        <div class="dname rtl"><span class="g">جمعه</span></div>
+        <div id="fri" class="rtl"></div>
+      </div>
+
+      <!-- CTA -->
+      <div id="cta" class="scene">
+        <div id="ct1" class="rtl"><div>کامیونیتی</div><div class="g">هوش مصنوعی</div></div>
+        <div id="ct2" class="rtl">جای کسانی که می‌خواهند متحول شوند</div>
+        <div id="qr"><img src="assets/telegram-group-qr.svg" alt="" /></div>
+        <div id="link"><i><svg viewBox="0 0 24 24"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.4-1.6Z" /></svg></i><span>t.me/+B70Edyob54Q0NWVk</span></div>
+        <div id="nm" class="rtl">فاطمه شمس</div>
+        <div id="tt" class="rtl">توسعه‌دهنده و مربی هوش مصنوعی</div>
+      </div>
+
+      <!-- week strip (persistent) -->
+      <div id="week"></div>
+
+      <div id="grain" class="clip" data-start="0" data-duration="66" data-track-index="6"></div>
+      <div id="vignette" class="clip" data-start="0" data-duration="66" data-track-index="5"></div>
+
+      <audio id="narration" src="assets/audio/narration.mp3" data-start="0" data-duration="66" data-track-index="8" data-volume="1"></audio>
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="66" data-track-index="9" data-volume="1"></audio>
+      <audio id="sfx-w0" src="assets/sfx/whoosh-short.mp3" data-start="5.3" data-duration="0.5" data-track-index="10" data-volume="0.22"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.mp3" data-start="5.5" data-duration="0.5" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.mp3" data-start="12.7" data-duration="0.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.mp3" data-start="20.1" data-duration="0.5" data-track-index="13" data-volume="0.16"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.mp3" data-start="26.0" data-duration="0.5" data-track-index="14" data-volume="0.16"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.mp3" data-start="32.3" data-duration="0.5" data-track-index="15" data-volume="0.16"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.mp3" data-start="40.7" data-duration="0.5" data-track-index="16" data-volume="0.16"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.mp3" data-start="49.1" data-duration="0.5" data-track-index="17" data-volume="0.16"></audio>
+      <audio id="sfx-note" src="assets/sfx/notification.mp3" data-start="45.0" data-duration="1.2" data-track-index="18" data-volume="0.22"></audio>
+      <audio id="sfx-riser" src="assets/sfx/riser.mp3" data-start="53.4" data-duration="1.8" data-track-index="19" data-volume="0.18"></audio>
+      <audio id="sfx-hit" src="assets/sfx/impact-bass-1.mp3" data-start="55.2" data-duration="1.5" data-track-index="20" data-volume="0.28"></audio>
+    </div>
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const SPRING = "back.out(1.7)";
+        const DUR = 66;
+        let seed = 11;
+        const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+        // ---------- background stars: two tiles, slow drift
+        const stars = document.getElementById("stars");
+        const pts = [];
+        for (let i = 0; i < 46; i++) pts.push([rnd() * 1080, rnd() * 1920, 2 + rnd() * 4, 0.12 + rnd() * 0.35]);
+        [0, 1].forEach(function (k) {
+          pts.forEach(function (p) {
+            const d = document.createElement("i");
+            d.className = "pt";
+            d.style.cssText = "left:" + p[0].toFixed(1) + "px;top:" + (p[1] + k * 1920).toFixed(1) + "px;width:" + p[2].toFixed(1) + "px;height:" + p[2].toFixed(1) + "px;opacity:" + p[3].toFixed(2);
+            stars.appendChild(d);
+          });
+        });
+        tl.fromTo(stars, { y: 0 }, { y: -600, duration: DUR, ease: "none" }, 0);
+        tl.fromTo("#orb1", { x: 0, y: 0 }, { x: 220, y: 260, duration: DUR, ease: "sine.inOut" }, 0);
+        tl.fromTo("#orb2", { x: 0, y: 0 }, { x: -260, y: -340, duration: DUR, ease: "sine.inOut" }, 0);
+
+        // ---------- word-by-word text (never split Persian letters)
+        function words(el, lines) {
+          el.innerHTML = lines.map(function (ln) {
+            return "<div>" + ln.map(function (w) { return '<span class="w' + (w[1] ? " g" : "") + '">' + w[0] + "</span>"; }).join(" ") + "</div>";
+          }).join("");
+          return el.querySelectorAll(".w");
+        }
+        function wordsIn(list, t, gap) {
+          list.forEach(function (w, i) {
+            tl.fromTo(w, { opacity: 0, y: 36, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, t + i * gap);
+          });
+        }
+
+        // ---------- week strip
+        const DAYS = [["ش", 0], ["ی", 1], ["د", 0], ["س", 1], ["چ", 0], ["پ", 1], ["ج", 0]];
+        const week = document.getElementById("week");
+        const pills = DAYS.map(function (d) {
+          const p = document.createElement("div");
+          p.className = "pill";
+          p.innerHTML = '<span class="done"></span><span class="fill"></span><b>' + d[0] + "</b>" + (d[1] ? '<span class="dot"></span><span class="ring"></span>' : "");
+          week.appendChild(p);
+          return p;
+        });
+        pills.forEach(function (p, i) {
+          tl.fromTo(p, { opacity: 0, y: -60, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, 2.9 + i * 0.12);
+        });
+        function activate(i, t) {
+          const p = pills[i];
+          if (i > 0) {
+            const q = pills[i - 1];
+            tl.to(q.querySelector(".fill"), { opacity: 0, duration: 0.25 }, t);
+            tl.to(q.querySelector(".done"), { opacity: 1, duration: 0.25 }, t);
+            tl.to(q, { scale: 1, color: "#89fff0", duration: 0.25 }, t);
+          }
+          tl.to(p.querySelector(".fill"), { opacity: 1, duration: 0.2 }, t);
+          tl.fromTo(p, { scale: 1, color: "#c3cbe3" }, { scale: 1.14, color: "#0b1122", duration: 0.35, ease: SPRING, immediateRender: false }, t);
+        }
+
+        // ---------- scene helpers
+        function sceneIn(id, t) {
+          tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.01 }, t);
+        }
+        function sceneOut(id, t) {
+          tl.to(id, { opacity: 0, y: -40, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, t);
+        }
+        function dayHead(id, t) {
+          tl.fromTo(id + " .eyebrow", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t);
+          tl.fromTo(id + " .dname", { opacity: 0, scale: 1.25, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, t + 0.05);
+        }
+        function capIn(id, t) {
+          tl.fromTo(id + " .cap", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t);
+        }
+        function cardIn(sel, t) {
+          tl.fromTo(sel, { opacity: 0, y: 120, rotationX: -18, transformPerspective: 1400 }, { opacity: 1, y: 0, rotationX: 0, duration: 0.55, ease: "power3.out" }, t);
+        }
+
+        // ---------- 0-5.4 hook
+                const hw = words(document.getElementById("hook-q"), [[["اگه"], ["فقط"], ["یه", 1], ["هفته", 1]], [["توی"], ["کامیونیتی"], ["باشی،"]], [["چی"], ["یاد"], ["می‌گیری؟"]]]);
+        hw.forEach(function (w, i) {
+          if (i < 4) tl.fromTo(w, { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 0);
+        });
+        tl.fromTo(Array.prototype.slice.call(hw, 0, 4), { textShadow: "0 0 0px rgba(137,255,240,0)" }, { textShadow: "0 0 40px rgba(137,255,240,0.45)", duration: 0.6, ease: "sine.out", yoyo: true, repeat: 1 }, 0.6);
+        wordsIn(Array.prototype.slice.call(hw, 4), 1.3, 0.2);
+        tl.fromTo("#hook-sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.6);
+        tl.to("#hook-q", { scale: 1.04, duration: 2.4, ease: "sine.inOut" }, 2.6);
+        sceneOut("#s0", 5.1);
+
+        // ---------- days
+        const S = [5.4, 12.6, 20.0, 25.9, 32.2, 40.6, 49.0, 55.2];
+
+        // d1 lesson
+        let t = S[0];
+        activate(0, t + 0.1);
+        sceneIn("#d1", t); dayHead("#d1", t + 0.1); cardIn("#lesson", t + 0.4);
+        gsap.utils.toArray("#lesson .step").forEach(function (st, i) {
+          tl.fromTo(st, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 + i * 0.25);
+          tl.fromTo(st.querySelector(".ck"), { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 2.4 + i * 1.1);
+        });
+        capIn("#d1", t + 1.2);
+        sceneOut("#d1", S[1] - 0.3);
+
+        // d2 news + odd days
+        t = S[1];
+        activate(1, t + 0.1);
+        sceneIn("#d2", t); dayHead("#d2", t + 0.1); cardIn("#news", t + 0.4);
+        gsap.utils.toArray("#news .nrow").forEach(function (r, i) {
+          tl.fromTo(r, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 + i * 0.3);
+        });
+        gsap.utils.toArray("#odd span").forEach(function (s, i) {
+          tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.3 + i * 0.22);
+        });
+        [1, 3, 5].forEach(function (k, i) {
+          const ring = pills[k].querySelector(".ring");
+          tl.fromTo(ring, { opacity: 0, scale: 0.85 }, { opacity: 0.9, scale: 0.9, duration: 0.1, ease: "none", immediateRender: false }, t + 4.3 + i * 0.22);
+          tl.to(ring, { opacity: 0, scale: 1.25, duration: 0.8, ease: "power2.out" }, t + 4.4 + i * 0.22);
+        });
+        capIn("#d2", t + 1.2);
+        sceneOut("#d2", S[2] - 0.3);
+
+        // d3 handouts
+        t = S[2];
+        activate(2, t + 0.1);
+        sceneIn("#d3", t); dayHead("#d3", t + 0.1);
+        [["#sh3", -11, -170], ["#sh2", 9, 170], ["#sh1", 0, 0]].forEach(function (s, i) {
+          tl.fromTo(s[0], { opacity: 0, y: 200, rotation: 0, x: 0 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t + 0.4 + i * 0.15);
+          if (i < 2) tl.to(s[0], { rotation: s[1], x: s[2], duration: 0.6, ease: SPRING }, t + 1.3);
+        });
+        tl.to("#sh1", { y: -18, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 2.0);
+        capIn("#d3", t + 1.1);
+        sceneOut("#d3", S[3] - 0.3);
+
+        // d4 invoice -> analysis
+        t = S[3];
+        activate(3, t + 0.1);
+        sceneIn("#d4", t); dayHead("#d4", t + 0.1); cardIn("#invoice", t + 0.35);
+        tl.fromTo("#scan", { opacity: 1, y: 0 }, { opacity: 1, y: 320, duration: 1.1, ease: "sine.inOut" }, t + 1.2);
+        tl.to("#scan", { opacity: 0, duration: 0.2 }, t + 2.3);
+        cardIn("#result", t + 2.2);
+        gsap.utils.toArray("#chart i").forEach(function (b, i) {
+          tl.fromTo(b, { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, t + 2.6 + i * 0.12);
+        });
+        tl.fromTo("#chart em", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, t + 3.2);
+        capIn("#d4", t + 3.4);
+        sceneOut("#d4", S[4] - 0.3);
+
+        // d5 simulators: waves drift (path built once, translated)
+        t = S[4];
+        activate(4, t + 0.1);
+        function wavePath(amp, k, ph, y0) {
+          let d = "";
+          for (let x = 0; x <= 1528; x += 8) d += (x ? "L" : "M") + x + "," + (y0 + amp * Math.sin((x / 764) * Math.PI * 2 * k + ph)).toFixed(1);
+          return d;
+        }
+        document.getElementById("wa").setAttribute("d", wavePath(90, 2, 0, 170));
+        document.getElementById("wb").setAttribute("d", wavePath(50, 3, 1.2, 170));
+        sceneIn("#d5", t); dayHead("#d5", t + 0.1); cardIn("#sim", t + 0.4);
+        tl.fromTo("#wave", { x: 0 }, { x: -764, duration: 8, ease: "none" }, t);
+        gsap.utils.toArray("#tabs span").forEach(function (s, i) {
+          tl.fromTo(s, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 0.9 + i * 0.15);
+        });
+        tl.fromTo("#free", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t + 5.0);
+        capIn("#d5", t + 1.4);
+        sceneOut("#d5", S[5] - 0.3);
+
+        // d6 Q&A
+        t = S[5];
+        activate(5, t + 0.1);
+        sceneIn("#d6", t); dayHead("#d6", t + 0.1);
+        tl.fromTo("#q", { opacity: 0, y: 80, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 0.6);
+        tl.fromTo("#typing", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 2.0);
+        gsap.utils.toArray("#typing i").forEach(function (d, i) {
+          tl.fromTo(d, { y: 0 }, { y: -12, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, t + 2.1 + i * 0.12);
+        });
+        tl.to("#typing", { opacity: 0, duration: 0.15 }, t + 4.3);
+        tl.fromTo("#a", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 4.4);
+        tl.fromTo("#av", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.4);
+        tl.fromTo("#clock", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t + 5.2);
+        tl.to("#sun", { opacity: 0, rotation: 90, duration: 0.5, transformOrigin: "50% 50%" }, t + 6.4);
+        tl.to("#moon", { opacity: 1, duration: 0.5 }, t + 6.4);
+        capIn("#d6", t + 1.0);
+        sceneOut("#d6", S[6] - 0.3);
+
+        // d7 Friday: the week is done
+        t = S[6];
+        activate(6, t + 0.1);
+        sceneIn("#d7", t); dayHead("#d7", t + 0.1);
+        const fw = words(document.getElementById("fri"), [[["حالا"], ["می‌دونی"]], [["از"], ["کجا", 1]], [["شروع", 1], ["کنی."]]]);
+        wordsIn(fw, t + 1.9, 0.22);
+        tl.to(pills[6].querySelector(".fill"), { opacity: 0, duration: 0.3 }, t + 3.6);
+        tl.to(pills[6].querySelector(".done"), { opacity: 1, duration: 0.3 }, t + 3.6);
+        pills.forEach(function (p, i) {
+          tl.to(p, { scale: 1.12, color: "#89fff0", duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, t + 3.6 + i * 0.08);
+        });
+        sceneOut("#d7", S[7] - 0.3);
+        tl.to("#week", { opacity: 0, y: -40, duration: 0.3, ease: "power2.in" }, S[7] - 0.3);
+
+        // ---------- CTA
+        t = S[7];
+        sceneIn("#cta", t);
+        tl.fromTo("#ct1", { opacity: 0, scale: 0.8, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, t);
+        tl.fromTo("#ct2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t + 1.0);
+        tl.fromTo("#qr", { opacity: 0, scale: 0.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: SPRING }, t + 1.6);
+        tl.fromTo("#link", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: SPRING }, t + 2.2);
+        tl.fromTo("#nm", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t + 2.8);
+        tl.fromTo("#tt", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t + 3.1);
+        tl.to("#qr", { scale: 1.04, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, t + 3.2);
+        tl.to({}, { duration: 0.01 }, DUR - 0.01);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

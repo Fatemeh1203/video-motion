@@ -9,7 +9,7 @@ audio, so never claim a voice sounds right; ask her to listen and name the line 
 |---|---|---|
 | Her own recording | always works | best |
 | Azure Speech REST + SSML, `fa-IR-DilaraNeural` (female) / `fa-IR-FaridNeural` (male) | needs her key + region, and `<region>.tts.speech.microsoft.com` allowed in the environment's network settings | very good; controllable |
-| edge-tts (`speech.platform.bing.com`) | **fails**: the WebSocket handshake gets 403 through the proxy even when the host is allowed | — |
+| edge-tts (`speech.platform.bing.com`), `fa-IR-DilaraNeural` / `fa-IR-FaridNeural` | **works** (2026-11) with `scripts/tts_edge.py`, which swaps the proxy CA into edge-tts's SSL context; free, no key. Unofficial service, may stop without notice | good; she approved Dilara at −5% |
 | HuggingFace models (Piper voices) | blocked (huggingface.co 403) | — |
 | sherpa-onnx models from GitHub releases | works (`scripts/tts_offline.py`) | low; female only `vits-mimic3-fa-haaniye_low` (median F0 ≈ 220 Hz); `fa_IR-gyro/amir/ganji/reza_ibrahim` are male |
 | HeyGen (`/media-use` default) | needs `heygen auth login`, impossible here | — |
@@ -23,8 +23,12 @@ audio, so never claim a voice sounds right; ask her to listen and name the line 
    each line when its text appears.
 3. Synthesize:
    - Azure: `AZURE_SPEECH_KEY=… AZURE_SPEECH_REGION=… python3 scripts/tts_azure.py voice/lines.tsv voice/`
+   - edge-tts (free): one call per line, `python3 scripts/tts_edge.py fa-IR-DilaraNeural -5% "<text>" voice/lNN.mp3 </dev/null`,
+     then trim silence to `voice/lNN.wav` (`ffmpeg -nostdin … silenceremove…`; without `-nostdin` ffmpeg
+     eats the next line of a `while read` loop). It does not fit lines to gaps: measure each clip and
+     set the scene starts from the real durations. Write ezafe explicitly (کامیونیتیِ، ابزارِ).
    - Offline: `python3 scripts/tts_offline.py voice/lines.tsv voice/`
-   Both fit each line into the gap before the next start by raising the rate a little
+   Azure and offline fit each line into the gap before the next start by raising the rate a little
    (cap about 1.3× so it doesn't sound rushed; shorten the text instead).
 4. `python3 scripts/mix_narration.py voice/lines.tsv voice/ assets/audio/narration.wav <total_seconds>`:
    places the clips, applies high-pass, presence EQ, compression, a touch of room and
