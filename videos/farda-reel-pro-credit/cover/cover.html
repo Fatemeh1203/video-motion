@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:V;font-weight:500;src:url(../assets/fonts/vazirmatn-arabic-500-normal.woff2)}
+@font-face{font-family:V;font-weight:700;src:url(../assets/fonts/vazirmatn-arabic-700-normal.woff2)}
+@font-face{font-family:V;font-weight:800;src:url(../assets/fonts/vazirmatn-arabic-800-normal.woff2)}
+@font-face{font-family:V;font-weight:900;src:url(../assets/fonts/vazirmatn-arabic-900-normal.woff2)}
+@font-face{font-family:VL;font-weight:700;src:url(../assets/fonts/vazirmatn-latin-700-normal.woff2)}
+@font-face{font-family:VL;font-weight:900;src:url(../assets/fonts/vazirmatn-latin-900-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:VL,V,sans-serif;color:#fff;position:relative;
+ background:radial-gradient(60% 35% at 80% 12%,#2f5fd0 0%,transparent 70%),
+ radial-gradient(55% 30% at 10% 70%,#5a3fb8 0%,transparent 70%),
+ radial-gradient(50% 25% at 90% 92%,#1b6fa8 0%,transparent 70%),
+ linear-gradient(180deg,#0d1a4a 0%,#0a1238 55%,#070d2a 100%)}
+.grid{position:absolute;inset:0;opacity:.07;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:60px 60px;
+ -webkit-mask:radial-gradient(70% 50% at 50% 45%,#000,transparent)}
+#kicker{position:absolute;top:300px;left:0;right:0;text-align:center}
+#kicker span{display:inline-block;padding:14px 34px;border-radius:999px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);font:800 40px V;color:#cfe0ff}
+#title{position:absolute;top:400px;left:70px;right:70px;text-align:center;font:900 112px/1.22 V;letter-spacing:-1px;text-shadow:0 10px 40px rgba(0,0,0,.45)}
+#title em{font-style:normal;background:linear-gradient(90deg,#7fb2ff,#b49cff);-webkit-background-clip:text;color:transparent}
+#pill{position:absolute;top:690px;left:0;right:0;text-align:center}
+#pill span{display:inline-block;transform:rotate(-3deg);padding:18px 44px;border-radius:30px;background:linear-gradient(160deg,#2ecc71,#17a35a);font:900 64px V;box-shadow:0 30px 60px -24px rgba(23,163,90,.9)}
+#stage{position:absolute;top:880px;left:0;width:1080px;height:660px}
+#halo{position:absolute;left:340px;top:120px;width:400px;height:400px;border-radius:50%;background:radial-gradient(70% 70% at 50% 35%,#fff 0%,#eaf2ff 100%);box-shadow:0 0 0 18px rgba(255,255,255,.08),0 0 120px 30px rgba(110,160,255,.45)}
+#logo{position:absolute;left:362px;top:142px;width:356px;height:356px}
+.card{position:absolute;background:#fff;color:#14213d;border-radius:28px;padding:22px 28px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);font-family:VL,V}
+.card small{display:block;font:700 26px V;color:#5b6b8c;margin-bottom:6px}
+.card b{font:900 40px VL,V}
+#c1{left:70px;top:40px;transform:rotate(-5deg)}
+#c1 .ok{display:inline-block;margin-top:10px;padding:8px 22px;border-radius:14px;background:#17a35a;color:#fff;font:900 30px V}
+#c2{right:60px;top:70px;transform:rotate(4deg)}
+#c2 b{color:#2a54ad}
+#c3{left:60px;top:420px;transform:rotate(3deg)}
+#c4{right:70px;top:440px;transform:rotate(-4deg);background:linear-gradient(160deg,#a58ff0,#6f57cf);color:#fff}
+#c4 small{color:#ece6ff}
+#chips{position:absolute;top:1525px;left:0;right:0;display:flex;justify-content:center;gap:14px;direction:ltr}
+#chips span{padding:10px 24px;border-radius:999px;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.2);font:700 30px VL;color:#dfe8ff}
+#brand{position:absolute;top:1600px;left:0;right:0;text-align:center;font:800 36px V;color:#cfe0ff}
+#brand b{color:#fff;font-weight:900}
+</style></head><body>
+<div class="grid"></div>
+<div id="kicker"><span>حسابدار جدید آموزشگاه فردا</span></div>
+<div id="title">۲۴ ساعته <em>کار می‌کنه</em><br>ولی...</div>
+<div id="pill"><span>حقوق نمی‌گیره! 😄</span></div>
+<div id="stage">
+  <div id="halo"></div><img id="logo" src="../assets/farda-logo-ink.png" alt="">
+  <div class="card" id="c1"><small>واریزی تازه · تلگرام</small><b>۸۰۰,۰۰۰</b><br><span class="ok">ثبت کن ✓</span></div>
+  <div class="card" id="c2"><small>سهم مدرس ۷۰٪</small><b>۵۶۰,۰۰۰</b></div>
+  <div class="card" id="c3"><small>گزارش حقوق</small><b>📩 Gmail</b></div>
+  <div class="card" id="c4"><small>آخر ماه</small><b>🔒 یه دکمه</b></div>
+</div>
+<div id="chips"><span>n8n</span><span>Google Sheets</span><span>Telegram</span><span>Gmail</span></div>
+<div id="brand">آموزشگاه علمی <b>فردا</b> · بابلسر</div>
+</body></html>
