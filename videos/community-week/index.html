@@ -149,7 +149,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="66">
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="56.46">
       <div id="bg"></div>
       <div id="orb1" class="orb" data-layout-allow-overflow></div>
       <div id="orb2" class="orb" data-layout-allow-overflow></div>
@@ -264,28 +264,30 @@
       <!-- week strip (persistent) -->
       <div id="week"></div>
 
-      <div id="grain" class="clip" data-start="0" data-duration="66" data-track-index="6"></div>
-      <div id="vignette" class="clip" data-start="0" data-duration="66" data-track-index="5"></div>
+      <div id="grain" class="clip" data-start="0" data-duration="56.46" data-track-index="6"></div>
+      <div id="vignette" class="clip" data-start="0" data-duration="56.46" data-track-index="5"></div>
 
-      <audio id="narration" src="assets/audio/narration.mp3" data-start="0" data-duration="66" data-track-index="8" data-volume="1"></audio>
-      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="66" data-track-index="9" data-volume="1"></audio>
-      <audio id="sfx-w0" src="assets/sfx/whoosh-short.mp3" data-start="5.3" data-duration="0.5" data-track-index="10" data-volume="0.22"></audio>
-      <audio id="sfx-p1" src="assets/sfx/pop.mp3" data-start="5.5" data-duration="0.5" data-track-index="11" data-volume="0.16"></audio>
-      <audio id="sfx-p2" src="assets/sfx/pop.mp3" data-start="12.7" data-duration="0.5" data-track-index="12" data-volume="0.16"></audio>
-      <audio id="sfx-p3" src="assets/sfx/pop.mp3" data-start="20.1" data-duration="0.5" data-track-index="13" data-volume="0.16"></audio>
-      <audio id="sfx-p4" src="assets/sfx/pop.mp3" data-start="26.0" data-duration="0.5" data-track-index="14" data-volume="0.16"></audio>
-      <audio id="sfx-p5" src="assets/sfx/pop.mp3" data-start="32.3" data-duration="0.5" data-track-index="15" data-volume="0.16"></audio>
-      <audio id="sfx-p6" src="assets/sfx/pop.mp3" data-start="40.7" data-duration="0.5" data-track-index="16" data-volume="0.16"></audio>
-      <audio id="sfx-p7" src="assets/sfx/pop.mp3" data-start="49.1" data-duration="0.5" data-track-index="17" data-volume="0.16"></audio>
-      <audio id="sfx-note" src="assets/sfx/notification.mp3" data-start="45.0" data-duration="1.2" data-track-index="18" data-volume="0.22"></audio>
-      <audio id="sfx-riser" src="assets/sfx/riser.mp3" data-start="53.4" data-duration="1.8" data-track-index="19" data-volume="0.18"></audio>
-      <audio id="sfx-hit" src="assets/sfx/impact-bass-1.mp3" data-start="55.2" data-duration="1.5" data-track-index="20" data-volume="0.28"></audio>
+      <!--AUDIO-->
+      <audio id="narration" src="assets/audio/narration.mp3" data-start="0" data-duration="56.46" data-track-index="8" data-volume="1"></audio>
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="56.46" data-track-index="9" data-volume="1"></audio>
+      <audio id="sfx-w0" src="assets/sfx/whoosh-short.mp3" data-start="4.54" data-duration="0.5" data-track-index="10" data-volume="0.22"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.mp3" data-start="4.74" data-duration="0.5" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.mp3" data-start="10.77" data-duration="0.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.mp3" data-start="17.29" data-duration="0.5" data-track-index="13" data-volume="0.16"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.mp3" data-start="22.28" data-duration="0.5" data-track-index="14" data-volume="0.16"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.mp3" data-start="27.38" data-duration="0.5" data-track-index="15" data-volume="0.16"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.mp3" data-start="34.91" data-duration="0.5" data-track-index="16" data-volume="0.16"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.mp3" data-start="41.91" data-duration="0.5" data-track-index="17" data-volume="0.16"></audio>
+      <audio id="sfx-note" src="assets/sfx/notification.mp3" data-start="38.48" data-duration="1.2" data-track-index="18" data-volume="0.22"></audio>
+      <audio id="sfx-riser" src="assets/sfx/riser.mp3" data-start="45.02" data-duration="1.8" data-track-index="19" data-volume="0.18"></audio>
+      <audio id="sfx-hit" src="assets/sfx/impact-bass-1.mp3" data-start="46.82" data-duration="1.5" data-track-index="20" data-volume="0.28"></audio>
+      <!--/AUDIO-->
     </div>
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
         const SPRING = "back.out(1.7)";
-        const DUR = 66;
+        const DUR = 56.46;
         let seed = 11;
         const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 
@@ -370,69 +372,71 @@
         wordsIn(Array.prototype.slice.call(hw, 4), 1.3, 0.2);
         tl.fromTo("#hook-sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.6);
         tl.to("#hook-q", { scale: 1.04, duration: 2.4, ease: "sine.inOut" }, 2.6);
-        sceneOut("#s0", 5.1);
 
         // ---------- days
-        const S = [5.4, 12.6, 20.0, 25.9, 32.2, 40.6, 49.0, 55.2];
+        const S = [4.64, 10.67, 17.19, 22.18, 27.28, 34.81, 41.81, 46.82];
+        const KS = [0.837, 0.881, 0.845, 0.81, 0.897, 0.834, 0.808];
+        sceneOut("#s0", S[0] - 0.3);
 
         // d1 lesson
         let t = S[0];
-        activate(0, t + 0.1);
-        sceneIn("#d1", t); dayHead("#d1", t + 0.1); cardIn("#lesson", t + 0.4);
+        let K = KS[0];
+        activate(0, t + 0.1 * K);
+        sceneIn("#d1", t); dayHead("#d1", t + 0.1 * K); cardIn("#lesson", t + 0.4 * K);
         gsap.utils.toArray("#lesson .step").forEach(function (st, i) {
-          tl.fromTo(st, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 + i * 0.25);
-          tl.fromTo(st.querySelector(".ck"), { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 2.4 + i * 1.1);
+          tl.fromTo(st, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 * K + i * 0.25);
+          tl.fromTo(st.querySelector(".ck"), { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 2.4 * K + i * 1.1);
         });
-        capIn("#d1", t + 1.2);
+        capIn("#d1", t + 1.2 * K);
         sceneOut("#d1", S[1] - 0.3);
 
         // d2 news + odd days
-        t = S[1];
-        activate(1, t + 0.1);
-        sceneIn("#d2", t); dayHead("#d2", t + 0.1); cardIn("#news", t + 0.4);
+        t = S[1]; K = KS[1];
+        activate(1, t + 0.1 * K);
+        sceneIn("#d2", t); dayHead("#d2", t + 0.1 * K); cardIn("#news", t + 0.4 * K);
         gsap.utils.toArray("#news .nrow").forEach(function (r, i) {
-          tl.fromTo(r, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 + i * 0.3);
+          tl.fromTo(r, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, t + 0.9 * K + i * 0.3);
         });
         gsap.utils.toArray("#odd span").forEach(function (s, i) {
-          tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.3 + i * 0.22);
+          tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.3 * K + i * 0.22);
         });
         [1, 3, 5].forEach(function (k, i) {
           const ring = pills[k].querySelector(".ring");
-          tl.fromTo(ring, { opacity: 0, scale: 0.85 }, { opacity: 0.9, scale: 0.9, duration: 0.1, ease: "none", immediateRender: false }, t + 4.3 + i * 0.22);
-          tl.to(ring, { opacity: 0, scale: 1.25, duration: 0.8, ease: "power2.out" }, t + 4.4 + i * 0.22);
+          tl.fromTo(ring, { opacity: 0, scale: 0.85 }, { opacity: 0.9, scale: 0.9, duration: 0.1, ease: "none", immediateRender: false }, t + 4.3 * K + i * 0.22);
+          tl.to(ring, { opacity: 0, scale: 1.25, duration: 0.8, ease: "power2.out" }, t + 4.3 * K + 0.1 + i * 0.22);
         });
-        capIn("#d2", t + 1.2);
+        capIn("#d2", t + 1.2 * K);
         sceneOut("#d2", S[2] - 0.3);
 
         // d3 handouts
-        t = S[2];
-        activate(2, t + 0.1);
-        sceneIn("#d3", t); dayHead("#d3", t + 0.1);
+        t = S[2]; K = KS[2];
+        activate(2, t + 0.1 * K);
+        sceneIn("#d3", t); dayHead("#d3", t + 0.1 * K);
         [["#sh3", -11, -170], ["#sh2", 9, 170], ["#sh1", 0, 0]].forEach(function (s, i) {
-          tl.fromTo(s[0], { opacity: 0, y: 200, rotation: 0, x: 0 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t + 0.4 + i * 0.15);
-          if (i < 2) tl.to(s[0], { rotation: s[1], x: s[2], duration: 0.6, ease: SPRING }, t + 1.3);
+          tl.fromTo(s[0], { opacity: 0, y: 200, rotation: 0, x: 0 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t + 0.4 * K + i * 0.15);
+          if (i < 2) tl.to(s[0], { rotation: s[1], x: s[2], duration: 0.6, ease: SPRING }, t + 1.3 * K);
         });
-        tl.to("#sh1", { y: -18, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 2.0);
-        capIn("#d3", t + 1.1);
+        tl.to("#sh1", { y: -18, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 2.0 * K);
+        capIn("#d3", t + 1.1 * K);
         sceneOut("#d3", S[3] - 0.3);
 
         // d4 invoice -> analysis
-        t = S[3];
-        activate(3, t + 0.1);
-        sceneIn("#d4", t); dayHead("#d4", t + 0.1); cardIn("#invoice", t + 0.35);
-        tl.fromTo("#scan", { opacity: 1, y: 0 }, { opacity: 1, y: 320, duration: 1.1, ease: "sine.inOut" }, t + 1.2);
-        tl.to("#scan", { opacity: 0, duration: 0.2 }, t + 2.3);
-        cardIn("#result", t + 2.2);
+        t = S[3]; K = KS[3];
+        activate(3, t + 0.1 * K);
+        sceneIn("#d4", t); dayHead("#d4", t + 0.1 * K); cardIn("#invoice", t + 0.35 * K);
+        tl.fromTo("#scan", { opacity: 1, y: 0 }, { opacity: 1, y: 320, duration: 1.0 * K, ease: "sine.inOut" }, t + 1.2 * K);
+        tl.to("#scan", { opacity: 0, duration: 0.2 }, t + 2.3 * K);
+        cardIn("#result", t + 2.2 * K);
         gsap.utils.toArray("#chart i").forEach(function (b, i) {
-          tl.fromTo(b, { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, t + 2.6 + i * 0.12);
+          tl.fromTo(b, { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, t + 2.6 * K + i * 0.12);
         });
-        tl.fromTo("#chart em", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, t + 3.2);
-        capIn("#d4", t + 3.4);
+        tl.fromTo("#chart em", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, t + 3.2 * K);
+        capIn("#d4", t + 3.4 * K);
         sceneOut("#d4", S[4] - 0.3);
 
         // d5 simulators: waves drift (path built once, translated)
-        t = S[4];
-        activate(4, t + 0.1);
+        t = S[4]; K = KS[4];
+        activate(4, t + 0.1 * K);
         function wavePath(amp, k, ph, y0) {
           let d = "";
           for (let x = 0; x <= 1528; x += 8) d += (x ? "L" : "M") + x + "," + (y0 + amp * Math.sin((x / 764) * Math.PI * 2 * k + ph)).toFixed(1);
@@ -440,43 +444,43 @@
         }
         document.getElementById("wa").setAttribute("d", wavePath(90, 2, 0, 170));
         document.getElementById("wb").setAttribute("d", wavePath(50, 3, 1.2, 170));
-        sceneIn("#d5", t); dayHead("#d5", t + 0.1); cardIn("#sim", t + 0.4);
+        sceneIn("#d5", t); dayHead("#d5", t + 0.1 * K); cardIn("#sim", t + 0.4 * K);
         tl.fromTo("#wave", { x: 0 }, { x: -764, duration: 8, ease: "none" }, t);
         gsap.utils.toArray("#tabs span").forEach(function (s, i) {
-          tl.fromTo(s, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 0.9 + i * 0.15);
+          tl.fromTo(s, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 0.9 * K + i * 0.15);
         });
-        tl.fromTo("#free", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t + 5.0);
-        capIn("#d5", t + 1.4);
+        tl.fromTo("#free", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t + 5.0 * K);
+        capIn("#d5", t + 1.4 * K);
         sceneOut("#d5", S[5] - 0.3);
 
         // d6 Q&A
-        t = S[5];
-        activate(5, t + 0.1);
-        sceneIn("#d6", t); dayHead("#d6", t + 0.1);
-        tl.fromTo("#q", { opacity: 0, y: 80, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 0.6);
-        tl.fromTo("#typing", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 2.0);
+        t = S[5]; K = KS[5];
+        activate(5, t + 0.1 * K);
+        sceneIn("#d6", t); dayHead("#d6", t + 0.1 * K);
+        tl.fromTo("#q", { opacity: 0, y: 80, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 0.6 * K);
+        tl.fromTo("#typing", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t + 2.0 * K);
         gsap.utils.toArray("#typing i").forEach(function (d, i) {
-          tl.fromTo(d, { y: 0 }, { y: -12, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, t + 2.1 + i * 0.12);
+          tl.fromTo(d, { y: 0 }, { y: -12, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, t + 2.1 * K + i * 0.12);
         });
-        tl.to("#typing", { opacity: 0, duration: 0.15 }, t + 4.3);
-        tl.fromTo("#a", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 4.4);
-        tl.fromTo("#av", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.4);
-        tl.fromTo("#clock", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t + 5.2);
-        tl.to("#sun", { opacity: 0, rotation: 90, duration: 0.5, transformOrigin: "50% 50%" }, t + 6.4);
-        tl.to("#moon", { opacity: 1, duration: 0.5 }, t + 6.4);
-        capIn("#d6", t + 1.0);
+        tl.to("#typing", { opacity: 0, duration: 0.15 }, t + 4.3 * K);
+        tl.fromTo("#a", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: SPRING }, t + 4.4 * K);
+        tl.fromTo("#av", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t + 4.4 * K);
+        tl.fromTo("#clock", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t + 5.2 * K);
+        tl.to("#sun", { opacity: 0, rotation: 90, duration: 0.5, transformOrigin: "50% 50%" }, t + 6.4 * K);
+        tl.to("#moon", { opacity: 1, duration: 0.5 }, t + 6.4 * K);
+        capIn("#d6", t + 1.0 * K);
         sceneOut("#d6", S[6] - 0.3);
 
         // d7 Friday: the week is done
-        t = S[6];
-        activate(6, t + 0.1);
-        sceneIn("#d7", t); dayHead("#d7", t + 0.1);
+        t = S[6]; K = KS[6];
+        activate(6, t + 0.1 * K);
+        sceneIn("#d7", t); dayHead("#d7", t + 0.1 * K);
         const fw = words(document.getElementById("fri"), [[["حالا"], ["می‌دونی"]], [["از"], ["کجا", 1]], [["شروع", 1], ["کنی."]]]);
-        wordsIn(fw, t + 1.9, 0.22);
-        tl.to(pills[6].querySelector(".fill"), { opacity: 0, duration: 0.3 }, t + 3.6);
-        tl.to(pills[6].querySelector(".done"), { opacity: 1, duration: 0.3 }, t + 3.6);
+        wordsIn(fw, t + 1.9 * K, 0.22);
+        tl.to(pills[6].querySelector(".fill"), { opacity: 0, duration: 0.3 }, t + 3.6 * K);
+        tl.to(pills[6].querySelector(".done"), { opacity: 1, duration: 0.3 }, t + 3.6 * K);
         pills.forEach(function (p, i) {
-          tl.to(p, { scale: 1.12, color: "#89fff0", duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, t + 3.6 + i * 0.08);
+          tl.to(p, { scale: 1.12, color: "#89fff0", duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, t + 3.6 * K + i * 0.08);
         });
         sceneOut("#d7", S[7] - 0.3);
         tl.to("#week", { opacity: 0, y: -40, duration: 0.3, ease: "power2.in" }, S[7] - 0.3);
