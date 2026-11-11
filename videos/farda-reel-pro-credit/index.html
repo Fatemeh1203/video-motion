@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-arabic-300-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 300; src: url("assets/fonts/vazirmatn-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 400; src: url("assets/fonts/vazirmatn-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-arabic-500-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 500; src: url("assets/fonts/vazirmatn-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 700; src: url("assets/fonts/vazirmatn-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-arabic-800-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 800; src: url("assets/fonts/vazirmatn-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Vazirmatn"; font-weight: 900; src: url("assets/fonts/vazirmatn-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+      :root {
+        --sky1: #bcd8fb; --sky2: #d6e8fd; --sky3: #eaf3fe; --sky4: #f6faff;
+        --ink: #1f335a; --ink2: #34507f; --ink3: #4d6795;
+        --blue: #3d6fd6; --blue-d: #2a54ad; --violet: #6f57cf;
+        --green: #1c7a51; --green-bg: #dcf5e8; --red: #b3263e; --red-bg: #fde7eb; --gold: #8f560b; --gold-bg: #fff1d6;
+        --card: linear-gradient(180deg, #ffffff, #f4f8ff);
+        --line: rgba(61, 111, 214, 0.2);
+        --shadow: 0 40px 80px -30px rgba(60, 100, 180, 0.6), inset 0 -8px 20px rgba(150, 185, 240, 0.18);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--sky2); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Vazirmatn", sans-serif; color: var(--ink);
+        background: linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 30%, var(--sky3) 62%, var(--sky4) 100%); }
+      .layer { position: absolute; inset: 0; }
+      .cloud { position: absolute; border-radius: 120px; filter: blur(3px); }
+      #cl1 { top: 120px; right: -120px; width: 520px; height: 190px; background: radial-gradient(60% 90% at 30% 60%, #fff 0%, #eaf2ff 60%, rgba(234,242,255,0) 72%); }
+      #cl2 { top: 900px; left: -180px; width: 600px; height: 210px; background: radial-gradient(60% 90% at 60% 55%, #fff 0%, #e6f0ff 60%, rgba(230,240,255,0) 74%); }
+      #cl3 { top: 1560px; right: -60px; width: 480px; height: 170px; background: radial-gradient(60% 90% at 40% 60%, #fff 0%, #edf4ff 62%, rgba(237,244,255,0) 74%); }
+      #grain { position: absolute; inset: 0; pointer-events: none; background-image: url("assets/grain.png"); background-size: 256px 256px; opacity: 0.07; mix-blend-mode: multiply; }
+      #prog { position: absolute; left: 100px; top: 230px; width: 760px; height: 8px; border-radius: 4px; background: rgba(61,111,214,.15); overflow: hidden; }
+      #progf { position: absolute; right: 0; top: 0; bottom: 0; width: 100%; background: var(--blue); transform-origin: right center; }
+
+      /* caption band: x 100-860, y 250-560 */
+      #caps { position: absolute; left: 100px; top: 260px; width: 760px; height: 300px; }
+      .cap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; direction: rtl;
+        font-size: 80px; font-weight: 900; line-height: 1.4; opacity: 0; }
+      .cap b { color: var(--blue-d); font-weight: 900; }
+      .cap .r { color: var(--red); }
+      #capH { opacity: 1; }
+
+      /* stage band: x 100-860, y 600-1420 */
+      .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
+      #stH { opacity: 1; }
+      .card { position: absolute; border-radius: 30px; background: var(--card); border: 3px solid var(--line); box-shadow: var(--shadow); direction: rtl; }
+      .main { left: 110px; top: 630px; width: 740px; padding: 36px 38px 40px; }
+      .hd { display: flex; align-items: center; gap: 18px; padding-bottom: 20px; border-bottom: 2px solid rgba(61,111,214,.14); margin-bottom: 8px; }
+      .ic { width: 72px; height: 72px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 38px; flex-shrink: 0; }
+      .hd b { display: block; font-size: 42px; font-weight: 900; }
+      .hd small { display: block; font-size: 27px; font-weight: 700; color: var(--ink3); }
+      .f { margin-top: 18px; }
+      .f label { display: block; font-size: 27px; font-weight: 700; color: var(--ink2); margin-bottom: 8px; }
+      .in { height: 76px; border-radius: 18px; background: #fff; border: 2px solid rgba(61,111,214,.25); padding: 0 22px; display: flex; align-items: center; font-size: 34px; font-weight: 800; }
+      .v { display: block; white-space: nowrap; }
+      .btn { margin-top: 26px; height: 90px; border-radius: 24px; color: #fff; font-size: 38px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+      .btn.blue { background: linear-gradient(160deg, #4d7fe6, #2a54ad); box-shadow: 0 24px 40px -20px rgba(42,84,173,.9); }
+      .btn.violet { background: linear-gradient(160deg, #a58ff0, #6f57cf); box-shadow: 0 24px 40px -20px rgba(111,87,207,.9); }
+      .chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 22px; border-radius: 16px; font-size: 30px; font-weight: 900; }
+      .ok { background: var(--green-bg); color: var(--green); }
+      .no { background: var(--red-bg); color: var(--red); }
+      .gold { background: var(--gold-bg); color: var(--gold); }
+      .stamp { position: absolute; left: 50%; top: 50%; width: 460px; margin-left: -230px; height: 150px; margin-top: -75px; border-radius: 28px; background: #fff;
+        border: 4px solid rgba(28,122,81,.55); box-shadow: 0 40px 80px -30px rgba(31,51,90,.6); display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 900; color: var(--green); opacity: 0; }
+      .tap { position: absolute; left: 0; top: 0; width: 90px; height: 90px; border-radius: 50%; border: 7px solid rgba(61,111,214,.9); opacity: 0; }
+
+      /* 1 chaos */
+      .mess { width: 380px; padding: 26px 30px; }
+      .mess small { display: block; font-size: 30px; font-weight: 700; color: var(--ink3); }
+      .mess strong { display: block; margin-top: 6px; font-size: 42px; font-weight: 900; }
+      .mess i { display: inline-block; margin-top: 12px; padding: 4px 16px; border-radius: 20px; background: var(--red-bg); color: var(--red); font-style: normal; font-size: 30px; font-weight: 800; }
+      .calc { position: absolute; width: 200px; height: 260px; border-radius: 30px; background: #1f335a; box-shadow: 0 40px 70px -30px rgba(31,51,90,.8); padding: 22px; }
+      .calc .scr { height: 62px; border-radius: 12px; background: #d7f0d9; color: #1f335a; font-size: 32px; font-weight: 900; direction: ltr; text-align: right; padding: 0 10px; line-height: 62px; overflow: hidden; white-space: nowrap; }
+      .calc .keys { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .calc .keys span { height: 40px; border-radius: 10px; background: #34507f; }
+      #calc1 { left: 610px; top: 1120px; }
+
+      /* 3 logo */
+      #halo { position: absolute; left: 255px; top: 690px; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #f0f6ff 100%);
+        box-shadow: 0 60px 90px -30px rgba(80,120,195,.6), inset 0 -14px 30px rgba(150,185,240,.3); }
+      #logo { position: absolute; left: 275px; top: 705px; width: 410px; height: 410px; }
+      #lchips { position: absolute; left: 100px; width: 760px; top: 1200px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; direction: ltr; }
+      #lchips span { padding: 10px 22px; border-radius: 16px; background: #fff; border: 2px solid var(--line); font-size: 30px; font-weight: 800; }
+
+      /* 5 telegram */
+      #tg { left: 130px; top: 640px; width: 700px; padding: 0; overflow: hidden; background: linear-gradient(180deg, #dbe7f5, #cfe0f2); }
+      #tg .bar { height: 104px; background: #fff; display: flex; align-items: center; gap: 16px; padding: 0 26px; }
+      #tg .bar .av { width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(160deg, #5cc3f5, #2aabee); display: flex; align-items: center; justify-content: center; }
+      #tg .bar b { font-size: 34px; font-weight: 900; }
+      #tg .body { padding: 24px; }
+      .bub { background: #fff; border-radius: 26px 8px 26px 26px; padding: 22px 26px; box-shadow: 0 10px 20px -12px rgba(31,51,90,.35); }
+      .bub h6 { font-size: 32px; font-weight: 900; color: var(--blue-d); margin-bottom: 6px; }
+      .bub p { font-size: 31px; font-weight: 700; line-height: 1.7; }
+      .bub p span { color: var(--ink3); }
+      #tgacts { display: flex; gap: 14px; margin-top: 16px; }
+      #tgyes, #tgno { flex: 1; height: 86px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900; }
+      #tgyes { background: var(--green); color: #fff; }
+      #tgno { background: #fff; border: 3px solid rgba(179,38,62,.5); color: var(--red); }
+      #tgok { margin-top: 16px; width: 330px; padding: 18px 24px; opacity: 0; }
+      #tgok b { font-size: 34px; font-weight: 900; color: var(--green); }
+
+      /* 6 share */
+      #bar { margin-top: 22px; height: 104px; border-radius: 26px; overflow: hidden; display: flex; direction: rtl; background: #e6eefb; }
+      #seg1 { width: 70%; background: linear-gradient(160deg, #6b9bf2, #2a54ad); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 900; }
+      #seg2 { width: 30%; background: linear-gradient(160deg, #a58ff0, #6f57cf); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 46px; font-weight: 900; }
+      .duo { margin-top: 24px; display: flex; gap: 20px; }
+      .duo > div { flex: 1; padding: 20px 22px; border-radius: 22px; background: #fff; border: 2px solid var(--line); }
+      .duo small { display: block; font-size: 28px; font-weight: 700; color: var(--ink2); }
+      .duo b { display: block; font-size: 52px; font-weight: 900; }
+      .tot { font-size: 80px; font-weight: 900; line-height: 1.35; }
+      .tot small { font-size: 38px; color: var(--ink2); margin-right: 10px; }
+      #lock { position: absolute; left: 34px; top: 30px; width: 92px; height: 92px; border-radius: 26px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+
+      /* 7 expense */
+      #drive { left: 300px; top: 1250px; width: 470px; padding: 18px 24px; display: flex; gap: 16px; align-items: center; border-color: rgba(244,180,0,.6); opacity: 0; }
+      #drive .ic { width: 64px; height: 64px; background: linear-gradient(160deg, #ffd766, #f4b400); }
+      #drive b { font-size: 32px; font-weight: 900; direction: ltr; }
+
+      /* 8 capital */
+      .tiles { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+      .tile { padding: 22px 12px; border-radius: 22px; background: #fff; border: 2px solid var(--line); text-align: center; }
+      .tile i { display: block; font-style: normal; font-size: 54px; }
+      .tile b { display: block; margin-top: 8px; font-size: 30px; font-weight: 900; line-height: 1.35; }
+      .note { margin-top: 22px; font-size: 30px; font-weight: 700; color: var(--ink2); line-height: 1.6; }
+
+      /* 9 schedule */
+      .tr { display: flex; align-items: center; gap: 12px; padding: 18px 4px; border-bottom: 2px solid #e4ecf8; font-size: 31px; font-weight: 800; }
+      .tr .c { width: 110px; }
+      .tr .g { padding: 4px 14px; border-radius: 12px; background: var(--sky3); color: var(--blue-d); font-weight: 900; }
+      .tr .d { width: 220px; }
+      .tr .p { display: flex; gap: 8px; flex-wrap: wrap; }
+      .pp { padding: 6px 16px; border-radius: 999px; border: 2px solid var(--line); background: #fff; font-size: 27px; font-weight: 700; }
+
+      /* 10 sessions */
+      .ses { display: flex; align-items: center; justify-content: space-between; padding: 22px 6px; border-bottom: 2px solid #e4ecf8; font-size: 34px; font-weight: 800; }
+      .ses .chip { font-size: 30px; }
+
+      /* 11 sheets */
+      #tabs { position: absolute; left: 110px; top: 640px; width: 740px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; direction: rtl; }
+      #tabs span { padding: 14px 22px; border-radius: 16px; background: #fff; border: 3px solid rgba(30,142,62,.35); font-size: 31px; font-weight: 800; color: #146c2e; box-shadow: 0 16px 30px -18px rgba(31,51,90,.6); }
+      #big17 { position: absolute; left: 100px; width: 760px; top: 1180px; text-align: center; direction: rtl; font-size: 150px; font-weight: 900; color: #1e8e3e; line-height: 1.1; }
+
+      /* 13 gmail */
+      #gm .hd .ic { background: #fff; border: 2px solid #e6ebf2; }
+      .kv { display: flex; justify-content: space-between; align-items: center; padding: 16px 2px; border-bottom: 2px solid #eef2f8; font-size: 33px; font-weight: 700; }
+      .kv span { color: var(--ink2); }
+      .kv b { font-weight: 900; }
+      .att { margin-top: 22px; display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 18px; border: 3px solid rgba(30,142,62,.45); background: #f0faf3; font-size: 31px; font-weight: 800; color: #146c2e; }
+
+      /* 14 payout */
+      .chk { display: flex; align-items: center; gap: 20px; padding: 22px 4px; border-bottom: 2px solid #e4ecf8; font-size: 34px; font-weight: 800; }
+      .box { width: 58px; height: 58px; border-radius: 14px; border: 4px solid var(--ink3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .box svg { opacity: 0; }
+      .chk .amt { margin-right: auto; }
+
+      /* 15 quarterly */
+      #bars { display: flex; align-items: flex-end; gap: 26px; height: 300px; margin-top: 24px; padding: 0 20px; direction: rtl; }
+      #bars div { flex: 1; border-radius: 18px 18px 6px 6px; transform-origin: bottom center; }
+      .qlbl { display: flex; gap: 26px; padding: 12px 20px 0; direction: rtl; }
+      .qlbl span { flex: 1; text-align: center; font-size: 29px; font-weight: 800; color: var(--ink2); }
+
+      /* hook: the new accountant's ID badge */
+      #badge { left: 190px; top: 640px; width: 580px; padding: 70px 40px 40px; text-align: center; }
+      #clip { position: absolute; left: 240px; top: -34px; width: 100px; height: 56px; border-radius: 16px; background: #34507f; box-shadow: inset 0 -6px 0 rgba(0,0,0,.2); }
+      #clip i { position: absolute; left: 30px; top: 16px; width: 40px; height: 12px; border-radius: 6px; background: var(--sky2); }
+      #bhalo { width: 230px; height: 230px; margin: 0 auto; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #eef5ff 100%);
+        box-shadow: 0 30px 50px -24px rgba(80,120,195,.7), inset 0 -10px 20px rgba(150,185,240,.3); display: flex; align-items: center; justify-content: center; }
+      #bhalo img { width: 210px; height: 210px; }
+      #brole { margin-top: 22px; font-size: 54px; font-weight: 900; }
+      #bchips { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; direction: ltr; }
+      #bchips span { padding: 8px 18px; border-radius: 14px; background: var(--sky3); color: var(--blue-d); font-size: 27px; font-weight: 800; }
+      #nosal { position: absolute; left: 420px; top: 1290px; padding: 16px 30px; border-radius: 22px; background: var(--green); color: #fff; font-size: 40px; font-weight: 900;
+        direction: rtl; rotate: -6deg; box-shadow: 0 20px 40px -16px rgba(28,122,81,.9); }
+
+      /* end card: logo + name, bigger; links */
+      #ehalo { position: absolute; left: 290px; top: 590px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(70% 70% at 50% 35%, #fff 0%, #f0f6ff 100%);
+        box-shadow: 0 60px 90px -30px rgba(80,120,195,.6), inset 0 -14px 30px rgba(150,185,240,.3); }
+      #elogo { position: absolute; left: 307px; top: 601px; width: 346px; height: 346px; }
+      #etag { position: absolute; left: 100px; width: 760px; top: 990px; text-align: center; direction: rtl; font-size: 34px; font-weight: 800; color: var(--ink2); }
+      #links { position: absolute; left: 140px; top: 1050px; width: 680px; display: flex; flex-direction: column; gap: 12px; }
+      .lk { height: 80px; border-radius: 24px; background: #fff; border: 3px solid var(--line); box-shadow: 0 20px 40px -24px rgba(31,51,90,.6);
+        display: flex; align-items: center; gap: 18px; padding: 0 24px; direction: rtl; }
+      .lk .li { width: 58px; height: 58px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .lk b { direction: ltr; font-size: 36px; font-weight: 900; color: var(--ink); }
+      #ecredit { position: absolute; left: 140px; width: 680px; top: 1400px; text-align: center; direction: rtl; font-size: 30px; font-weight: 800; color: #dbe6ff; letter-spacing: .2px; }
+      #ecredit b { color: #fff; font-weight: 900; }
+      #ecta { position: absolute; left: 140px; width: 680px; top: 1325px; height: 64px; border-radius: 20px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff; display: flex; align-items: center; justify-content: center; direction: rtl; font-size: 32px; font-weight: 900; }
+      #ecredit { position: absolute; left: 100px; width: 760px; top: 1398px; text-align: center; direction: rtl; font-size: 26px; font-weight: 700; color: var(--ink2); }
+
+      /* 16 end */
+      #calc2 { left: 380px; top: 640px; }
+      #strike { position: absolute; left: 340px; top: 760px; width: 280px; height: 20px; border-radius: 10px; background: var(--red); transform-origin: right center; rotate: -35deg; }
+      #offer { position: absolute; left: 100px; width: 760px; top: 962px; text-align: center; direction: rtl; font-size: 40px; font-weight: 800; line-height: 1.45; color: var(--ink2); }
+      #save { position: absolute; left: 190px; top: 1090px; width: 580px; height: 130px; border-radius: 40px; background: linear-gradient(160deg, #4d7fe6, #2a54ad); color: #fff;
+        display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 50px; font-weight: 900; direction: rtl; box-shadow: 0 30px 60px -24px rgba(42,84,173,.9); }
+      #sign { position: absolute; left: 100px; width: 760px; top: 1200px; display: flex; align-items: center; justify-content: center; gap: 20px; direction: rtl; }
+      #sign img { width: 120px; height: 120px; }
+      #sign b { display: block; font-size: 40px; font-weight: 900; }
+      #sign small { display: block; font-size: 30px; font-weight: 700; color: var(--ink2); }
+
+      /* ---- explainer-panel look: dark stage, title panel, step counter, story segments ---- */
+      html, body { background: #0a1230; }
+      #root { background: radial-gradient(ellipse 120% 70% at 50% 28%, #1c3172 0%, #111d47 46%, #0a1230 100%); }
+      .cloud { border-radius: 50%; filter: blur(30px); }
+      #cl1 { top: -160px; right: -260px; width: 760px; height: 760px; background: radial-gradient(circle, rgba(77,127,230,.5), rgba(77,127,230,0) 68%); }
+      #cl2 { top: 760px; left: -340px; width: 820px; height: 820px; background: radial-gradient(circle, rgba(111,87,207,.42), rgba(111,87,207,0) 68%); }
+      #cl3 { top: 1380px; right: -240px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(42,171,238,.3), rgba(42,171,238,0) 68%); }
+      #grain { opacity: 0.1; mix-blend-mode: overlay; }
+      #prog { display: none; }
+      #segs { position: absolute; left: 100px; top: 236px; width: 760px; height: 8px; display: flex; gap: 6px; direction: rtl; }
+      #segs i { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.2); overflow: hidden; }
+      #segs b { display: block; width: 100%; height: 100%; border-radius: 4px; background: #fff; transform-origin: right center; }
+      #cpanel { position: absolute; left: 100px; top: 264px; width: 760px; height: 304px; border-radius: 40px;
+        background: linear-gradient(160deg, rgba(255,255,255,.13), rgba(255,255,255,.04)); border: 2px solid rgba(255,255,255,.2);
+        box-shadow: 0 40px 80px -40px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.25); }
+      .chp { position: absolute; right: 248px; top: 284px; height: 48px; padding: 0 22px; border-radius: 24px; background: #8fc0ff; color: #0a1230;
+        display: flex; align-items: center; direction: rtl; font-size: 28px; font-weight: 900; opacity: 0; }
+      #ch0 { opacity: 1; }
+      .num { position: absolute; left: 130px; top: 280px; direction: ltr; font-size: 44px; font-weight: 900; color: #fff; opacity: 0; }
+      .num small { font-size: 28px; font-weight: 700; color: #b9c8ee; margin-left: 4px; }
+      #caps { top: 330px; height: 232px; }
+      .cap { color: #fff; font-size: 70px; line-height: 1.38; padding: 0 26px; }
+      .cap b { color: #8fc0ff; }
+      .cap .r { color: #ff9fb0; }
+      #capE div { font-size: 78px !important; }
+      #glow { position: absolute; left: 140px; top: 640px; width: 680px; height: 680px; border-radius: 50%; background: radial-gradient(circle, rgba(143,192,255,.3), rgba(143,192,255,0) 66%); }
+      .card { box-shadow: 0 50px 90px -30px rgba(0,0,0,.75), 0 0 0 2px rgba(255,255,255,.35); }
+      .calc { background: #2d4f96; box-shadow: 0 0 0 3px rgba(255,255,255,.2), 0 40px 70px -30px rgba(0,0,0,.85); }
+      .calc .keys span { background: #4a6fb8; }
+      #strike { background: #ff5d73; }
+      #offer { color: #dbe5fb; }
+      #etag { color: #dbe5fb; }
+      #big17 { color: #6ee7a8; }
+      #ehalo { box-shadow: 0 0 140px rgba(77,127,230,.75), inset 0 -14px 30px rgba(150,185,240,.3); }
+      #always { position: absolute; left: 110px; top: 660px; padding: 14px 26px; border-radius: 22px; background: #ffcf5c; color: #3a2a00; font-size: 36px; font-weight: 900;
+        direction: rtl; rotate: 7deg; box-shadow: 0 20px 40px -16px rgba(0,0,0,.7); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="38.6">
+      <div id="bg" class="layer clip" data-start="0" data-duration="38.6" data-track-index="0">
+        <div class="cloud" id="cl1"></div>
+        <div class="cloud" id="cl2"></div>
+        <div class="cloud" id="cl3"></div>
+        <div id="prog"><div id="progf"></div></div>
+      </div>
+
+      <div id="stages" class="layer clip" data-start="0" data-duration="38.6" data-track-index="1">
+        <div id="glow"></div>
+        <!-- 0 hook -->
+        <div class="stage" id="stH">
+          <div class="card" id="badge">
+            <div id="clip"><i></i></div>
+            <div id="bhalo"><img src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا"></div>
+            <div id="brole">حسابدار خودکار</div>
+            <div id="bchips"><span>n8n</span><span>Google Sheets</span><span>Telegram</span><span>Gmail</span></div>
+          </div>
+          <div id="nosal">حقوق هم نمی‌گیره 😄</div>
+          <div id="always">شب و روز سر کاره ⏰</div>
+        </div>
+
+        <!-- 1-2 chaos -->
+        <div class="stage" id="st1">
+          <div class="card mess" id="m1" data-layout-ignore><small>فیش واریزی</small><strong>۸۰۰٬۰۰۰ تومان</strong><i>کدوم دوره؟</i></div>
+          <div class="card mess" id="m2" data-layout-ignore><small>فاکتور اجاره</small><strong>توی گالری گم شد</strong><i>عکسش کو؟</i></div>
+          <div class="card mess" id="m3" data-layout-ignore><small>فایل اکسل</small><strong>جمع درآمد ماه</strong><i>نسخه‌ی چندم؟</i></div>
+          <div class="calc" id="calc1"><div class="scr" id="calcnum">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        </div>
+
+        <!-- 4 income form -->
+        <div class="stage" id="st4">
+          <div class="card main" id="frm">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#79b0ff,#4d7fe6)">💰</div><div><b>ثبت واریزی</b><small>فرم همکاران</small></div></div>
+            <div class="f"><label>پرداخت‌کننده</label><div class="in"><span class="v">فراگیر · سارا محمدی</span></div></div>
+            <div class="f"><label>مبلغ (تومان)</label><div class="in"><span class="v">۸۰۰.۰۰۰</span></div></div>
+            <div class="f"><label>دوره</label><div class="in"><span class="v">C001</span></div></div>
+            <div class="btn blue" id="send">ارسال</div>
+            <div class="tap" id="tap4"></div>
+          </div>
+        </div>
+
+        <!-- 5 telegram -->
+        <div class="stage" id="st5">
+          <div class="card" id="tg">
+            <div class="bar"><div class="av"><svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div><b>ربات حسابداری</b></div>
+            <div class="body">
+              <div class="bub"><h6>💰 واریزی تازه</h6><p><span>از:</span> سارا محمدی · ۸۰۰٬۰۰۰</p><p><span>مدرس:</span> M001 · ۷۰٪</p></div>
+              <div id="tgacts"><div id="tgyes">ثبت کن</div><div id="tgno">رد کن</div></div>
+              <div class="bub" id="tgok"><b>✅ ثبت شد</b></div>
+            </div>
+            <div class="tap" id="tap5" style="border-color: rgba(28,122,81,.9)"></div>
+          </div>
+        </div>
+
+        <!-- 6 share -->
+        <div class="stage" id="st6">
+          <div class="card main" id="split">
+            <div id="lock"><svg width="50" height="50" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path id="shackle" d="M10 14V10a6 6 0 0 1 12 0v4"/><rect x="6" y="14" width="20" height="14" rx="3" fill="#fff" stroke="none"/></svg></div>
+            <div class="hd" style="border:0;margin:0;padding:0"><div><small>شهریه‌ی سارا · C001</small></div></div>
+            <div class="tot">۸۰۰٬۰۰۰<small>تومان</small></div>
+            <div id="bar"><div id="seg1"><span id="p1">۷۰٪</span></div><div id="seg2"><span id="p2">۳۰٪</span></div></div>
+            <div class="duo"><div><small>سهم مدرس</small><b id="n1" style="color:#2a54ad">۰</b></div><div><small>سهم آموزشگاه</small><b id="n2" style="color:#6f57cf">۰</b></div></div>
+          </div>
+        </div>
+
+        <!-- 7 expense -->
+        <div class="stage" id="st7">
+          <div class="card main" id="exp">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#8fb6c8,#5c86a8)">🧾</div><div><b>ثبت هزینه</b><small>با عکس فاکتور</small></div></div>
+            <div class="f"><label>دسته · شرح</label><div class="in"><span class="v">اجاره · اجاره مرداد</span></div></div>
+            <div class="f"><label>مبلغ (تومان)</label><div class="in"><span class="v">۱۲.۰۰۰.۰۰۰</span></div></div>
+            <div class="f"><label>فاکتور</label><div class="in"><span class="v" style="color:#2a54ad">📎 فاکتور.jpg</span></div></div>
+          </div>
+          <div class="card" id="drive"><div class="ic">📁</div><div><b>Google Drive ✓</b></div></div>
+        </div>
+
+        <!-- 8 capital -->
+        <div class="stage" id="st8">
+          <div class="card main" id="cap">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#ffcf7a,#d99614)">🏦</div><div><b>آورده‌ی سرمایه‌گذار</b><small>فرم جدا، پشت رمز مدیر</small></div></div>
+            <div class="tiles">
+              <div class="tile"><i>🪙</i><b>معادل گرم طلا</b></div>
+              <div class="tile"><i>💵</i><b>معادل دلار</b></div>
+              <div class="tile"><i>📈</i><b>ارزش تورمی</b></div>
+            </div>
+            <div class="note">نرخ زنده‌ی طلا و دلار · جدا از درآمد</div>
+          </div>
+        </div>
+
+        <!-- 9 schedule -->
+        <div class="stage" id="st9">
+          <div class="card main" id="sch">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#a58ff0,#6f57cf)">📋</div><div><b>برنامه‌ی هفتگی</b><small>گروه‌بندی خودکار</small></div></div>
+            <div class="tr" id="tr1"><span class="c">C001</span><span class="g">G-1</span><span class="d">دوشنبه ۱۶:۰۰</span><span class="p"><span class="pp">سارا</span><span class="pp" id="newp">مریم</span></span></div>
+            <div class="tr" id="tr2"><span class="c">C001</span><span class="g">G-2</span><span class="d">چهارشنبه ۱۶:۰۰</span><span class="p"><span class="pp">سارا</span></span></div>
+            <div class="tr" id="tr3"><span class="c">C001</span><span class="g">G-3</span><span class="d">پنجشنبه ۱۰:۰۰</span><span class="p"><span class="chip gold" style="font-size:27px;padding:6px 16px">جبرانی</span></span></div>
+          </div>
+        </div>
+
+        <!-- 10 sessions held / cancelled -->
+        <div class="stage" id="st10">
+          <div class="card main" id="ses">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#79b0ff,#4d7fe6)">🗓</div><div><b>کلاس‌های این هفته</b><small>ثبت با همون فرم کلاس‌ها</small></div></div>
+            <div class="ses" id="se1"><span>دوشنبه · C001</span><span class="chip ok">✓ برگزار شد</span></div>
+            <div class="ses" id="se2"><span>چهارشنبه · C001</span><span class="chip no">✕ لغو شد</span></div>
+            <div class="ses" id="se3"><span>پنجشنبه · C001</span><span class="chip gold">جبرانی</span></div>
+          </div>
+        </div>
+
+        <!-- 11 sheets -->
+        <div class="stage" id="st11">
+          <div id="tabs">
+            <span>درآمد</span><span>هزینه‌ها</span><span>کلاس‌ها</span><span>مدرسین</span><span>حقوق_مدرسین</span><span>برنامه_هفتگی</span>
+            <span>برنامه_کلاس‌ها</span><span>آورده_سرمایه</span><span>گزارش_ماهانه</span><span>گزارش_دوره‌ای</span><span>ارزش_سرمایه</span><span>لاگ_ورودی</span>
+          </div>
+          <div id="big17">۱۷ شیت</div>
+        </div>
+
+        <!-- 12 month close -->
+        <div class="stage" id="st12">
+          <div class="card main" id="pnl" style="top:700px">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#a58ff0,#6f57cf)">🔐</div><div><b>بستن حقوق ماه</b><small>پنل مدیر</small></div></div>
+            <div style="display:flex;gap:16px;margin-top:22px"><div class="in" style="flex:1">۱۴۰۵</div><div class="in" style="flex:1">مرداد</div></div>
+            <div class="btn violet" id="go">ببند و ایمیل کن</div>
+            <div class="tap" id="tap12" style="border-color: rgba(111,87,207,.9)"></div>
+          </div>
+        </div>
+
+        <!-- 13 gmail -->
+        <div class="stage" id="st13">
+          <div class="card main" id="gm">
+            <div class="hd"><div class="ic"><svg width="44" height="34" viewBox="0 0 44 34"><path d="M3 6v24h7V14l12 9 12-9v16h7V6l-5-3-14 10L8 3z" fill="#d93025"/></svg></div><div><b>گزارش حقوق مرداد</b><small>Gmail · Far Da Accounting</small></div></div>
+            <div class="kv" id="kv1"><span>جمع درآمد، هزینه، سود</span><b>✓</b></div>
+            <div class="kv" id="kv2"><span>سهم مدرس M001</span><b>۵۶۰٬۰۰۰</b></div>
+            <div class="kv" id="kv3"><span>سهم آموزشگاه</span><b>۲۴۰٬۰۰۰</b></div>
+            <div class="att" id="att">📎 فایل اکسل حقوق</div>
+          </div>
+        </div>
+
+        <!-- 14 payout -->
+        <div class="stage" id="st14">
+          <div class="card main" id="pay">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#6fcf97,#1e8e3e)">💸</div><div><b>واریز حقوق مرداد</b><small>تاریخ و شماره‌ی پیگیری کنار ردیف</small></div></div>
+            <div class="chk"><div class="box" id="bx1"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1c7a51" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span>M001</span><span class="amt">۵۶۰٬۰۰۰</span></div>
+            <div style="margin-top:24px;text-align:center"><span class="chip no" id="st0">پرداخت‌نشده</span><span class="chip ok" id="st1b" style="display:none">واریز شد ✓</span></div>
+            <div class="tap" id="tap14" style="border-color: rgba(28,122,81,.9)"></div>
+          </div>
+        </div>
+
+        <!-- 15 quarterly -->
+        <div class="stage" id="st15">
+          <div class="card main" id="q">
+            <div class="hd"><div class="ic" style="background:linear-gradient(160deg,#ffcf7a,#d99614)">📊</div><div><b>گزارش دوره‌ای</b><small>بعد از بستن خرداد، شهریور، آذر، اسفند</small></div></div>
+            <div id="bars"><div style="background:linear-gradient(180deg,#79b0ff,#2a54ad);height:45%"></div><div style="background:linear-gradient(180deg,#a58ff0,#6f57cf);height:70%"></div><div style="background:linear-gradient(180deg,#6fcf97,#1e8e3e);height:100%"></div></div>
+            <div class="qlbl"><span>۳ ماهه</span><span>۶ ماهه</span><span>سالانه</span></div>
+          </div>
+        </div>
+
+        <!-- 16 end -->
+        <div class="stage" id="st16">
+          <div class="calc" id="calc2"><div class="scr">0</div><div class="keys"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div id="strike"></div>
+          <div id="offer">ماشین‌حساب رو بذار کنار؛ برای آموزشگاه یا کسب‌وکار خودت هم می‌سازیمش.</div>
+          <div id="save">📩 کافیه دایرکت بدی</div>
+        </div>
+
+        <!-- end card -->
+        <div class="stage" id="stE">
+          <div id="ehalo"></div>
+          <img id="elogo" src="assets/farda-logo-ink.png" alt="لوگوی آموزشگاه علمی فردا">
+          <div id="etag">ریاضی، فیزیک و هوش مصنوعی · بابلسر</div>
+          <div id="links">
+            <div class="lk"><div class="li" style="background:#e3ecff"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2a54ad" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><b>aifardainstitute.ir</b></div>
+            <div class="lk"><div class="li" style="background:linear-gradient(135deg,#feda75,#fa7e1e 30%,#d62976 60%,#962fbf 85%,#4f5bd5)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg></div><b>@amozeshgah_farda</b></div>
+            <div class="lk"><div class="li" style="background:linear-gradient(160deg,#5cc3f5,#2aabee)"><svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div><b>@Amozeshgah_farda</b></div>
+          </div>
+          <div id="ecta">پروژه‌ی مشابه می‌خوای؟ دایرکت بده 📩</div>
+          <div id="ecredit"><span style="color:#c9d8ff">طراحی و ساخت:</span> <b>فاطمه شمس</b></div>
+        </div>
+      </div>
+
+      <div id="captions" class="layer clip" data-start="0" data-duration="38.6" data-track-index="2">
+        <div id="segs"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+        <div id="cpanel"></div>
+        <div class="chp" id="ch0">معرفی</div>
+        <div class="chp" id="ch1">مشکل</div>
+        <div class="chp" id="ch2">۱ · پول</div>
+        <div class="chp" id="ch3">۲ · کلاس‌ها</div>
+        <div class="chp" id="ch4">۳ · دفتر</div>
+        <div class="chp" id="ch5">۴ · آخر ماه</div>
+        <div class="chp" id="ch6">پیشنهاد</div>
+        <div class="chp" id="ch7">تماس با ما</div>
+        <div class="num" id="nm1">۰۱<small>/۱۲</small></div>
+        <div class="num" id="nm2">۰۲<small>/۱۲</small></div>
+        <div class="num" id="nm3">۰۳<small>/۱۲</small></div>
+        <div class="num" id="nm4">۰۴<small>/۱۲</small></div>
+        <div class="num" id="nm5">۰۵<small>/۱۲</small></div>
+        <div class="num" id="nm6">۰۶<small>/۱۲</small></div>
+        <div class="num" id="nm7">۰۷<small>/۱۲</small></div>
+        <div class="num" id="nm8">۰۸<small>/۱۲</small></div>
+        <div class="num" id="nm9">۰۹<small>/۱۲</small></div>
+        <div class="num" id="nm10">۱۰<small>/۱۲</small></div>
+        <div class="num" id="nm11">۱۱<small>/۱۲</small></div>
+        <div class="num" id="nm12">۱۲<small>/۱۲</small></div>
+        <div id="caps">
+          <div class="cap" id="capH"><div>حسابدار جدید <b>آموزشگاه فردا</b></div></div>
+          <div class="cap" id="cap1"><div>حقوق مدرس، هنوز با <b>ماشین‌حساب</b>؟</div></div>
+          <div class="cap" id="cap2"><div>فیش، فاکتور، اکسل... <span class="r">پراکنده</span></div></div>
+          <div class="cap" id="cap4"><div>واریزی: فقط <b>یه فرم</b></div></div>
+          <div class="cap" id="cap5"><div>تأیید مدیر، توی <b>تلگرام</b></div></div>
+          <div class="cap" id="cap6"><div>سهم مدرس <b>۷۰٪</b>، خودکار</div></div>
+          <div class="cap" id="cap7"><div>هزینه + <b>عکس فاکتور</b></div></div>
+          <div class="cap" id="cap8"><div>آورده‌ی <b>سرمایه‌گذار</b>، جدا</div></div>
+          <div class="cap" id="cap9"><div>جدول <b>کلاس‌ها</b> و گروه‌ها</div></div>
+          <div class="cap" id="cap10"><div>کلاس <b>برگزار شد</b> یا لغو؟</div></div>
+          <div class="cap" id="cap11"><div>همه‌چی توی <b>گوگل‌شیت</b> فارسی</div></div>
+          <div class="cap" id="cap12"><div>آخر ماه: فقط <b>یه دکمه</b></div></div>
+          <div class="cap" id="cap13"><div>گزارش حقوق، توی <b>جیمیل</b></div></div>
+          <div class="cap" id="cap14"><div>واریز حقوق: <b>یه تیک</b></div></div>
+          <div class="cap" id="cap15"><div>گزارش <b>فصلی</b>، خودکار</div></div>
+          <div class="cap" id="cap16"><div>یه سیستم <b>مثل این</b> می‌خوای؟</div></div>
+          <div class="cap" id="capE"><div style="font-size:92px">آموزشگاه علمی <b>فردا</b></div></div>
+        </div>
+      </div>
+
+      <div id="grain" class="clip" data-start="0" data-duration="38.6" data-track-index="3"></div>
+
+      <audio id="bgm" src="assets/audio/music.mp3" data-start="0" data-duration="38.6" data-track-index="10" data-volume="0.3"></audio>
+      <audio id="voice" src="assets/audio/voice.mp3" data-start="0" data-duration="38.6" data-track-index="9" data-volume="1"></audio>
+      <audio id="sx00" src="assets/sfx/impact-bass-1.mp3" data-start="4.75" data-duration="2" data-track-index="11" data-volume="0.154"></audio>
+      <audio id="sx01" src="assets/sfx/pop.mp3" data-start="4.78" data-duration="0.6" data-track-index="12" data-volume="0.098"></audio>
+      <audio id="sx02" src="assets/sfx/pop.mp3" data-start="4.89" data-duration="0.6" data-track-index="13" data-volume="0.098"></audio>
+      <audio id="sx03" src="assets/sfx/pop.mp3" data-start="5.00" data-duration="0.6" data-track-index="14" data-volume="0.098"></audio>
+      <audio id="sx04" src="assets/sfx/glitch-1.mp3" data-start="5.95" data-duration="0.8" data-track-index="15" data-volume="0.084"></audio>
+      <audio id="sx05" src="assets/sfx/whoosh-short.mp3" data-start="5.88" data-duration="0.5" data-track-index="16" data-volume="0.140"></audio>
+      <audio id="sx06" src="assets/sfx/whoosh-short.mp3" data-start="6.77" data-duration="0.5" data-track-index="11" data-volume="0.140"></audio>
+      <audio id="sx08" src="assets/sfx/whoosh-short.mp3" data-start="8.92" data-duration="0.5" data-track-index="13" data-volume="0.140"></audio>
+      <audio id="sx09" src="assets/sfx/whoosh-short.mp3" data-start="10.80" data-duration="0.5" data-track-index="14" data-volume="0.140"></audio>
+      <audio id="sx10" src="assets/sfx/whoosh-short.mp3" data-start="13.17" data-duration="0.5" data-track-index="15" data-volume="0.140"></audio>
+      <audio id="sx11" src="assets/sfx/whoosh-short.mp3" data-start="15.35" data-duration="0.5" data-track-index="16" data-volume="0.140"></audio>
+      <audio id="sx12" src="assets/sfx/whoosh-short.mp3" data-start="17.55" data-duration="0.5" data-track-index="11" data-volume="0.140"></audio>
+      <audio id="sx13" src="assets/sfx/whoosh-short.mp3" data-start="19.69" data-duration="0.5" data-track-index="12" data-volume="0.140"></audio>
+      <audio id="sx14" src="assets/sfx/whoosh-short.mp3" data-start="21.92" data-duration="0.5" data-track-index="13" data-volume="0.140"></audio>
+      <audio id="sx15" src="assets/sfx/whoosh-short.mp3" data-start="23.85" data-duration="0.5" data-track-index="14" data-volume="0.140"></audio>
+      <audio id="sx16" src="assets/sfx/whoosh-short.mp3" data-start="26.19" data-duration="0.5" data-track-index="15" data-volume="0.140"></audio>
+      <audio id="sx17" src="assets/sfx/whoosh-short.mp3" data-start="28.35" data-duration="0.5" data-track-index="16" data-volume="0.140"></audio>
+      <audio id="sx18" src="assets/sfx/whoosh-short.mp3" data-start="30.09" data-duration="0.5" data-track-index="11" data-volume="0.140"></audio>
+      <audio id="sx19" src="assets/sfx/whoosh-short.mp3" data-start="32.16" data-duration="0.5" data-track-index="12" data-volume="0.140"></audio>
+      <audio id="sx21" src="assets/sfx/typing.mp3" data-start="7.19" data-duration="1.2" data-track-index="14" data-volume="0.098"></audio>
+      <audio id="sx22" src="assets/sfx/click-soft.mp3" data-start="8.44" data-duration="0.37" data-track-index="15" data-volume="0.196"></audio>
+      <audio id="sx23" src="assets/sfx/notification.mp3" data-start="9.13" data-duration="1.2" data-track-index="16" data-volume="0.140"></audio>
+      <audio id="sx24" src="assets/sfx/click-soft.mp3" data-start="9.97" data-duration="0.37" data-track-index="11" data-volume="0.196"></audio>
+      <audio id="sx25" src="assets/sfx/chime.mp3" data-start="10.21" data-duration="1.5" data-track-index="12" data-volume="0.112"></audio>
+      <audio id="sx26" src="assets/sfx/impact-bass-1.mp3" data-start="11.99" data-duration="2" data-track-index="13" data-volume="0.098"></audio>
+      <audio id="sx27" src="assets/sfx/typing.mp3" data-start="13.64" data-duration="1.0" data-track-index="14" data-volume="0.098"></audio>
+      <audio id="sx28" src="assets/sfx/pop.mp3" data-start="14.77" data-duration="0.6" data-track-index="15" data-volume="0.126"></audio>
+      <audio id="sx29" src="assets/sfx/pop.mp3" data-start="15.78" data-duration="0.6" data-track-index="16" data-volume="0.112"></audio>
+      <audio id="sx30" src="assets/sfx/pop.mp3" data-start="15.92" data-duration="0.6" data-track-index="11" data-volume="0.112"></audio>
+      <audio id="sx31" src="assets/sfx/pop.mp3" data-start="16.06" data-duration="0.6" data-track-index="12" data-volume="0.112"></audio>
+      <audio id="sx32" src="assets/sfx/pop.mp3" data-start="18.64" data-duration="0.6" data-track-index="13" data-volume="0.126"></audio>
+      <audio id="sx33" src="assets/sfx/sparkle.mp3" data-start="19.03" data-duration="1.8" data-track-index="14" data-volume="0.098"></audio>
+      <audio id="sx34" src="assets/sfx/click-soft.mp3" data-start="20.20" data-duration="0.37" data-track-index="15" data-volume="0.168"></audio>
+      <audio id="sx35" src="assets/sfx/glitch-1.mp3" data-start="20.65" data-duration="0.8" data-track-index="16" data-volume="0.070"></audio>
+      <audio id="sx36" src="assets/sfx/click-soft.mp3" data-start="21.10" data-duration="0.37" data-track-index="11" data-volume="0.168"></audio>
+      <audio id="sx37" src="assets/sfx/pop.mp3" data-start="22.91" data-duration="0.6" data-track-index="12" data-volume="0.140"></audio>
+      <audio id="sx38" src="assets/sfx/click-soft.mp3" data-start="25.25" data-duration="0.37" data-track-index="13" data-volume="0.210"></audio>
+      <audio id="sx39" src="assets/sfx/notification.mp3" data-start="26.36" data-duration="1.2" data-track-index="14" data-volume="0.154"></audio>
+      <audio id="sx40" src="assets/sfx/click-soft.mp3" data-start="29.15" data-duration="0.37" data-track-index="15" data-volume="0.210"></audio>
+      <audio id="sx41" src="assets/sfx/chime.mp3" data-start="29.32" data-duration="1.5" data-track-index="16" data-volume="0.112"></audio>
+      <audio id="sx42" src="assets/sfx/riser.mp3" data-start="30.29" data-duration="2" data-track-index="11" data-volume="0.070"></audio>
+      <audio id="sx43" src="assets/sfx/impact-bass-1.mp3" data-start="32.27" data-duration="2" data-track-index="12" data-volume="0.140"></audio>
+      <audio id="sx44" src="assets/sfx/sparkle.mp3" data-start="32.73" data-duration="1.8" data-track-index="13" data-volume="0.126"></audio>
+      <audio id="sy9" src="assets/sfx/pop.mp3" data-start="3.20" data-duration="0.6" data-track-index="20" data-volume="0.140"></audio>
+      <audio id="sy0" src="assets/sfx/pop.mp3" data-start="2.19" data-duration="0.6" data-track-index="17" data-volume="0.140"></audio>
+      <audio id="sy1" src="assets/sfx/whoosh-short.mp3" data-start="33.93" data-duration="0.5" data-track-index="18" data-volume="0.140"></audio>
+      <audio id="sy2" src="assets/sfx/sparkle.mp3" data-start="34.26" data-duration="1.8" data-track-index="19" data-volume="0.112"></audio>
+      <audio id="sy3" src="assets/sfx/pop.mp3" data-start="34.89" data-duration="0.6" data-track-index="17" data-volume="0.112"></audio>
+      <audio id="sy4" src="assets/sfx/pop.mp3" data-start="35.12" data-duration="0.6" data-track-index="18" data-volume="0.112"></audio>
+      <audio id="sy5" src="assets/sfx/pop.mp3" data-start="35.35" data-duration="0.6" data-track-index="19" data-volume="0.112"></audio>
+    </div>
+
+    <script>
+      (function () {
+        const tl0 = gsap.timeline({ paused: true });
+        // old 34 s cut, remapped: chaos (old 0-3.8) after the new hook, old logo beat dropped, the rest +1.0 s
+        const W = function (t) { return t < 3.8 ? t + 2.6 : t + 1.0; };
+        const tl = {
+          fromTo: function (a, b, c, t) { return tl0.fromTo(a, b, c, W(t)); },
+          to: function (a, b, t) { return tl0.to(a, b, W(t)); },
+          set: function (a, b, t) { return tl0.set(a, b, W(t)); },
+        };
+        const FA = "۰۱۲۳۴۵۶۷۸۹";
+        const fa = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "٬").replace(/[0-9]/g, function (d) { return FA[+d]; }); };
+        const END = 38.6;
+        const B = [0, 2.6, 4.8, 6.4, 8.6, 10.6, 12.6, 14.6, 16.8, 19.0, 21.0, 23.0, 25.2, 27.8, 29.8, 32.0, 35.0, 38.8];
+
+        tl0.fromTo("#cl1", { x: 0 }, { x: -140, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#cl2", { x: 0 }, { x: 180, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#cl3", { x: 0 }, { x: -120, duration: END, ease: "sine.inOut" }, 0);
+        tl0.fromTo("#progf", { scaleX: 0 }, { scaleX: 1, duration: END, ease: "none" }, 0);
+
+        // captions, one per beat
+        const CAPS = ["#capH", "#cap1", "#cap2", "#cap4", "#cap5", "#cap6", "#cap7", "#cap8", "#cap9", "#cap10", "#cap11", "#cap12", "#cap13", "#cap14", "#cap15", "#cap16", "#capE"];
+        CAPS.forEach(function (id, i) {
+          if (i > 0) tl0.fromTo(id, { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(2)" }, B[i]);
+          else tl0.fromTo(id, { scale: 1 }, { scale: 1.05, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, 0.05);
+          if (B[i + 1] < END) tl0.to(id, { opacity: 0, y: -30, duration: 0.16, ease: "power2.in" }, B[i + 1] - 0.15);
+        });
+
+        // stages: [id, beatIn, beatOut]
+        const ST = [["#stH", 0, 1], ["#st1", 1, 3], ["#st4", 3, 4], ["#st5", 4, 5], ["#st6", 5, 6], ["#st7", 6, 7], ["#st8", 7, 8], ["#st9", 8, 9],
+          ["#st10", 9, 10], ["#st11", 10, 11], ["#st12", 11, 12], ["#st13", 12, 13], ["#st14", 13, 14], ["#st15", 14, 15], ["#st16", 15, 16], ["#stE", 16, 17]];
+        ST.forEach(function (s, i) {
+          const tin = B[s[1]], tout = B[s[2]];
+          if (i > 0) tl0.fromTo(s[0], { opacity: 0, x: (i % 2 ? 140 : -140), y: 30, scale: 0.92, rotation: (i % 2 ? 2.5 : -2.5) }, { opacity: 1, x: 0, y: 0, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(1.4)" }, tin);
+          if (tout < END) tl0.to(s[0], { opacity: 0, x: (i % 2 ? -120 : 120), scale: 0.95, duration: 0.16, ease: "power2.in" }, tout - 0.15);
+        });
+
+        // explainer chrome: story segments, chapter chip, step counter
+        gsap.utils.toArray("#segs b").forEach(function (el, i) {
+          tl0.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: Math.min(B[i + 1], END) - B[i], ease: "none" }, B[i]);
+        });
+        [["#ch0", 0, 1], ["#ch1", 1, 3], ["#ch2", 3, 8], ["#ch3", 8, 10], ["#ch4", 10, 11], ["#ch5", 11, 15], ["#ch6", 15, 16], ["#ch7", 16, 17]].forEach(function (c, i) {
+          if (i > 0) tl0.fromTo(c[0], { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, B[c[1]]);
+          if (B[c[2]] < END) tl0.to(c[0], { opacity: 0, duration: 0.12, ease: "power1.in" }, B[c[2]] - 0.14);
+        });
+        for (let k = 1; k <= 12; k++) {
+          tl0.fromTo("#nm" + k, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(2)" }, B[k + 2]);
+          tl0.to("#nm" + k, { opacity: 0, y: -14, duration: 0.12, ease: "power1.in" }, B[k + 3] - 0.14);
+        }
+        tl0.fromTo("#glow", { scale: 0.85, opacity: 0.6 }, { scale: 1.15, opacity: 1, duration: END / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+        tl0.fromTo("#always", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 1.75);
+
+        // 0 hook: the badge swings in on its clip
+        tl0.fromTo("#badge", { y: -120, rotation: -8 }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0);
+        tl0.fromTo("#badge", { rotation: 0 }, { rotation: 2.5, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.6);
+        tl0.fromTo("#bchips span", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(2)", stagger: 0.08 }, 0.5);
+        tl0.fromTo("#nosal", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 1.2);
+
+        function tap(sel, x, y, t) {  // t in the old cut's time; tl maps it
+          tl.set(sel, { x: x, y: y, scale: 0.4 }, t);
+          tl.to(sel, { opacity: 1, scale: 1.6, duration: 0.25, ease: "power2.out" }, t);
+          tl.to(sel, { opacity: 0, duration: 0.15 }, t + 0.26);
+        }
+
+        // 1-2 chaos
+        const mess = [["#m1", 80, 640, -8], ["#m2", 460, 780, 7], ["#m3", 100, 1080, 5]];
+        mess.forEach(function (m, i) {
+          tl.set(m[0], { left: m[1], top: m[2] }, 0);
+          tl.fromTo(m[0], { opacity: 0, scale: 0.7, rotation: m[3] * 3 }, { opacity: 1, scale: 1, rotation: m[3], duration: 0.3, ease: "back.out(2)" }, 0.05 + i * 0.2);
+          tl.to(m[0], { y: (i % 2 ? 1 : -1) * 20, rotation: m[3] + (i % 2 ? 4 : -4), duration: 1.6, ease: "sine.inOut" }, 0.4 + i * 0.1);
+          tl.to(m[0], { x: (i % 2 ? 1 : -1) * 16, duration: 0.06, ease: "none", yoyo: true, repeat: 7 }, 2.2 + i * 0.06);
+        });
+        tl.fromTo("#calc1", { y: 0, rotation: -4 }, { y: -26, rotation: 4, duration: 2.2, ease: "sine.inOut" }, 0);
+        const cn = document.querySelector("#calcnum"); const cc = { v: 0 };
+        tl.fromTo(cc, { v: 0 }, { v: 4280000, duration: 2.0, ease: "power1.in", onUpdate: function () { cn.textContent = String(Math.round(cc.v)); } }, 0.1);
+        tl.to(cn, { color: "#b3263e", duration: 0.15 }, 2.2);
+        tl.to(["#m1", "#m2", "#m3", "#calc1"], { x: -900, rotation: -20, duration: 0.35, ease: "power3.in", stagger: 0.03 }, 3.4);
+
+        // 4 income form
+        gsap.utils.toArray("#frm .v").forEach(function (el, i) {
+          const t = 5.75 + i * 0.4;
+          tl.fromTo(el, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.32, ease: "none" }, t);
+        });
+        tap("#tap4", 330, 620, 7.0);
+        tl.to("#send", { scale: 0.95, duration: 0.08 }, 7.0);
+        tl.to("#send", { scale: 1, backgroundColor: "#1c7a51", duration: 0.15 }, 7.08);
+
+        // 5 telegram
+        tap("#tap5", 474, 342, 8.6);
+        tl.to("#tgyes", { scale: 0.95, duration: 0.08 }, 8.6);
+        tl.to("#tgyes", { scale: 1, duration: 0.15 }, 8.68);
+        tl.fromTo("#tgok", { opacity: 0, y: 24, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 8.85);
+
+        // 6 share
+        tl.fromTo("#seg1", { width: "100%" }, { width: "70%", duration: 0.5, ease: "power3.inOut" }, 9.85);
+        tl.fromTo("#seg2", { width: "0%" }, { width: "30%", duration: 0.5, ease: "power3.inOut" }, 9.85);
+        tl.fromTo(["#p1", "#p2"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 10.25);
+        const n1 = document.querySelector("#n1"), n2 = document.querySelector("#n2"); const c2 = { a: 0, b: 0 };
+        tl.fromTo(c2, { a: 0, b: 0 }, { a: 560000, b: 240000, duration: 0.8, ease: "power2.out",
+          onUpdate: function () { n1.textContent = fa(Math.round(c2.a / 1000) * 1000); n2.textContent = fa(Math.round(c2.b / 1000) * 1000); } }, 10.2);
+        tl.fromTo("#lock", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.4)" }, 10.5);
+        tl.fromTo("#shackle", { y: -6 }, { y: 0, duration: 0.14, ease: "power4.in" }, 10.75);
+
+        // 7 expense
+        gsap.utils.toArray("#exp .v").forEach(function (el, i) {
+          tl.fromTo(el, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.3, ease: "none" }, 11.9 + i * 0.35);
+        });
+        tl.fromTo("#drive", { opacity: 0, y: 60, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, 12.95);
+
+        // 8 capital
+        tl.fromTo("#cap .tile", { opacity: 0, y: 40, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.28, ease: "back.out(2)", stagger: 0.14 }, 13.9);
+        tl.fromTo("#cap .note", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 14.3);
+
+        // 9 schedule
+        tl.fromTo(["#tr1", "#tr2", "#tr3"], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out", stagger: 0.14 }, 16.0);
+        tl.fromTo("#newp", { opacity: 0, y: -50, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 16.8);
+        tl.fromTo("#tr3 .chip", { scale: 0.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 17.2);
+
+        // 10 sessions
+        ["#se1", "#se2", "#se3"].forEach(function (s, i) {
+          tl.fromTo(s, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, 18.15 + i * 0.4);
+          tl.fromTo(s + " .chip", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 18.35 + i * 0.4);
+        });
+
+        // 11 sheets
+        tl.fromTo("#tabs span", { opacity: 0, y: -60, rotation: -6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.22, ease: "back.out(2)", stagger: 0.06 }, 20.1);
+        tl.fromTo("#big17", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 20.9);
+
+        // 12 month close
+        tap("#tap12", 325, 290, 23.2);
+        tl.to("#go", { scale: 0.95, duration: 0.08 }, 23.2);
+        tl.to("#go", { scale: 1, duration: 0.15 }, 23.28);
+
+        // 13 gmail
+        tl.fromTo(["#kv1", "#kv2", "#kv3"], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.22, ease: "power2.out", stagger: 0.18 }, 24.5);
+        tl.fromTo("#att", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 25.3);
+
+        // 14 payout
+        tap("#tap14", 622, 177, 27.6);
+        tl.to("#bx1", { borderColor: "#1c7a51", backgroundColor: "#dcf5e8", duration: 0.12 }, 27.6);
+        tl.to("#bx1 svg", { opacity: 1, duration: 0.12 }, 27.65);
+        tl.set("#st0", { display: "none" }, 27.8);
+        tl.set("#st1b", { display: "inline-flex" }, 27.8);
+        tl.fromTo("#st1b", { scale: 0.5 }, { scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 27.8);
+
+        // 15 quarterly
+        tl.fromTo("#bars div", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.15 }, 29.0);
+
+        // 16 end, loops to the hook's calculator
+        tl.fromTo("#calc2", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 31.05);
+        tl.fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 31.4);
+        tl.fromTo("#offer", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 31.45);
+        tl.fromTo("#save", { opacity: 0, y: 60, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(2)" }, 31.8);
+        tl.to("#save", { scale: 1.05, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 32.6);
+
+        // end card: bigger logo + name, then the three addresses
+        tl0.fromTo("#ehalo", { scale: 0.5 }, { scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 35.05);
+        tl0.fromTo("#elogo", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power2.out" }, 35.15);
+        tl0.fromTo("#etag", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 35.5);
+        tl0.fromTo("#links .lk", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.8)", stagger: 0.18 }, 35.7);
+        tl0.fromTo("#ecta", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 36.3);
+        tl0.fromTo("#ecredit", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 36.6);
+
+        // time map: each scene now lands ~0.2 s before its voice-over line
+        const OLD = [0, 2.6, 4.8, 6.4, 8.6, 10.6, 12.6, 14.6, 16.8, 19.0, 21.0, 23.0, 25.2, 27.8, 29.8, 32.0, 35.0, 38.6], NEW = [0, 4.75, 5.95, 6.84, 9.04, 10.91, 13.31, 15.48, 17.67, 19.81, 22.05, 23.96, 26.32, 28.45, 30.2, 32.27, 34.0, 38.6];
+        const master = gsap.timeline({ paused: true });
+        for (let k = 0; k < OLD.length - 1; k++) {
+          master.fromTo(tl0, { time: OLD[k] }, { time: OLD[k + 1], duration: NEW[k + 1] - NEW[k], ease: "none", immediateRender: false }, NEW[k]);
+        }
+        tl0.time(0);
+        window.__timelines["main"] = master;
+      })();
+    </script>
+  </body>
+</html>
