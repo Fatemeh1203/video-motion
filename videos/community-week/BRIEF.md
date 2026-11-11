@@ -7,7 +7,7 @@ destination: instagram-reels
 aspect: 1080x1920
 language: fa
 audience: Persian speakers who want to learn AI tools
-length: 66s
+length: 56s
 angle: a week in the community — a Saturday-to-Friday strip; each day opens one real part of the community, then the Telegram invite
 ---
 
@@ -18,7 +18,7 @@ edge-tts samples. Picked the «یک هفته در کامیونیتی» concept a
 
 ## Assets
 
-- Narration: edge-tts `fa-IR-DilaraNeural`, rate −5% (`scripts/tts_edge.py`, free, no account).
+- Narration: edge-tts `fa-IR-FaridNeural` (male), rate +20%, built by `scripts/build_voice.py` (free, no account). First cut used Dilara −5%; she asked for a male voice, faster, and picked the spelling «فاطِمه شَمس» for her name.
 - Music: `scripts/make-bgm.py` ambient bed, side-chain ducked under the narration with ffmpeg.
 - SFX: pop / whoosh / notification / riser / impact from the earlier reel.
 - `assets/telegram-group-qr.svg` → https://t.me/+B70Edyob54Q0NWVk

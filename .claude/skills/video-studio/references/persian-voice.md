@@ -27,6 +27,9 @@ audio, so never claim a voice sounds right; ask her to listen and name the line 
      then trim silence to `voice/lNN.wav` (`ffmpeg -nostdin … silenceremove…`; without `-nostdin` ffmpeg
      eats the next line of a `while read` loop). It does not fit lines to gaps: measure each clip and
      set the scene starts from the real durations. Write ezafe explicitly (کامیونیتیِ، ابزارِ).
+     **Her name:** without marks the voices say it wrong; she picked «فاطِمه شَمس» (Farid). Always write it that way in narration.
+     Her taste (2026-11): male voice `fa-IR-FaridNeural`, rate `+20%`. `videos/community-week/scripts/build_voice.py`
+     rebuilds every line and re-times the scenes from the measured clip lengths.
    - Offline: `python3 scripts/tts_offline.py voice/lines.tsv voice/`
    Azure and offline fit each line into the gap before the next start by raising the rate a little
    (cap about 1.3× so it doesn't sound rushed; shorten the text instead).
